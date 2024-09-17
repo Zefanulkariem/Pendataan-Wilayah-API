@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+// use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // dd(auth()->user()->getRoleNames());
+        // if (auth()->user()->can('view_dashboard')) {
+            // }
+        return view('masterAdmin.index'); 
+
+        return abort(403);
     }
 }

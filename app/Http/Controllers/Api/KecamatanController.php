@@ -15,12 +15,13 @@ class KecamatanController extends Controller
      */
     public function index()
     {
-        $kecamatan = Kecamatan::with('klub')->latest()->get();
-        return response()->json([
-            'success' => true,
-            'message' => 'Daftar fans',
-            'data' => $fans,
-        ]);
+        $subdistrict = subdistrict::latest()->get();
+        $res = [
+            "success" => true,
+            "message" => 'List of subdistricts in Bandung Regency',
+            "data" => $subdistrict,
+        ];
+        return response()->json($res, 200);
     }
 
     /**
