@@ -32,4 +32,25 @@ class HomeController extends Controller
 
         return abort(403);
     }
+
+    public function user()
+    {
+        // dd(auth()->user()->getRoleNames());
+        // if (auth()->user()->can('view_dashboard')) {
+            // }
+        $user = User::all();
+        return view('masterAdmin.user.index', compact('user')); 
+
+        return abort(403);
+    }
+
+    public function profile()
+    {
+        // dd(auth()->user()->getRoleNames());
+        // if (auth()->user()->can('view_dashboard')) {
+            // }
+        return view('masterAdmin.profile.index'); 
+
+        return abort(403);
+    }
 }

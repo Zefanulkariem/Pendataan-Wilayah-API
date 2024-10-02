@@ -16,6 +16,24 @@ class InvestorController extends Controller
         return abort(403);
     }
 
+    public function profile()
+    {
+        // dd(auth()->user()->getRoleNames());
+        // if (auth()->user()->can('view_dashboard')) {
+            // }
+        return view('investor.profile.index'); 
+
+        return abort(403);
+    }
+
+    public function maps()
+    {
+        // dd(auth()->user()->getRoleNames());
+        return view('investor.maps'); 
+
+        return abort(403);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -63,4 +81,5 @@ class InvestorController extends Controller
     {
         //
     }
+    
 }

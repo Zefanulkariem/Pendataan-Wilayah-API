@@ -20,6 +20,10 @@ return new class extends Migration
             $table->string('kontak');
             $table->unsignedBigInteger('id_desa');
             $table->foreign('id_desa')->references('id')->on('desas')->onDelete('cascade');
+            $table->unsignedBigInteger('id_lokasi_umkm');
+            $table->foreign('id_lokasi_umkm')->references('id')->on('lokasi_umkms')->onDelete('cascade');
+            $table->unsignedBigInteger('id_kelengkapan_legalitas_usaha');
+            $table->foreign('id_kelengkapan_legalitas_usaha')->references('id')->on('kelengkapan_legalitas_usahas')->onDelete('cascade');
             $table->timestamps();
         });
     }

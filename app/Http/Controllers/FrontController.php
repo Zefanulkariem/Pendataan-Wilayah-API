@@ -16,6 +16,24 @@ class FrontController extends Controller
         return abort(403);
     }
 
+    public function profile()
+    {
+        // dd(auth()->user()->getRoleNames());
+        // if (auth()->user()->can('view_dashboard')) {
+            // }
+        return view('umkm.profile.index'); 
+
+        return abort(403);
+    }
+
+    public function legalUsaha()
+    {
+        // dd(auth()->user()->getRoleNames());
+        return view('umkm.legalUsaha.index'); 
+
+        return abort(403);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

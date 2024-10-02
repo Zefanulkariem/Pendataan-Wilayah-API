@@ -28,7 +28,23 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected function redirectTo()
+    {
+        $user = auth()->user();
+        
+        // Logika redirect berdasarkan role
+        if ($user->hasRole('superAdmin')) {
+            return '/dashboard';
+        } else if ($user->hasRole('admin')) {
+            return '/dashboard-admin';
+        } else if ($user->hasRole('investor')) {
+            return '/investor';
+        } else if ($user->hasRole('umkm')) {
+            return '/umkm';
+        }
+
+        return '/';
+    }
 
     /**
      * Create a new controller instance.

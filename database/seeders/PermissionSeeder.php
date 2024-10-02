@@ -2,35 +2,34 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
-use App\Models\User;
 
 class PermissionSeeder extends Seeder
 {
     public function run(): void
     {
         // update atau create role-----------------------------
-        $roleSuperAdmin = Role::updateOrCreate(
-            ['name' => 'superAdmin'],
-            ['name' => 'superAdmin']
+        $roleMasterAdmin = Role::updateOrCreate(
+            ['name' => 'Master Admin'],
+            ['name' => 'Master Admin']
         );
 
         $roleAdmin = Role::updateOrCreate(
-            ['name' => 'admin'],
-            ['name' => 'admin']
-        );
-
-        $roleInvestor = Role::updateOrCreate(
-            ['name' => 'investor'],
-            ['name' => 'investor']
+            ['name' => 'Admin'],
+            ['name' => 'Admin']
         );
 
         $roleUmkm = Role::updateOrCreate(
-            ['name' => 'umkm'],
-            ['name' => 'umkm']
+            ['name' => 'Umkm'],
+            ['name' => 'Umkm']
+        );
+
+        $roleInvestor = Role::updateOrCreate(
+            ['name' => 'Investor'],
+            ['name' => 'Investor']
         );
 
         //halaman----------------------------------------
@@ -54,27 +53,24 @@ class PermissionSeeder extends Seeder
             ['name' => 'view_investor']
         );
 
-
-
         //akses------------------------------------------------------------
-        $roleSuperAdmin->givePermissionTo([$permission, $permission2, $permission3, $permission4]);
-        $roleAdmin->givePermissionTo([$permission2, $permission4]);
-        $roleUmkm->givePermissionTo($permission3);
+        $roleMasterAdmin->givePermissionTo([$permission, $permission2, $permission3, $permission4]);
+        $roleAdmin->givePermissionTo($permission2);
         $roleUmkm->givePermissionTo($permission3);
         $roleInvestor->givePermissionTo($permission4);
 
-
-
         // user db---------------------------------------------------
-        $user  = User::find(1);
+        $user = User::find(1);
         $user2 = User::find(2);
         $user3 = User::find(3);
         $user4 = User::find(4);
+        $user5 = User::find(5);
 
-        $user->assignRole(['superAdmin']);
-        $user2->assignRole(['admin']);
-        $user3->assignRole(['umkm']);//ini diambil dari name di variabel roleUmkm
-        $user4->assignRole(['investor']);
+        $user->assignRole(['Master Admin']);
+        $user2->assignRole(['Admin']);
+        $user3->assignRole(['Umkm']); //ini diambil dari name di variabel roleUmkm
+        $user4->assignRole(['Investor']);
+        $user5->assignRole(['Investor']); //user tambahan
 
     }
 }

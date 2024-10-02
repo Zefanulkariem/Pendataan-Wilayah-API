@@ -11,10 +11,6 @@ Route::get('/user', function (Request $request) {
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout']); //logout
-    //dashboard
-    Route::get('/admin', function () {
-        return view('admin.index');
-    });
 });
 
 

@@ -27,22 +27,22 @@ class LoginController extends Controller
      * @var string
      */
     protected function redirectTo()
-{
-    $user = auth()->user();
-    
-    // Logika redirect berdasarkan role
-    if ($user->hasRole('superAdmin')) {
-        return '/dashboard';
-    } else if ($user->hasRole('admin')) {
-        return '/dashboard-admin';
-    } else if ($user->hasRole('investor')) {
-        return '/investor';
-    } else if ($user->hasRole('umkm')) {
-        return '/umkm';
-    }
+    {
+        $user = auth()->user();
+        
+        // Logika redirect berdasarkan role
+        if ($user->hasRole('Master Admin')) {
+            return '/dashboard';
+        } else if ($user->hasRole('Admin')) {
+            return '/dashboard-admin';
+        } else if ($user->hasRole('Umkm')) {
+            return '/umkm';
+        } else if ($user->hasRole('Investor')) {
+            return '/investor';
+        }
 
-    return '/';
-}
+        return '/';
+    }
 
     /**
      * Create a new controller instance.
