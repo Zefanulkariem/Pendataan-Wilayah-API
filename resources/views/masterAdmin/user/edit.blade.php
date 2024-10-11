@@ -11,7 +11,7 @@
             <div class="table-responsive p-0">
               <table class="table align-items-center mb-0">
                 <tbody>
-                    <form action="{{route('Master Adminuser.update', $user->id)}}" method="POST" enctype="multipart/form-data"> {{--//postnya badag!--}}
+                    <form action="{{route('Master Adminuser.update', $user->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <tr>

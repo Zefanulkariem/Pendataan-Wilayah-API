@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('kelengkapan_legalitas_usahas', function (Blueprint $table) {
             $table->id();
-            $table->string('akta_pendirian'); //belum migrate nullable
-            $table->integer('NIB');
-            $table->string('SKDP');
-            $table->integer('NPWP');
-            $table->string('SIUP');
-            $table->string('TDP');
+            $table->string('akta_pendirian')->nullable(); //belum migrate nullable
+            $table->integer('NIB')->nullable();
+            $table->string('SKDP')->nullable();
+            $table->integer('NPWP')->nullable();
+            $table->string('SIUP')->nullable();
+            $table->string('TDP')->nullable();
             $table->timestamps();
         });
     }

@@ -53,4 +53,15 @@ class HomeController extends Controller
 
         return abort(403);
     }
+
+    public function simple_map()
+    {
+        // dd(auth()->user()->getRoleNames());
+        // if (auth()->user()->can('view_dashboard')) {
+            // }
+        return view('masterAdmin.spot.index'); 
+
+        return abort(403);
+    }
+
 }

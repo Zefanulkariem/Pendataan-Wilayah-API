@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
+use Alert;
+
 class UserController extends Controller
 {
     /**
@@ -64,6 +66,7 @@ class UserController extends Controller
         //     'success' => true,
         //     'message' => 'user berhasil dibuat',
         // ]);
+        Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
         return redirect()->route('Master Adminuser.index')->with('success', 'User updated successfully.');
     }
 
@@ -109,6 +112,7 @@ class UserController extends Controller
         $user->syncRoles($request->input('role'));
         $user->save();
 
+        Alert::success('Success Title', "Data Berhasil Di Edit")->autoClose(1000);
         return redirect()->route('Master Adminuser.index')->with('success', 'User updated successfully.');
         // return response()->json([
         //     'data' => $user,

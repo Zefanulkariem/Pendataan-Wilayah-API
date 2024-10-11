@@ -9,7 +9,11 @@
     <title>
         Master Admin Dashboard 
     </title>
-        {{-- Fonts and icons      --}}
+
+    {{-- leaflet --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    {{-- Fonts and icons      --}}
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     {{-- Nucleo Icons  --}}
     <link href="{{asset('admin/assets/css/nucleo-icons.css')}}" rel="stylesheet" />
@@ -20,10 +24,11 @@
     <link href="{{asset('admin/assets/css/nucleo-svg.css')}}" rel="stylesheet" />
     {{-- CSS Files  --}}
     <link id="pagestyle" href="{{asset('admin/assets/css/argon-dashboard.css?v=2.0.4')}}" rel="stylesheet" />
+    @yield('css')
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
-    <div class="min-height-300 bg-primary position-absolute w-100"></div>
+    <div class="min-height-300 bg-default position-absolute w-100"></div>
     {{-- sidebar --}}
     @include('layouts.masterAdmin.sidebar')
     {{-- end sidebar --}}
@@ -50,6 +55,10 @@
     <script src="{{asset('admin/assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
     <script src="{{asset('admin/assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
     <script src="{{asset('admin/assets/js/plugins/chartjs.min.js')}}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+    @stack('javascript')
     <script>
     var ctx1 = document.getElementById("chart-line").getContext("2d");
 

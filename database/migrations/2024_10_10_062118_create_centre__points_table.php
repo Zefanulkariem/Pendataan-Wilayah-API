@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lokasi_umkms', function (Blueprint $table) {
+        Schema::create('centre__points', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_pemilik');
-            $table->string('nama_umkm');
             $table->string('koordinat');
-            $table->longText('deskripsi');
-            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lokasi_umkms');
+        Schema::dropIfExists('centre__points');
     }
 };

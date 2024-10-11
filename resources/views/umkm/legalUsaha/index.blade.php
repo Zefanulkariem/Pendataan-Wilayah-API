@@ -61,7 +61,7 @@
                                     {{-- npwp --}}
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Dokumen Pajak (NPWP Usaha)</label>
+                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Dokumen Pajak (NPWP Usaha):</label>
                                             <div class="input-group col-xs-12 d-flex align-items-center">
                                                 <input type="file" name="cover" class="form-control file-upload-info" placeholder="Upload Gambar Produk">
                                             </div>
@@ -75,7 +75,7 @@
                                     {{-- siup --}}
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Surat Izin Usaha Perdagangan (SIUP)</label>
+                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Surat Izin Usaha Perdagangan (SIUP):</label>
                                             <div class="input-group col-xs-12 d-flex align-items-center">
                                                 <input type="file" name="cover" class="form-control file-upload-info" placeholder="Upload Gambar Produk">
                                             </div>
@@ -89,7 +89,7 @@
                                     {{-- tdp --}}
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Tanda Daftar Perusahaan (TDP)</label>
+                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Tanda Daftar Perusahaan (TDP):</label>
                                             <div class="input-group col-xs-12 d-flex align-items-center">
                                                 <input type="file" name="cover" class="form-control file-upload-info" placeholder="Upload Gambar Produk">
                                             </div>

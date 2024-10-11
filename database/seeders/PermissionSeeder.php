@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -52,6 +53,17 @@ class PermissionSeeder extends Seeder
             ['name' => 'view_investor'],
             ['name' => 'view_investor']
         );
+        //buat akun master admin---------------------------------------
+        $super_admin = User::firstOrCreate(
+            ['email' => 'masteradmin@gmail.com'],
+            [
+                'name' => 'Master Admin',
+                'email_verified_at' => now(),
+                'password' => Hash::make('rahasia123'),
+            ]
+        );
+        
+
 
         //akses------------------------------------------------------------
         $roleMasterAdmin->givePermissionTo([$permission, $permission2, $permission3, $permission4]);
@@ -61,16 +73,8 @@ class PermissionSeeder extends Seeder
 
         // user db---------------------------------------------------
         $user = User::find(1);
-        $user2 = User::find(2);
-        $user3 = User::find(3);
-        $user4 = User::find(4);
-        $user5 = User::find(5);
 
         $user->assignRole(['Master Admin']);
-        $user2->assignRole(['Admin']);
-        $user3->assignRole(['Umkm']); //ini diambil dari name di variabel roleUmkm
-        $user4->assignRole(['Investor']);
-        $user5->assignRole(['Investor']); //user tambahan
 
     }
 }

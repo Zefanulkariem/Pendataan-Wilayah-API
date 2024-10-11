@@ -33,17 +33,17 @@ class RegisterController extends Controller
         $user = auth()->user();
         
         // Logika redirect berdasarkan role
-        if ($user->hasRole('superAdmin')) {
-            return '/dashboard';
-        } else if ($user->hasRole('admin')) {
-            return '/dashboard-admin';
-        } else if ($user->hasRole('investor')) {
-            return '/investor';
-        } else if ($user->hasRole('umkm')) {
-            return '/umkm';
-        }
+        // if ($user->hasRole('superAdmin')) {
+        //     return '/dashboard';
+        // } else if ($user->hasRole('admin')) {
+        //     return '/dashboard-admin';
+        // } else if ($user->hasRole('investor')) {
+        //     return '/investor';
+        // } else if ($user->hasRole('umkm')) {
+        //     return '/umkm';
+        // }
 
-        return '/';
+        return '/umkm';
     }
 
     /**
@@ -79,10 +79,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([  //dirubah menjadi variable untukmastiin role umkm/defaultnya kebaca
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        $user->assignRole('Umkm');
+        return $user;
     }
 }
