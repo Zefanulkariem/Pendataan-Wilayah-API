@@ -44,7 +44,7 @@ class KecamatanSeeder extends Seeder
             ['nama_kecamatan' => 'Rancabali'],
             ['nama_kecamatan' => 'Rancaekek'],
             ['nama_kecamatan' => 'Solokanjeruk'],
-            ['nama_kecamatan' => 'Soreang']
+            ['nama_kecamatan' => 'Soreang'],
         ];
     
         DB::table('kecamatans')->insert($kecamatans);

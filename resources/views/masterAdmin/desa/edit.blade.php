@@ -22,7 +22,7 @@
                                       <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Nama Desa</label>
-                                            <input type="text" class="form-control @error('nama_desa') is-invalid @enderror" name="nama_desa" aria-label="Masukkan Nama Desa" autofocus>
+                                            <input type="text" class="form-control @error('nama_desa') is-invalid @enderror" name="nama_desa"  value="{{ old('desa', $desa->nama_desa)}}">
                                             @error('nama_desa')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -36,7 +36,9 @@
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Kecamatan:</label>
                                             <select class="form-control" name="id_kecamatan" value="{{ old('desa', $desa->id_kecamatan)}}">
                                                 @foreach($kecamatan as $data)
-                                                <option value="{{$data->id}}">{{$data->nama_kecamatan}}</option> {{--dropdown--}}
+                                                <option value="{{$data->id}}" @if(old('id_kecamatan', $desa->id_kecamatan) == $data->id) selected @endif>
+                                                  {{$data->nama_kecamatan}}
+                                                </option> 
                                                 @endforeach
                                             </select>
                                         </div>

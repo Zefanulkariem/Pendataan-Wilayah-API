@@ -37,12 +37,14 @@
                         @csrf
                         <div class="form-group">
                             <label for="">Nama Pemilik:</label>
-                            <input type="text" class="form-control @error('nama_pemilik')
-                            is-invalid
-                            @enderror" name="nama_pemilik" id="nama_pemilik">
-                            @error('nama_pemilik')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                            <div class="form-group">
+                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama Pemilik:</label>
+                                <select class="form-control" name="id_kecamatan">
+                                    @foreach($ as $data)
+                                    <option value="{{$data->id}}">{{$data->nama_desa}}</option> {{--dropdown--}}
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="">Nama Umkm:</label>
@@ -74,7 +76,7 @@
                         <div class="form-group">
                             <label for="exampleInputName1">Gambar Produk</label>
                             <div class="input-group col-xs-12 d-flex align-items-center">
-                                <input type="file" name="cover" class="form-control file-upload-info" placeholder="Upload Gambar Prod">
+                                <input type="file" name="image" class="form-control file-upload-info" placeholder="Upload Gambar">
                             </div>
                         </div>
 

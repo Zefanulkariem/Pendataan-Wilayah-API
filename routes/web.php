@@ -13,6 +13,7 @@ use App\Http\Controllers\DesaController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\CentrePointController;
 use App\Http\Controllers\LokasiUmkmController;
+use App\Http\Controllers\PemilikUmkmController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,14 +29,14 @@ Route::fallback(function () {
 // superadmin
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'can:view_masterAdmin'], 'as' => 'Master Admin'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::resource('user', UserController::class);
-    Route::get('/profile', [HomeController::class, 'profile'])->name('profile.index');
-    Route::resource('jenis-umkm', JenisUmkmController::class);
-    Route::resource('umkm', UmkmController::class);
-    Route::resource('kecamatan', KecamatanController::class);
-    Route::resource('desa', DesaController::class);
-    Route::resource('spot', LokasiUmkmController::class);
-    Route::resource('centre-point', CentrePointController::class);
+    Route::resource('user', UserController::class); //menampilkan data user
+    Route::get('profile', [HomeController::class, 'profile'])->name('profile.index'); //test
+    Route::resource('jenis-umkm', JenisUmkmController::class); //menampilkan data jenis umkm
+    Route::resource('kecamatan', KecamatanController::class); //menampilkan data kecamatan
+    Route::resource('desa', DesaController::class); //menampilkan data desa
+    Route::resource('spot', LokasiUmkmController::class); //menampilkan data lokasi umkm
+    Route::resource('centre-point', CentrePointController::class); //latihan
+    Route::resource('kepemilikan-umkm', PemilikUmkmController::class); //menampilkan data profil pemilik
 });
 Route::get('/centre-point/data', [DataController::class,'centrepoint'])->name('centre-point.data');
 

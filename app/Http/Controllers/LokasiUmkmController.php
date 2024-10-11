@@ -32,14 +32,14 @@ class LokasiUmkmController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'koorinat' => 'required',
-            'nama_pemilik' => 'required',
-            'nama_umkm' => 'required',
-            'deskripsi' => 'required',
+            'id_pelaku_umkm' => 'required',
+            'nama_umkm' => 'required|string|max:255',
+            'koordinat' => 'required',
+            'deskripsi' => 'required|string|min:10|max:1000',
             'image' => 'file|image|mimes:png,jpg,jpeg'
         ]);
 
-        $lk = new LokasiUmkm;
+        $spot = new Spot;
         if ($request->hasFile('image')) {
 
             /**
@@ -54,16 +54,16 @@ class LokasiUmkmController extends Controller
              * Upload file image to storage
              */
             $file = $request->file('image');
-            $file->storeAs('public/storage',$file->hashName());
-            $lk->image = $file->hashName();
+            $file->storeAs('public/ImageSpots',$file->hashName());
+            $spot->image = $file->hashName();
         }
 
-        $lk->nama_pemilik = $request->nama_pemilik;
-        $lk->slug = Str::slug($request->nama_pemilik, '-');
-        $lk->nama_umkm = $request->nama_umkm;
-        $lk->deskripsi = $request->deskripsi;
-        $lk->koordinat = $request->koordinat;
-        $lk->save();
+        $spot->id_pelaku_umkm = $request->id_pelaku_umkm;
+        $spot->nama_umkm = $request->nama_umkm;
+        $spot->slug = Str::slug($request->nama_umkm, '-');
+        $spot->deskripsi = $request->deskripsi;
+        $spot->koordinat = $request->koordinat;
+        $spot->save();
 
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
         return redirect()->route('Master Adminspot.index');

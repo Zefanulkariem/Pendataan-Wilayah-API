@@ -9,7 +9,7 @@ class PelakuUmkm extends Model
 {
     use HasFactory;
     
-    public $fillable = ['nama_umkm', 'id_jenis_umkm', 'pemilik_umkm', 'no_telp', 'id_desa', 'id_lokasi_umkm', 'id_kelengkapan_legalitas_usaha'];
+    public $fillable = ['pemilik_umkm', 'nama_umkm', 'id_jenis_umkm', 'kontak', 'id_desa', 'id_lokasi_umkm', 'id_kelengkapan_legalitas_usaha'];
 
     public function pendanaanUmkm()
     {
@@ -26,14 +26,14 @@ class PelakuUmkm extends Model
         return $this->belongsTo(JenisUmkm::class, 'id_jenis_umkm');
     }
     
-    public function id_lokasi_umkm()
+    public function lokasiUmkm()
     {
-        return $this->belongsTo(JenisUmkm::class, 'id_lokasi_umkm');
+        return $this->hasMany(LokasiUmkm::class, 'id_pelaku_umkm');
     }
     
-    public function id_kelengkapan_legalitas()
+    public function kelengkapanlegalitas()
     {
-        return $this->belongsTo(JenisUmkm::class, 'id_jenis_umkm');
+        return $this->belongsTo(KelengkapanLegalitasUsaha::class, 'id_kelengkapan_legalitas_usaha');
     }
 
 }

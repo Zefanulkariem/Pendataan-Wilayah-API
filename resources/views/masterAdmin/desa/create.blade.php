@@ -30,7 +30,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        {{-- jenis --}}
+                                        {{-- desa --}}
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Kecamatan:</label>
