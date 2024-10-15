@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('pelaku_umkms', function (Blueprint $table) {
             $table->id();
-            $table->string('pemilik_umkm')->unique();
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->string('kontak');
             $table->unsignedBigInteger('id_desa');
             $table->foreign('id_desa')->references('id')->on('desas')->onDelete('cascade');

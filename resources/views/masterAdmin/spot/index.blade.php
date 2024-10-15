@@ -9,7 +9,7 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0">
-                    <h6>Set Center Point</h6>
+                    <h6>Daftar Titik Koordinat Umkm</h6>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
@@ -21,15 +21,16 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Umkm</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Koordinat</th>
-                                    {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Keterangan</th> --}}
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Image</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> Aksi</th>
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php $no = 1; @endphp
-                                @foreach ($cp as $data)
+                                @foreach ($lk as $data)
                                     <tr>
                                         {{-- nomor urut --}}
                                         <td>
@@ -39,7 +40,17 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        {{-- jenis umkm --}}
+                                        {{-- koordinat umkm --}}
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $data->nama_umkm }}</h6>
+                                                    
+                                                    <p class="text-xs text-secondary mb-0">Pemilik: <b>{{$data->user->name}}</b></p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        {{-- koordinat umkm --}}
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
@@ -47,13 +58,21 @@
                                                 </div>
                                             </div>
                                         </td>
+                                        {{-- image --}}
+                                        <td style="text-align: center;">
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <img src="{{ asset('upload/spots/' . $data->image) }}" width="50" style="border-radius: 50%">
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td class="d-flex justify-content-center">
                                             <form id="delete-form-{{ $data->id }}"
-                                                action="{{ route('Master Admincentre-point.destroy', $data->id) }}"
+                                                action="{{ route('Master Adminspot.destroy', $data->id) }}"
                                                 method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{ route('Master Admincentre-point.edit', $data->id) }}"
+                                                <a href="{{ route('Master Adminspot.edit', $data->id) }}"
                                                     class="btn btn-warning">
                                                     <i class="ni ni-ruler-pencil"></i>
                                                 </a>

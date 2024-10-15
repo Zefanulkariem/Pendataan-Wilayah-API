@@ -9,11 +9,11 @@ class PelakuUmkm extends Model
 {
     use HasFactory;
     
-    public $fillable = ['pemilik_umkm', 'nama_umkm', 'id_jenis_umkm', 'kontak', 'id_desa', 'id_lokasi_umkm', 'id_kelengkapan_legalitas_usaha'];
+    public $fillable = ['id_user', 'nama_umkm', 'id_jenis_umkm', 'kontak', 'id_desa', 'id_lokasi_umkm', 'id_kelengkapan_legalitas_usaha'];
 
-    public function pendanaanUmkm()
+    public function user()
     {
-        return $this->hasMany(PendanaanUmkm::class, 'id_pelaku_umkm');
+        return $this->belongsTo(User::class, 'id_user');
     }
 
     public function desa()

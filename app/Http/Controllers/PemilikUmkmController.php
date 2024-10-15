@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PelakuUmkm;
 use App\Models\Desa;
+use App\Models\User;
 use App\Models\KelengkapanLegalitasUsaha;
 
 use Alert;
@@ -16,7 +17,10 @@ class PemilikUmkmController extends Controller
      */
     public function index()
     {
-        $pk = PelakuUmkm::all();
+        $pk = PelakuUmkm::whereHas('user.roles', function ($query) {
+            $query->where('name', 'Umkm'); //ini namanya closure yah | kondisi
+        })->with('user', 'desa')->get(); //kalo ini metode Eager Loading
+    
         return view('masterAdmin.pelakuUmkm.index', compact('pk'));
     }
 
@@ -26,8 +30,13 @@ class PemilikUmkmController extends Controller
     public function create()
     {
         $desa = Desa::all();
+        
+        $idUser = User::whereHas('roles', function ($query) {
+            $query->where('name', 'Umkm');
+        })->get();
+
         $legalUsaha = KelengkapanLegalitasUsaha::all();
-        return view('masterAdmin.pelakuUmkm.create', compact('desa', 'legalUsaha'));
+        return view('masterAdmin.pelakuUmkm.create', compact('desa', 'legalUsaha', 'idUser'));
     }
 
     /**
@@ -36,14 +45,13 @@ class PemilikUmkmController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'pemilik_umkm' => 'required|unique:pelaku_umkms',
-            'kontak' => 'required|numeric',
-            'id_desa' => 'required',
-
+        'id_user' => 'required|exists:users,id', // pastikan id_user unik di pelaku_umkms
+        'kontak' => 'required|numeric',
+        'id_desa' => 'required|exists:desas,id', 
         ]);
 
         $pk = new PelakuUmkm;
-        $pk->pemilik_umkm = $request->pemilik_umkm;
+        $pk->id_user = $request->id_user;
         $pk->kontak = $request->kontak;
         $pk->id_desa = $request->id_desa;
 
@@ -66,8 +74,14 @@ class PemilikUmkmController extends Controller
     public function edit($id)
     {
         $desa = Desa::all();
+        
+        $idUser = User::whereHas('roles', function ($query) {
+            $query->where('name', 'Umkm');
+        })->get();
+
+        $legalUsaha = KelengkapanLegalitasUsaha::all();
         $pk = PelakuUmkm::findOrFail($id);
-        return view('masterAdmin.pelakuUmkm.edit', compact('desa', 'pk'));
+        return view('masterAdmin.pelakuUmkm.edit', compact('desa', 'pk', 'idUser', 'legalUsaha'));
     }
 
     /**
@@ -76,14 +90,14 @@ class PemilikUmkmController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $request->validate([
-            'pemilik_umkm' => 'required',
+            'id_user' => 'required',
             'kontak' => 'required|numeric',
             'id_desa' => 'required',
 
         ]);
 
         $pk = PelakuUmkm::findOrFail($id);
-        $pk->pemilik_umkm = $request->pemilik_umkm;
+        $pk->id_user = $request->id_user;
         $pk->kontak = $request->kontak;
         $pk->id_desa = $request->id_desa;
 

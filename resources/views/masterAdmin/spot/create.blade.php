@@ -33,21 +33,20 @@
                     <h6>Titik Koordinat Umkm</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('Master Adminspot.store') }}" method="post">
+                    <form action="{{ route('Master Adminspot.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="">Nama Pemilik:</label>
                             <div class="form-group">
                                 <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama Pemilik:</label>
-                                <select class="form-control" name="id_kecamatan">
-                                    @foreach($ as $data)
-                                    <option value="{{$data->id}}">{{$data->nama_desa}}</option> {{--dropdown--}}
+                                <select class="form-control" name="id_user">
+                                    @foreach($idUser as $data)
+                                    <option value="{{ $data->id }}">{{$data->name}}</option> 
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="">Nama Umkm:</label>
+                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama Umkm:</label>
                             <input type="text" class="form-control @error('nama_umkm')
                             is-invalid
                             @enderror" name="nama_umkm" id="nama_umkm">
@@ -56,7 +55,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="">Koordinat:</label>
+                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Titik Koordinat:</label>
                             <input type="text" class="form-control @error('koordinat')
                             is-invalid
                             @enderror" value="-7.022375700121086,107.53072288278673" name="koordinat" id="koordinat">
@@ -65,16 +64,14 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="">Deskripsi Perusahaan:</label>
-                            <input type="text" class="form-control @error('deskripsi')
-                            is-invalid
-                            @enderror" name="deskripsi" id="deskripsi">
+                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Deskripsi Perusahaan:</label>
+                            <textarea name="deskripsi" class="text-dark form-control summernote @error('deskripsi') is-invalid @enderror" rows="7"></textarea>
                             @error('deskripsi')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputName1">Gambar Produk</label>
+                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Gambar Produk:</label>
                             <div class="input-group col-xs-12 d-flex align-items-center">
                                 <input type="file" name="image" class="form-control file-upload-info" placeholder="Upload Gambar">
                             </div>
@@ -140,5 +137,7 @@
             $('#latitude').val(koordinat.lat).keyup()
             $('#longitude').val(koordinat.lng).keyup()
         })
+        
     </script>
+    
 @endpush

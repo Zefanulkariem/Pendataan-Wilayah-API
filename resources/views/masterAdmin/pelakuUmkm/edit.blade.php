@@ -22,18 +22,17 @@
                                       <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Nama Kepemilikan Umkm:</label>
-                                            <input type="text" class="form-control @error('pemilik_umkm') is-invalid @enderror" name="pemilik_umkm" value="{{ old('pemilik_umkm', $pk->pemilik_umkm)}}">
-                                            @error('pemilik_umkm')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
+                                            <select class="form-control" name="id_user">
+                                              @foreach($idUser as $data)
+                                              <option value="{{ old('name', $data->id)}}">{{$data->name}}</option> 
+                                              @endforeach
+                                          </select>
                                           </div>
                                       </div>
                                       {{-- kontak --}}
                                       <div class="col-md-12">
                                           <div class="form-group">
-                                              <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Kintak:</label>
+                                              <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Nomor Telpon:</label>
                                               <input type="text" class="form-control @error('kontak') is-invalid @enderror" name="kontak" value="{{ old('kontak', $pk->kontak)}}"
                                               oninput="this.value = this.value.replace(/[^0-9]/g, '');" maxlength="12"> 
                                               @error('kontak')
@@ -49,7 +48,7 @@
                                               <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Desa:</label>
                                               <select class="form-control" name="id_desa">
                                                   @foreach($desa as $data)
-                                                  <option value="{{$data->id}}">{{$data->nama_desa}}</option> {{--dropdown--}}
+                                                  <option value="{{ old('desa', $data->id)}}">{{$data->nama_desa}}</option> {{--dropdown--}}
                                                   @endforeach
                                               </select>
                                           </div>

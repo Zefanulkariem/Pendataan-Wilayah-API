@@ -21,18 +21,17 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Nama Kepemilikan Umkm:</label>
-                                                <input type="text" class="form-control @error('pemilik_umkm') is-invalid @enderror" name="pemilik_umkm" aria-label="Masukkan Pemilik Umkm" autofocus>
-                                                @error('pemilik_umkm')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
+                                                <select class="form-control" name="id_user">
+                                                    @foreach($idUser as $data)
+                                                    <option value="{{ $data->id }}">{{$data->name}}</option> 
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                         {{-- kontak --}}
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Nama Kepemilikan Umkm:</label>
+                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Nomor Telpon:</label>
                                                 <input type="text" class="form-control @error('kontak') is-invalid @enderror" name="kontak" aria-label="Masukkan Kontak" autofocus
                                                 oninput="this.value = this.value.replace(/[^0-9]/g, '');" maxlength="12">
                                                 @error('kontak')
