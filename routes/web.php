@@ -14,6 +14,7 @@ use App\Http\Controllers\DataController;
 use App\Http\Controllers\CentrePointController;
 use App\Http\Controllers\LokasiUmkmController;
 use App\Http\Controllers\PemilikUmkmController;
+use App\Http\Controllers\KeuanganController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -51,7 +52,8 @@ Route::group(['prefix' => 'dashboard-admin', 'middleware' => ['auth', 'can:view_
 Route::group(['prefix' => 'umkm', 'middleware' => ['auth', 'can:view_umkm'], 'as' => 'Umkm'], function () {
     Route::get('/', [FrontController::class, 'index'])->name('home'); //admin
     Route::get('/profile', [FrontController::class, 'profile'])->name('profile.index');
-    Route::get('/legalUsaha', [FrontController::class, 'legalUsaha'])->name('legalUsaha.index');
+    Route::get('/legalUsaha', [FrontController::class, 'legalUsaha'])->name('legalUsaha.index'); //front = umkm
+    Route::get('/keuangan', [KeuanganController::class, 'index'])->name('keuangan.index');
 });
 
 Route::group(['prefix' => 'investor', 'middleware' => ['auth', 'can:view_investor'], 'as' => 'Investor'], function () {

@@ -21,10 +21,15 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Umkm</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Koordinat</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Image</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> Aksi</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
+                                        Umkm</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Koordinat</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Image</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Aksi</th>
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
                             </thead>
@@ -45,8 +50,9 @@
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">{{ $data->nama_umkm }}</h6>
-                                                    
-                                                    <p class="text-xs text-secondary mb-0">Pemilik: <b>{{$data->user->name}}</b></p>
+
+                                                    <p class="text-xs text-secondary mb-0">Pemilik:
+                                                        <b>{{ $data->user->name }}</b></p>
                                                 </div>
                                             </div>
                                         </td>
@@ -62,14 +68,15 @@
                                         <td style="text-align: center;">
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <img src="{{ asset('upload/spots/' . $data->image) }}" width="50" style="border-radius: 50%">
+                                                    <img src="{{ asset('upload/spots/' . $data->image) }}" width="50"
+                                                        style="border-radius: 50%">
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="d-flex justify-content-center">
                                             <form id="delete-form-{{ $data->id }}"
-                                                action="{{ route('Master Adminspot.destroy', $data->id) }}"
-                                                method="POST" style="display:inline;">
+                                                action="{{ route('Master Adminspot.destroy', $data->id) }}" method="POST"
+                                                style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <a href="{{ route('Master Adminspot.edit', $data->id) }}"
@@ -123,29 +130,29 @@
     </script>
 
     <!-- Script SweetAlert -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    function confirmDelete(userId) {
-        Swal.fire({
-            title: 'Hapus Set Center Point ini!',
-            text: "Apakah kamu yakin ingin menghapusnya?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, hapus!',
-            cancelButtonText: 'Batal'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('delete-form-' + userId).submit();
-            } else if (result.dismiss === Swal.DismissReason.cancel) {
-              Swal.fire(
-                'Dibatalkan',
-                'Penghapusan user dibatalkan',
-                'error'
-              );
-            }
-        });
-    }
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete(userId) {
+            Swal.fire({
+                title: 'Hapus Set Center Point ini!',
+                text: "Apakah kamu yakin ingin menghapusnya?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + userId).submit();
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire(
+                        'Dibatalkan',
+                        'Penghapusan user dibatalkan',
+                        'error'
+                    );
+                }
+            });
+        }
+    </script>
 @endpush

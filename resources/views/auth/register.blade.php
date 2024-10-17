@@ -21,7 +21,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="{{asset('admin/assets/img/apple-icon.png')}}">
   <link rel="icon" type="image/png" href="{{asset('admin/assets/img/favicon.png')}}">
   <title>
-    Argon Dashboard 2 by Creative Tim 
+    Laravel 
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -90,6 +90,15 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
+                    </div>
+                    {{-- gender --}}
+                    <div class="form-group mb-3">
+                      <label for="gender" class="font-weight-bolder">Gender:</label>
+                      <div>
+                          <input type="radio" name="gender" value="pria" required> Pria
+                          <input type="radio" name="gender" value="wanita" required> Wanita
+                          <input type="radio" name="gender" value="lainnya" required> Lainnya
+                      </div>
                     </div>
                     {{-- remember me --}}
                     <div class="form-check form-switch">

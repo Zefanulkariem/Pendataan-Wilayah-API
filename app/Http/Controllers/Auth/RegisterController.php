@@ -68,6 +68,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'gender' => ['required', 'in:pria,wanita,lainnya'], 
         ]);
     }
 
@@ -79,12 +80,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([  //dirubah menjadi variable untukmastiin role umkm/defaultnya kebaca
+        // dd($data);
+        $user = User::create([  //dirubah nih menjadi variable untukmastiin role umkm/defaultnya kebaca
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'gender' => $data['gender'],
         ]);
         $user->assignRole('Umkm');
+        
         return $user;
     }
 }

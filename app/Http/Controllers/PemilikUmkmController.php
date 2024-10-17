@@ -45,7 +45,7 @@ class PemilikUmkmController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-        'id_user' => 'required|exists:users,id', // pastikan id_user unik di pelaku_umkms
+        'id_user' => 'required|exists:users,id',
         'kontak' => 'required|numeric',
         'id_desa' => 'required|exists:desas,id', 
         ]);
