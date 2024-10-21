@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('kelengkapan_legalitas_usahas', function (Blueprint $table) {
             $table->id();
+            $table->enum('badan_usaha', ['pt', 'cv']);
             $table->string('akta_pendirian')->nullable();
-            $table->integer('NIB')->nullable();
+            $table->string('NIB')->nullable();
             $table->string('SKDP')->nullable();
-            $table->integer('NPWP')->nullable();
+            $table->string('NPWP')->nullable();
             $table->string('SIUP')->nullable();
             $table->string('TDP')->nullable();
             $table->timestamps();

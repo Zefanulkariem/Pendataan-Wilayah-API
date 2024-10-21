@@ -5,7 +5,7 @@
 <div class="col-12">
     <div class="card mb-4">
     <div class="card-header pb-0">
-        <h6>Dokumen Legalitas Usaha</h6>
+        <h6>Keuangan</h6>
     </div>
     <div class="card-body px-0 pt-0 pb-2">
         <div class="table-responsive p-0">
@@ -18,14 +18,15 @@
                         <td>
                             <div class="d-flex px-5 py-1">
                                 <div class="row w-100">
+                                <div class="card-header pb-0">
+                                    <h6>Keuangan Perbulan</h6>
+                                </div>
                                     {{-- akta pendirian --}}
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Dokumen Akta Pendirian:</label>
-                                            <div class="input-group col-xs-12 d-flex align-items-center">
-                                                <input type="file" name="cover" class="form-control file-upload-info" placeholder="Upload Gambar Produk">
-                                            </div>
-                                            @error('email')
+                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Income:</label>
+                                            <input type="text" id="income" class="form-control @error('income') is-invalid @enderror" name="income" placeholder="Masukkan nominal income" aria-label="Masukkan income" autofocus>
+                                            @error('income')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -33,67 +34,11 @@
                                         </div>
                                     </div>
                                     {{-- nib --}}
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Nomor Induk Berusaha (NIB):</label>
-                                            <input type="number" class="form-control @error('nib') is-invalid @enderror" name="nib" aria-label="Masukkan NIB" autofocus oninput="this.value = this.value.replace(/[^0-9]/g, '');">
-                                            @error('nib')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    {{-- skdp --}}
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Surat Keterangan Domisili Perusahaan (SKDP):</label>
-                                            <div class="input-group col-xs-12 d-flex align-items-center">
-                                                <input type="file" name="cover" class="form-control file-upload-info" placeholder="Upload Gambar Produk">
-                                            </div>
-                                            @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    {{-- npwp --}}
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Dokumen Pajak (NPWP Usaha):</label>
-                                            <div class="input-group col-xs-12 d-flex align-items-center">
-                                                <input type="file" name="cover" class="form-control file-upload-info" placeholder="Upload Gambar Produk">
-                                            </div>
-                                            @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    {{-- siup --}}
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Surat Izin Usaha Perdagangan (SIUP):</label>
-                                            <div class="input-group col-xs-12 d-flex align-items-center">
-                                                <input type="file" name="cover" class="form-control file-upload-info" placeholder="Upload Gambar Produk">
-                                            </div>
-                                            @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    {{-- tdp --}}
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Tanda Daftar Perusahaan (TDP):</label>
-                                            <div class="input-group col-xs-12 d-flex align-items-center">
-                                                <input type="file" name="cover" class="form-control file-upload-info" placeholder="Upload Gambar Produk">
-                                            </div>
-                                            @error('password')
+                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Outcome:</label>
+                                            <input type="text" id="outcome" class="form-control @error('outcome') is-invalid @enderror" name="outcome" placeholder="Masukkan nominal outcome" aria-label="Masukkan outcome" autofocus>
+                                            @error('outcome')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -119,5 +64,21 @@
 </div>
 </div>
 
+<!-- Masukkan cleave.js ke dalam project -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
+<script>
+    new Cleave('#income', {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand',
+        prefix: 'Rp ',
+        rawValueTrimPrefix: true
+    });
+    new Cleave('#outcome', {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand',
+        prefix: 'Rp ',
+        rawValueTrimPrefix: true
+    });
+</script>
 
 @endsection

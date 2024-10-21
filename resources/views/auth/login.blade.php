@@ -45,7 +45,7 @@
             <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
               <div class="card card-plain">
                 <div class="card-header pb-0 text-start">
-                    <h4 class="font-weight-bolder">Log In</h4>
+                    <h4 class="font-weight-bolder">Masuk</h4>
                     <p class="mb-0"></p>
                 </div>
                 <div class="card-body">
@@ -53,21 +53,21 @@
                     @csrf
                     {{-- email --}}
                     <div class="mb-3">
-                        <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" placeholder="Email" aria-label="Masukkan Email" required autocomplete="email" autofocus>
+                        <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" placeholder="Masukkan Email" aria-label="Masukkan Email" required autocomplete="email" autofocus>
 
                         @error('email')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                <strong>{{ 'Email yang di masukkan salah' }}</strong>
                             </span>
                         @enderror
                     </div>
                     {{-- password --}}
                     <div class="mb-3">
-                        <input id="password"  type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" placeholder="Password" aria-label="Password" required autocomplete="current-password" autofocus>
+                        <input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" placeholder="Masukkan Password" aria-label="Password" required autocomplete="current-password" autofocus>
 
                         @error('password')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                <strong>{{ 'Password yang dimasukkan salah' }}</strong>
                             </span>
                         @enderror
                     </div>
@@ -81,7 +81,7 @@
                     </div>
                     {{-- submit --}}
                     <div class="text-center">
-                      <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Log in</button>
+                      <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Masuk</button>
                     </div>
 
                     {{-- @if (Route::has('password.request'))
@@ -91,12 +91,12 @@
                     @endif --}}
                   </form>
                 </div>
-                <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                {{-- <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="mb-4 text-sm mx-auto">
                     Belum Punya Akun?
                     <a href="{{url('register')}}" class="text-primary text-gradient font-weight-bold">Register</a>
                   </p>
-                </div>
+                </div> --}}
               </div>
             </div>
             <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">

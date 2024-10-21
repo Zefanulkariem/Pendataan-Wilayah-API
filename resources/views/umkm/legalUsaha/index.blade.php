@@ -11,21 +11,22 @@
         <div class="table-responsive p-0">
         <table class="table align-items-center mb-0">
             <tbody>
-                {{-- <form action="{{route('')}}" method="POST" enctype="multipart/form-data"> 
-                    @csrf --}}
+                <form action="{{route('UmkmlegalUsaha.store')}}" method="POST" enctype="multipart/form-data"> 
+                    @csrf
                     <tr>
                         {{-- daftar pengguna --}}
                         <td>
                             <div class="d-flex px-5 py-1">
                                 <div class="row w-100">
-                                    {{-- akta pendirian --}}
-                                    <div class="col-md-12">
+                                    {{-- badan usaha --}}
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Dokumen Akta Pendirian:</label>
-                                            <div class="input-group col-xs-12 d-flex align-items-center">
-                                                <input type="file" name="cover" class="form-control file-upload-info" placeholder="Upload Gambar Produk">
-                                            </div>
-                                            @error('email')
+                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan badan usaha:</label>
+                                            <select name="badan_usaha" id="badan_usaha" class="form-control">
+                                                <option value="pt" {{ old('badan_usaha') == 'pt' ? 'selected' : '' }}>PT (Perseroan Terbatas)</option>
+                                                <option value="cv" {{ old('badan_usaha') == 'cv' ? 'selected' : '' }}>CV (Persekutuan Komanditer)</option>
+                                            </select>
+                                            @error('badan_usaha')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -33,11 +34,25 @@
                                         </div>
                                     </div>
                                     {{-- nib --}}
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Nomor Induk Berusaha (NIB):</label>
-                                            <input type="number" class="form-control @error('nib') is-invalid @enderror" name="nib" aria-label="Masukkan NIB" autofocus oninput="this.value = this.value.replace(/[^0-9]/g, '');">
-                                            @error('nib')
+                                            <input type="number" class="form-control @error('NIB') is-invalid @enderror" name="NIB" aria-label="Masukkan NIB" autofocus value="{{ old('NIB') }}" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                            @error('NIB')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    {{-- akta pendirian --}}
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Dokumen Akta Pendirian:</label>
+                                            <div class="input-group col-xs-12 d-flex align-items-center">
+                                                <input type="file" name="akta_pendirian" class="form-control file-upload-info" placeholder="Upload Dokumen">
+                                            </div>
+                                            @error('akta_pendirian')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -49,9 +64,9 @@
                                         <div class="form-group">
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Surat Keterangan Domisili Perusahaan (SKDP):</label>
                                             <div class="input-group col-xs-12 d-flex align-items-center">
-                                                <input type="file" name="cover" class="form-control file-upload-info" placeholder="Upload Gambar Produk">
+                                                <input type="file" name="SKDP" class="form-control file-upload-info" placeholder="Upload Dokumen">
                                             </div>
-                                            @error('email')
+                                            @error('SKDP')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -63,9 +78,9 @@
                                         <div class="form-group">
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Dokumen Pajak (NPWP Usaha):</label>
                                             <div class="input-group col-xs-12 d-flex align-items-center">
-                                                <input type="file" name="cover" class="form-control file-upload-info" placeholder="Upload Gambar Produk">
+                                                <input type="file" name="NPWP" class="form-control file-upload-info" placeholder="Upload Dokumen">
                                             </div>
-                                            @error('password')
+                                            @error('NPWP')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -77,7 +92,7 @@
                                         <div class="form-group">
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Surat Izin Usaha Perdagangan (SIUP):</label>
                                             <div class="input-group col-xs-12 d-flex align-items-center">
-                                                <input type="file" name="cover" class="form-control file-upload-info" placeholder="Upload Gambar Produk">
+                                                <input type="file" name="SIUP" class="form-control file-upload-info" placeholder="Upload Dokumen">
                                             </div>
                                             @error('password')
                                             <span class="invalid-feedback" role="alert">
@@ -91,9 +106,9 @@
                                         <div class="form-group">
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Tanda Daftar Perusahaan (TDP):</label>
                                             <div class="input-group col-xs-12 d-flex align-items-center">
-                                                <input type="file" name="cover" class="form-control file-upload-info" placeholder="Upload Gambar Produk">
+                                                <input type="file" name="TDP" class="form-control file-upload-info" placeholder="Upload Dokumen">
                                             </div>
-                                            @error('password')
+                                            @error('TDP')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -110,7 +125,7 @@
                             </div>
                         </td>
                     </tr>
-                {{-- </form> --}}
+                </form>
             </tbody>
         </table>
         </div>
