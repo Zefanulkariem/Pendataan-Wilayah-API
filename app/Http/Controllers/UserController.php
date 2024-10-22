@@ -49,12 +49,14 @@ class UserController extends Controller
             'email' => 'required|email|max:255|unique:users,email,',
             'password' => 'required|min:8',
             'role' => 'required',
+            'gender' => 'required|in:pria,wanita,lainnya',
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'gender' => $request->gender,
         ]);
 
         $user->assignRole($request->role);
@@ -99,11 +101,13 @@ class UserController extends Controller
             'email' => 'required|email|max:255|unique:users,email,' . $id,
             'password' => 'nullable|min:8',
             'role' => 'required',
+            'gender' => 'required|in:pria,wanita,lainnya',
         ]);
 
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->gender = $request->gender;
 
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);

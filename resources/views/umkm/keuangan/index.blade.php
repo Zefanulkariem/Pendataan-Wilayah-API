@@ -64,7 +64,7 @@
 </div>
 </div>
 
-<!-- Masukkan cleave.js ke dalam project -->
+{{-- cleave.js --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
 <script>
     new Cleave('#income', {

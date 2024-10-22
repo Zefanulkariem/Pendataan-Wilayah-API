@@ -21,7 +21,7 @@
                                         {{-- nama --}}
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Username</label>
+                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Username:</label>
                                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" aria-label="Masukkan Nama" autofocus>
                                                 @error('name')
                                                 <span class="invalid-feedback" role="alert">
@@ -33,7 +33,7 @@
                                         {{-- email --}}
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Email</label>
+                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Email:</label>
                                                 <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" aria-label="Masukkan Email" autofocus>
                                                 @error('email')
                                                 <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
                                         {{-- password --}}
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Password</label>
+                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Password:</label>
                                                 <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" aria-label="Password" autofocus>
                                                 @error('password')
                                                 <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                                         {{-- daftar role --}}
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Role</label>
+                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Role:</label>
                                                 <select class="form-control" name="role">
                                                     @foreach($roles as $role)
                                                     @if($role->name != 'Master Admin')
@@ -67,6 +67,17 @@
                                                     @endif
                                                     @endforeach
                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            {{-- gender --}}
+                                            <div class="form-group mb-3">
+                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Jenis Kelamin:</label>
+                                                <div>
+                                                    <input type="radio" name="gender" value="pria" required> Pria
+                                                    <input type="radio" name="gender" value="wanita" required> Wanita
+                                                    <input type="radio" name="gender" value="lainnya" required> Lainnya
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -45,7 +45,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Route::is('UmkmlegalUsaha.index') ? 'active' : '' }}" href="{{ route('UmkmlegalUsaha.index') }}">
+                <a class="nav-link {{ Route::is('Umkmoperasional.index') ? 'active' : '' }}" href="{{ route('Umkmoperasional.index') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa fa-industry text-warning text-sm opacity-10"></i>
                     </div>
@@ -53,7 +53,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Route::is('UmkmlegalUsaha.index') ? 'active' : '' }}" href="{{ route('UmkmlegalUsaha.index') }}">
+                <a class="nav-link {{ Route::is('Umkmmarketing.index') ? 'active' : '' }}" href="{{ route('Umkmmarketing.index') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-shop text-success text-sm opacity-10"></i>
                     </div>

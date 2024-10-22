@@ -21,17 +21,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="#">
-                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Tabel</span>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link {{ Route::is('Master Adminuser.index') ? 'active' : '' }}" href="{{ route('Master Adminuser.index') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-single-02 text-info text-sm opacity-10"></i>
+                        <i class="ni ni-single-02 text-danger text-sm opacity-10"></i>
                     </div>
                 <span class="nav-link-text ms-1">Manajemen Pengguna</span>
                 </a>
@@ -39,7 +31,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ Route::is('Master Adminkecamatan.index') ? 'active' : '' }}" href="{{ route('Master Adminkecamatan.index') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        {{-- <i class="ni ni-single-02 text-info text-sm opacity-10"></i> --}}
+                        <i class="ni ni-square-pin text-success text-sm opacity-10"></i>
                     </div>
                 <span class="nav-link-text ms-1">Daftar Kecamatan</span>
                 </a>
@@ -47,7 +39,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ Route::is('Master Admindesa.index') ? 'active' : '' }}" href="{{ route('Master Admindesa.index') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        {{-- <i class="ni ni-single-02 text-info text-sm opacity-10"></i> --}}
+                        <i class="ni ni-square-pin text-info text-sm opacity-10"></i>
                     </div>
                 <span class="nav-link-text ms-1">Daftar Desa</span>
                 </a>
@@ -55,7 +47,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ Route::is('Master Adminjenis-umkm.index') ? 'active' : '' }}" href="{{ route('Master Adminjenis-umkm.index') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        {{-- <i class="ni ni-single-02 text-info text-sm opacity-10"></i> --}}
+                        <i class="ni ni-tag text-primary text-sm opacity-10"></i>
                     </div>
                 <span class="nav-link-text ms-1">Daftar Kategori Umkm</span>
                 </a>
@@ -63,7 +55,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ Route::is('Master Adminkepemilikan-umkm.index') ? 'active' : '' }}" href="{{ route('Master Adminkepemilikan-umkm.index') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        {{-- <i class="ni ni-single-02 text-info text-sm opacity-10"></i> --}}
+                        <i class="ni ni-single-02 text-warning text-sm opacity-10"></i>
                     </div>
                 <span class="nav-link-text ms-1">Daftar Kepemilikan Umkm</span>
                 </a>
@@ -71,7 +63,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ Route::is('Master Adminspot.index') ? 'active' : '' }}" href="{{ route('Master Adminspot.index') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        {{-- <i class="ni ni-single-02 text-info text-sm opacity-10"></i> --}}
+                        <i class="ni ni-pin-3 text-danger text-sm opacity-10"></i>
                     </div>
                 <span class="nav-link-text ms-1">Daftar Lokasi Umkm</span>
                 </a>
@@ -88,7 +80,7 @@
                     <span class="nav-link-text ms-1">Profil</span>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link " href="./pages/sign-in.html">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
@@ -103,7 +95,7 @@
                     </div>
                     <span class="nav-link-text ms-1">Sign Up</span>
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </div>
     <div class="sidebar-footer mx-3 ">

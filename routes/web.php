@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvestorController;
-use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JenisUmkmController;
 use App\Http\Controllers\UmkmController;
@@ -16,16 +16,22 @@ use App\Http\Controllers\LokasiUmkmController;
 use App\Http\Controllers\PemilikUmkmController;
 use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\LegalUsahaController;
+use App\Http\Controllers\OperasionalController;
+use App\Http\Controllers\MarketingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(
+    ['register' => false],
+);
+
+// Auth::routes();
 
 Route::fallback(function () {
-    return view('errors.404'); // Atau halaman 404 custom kamu
+    return view('errors.404'); //costume 404
 });
 
 // superadmin
@@ -47,6 +53,8 @@ Route::group(['prefix' => 'dashboard-admin', 'middleware' => ['auth', 'can:view_
     Route::get('/', [AdminController::class, 'index'])->name('home'); //admin
     Route::resource('user', UserAdminController::class);
     Route::get('/profile', [AdminController::class, 'profile'])->name('profile.index');
+    Route::resource('spot', LokasiUmkmController::class);
+    Route::resource('kepemilikan-umkm', PemilikUmkmController::class);
 });
 
 // umkm
@@ -54,11 +62,13 @@ Route::group(['prefix' => 'umkm', 'middleware' => ['auth', 'can:view_umkm'], 'as
     Route::get('/', [FrontController::class, 'index'])->name('home'); //admin
     Route::get('/profile', [FrontController::class, 'profile'])->name('profile.index');
     Route::resource('/legalUsaha', LegalUsahaController::class); //apa umkm bisa mendaftarkan dokumen umkm yang berkli kli/cabang?
-    Route::get('/keuangan', [KeuanganController::class, 'index'])->name('keuangan.index');
+    Route::resource('/keuangan', KeuanganController::class);
+    Route::resource('/operasional', OperasionalController::class); //masih keuangan kontrollernya
+    Route::resource('/marketing', MarketingController::class); //blum ada controll
 });
 
 Route::group(['prefix' => 'investor', 'middleware' => ['auth', 'can:view_investor'], 'as' => 'Investor'], function () {
-    Route::get('/', [InvestorController::class, 'index'])->name('home'); //admin
-    Route::get('maps', [InvestorController::class, 'maps'])->name('maps'); //admin
+    Route::get('/', [InvestorController::class, 'index'])->name('home');
+    Route::get('maps', [InvestorController::class, 'maps'])->name('maps'); 
     Route::get('/profile', [InvestorController::class, 'profile'])->name('profile.index');
 });
