@@ -95,7 +95,14 @@ class LokasiUmkmController extends Controller
      */
     public function edit($id)
     {
-        //
+        $idUser = User::whereHas('roles', function ($query) {
+            $query->where('name', 'Umkm');
+        })->get();
+
+        // bukan cp karna data yang di save kamukan di lokasiumkm coy
+        $lokasiUmkm = LokasiUmkm::find($id);
+
+        return view('masterAdmin.spot.edit', compact('lokasiUmkm', 'idUser'));
     }
 
     /**
@@ -103,7 +110,46 @@ class LokasiUmkmController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'id_user' => 'required|exists:users,id',
+            'nama_umkm' => 'required|string|max:255',
+            'koordinat' => 'required',
+            'deskripsi' => 'required|string|min:10|max:1000',
+            'image' => 'file|image|mimes:png,jpg,jpeg'
+        ]);
+
+        // $spot = new LokasiUmkm;
+        $spot = LokasiUmkm::findOrFail($id);
+        if ($request->hasFile('image')) {
+
+            /**
+             * Upload file to public folder
+             */
+            
+            $uploadPath = storage_path('app/public/ImageSpots/');
+            $file = $request->file('image');
+            $uploadFile = $file->hashName();
+            $file->move('upload/spots/', $uploadFile);
+            $spot->image = $uploadFile;
+
+            /**
+             * Upload file image to storage
+             */
+            // $file = $request->file('image');
+            // $file->storeAs('public/ImageSpots',$file->hashName());
+            // $spot->image = $file->hashName();
+        }
+
+        $spot->id_user = $request->id_user;
+        $spot->nama_umkm = $request->nama_umkm;
+        $spot->slug = Str::slug($request->nama_umkm, '-');
+        $spot->deskripsi = $request->deskripsi;
+        $spot->koordinat = $request->koordinat;
+        // $spot->save();
+        $spot->update();
+
+        Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
+        return redirect()->route('Master Adminspot.index');
     }
 
     /**

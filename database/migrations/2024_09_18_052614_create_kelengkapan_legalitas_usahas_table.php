@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('kelengkapan_legalitas_usahas', function (Blueprint $table) {
             $table->id();
-            $table->enum('badan_usaha', ['pt', 'cv']);
+            $table->unsignedBigInteger('id_user')->nullable();
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->enum('badan_usaha', ['PT (Perseroan Terbatas)', 'CV (Persekutuan Komanditer)']);
             $table->string('akta_pendirian')->nullable();
             $table->string('NIB')->nullable();
             $table->string('SKDP')->nullable();

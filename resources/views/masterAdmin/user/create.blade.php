@@ -69,8 +69,8 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        {{-- gender --}}
                                         <div class="col-md-12">
-                                            {{-- gender --}}
                                             <div class="form-group mb-3">
                                                 <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Jenis Kelamin:</label>
                                                 <div>

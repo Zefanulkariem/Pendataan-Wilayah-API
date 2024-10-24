@@ -24,7 +24,9 @@
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Nama Kepemilikan Umkm:</label>
                                             <select class="form-control" name="id_user">
                                               @foreach($idUser as $data)
-                                              <option value="{{ old('name', $data->id)}}">{{$data->name}}</option> 
+                                              <option value="{{ $data->id }}" {{ $pk->id_user == $data->id ? 'selected' : '' }}>
+                                                {{ $data->name }}
+                                              </option>
                                               @endforeach
                                           </select>
                                           </div>
@@ -48,7 +50,7 @@
                                               <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Desa:</label>
                                               <select class="form-control" name="id_desa">
                                                   @foreach($desa as $data)
-                                                  <option value="{{ old('desa', $data->id)}}">{{$data->nama_desa}}</option> {{--dropdown--}}
+                                                  <option value="{{ $data->id }}" {{ $pk->id_desa == $data->id ? 'selected' : '' }}>{{$data->nama_desa}}</option> {{--dropdown--}}
                                                   @endforeach
                                               </select>
                                           </div>

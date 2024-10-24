@@ -44,20 +44,27 @@ class PemilikUmkmController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
-        'id_user' => 'required|exists:users,id',
-        'kontak' => 'required|numeric',
-        'id_desa' => 'required|exists:desas,id', 
-        ]);
+        try {
+            $validate = $request->validate([
+                'id_user' => 'required|exists:users,id|unique:pelaku_umkms,id_user',
+                'kontak' => 'required|numeric|unique:pelaku_umkms,kontak',
+                'id_desa' => 'required|exists:desas,id',
+            ]);
+    
+            $pk = new PelakuUmkm;
+            $pk->id_user = $request->id_user;
+            $pk->kontak = $request->kontak;
+            $pk->id_desa = $request->id_desa;
+    
+            $pk->save();
+            Alert::success('Success Title', "Data Berhasil Ditambah")->autoClose(1000);
+            return redirect()->route('Master Adminkepemilikan-umkm.index');
 
-        $pk = new PelakuUmkm;
-        $pk->id_user = $request->id_user;
-        $pk->kontak = $request->kontak;
-        $pk->id_desa = $request->id_desa;
-
-        $pk->save();
-        Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
-        return redirect()->route('Master Adminkepemilikan-umkm.index');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // inget, ini buat nampilin si alertnya
+            Alert::error('Error', 'Data User UMKM ini sudah tersedia!')->autoClose(3000);
+            return redirect()->back()->withErrors($e->errors())->withInput();
+        }
     }
 
     /**

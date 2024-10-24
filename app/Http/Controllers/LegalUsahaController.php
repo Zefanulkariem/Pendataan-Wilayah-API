@@ -13,7 +13,8 @@ class LegalUsahaController extends Controller
      */
     public function index()
     {
-        $legalUsaha = KelengkapanLegalitasUsaha::all();
+        $legalUsaha = KelengkapanLegalitasUsaha::where('id_user', auth()->user()->id)->get();
+
         return view('umkm.legalUsaha.index', compact('legalUsaha'));
     }
 
@@ -31,7 +32,8 @@ class LegalUsahaController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'badan_usaha' => 'required|in:pt,cv',
+            // 'id_user' => 'required|exists:users,id',
+            'badan_usaha' => 'required|in:PT (Perseroan Terbatas),CV (Persekutuan Komanditer)',
             'akta_pendirian' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
             'NIB' => 'required|string:255',
             'SKDP' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
@@ -43,6 +45,7 @@ class LegalUsahaController extends Controller
         $legalUsaha = new KelengkapanLegalitasUsaha;
         $legalUsaha->badan_usaha = $request->badan_usaha;
         $legalUsaha->NIB = $request->NIB;
+        $legalUsaha->id_user = auth()->user()->id;
 
         $fields = ['akta_pendirian', 'SKDP', 'NPWP', 'SIUP', 'TDP']; // Daftar field yang akan diupload
 

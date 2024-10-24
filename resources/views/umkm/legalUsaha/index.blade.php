@@ -18,13 +18,29 @@
                         <td>
                             <div class="d-flex px-5 py-1">
                                 <div class="row w-100">
+                                    {{-- output --}}
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @foreach ($legalUsaha as $data)
+                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Badan usaha:</label>
+                                            <input type="text" class="form-control mb-3" value="{{ $data->badan_usaha }}" aria-label="Masukkan karyawan" readonly>
+                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Badan usaha:</label>
+                                            <input type="text" class="form-control mb-3" value="{{ $data->NIB }}" aria-label="Masukkan karyawan" readonly>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="horizontal dark mt-0">
+                            <div class="d-flex px-5 py-1">
+                                <div class="row w-100">
                                     {{-- badan usaha --}}
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan badan usaha:</label>
                                             <select name="badan_usaha" id="badan_usaha" class="form-control">
-                                                <option value="pt" {{ old('badan_usaha') == 'pt' ? 'selected' : '' }}>PT (Perseroan Terbatas)</option>
-                                                <option value="cv" {{ old('badan_usaha') == 'cv' ? 'selected' : '' }}>CV (Persekutuan Komanditer)</option>
+                                                <option value="PT (Perseroan Terbatas)" {{ old('badan_usaha') == 'PT (Perseroan Terbatas)' ? 'selected' : '' }}>PT (Perseroan Terbatas)</option>
+                                                <option value="CV (Persekutuan Komanditer)" {{ old('badan_usaha') == 'CV (Persekutuan Komanditer)' ? 'selected' : '' }}>CV (Persekutuan Komanditer)</option>
                                             </select>
                                             @error('badan_usaha')
                                             <span class="invalid-feedback" role="alert">

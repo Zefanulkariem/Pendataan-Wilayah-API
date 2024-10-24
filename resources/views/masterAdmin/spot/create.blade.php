@@ -58,7 +58,7 @@
                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Titik Koordinat:</label>
                             <input type="text" class="form-control @error('koordinat')
                             is-invalid
-                            @enderror" value="-7.022375700121086,107.53072288278673" name="koordinat" id="koordinat">
+                            @enderror" name="koordinat" id="koordinat">
                             @error('koordinat')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -71,7 +71,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Gambar Produk:</label>
+                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Logo Perusahaan:</label>
                             <div class="input-group col-xs-12 d-flex align-items-center">
                                 <input type="file" name="image" class="form-control file-upload-info" placeholder="Upload Gambar">
                             </div>
