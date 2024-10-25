@@ -20,8 +20,14 @@ class PemilikUmkmController extends Controller
         $pk = PelakuUmkm::whereHas('user.roles', function ($query) {
             $query->where('name', 'Umkm'); //ini namanya closure yah | kondisi
         })->with('user', 'desa')->get(); //kalo ini metode Eager Loading
-    
-        return view('masterAdmin.pelakuUmkm.index', compact('pk'));
+
+        $userMa = auth()->user();
+
+        if ($userMa->hasRole('Master Admin')) {
+            return view('masterAdmin.pelakuUmkm.index', compact('pk'));
+        } else if ($userMa->hasRole('Admin')) {
+            return view('admin.pelakuUmkm.index', compact('pk'));
+        }
     }
 
     /**

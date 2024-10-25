@@ -10,7 +10,7 @@
           <div class="card-body px-0 pt-0 pb-2">
             <div class="table-responsive p-0">
               <div class="d-flex justify-content-end px-4">
-                <a href="{{route('Master Adminkepemilikan-umkm.create')}}" class="btn btn-primary">Tambahkan Data</a>
+                <a href="{{route('Adminkepemilikan-umkm.create')}}" class="btn btn-primary">Tambahkan Data</a>
               </div>
               <table class="table align-items-center mb-0">
                 <thead>
@@ -57,7 +57,7 @@
                             <form id="delete-form-{{ $data->id }}" action="{{ route('Master Adminkepemilikan-umkm.destroy', $data->id) }}" method="POST" style="display:inline;">
                               @csrf
                               @method('DELETE')
-                              <a href="{{route('Master Adminkepemilikan-umkm.edit', $data->id)}}" class="btn btn-warning">
+                              <a href="{{route('Adminkepemilikan-umkm.edit', $data->id)}}" class="btn btn-warning">
                                 <i class="ni ni-ruler-pencil"></i>
                               </a>
                               <button type="button" onclick="confirmDelete({{ $data->id }})" class="btn btn-danger">

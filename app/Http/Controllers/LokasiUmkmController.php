@@ -21,7 +21,13 @@ class LokasiUmkmController extends Controller
             $query->where('name', 'Umkm'); //ini namanya closure yah | kondisi
         })->with('user')->get(); //kalo ini metode Eager Loading
     
-        return view('masterAdmin.spot.index', compact('lk'));
+        $userMa = auth()->user();
+
+        if ($userMa->hasRole('Master Admin')) {
+            return view('masterAdmin.spot.index', compact('lk'));
+        } else if ($userMa->hasRole('Admin')) {
+            return view('admin.spot.index', compact('lk'));
+        }
     }
 
     /**
