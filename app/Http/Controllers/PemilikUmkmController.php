@@ -42,7 +42,13 @@ class PemilikUmkmController extends Controller
         })->get();
 
         $legalUsaha = KelengkapanLegalitasUsaha::all();
-        return view('masterAdmin.pelakuUmkm.create', compact('desa', 'legalUsaha', 'idUser'));
+        $userMa = auth()->user();
+
+        if ($userMa->hasRole('Master Admin')) {
+            return view('masterAdmin.pelakuUmkm.create', compact('desa', 'legalUsaha', 'idUser'));
+        } else if ($userMa->hasRole('Admin')) {
+            return view('admin.pelakuUmkm.create', compact('desa', 'legalUsaha', 'idUser'));
+        }
     }
 
     /**
@@ -64,12 +70,24 @@ class PemilikUmkmController extends Controller
     
             $pk->save();
             Alert::success('Success Title', "Data Berhasil Ditambah")->autoClose(1000);
-            return redirect()->route('Master Adminkepemilikan-umkm.index');
+            $userMa = auth()->user();
+
+            if ($userMa->hasRole('Master Admin')) {
+                return redirect()->route('Master Adminkepemilikan-umkm.index');
+            } else if ($userMa->hasRole('Admin')) {
+                return redirect()->route('Adminkepemilikan-umkm.index');
+            }
 
         } catch (\Illuminate\Validation\ValidationException $e) {
             // inget, ini buat nampilin si alertnya
             Alert::error('Error', 'Data User UMKM ini sudah tersedia!')->autoClose(3000);
-            return redirect()->back()->withErrors($e->errors())->withInput();
+            $userMa = auth()->user();
+
+            if ($userMa->hasRole('Master Admin')) {
+                return redirect()->back()->withErrors($e->errors())->withInput();
+            } else if ($userMa->hasRole('Admin')) {
+                return redirect()->back()->withErrors($e->errors())->withInput();
+            }
         }
     }
 
@@ -94,7 +112,13 @@ class PemilikUmkmController extends Controller
 
         $legalUsaha = KelengkapanLegalitasUsaha::all();
         $pk = PelakuUmkm::findOrFail($id);
-        return view('masterAdmin.pelakuUmkm.edit', compact('desa', 'pk', 'idUser', 'legalUsaha'));
+        $userMa = auth()->user();
+
+        if ($userMa->hasRole('Master Admin')) {
+            return view('masterAdmin.pelakuUmkm.edit', compact('desa', 'pk', 'idUser', 'legalUsaha'));
+        } else if ($userMa->hasRole('Admin')) {
+            return view('admin.pelakuUmkm.edit', compact('desa', 'pk', 'idUser', 'legalUsaha'));
+        }
     }
 
     /**
@@ -116,7 +140,13 @@ class PemilikUmkmController extends Controller
 
         $pk->save();
         Alert::success('Success Title', "Data Berhasil Di Update")->autoClose(1000);
-        return redirect()->route('Master Adminkepemilikan-umkm.index');
+        $userMa = auth()->user();
+
+        if ($userMa->hasRole('Master Admin')) {
+            return redirect()->route('Master Adminkepemilikan-umkm.index');
+        } else if ($userMa->hasRole('Admin')) {
+            return redirect()->route('Adminkepemilikan-umkm.index');
+        }
     }
     
     /**
@@ -128,6 +158,12 @@ class PemilikUmkmController extends Controller
         
         $pk->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
-        return redirect()->route('Master Adminkepemilikan-umkm.index')->with('success', 'User deleted successfully.');
+        $userMa = auth()->user();
+
+        if ($userMa->hasRole('Master Admin')) {
+            return redirect()->route('Master Adminkepemilikan-umkm.index')->with('success', 'User deleted successfully.');
+        } else if ($userMa->hasRole('Admin')) {
+            return redirect()->route('Adminkepemilikan-umkm.index')->with('success', 'User deleted successfully.');
+        }
     }
 }

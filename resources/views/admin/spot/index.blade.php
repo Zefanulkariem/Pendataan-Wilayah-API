@@ -14,7 +14,7 @@
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                         <div class="d-flex justify-content-end px-4">
-                            <a href="{{ route('Master Adminspot.create') }}" class="btn btn-primary">Tambahkan
+                            <a href="{{ route('Adminspot.create') }}" class="btn btn-primary">Tambahkan
                                 Data</a>
                         </div>
                         <table class="table align-items-center mb-0">
@@ -75,11 +75,11 @@
                                         </td>
                                         <td class="d-flex justify-content-center">
                                             <form id="delete-form-{{ $data->id }}"
-                                                action="{{ route('Master Adminspot.destroy', $data->id) }}" method="POST"
+                                                action="{{ route('Adminspot.destroy', $data->id) }}" method="POST"
                                                 style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{ route('Master Adminspot.edit', $data->id) }}"
+                                                <a href="{{ route('Adminspot.edit', $data->id) }}"
                                                     class="btn btn-warning">
                                                     <i class="ni ni-ruler-pencil"></i>
                                                 </a>

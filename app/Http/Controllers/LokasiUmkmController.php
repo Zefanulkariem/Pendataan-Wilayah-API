@@ -40,7 +40,13 @@ class LokasiUmkmController extends Controller
         })->get();
 
         $centerPoint = Centre_Point::get()->first();
-        return view('masterAdmin.spot.create', compact('centerPoint', 'idUser'));
+        $userMa = auth()->user();
+
+        if ($userMa->hasRole('Master Admin')) {
+            return view('masterAdmin.spot.create', compact('centerPoint', 'idUser'));
+        } else if ($userMa->hasRole('Admin')) {
+            return view('admin.spot.create', compact('centerPoint', 'idUser'));
+        }
     }
 
     /**
@@ -85,7 +91,13 @@ class LokasiUmkmController extends Controller
         $spot->save();
 
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
-        return redirect()->route('Master Adminspot.index');
+        $userMa = auth()->user();
+
+        if ($userMa->hasRole('Master Admin')) {
+            return redirect()->route('Master Adminspot.index');
+        } else if ($userMa->hasRole('Admin')) {
+            return redirect()->route('Adminspot.index');
+        }
     }
 
     /**
@@ -107,8 +119,13 @@ class LokasiUmkmController extends Controller
 
         // bukan cp karna data yang di save kamukan di lokasiumkm coy
         $lokasiUmkm = LokasiUmkm::find($id);
+        $userMa = auth()->user();
 
-        return view('masterAdmin.spot.edit', compact('lokasiUmkm', 'idUser'));
+        if ($userMa->hasRole('Master Admin')) {
+            return view('masterAdmin.spot.edit', compact('lokasiUmkm', 'idUser'));
+        } else if ($userMa->hasRole('Admin')) {
+            return view('admin.spot.edit', compact('lokasiUmkm', 'idUser'));
+        }
     }
 
     /**
@@ -155,7 +172,13 @@ class LokasiUmkmController extends Controller
         $spot->update();
 
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
-        return redirect()->route('Master Adminspot.index');
+        $userMa = auth()->user();
+
+        if ($userMa->hasRole('Master Admin')) {
+            return redirect()->route('Master Adminspot.index');
+        } else if ($userMa->hasRole('Admin')) {
+            return redirect()->route('Adminspot.index');
+        }
     }
 
     /**
@@ -167,6 +190,12 @@ class LokasiUmkmController extends Controller
         
         $lk->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
-        return redirect()->route('Master Adminspot.index')->with('success', 'User deleted successfully.');
+        $userMa = auth()->user();
+
+        if ($userMa->hasRole('Master Admin')) {
+            return redirect()->route('Master Adminspot.index')->with('success', 'User deleted successfully.');
+        } else if ($userMa->hasRole('Admin')) {
+            return redirect()->route('Adminspot.index')->with('success', 'User deleted successfully.');
+        }
     }
 }

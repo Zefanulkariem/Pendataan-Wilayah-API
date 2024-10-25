@@ -33,7 +33,7 @@
                     <h6>Titik Koordinat Umkm</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('Master Adminspot.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('Adminspot.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <div class="form-group">
@@ -58,7 +58,7 @@
                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Titik Koordinat:</label>
                             <input type="text" class="form-control @error('koordinat')
                             is-invalid
-                            @enderror" value="-7.022375700121086,107.53072288278673" name="koordinat" id="koordinat">
+                            @enderror" name="koordinat" id="koordinat">
                             @error('koordinat')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -78,7 +78,7 @@
                         </div>
 
                         <div class="form-group">
-                            <a href="{{route('Master Adminspot.index')}}" class="btn btn-danger">
+                            <a href="{{route('Adminspot.index')}}" class="btn btn-danger">
                                 <i class="fa fa-sharp fa-light fa-arrow-left"></i>
                             </a>
                             <button type="submit" class="btn btn-primary">Simpan</button>

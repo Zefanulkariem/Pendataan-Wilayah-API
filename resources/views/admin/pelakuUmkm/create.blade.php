@@ -11,7 +11,7 @@
             <div class="table-responsive p-0">
               <table class="table align-items-center mb-0">
                 <tbody>
-                    <form action="{{route('Master Adminkepemilikan-umkm.store')}}" method="POST" enctype="multipart/form-data"> 
+                    <form action="{{route('Adminkepemilikan-umkm.store')}}" method="POST" enctype="multipart/form-data"> 
                         @csrf
                         <tr>
                             <td>
@@ -55,7 +55,7 @@
                                     </div>
                                 </div>
                                 <div class="px-4 py-1">
-                                    <a href="{{route('Master Adminkepemilikan-umkm.index')}}" class="btn btn-danger">
+                                    <a href="{{route('Adminkepemilikan-umkm.index')}}" class="btn btn-danger">
                                         <i class="fa fa-sharp fa-light fa-arrow-left"></i>
                                     </a>
                                     <button type="submit" class="btn btn-success">Submit</button>

@@ -54,7 +54,7 @@
                             </div>
                           </td>
                           <td class="d-flex justify-content-center">
-                            <form id="delete-form-{{ $data->id }}" action="{{ route('Master Adminkepemilikan-umkm.destroy', $data->id) }}" method="POST" style="display:inline;">
+                            <form id="delete-form-{{ $data->id }}" action="{{ route('Adminkepemilikan-umkm.destroy', $data->id) }}" method="POST" style="display:inline;">
                               @csrf
                               @method('DELETE')
                               <a href="{{route('Adminkepemilikan-umkm.edit', $data->id)}}" class="btn btn-warning">

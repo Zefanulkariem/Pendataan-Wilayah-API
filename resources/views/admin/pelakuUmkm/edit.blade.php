@@ -11,7 +11,7 @@
             <div class="table-responsive p-0">
               <table class="table align-items-center mb-0">
                 <tbody>
-                    <form action="{{route('Master Adminkepemilikan-umkm.update', $pk->id)}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('Adminkepemilikan-umkm.update', $pk->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <tr>
@@ -23,8 +23,10 @@
                                         <div class="form-group">
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Nama Kepemilikan Umkm:</label>
                                             <select class="form-control" name="id_user">
-                                              @foreach($idUser as $data)
-                                              <option value="{{ old('name', $data->id)}}">{{$data->name}}</option> 
+                                              @foreach($idUser as $data){{--untuk memfilter user--}}
+                                              <option value="{{ $data->id }}" {{ $pk->id_user == $data->id ? 'selected' : '' }}>
+                                                {{ $data->name }}
+                                              </option>
                                               @endforeach
                                           </select>
                                           </div>
@@ -47,8 +49,8 @@
                                           <div class="form-group">
                                               <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Desa:</label>
                                               <select class="form-control" name="id_desa">
-                                                  @foreach($desa as $data)
-                                                  <option value="{{ old('desa', $data->id)}}">{{$data->nama_desa}}</option> {{--dropdown--}}
+                                                  @foreach($desa as $data){{--untuk memfilter desa--}}
+                                                  <option value="{{ $data->id }}" {{ $pk->id_desa == $data->id ? 'selected' : '' }}>{{$data->nama_desa}}</option> {{--dropdown--}}
                                                   @endforeach
                                               </select>
                                           </div>
