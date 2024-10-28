@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Centre_Point extends Model
 {
     use HasFactory;
+    public $timestamp = true;
 
     protected $guarded = [];
 }

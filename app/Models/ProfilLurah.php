@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProfilLurah extends Model
 {
     use HasFactory;
+    public $timestamp = true;
 
     public $fillable = ['nama_lurah', 'id_desa', 'cover'];
 

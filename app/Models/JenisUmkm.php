@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class JenisUmkm extends Model
 {
     use HasFactory;
+    public $timestamp = true;
     
     public $fillable = ['jenis_umkm'];
 

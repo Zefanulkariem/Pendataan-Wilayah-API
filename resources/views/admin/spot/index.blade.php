@@ -25,7 +25,9 @@
                                         Umkm</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Koordinat</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Desa</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Image</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -52,7 +54,8 @@
                                                     <h6 class="mb-0 text-sm">{{ $data->nama_umkm }}</h6>
 
                                                     <p class="text-xs text-secondary mb-0">Pemilik:
-                                                        <b>{{ $data->user->name }}</b></p>
+                                                        <b>{{ $data->user->name }}</b>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </td>
@@ -64,12 +67,21 @@
                                                 </div>
                                             </div>
                                         </td>
+                                        {{-- desa umkm --}}
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{$data->desa->nama_desa}}</h6>
+                                                    <p class="text-xs text-secondary mb-0">Kecamatan <b>{{$data->desa->kecamatan->nama_kecamatan}}</b></p>
+                                                </div>
+                                            </div>
+                                        </td>
                                         {{-- image --}}
                                         <td style="text-align: center;">
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <img src="{{ asset('upload/spots/' . $data->image) }}" width="50"
-                                                        style="border-radius: 50%">
+                                                    style="border-radius: 50%">
                                                 </div>
                                             </div>
                                         </td>
@@ -79,8 +91,7 @@
                                                 style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{ route('Adminspot.edit', $data->id) }}"
-                                                    class="btn btn-warning">
+                                                <a href="{{ route('Adminspot.edit', $data->id) }}" class="btn btn-warning">
                                                     <i class="ni ni-ruler-pencil"></i>
                                                 </a>
                                                 <button type="button" onclick="confirmDelete({{ $data->id }})"

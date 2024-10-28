@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Kecamatan extends Model
 {
     use HasFactory;
+    public $timestamp = true;
 
     public $fillable = ['nama_kecamatan'];
 
@@ -15,8 +16,9 @@ class Kecamatan extends Model
     {
         return $this->hasMany(Desa::class, 'id_kecamatan');
     }
-    public function profilCamat()
-    {
-        return $this->hasOne(ProfilCamat::class, 'id_kecamatan');
-    }
+    
+    // public function profilCamat()
+    // {
+    //     return $this->hasOne(ProfilCamat::class, 'id_kecamatan');
+    // }
 }

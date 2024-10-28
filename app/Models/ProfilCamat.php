@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProfilCamat extends Model
 {
     use HasFactory;
+    public $timestamp = true;
 
     public $fillable = ['nama_camat', 'id_kecamatan', 'cover'];
 

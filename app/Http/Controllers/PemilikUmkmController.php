@@ -137,8 +137,8 @@ class PemilikUmkmController extends Controller
         $pk->id_user = $request->id_user;
         $pk->kontak = $request->kontak;
         $pk->id_desa = $request->id_desa;
-
         $pk->save();
+
         Alert::success('Success Title', "Data Berhasil Di Update")->autoClose(1000);
         $userMa = auth()->user();
 

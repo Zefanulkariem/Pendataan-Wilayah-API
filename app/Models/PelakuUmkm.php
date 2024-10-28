@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PelakuUmkm extends Model
 {
     use HasFactory;
+    public $timestamp = true;
     
     public $fillable = ['id_user', 'nama_umkm', 'id_jenis_umkm', 'kontak', 'id_desa', 'id_lokasi_umkm', 'id_kelengkapan_legalitas_usaha'];
 

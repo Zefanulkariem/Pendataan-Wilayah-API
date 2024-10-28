@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Centre_Point;
 use App\Models\LokasiUmkm;
+use App\Models\Desa;
 use App\Models\User;
 use Illuminate\Support\Str;
 
@@ -17,6 +18,8 @@ class LokasiUmkmController extends Controller
      */
     public function index()
     {
+        $desa = Desa::all();
+
         $lk = LokasiUmkm::whereHas('user.roles', function ($query) {
             $query->where('name', 'Umkm'); //ini namanya closure yah | kondisi
         })->with('user')->get(); //kalo ini metode Eager Loading
@@ -24,9 +27,9 @@ class LokasiUmkmController extends Controller
         $userMa = auth()->user();
 
         if ($userMa->hasRole('Master Admin')) {
-            return view('masterAdmin.spot.index', compact('lk'));
+            return view('masterAdmin.spot.index', compact('lk', 'desa'));
         } else if ($userMa->hasRole('Admin')) {
-            return view('admin.spot.index', compact('lk'));
+            return view('admin.spot.index', compact('lk', 'desa'));
         }
     }
 
@@ -35,6 +38,8 @@ class LokasiUmkmController extends Controller
      */
     public function create()
     {
+        $desa = Desa::all();
+
         $idUser = User::whereHas('roles', function ($query) {
             $query->where('name', 'Umkm');
         })->get();
@@ -43,9 +48,9 @@ class LokasiUmkmController extends Controller
         $userMa = auth()->user();
 
         if ($userMa->hasRole('Master Admin')) {
-            return view('masterAdmin.spot.create', compact('centerPoint', 'idUser'));
+            return view('masterAdmin.spot.create', compact('desa', 'centerPoint', 'idUser'));
         } else if ($userMa->hasRole('Admin')) {
-            return view('admin.spot.create', compact('centerPoint', 'idUser'));
+            return view('admin.spot.create', compact('desa', 'centerPoint', 'idUser'));
         }
     }
 
@@ -59,7 +64,8 @@ class LokasiUmkmController extends Controller
             'nama_umkm' => 'required|string|max:255',
             'koordinat' => 'required',
             'deskripsi' => 'required|string|min:10|max:1000',
-            'image' => 'file|image|mimes:png,jpg,jpeg'
+            'image' => 'file|image|mimes:png,jpg,jpeg',
+            'id_desa' => 'required|exists:desas,id',
         ]);
 
         $spot = new LokasiUmkm;
@@ -84,6 +90,7 @@ class LokasiUmkmController extends Controller
         }
 
         $spot->id_user = $request->id_user;
+        $spot->id_desa = $request->id_desa;
         $spot->nama_umkm = $request->nama_umkm;
         $spot->slug = Str::slug($request->nama_umkm, '-');
         $spot->deskripsi = $request->deskripsi;
@@ -113,6 +120,8 @@ class LokasiUmkmController extends Controller
      */
     public function edit($id)
     {
+        $desa = Desa::all();
+
         $idUser = User::whereHas('roles', function ($query) {
             $query->where('name', 'Umkm');
         })->get();
@@ -122,9 +131,9 @@ class LokasiUmkmController extends Controller
         $userMa = auth()->user();
 
         if ($userMa->hasRole('Master Admin')) {
-            return view('masterAdmin.spot.edit', compact('lokasiUmkm', 'idUser'));
+            return view('masterAdmin.spot.edit', compact('desa', 'lokasiUmkm', 'idUser'));
         } else if ($userMa->hasRole('Admin')) {
-            return view('admin.spot.edit', compact('lokasiUmkm', 'idUser'));
+            return view('admin.spot.edit', compact('desa', 'lokasiUmkm', 'idUser'));
         }
     }
 
@@ -138,29 +147,19 @@ class LokasiUmkmController extends Controller
             'nama_umkm' => 'required|string|max:255',
             'koordinat' => 'required',
             'deskripsi' => 'required|string|min:10|max:1000',
-            'image' => 'file|image|mimes:png,jpg,jpeg'
+            'image' => 'file|image|mimes:png,jpg,jpeg',
+            'id_desa' => 'required|exists:desas,id',
         ]);
 
         // $spot = new LokasiUmkm;
         $spot = LokasiUmkm::findOrFail($id);
-        if ($request->hasFile('image')) {
 
-            /**
-             * Upload file to public folder
-             */
-            
+        if ($request->hasFile('image')) {
             $uploadPath = storage_path('app/public/ImageSpots/');
             $file = $request->file('image');
             $uploadFile = $file->hashName();
             $file->move('upload/spots/', $uploadFile);
             $spot->image = $uploadFile;
-
-            /**
-             * Upload file image to storage
-             */
-            // $file = $request->file('image');
-            // $file->storeAs('public/ImageSpots',$file->hashName());
-            // $spot->image = $file->hashName();
         }
 
         $spot->id_user = $request->id_user;
@@ -168,8 +167,8 @@ class LokasiUmkmController extends Controller
         $spot->slug = Str::slug($request->nama_umkm, '-');
         $spot->deskripsi = $request->deskripsi;
         $spot->koordinat = $request->koordinat;
-        // $spot->save();
-        $spot->update();
+        $spot->id_desa = $request->id_desa;
+        $spot->save();
 
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
         $userMa = auth()->user();

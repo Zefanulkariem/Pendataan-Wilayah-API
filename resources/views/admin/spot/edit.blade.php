@@ -79,7 +79,15 @@
                                 <input type="file" name="image" class="form-control file-upload-info" placeholder="Upload Gambar">
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Desa:</label>
+                            <select class="form-control" name="id_desa">
+                                @foreach($desa as $data){{--untuk memfilter desa--}}
+                                <option value="{{ $data->id }}" {{ $lokasiUmkm->id_desa == $data->id ? 'selected' : '' }}>{{$data->nama_desa}}</option> {{--dropdown--}}
+                                @endforeach
+                            </select>
+                        </div>
+                        
                         <div class="form-group">
                             <a href="{{route('Adminspot.index')}}" class="btn btn-danger">
                                 <i class="fa fa-sharp fa-light fa-arrow-left"></i>
