@@ -9,10 +9,15 @@
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
+                        <div class="d-flex justify-content-end px-4">
+                            <a href="{{route('Umkmoperasional.create')}}" class="btn btn-primary">Tambahkan Data</a>
+                        </div>
                         <table class="table align-items-center mb-0">
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Posisi Karyawan
+                                    </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jumlah Karyawan
                                     </th>
                                     {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Role --}}
@@ -25,7 +30,7 @@
                             </thead>
                             <tbody>
                                 @php $no = 1; @endphp
-                                {{-- @foreach ($user as $data) --}}
+                                @foreach ($op as $data)
                                     <tr>
                                         {{-- nomor urut --}}
                                         <td>
@@ -35,40 +40,26 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        {{-- daftar pengguna --}}
+                                        {{-- daftar posisi kar --}}
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    {{-- <h6 class="mb-0 text-sm">{{ $data->name }}</h6>
-                                                    <p class="text-xs text-secondary mb-0">{{ $data->email }}</p> --}}
+                                                    <h6 class="mb-0 text-sm">{{ $data->karyawan }}</h6>
+                                                    {{-- <p class="text-xs text-secondary mb-0">{{ $data->jml_karyawan }}</p> --}}
                                                 </div>
                                             </div>
                                         </td>
-                                        {{-- daftar role --}}
+                                        {{-- daftar jml kar --}}
                                         <td>
-                                            {{-- <p class="text-xs font-weight-bold mb-0">{{ $data->getRoleNames()->first() }} --}}
-                                            </p>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $data->jml_karyawan }}</h6>
+                                                    {{-- <p class="text-xs text-secondary mb-0">{{ $data->jml_karyawan }}</p> --}}
+                                                </div>
+                                            </div>
                                         </td>
-                                        {{-- @if (!$data->hasRole('Master Admin'))
-                                            <td class="d-flex justify-content-center">
-                                                <form id="delete-form-{{ $data->id }}"
-                                                    action="{{ route('Master Adminuser.destroy', $data->id) }}"
-                                                    method="POST" style="display:inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <a href="{{ route('Master Adminuser.edit', $data->id) }}"
-                                                        class="btn btn-warning">
-                                                        <i class="ni ni-ruler-pencil"></i>
-                                                    </a>
-                                                    <button type="button" onclick="confirmDelete({{ $data->id }})"
-                                                        class="btn btn-danger">
-                                                        <i class="fa fa-ban"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        @endif --}}
                                     </tr>
-                                {{-- @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -72,12 +72,14 @@
                             @error('deskripsi')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
+                            <small class="form-text text-muted">Wajib di isi kembali.</small>
                         </div>
                         <div class="form-group">
                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Logo Perusahaan:</label>
                             <div class="input-group col-xs-12 d-flex align-items-center">
                                 <input type="file" name="image" class="form-control file-upload-info" placeholder="Upload Gambar">
                             </div>
+                            <small class="form-text text-muted">Kosongkan jika tidak ingin mengubah foto.</small>
                         </div>
                         <div class="form-group">
                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Desa:</label>
@@ -106,48 +108,34 @@
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <script>
-        const map = L.map('map').setView([-7.022375700121086,107.53072288278673], 4);
 
-        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        // buat peta
+        const peta = L.map('map').setView([-7.022375700121086,107.53072288278673], 4);
+
+        // buat nampilin layer osm
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             minZoom: 10,
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
+        }).addTo(peta);
 
-        var marker = L.marker([-7.022375700121086,107.53072288278673],{
-            draggable:true
-        })
-        .bindPopup('Tampilan Lokasi')
-        .addTo(map);
+        //bikin penanda
+        const penanda = L.marker([-7.022375700121086,107.53072288278673],{ draggable:true })
+        .addTo(peta);
 
+        // ini buat ngambil koor
         function onMapClick(e) {
-            var coords  = document.querySelector("[name=koordinat]")
-            var latitude  = document.querySelector("[name=latitude]")
-            var longitude  = document.querySelector("[name=longitude]")
-            var lat = e.latlng.lat
-            var lng = e.latlng.lng
-
-            if (!marker) {
-                marker = L.marker(e.latlng).addTo(map)
-            } else {
-                marker.setLatLng(e.latlng)
-            }
-
-            coords.value = lat + "," + lng
-            latitude.value = lat,
-            longitude.value = lng
+            const koordinat  = e.latlng;
+            penanda.setLatLng(koordinat);
+            document.querySelector("[name=koordinat]").value = `${koordinat.lat},${koordinat.lng}`;
         }
-        map.on('click',onMapClick)
+        peta.on('click',onMapClick);
 
-        marker.on('dragend',function(){
-            var koordinat = marker.getLatLng();
-            marker.setLatLng(koordinat,{
-                draggable:true
-            })
-            $('#koordinat').val(koordinat.lat + "," + koordinat.lng).keyup()
-            $('#latitude').val(koordinat.lat).keyup()
-            $('#longitude').val(koordinat.lng).keyup()
-        })
+        // ini untuk perbarui koornya
+        penanda.on('dragend', function() {
+            const koordinatBaru = penanda.getLatLng();
+            document.querySelector("[name=koordinat]").value = `${koordinat.lat},${koordinat.lng}`;
+        });
         
     </script>
     

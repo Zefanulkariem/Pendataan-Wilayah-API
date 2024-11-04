@@ -63,10 +63,11 @@ Route::group(['prefix' => 'umkm', 'middleware' => ['auth', 'can:view_umkm'], 'as
     Route::get('/profile', [FrontController::class, 'profile'])->name('profile.index');
     Route::resource('/legalUsaha', LegalUsahaController::class); //apa umkm bisa mendaftarkan dokumen umkm yang berkli kli/cabang?
     Route::resource('/keuangan', KeuanganController::class);
-    Route::resource('/operasional', OperasionalController::class); //masih keuangan kontrollernya
-    Route::resource('/marketing', MarketingController::class); //blum ada controll
+    Route::resource('/operasional', OperasionalController::class);
+    Route::resource('/marketing', MarketingController::class);
 });
 
+// investor
 Route::group(['prefix' => 'investor', 'middleware' => ['auth', 'can:view_investor'], 'as' => 'Investor'], function () {
     Route::get('/', [InvestorController::class, 'index'])->name('home');
     Route::get('maps', [InvestorController::class, 'maps'])->name('maps'); 

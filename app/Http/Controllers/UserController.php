@@ -133,6 +133,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $user->delete();
+        Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
         return redirect()->route('Master Adminuser.index')->with('success', 'User deleted successfully.');
     }
 }

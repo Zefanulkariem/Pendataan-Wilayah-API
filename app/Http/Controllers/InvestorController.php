@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\LokasiUmkm;
 use Illuminate\Http\Request;
 
 class InvestorController extends Controller
@@ -29,7 +29,8 @@ class InvestorController extends Controller
     public function maps()
     {
         // dd(auth()->user()->getRoleNames());
-        return view('investor.maps'); 
+        $umkm = LokasiUmkm::all();
+        return view('investor.maps', compact('umkm')); 
 
         return abort(403);
     }

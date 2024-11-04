@@ -87,6 +87,7 @@ class JenisUmkmController extends Controller
         $jenis_umkm = JenisUmkm::findOrFail($id);
 
         $jenis_umkm->delete();
+        Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
         return redirect()->route('Master Adminjenis-umkm.index')->with('success', 'User deleted successfully.');
     }
 }

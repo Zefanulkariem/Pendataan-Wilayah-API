@@ -25,6 +25,8 @@
                                         Umkm</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Koordinat</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Desa</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                         Logo Perusahaan</th>
                                     <th
@@ -61,6 +63,15 @@
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">{{ $data->koordinat }}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        {{-- desa umkm --}}
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{$data->desa->nama_desa}}</h6>
+                                                    <p class="text-xs text-secondary mb-0">Kecamatan <b>{{$data->desa->kecamatan->nama_kecamatan}}</b></p>
                                                 </div>
                                             </div>
                                         </td>

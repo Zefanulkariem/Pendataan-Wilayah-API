@@ -94,6 +94,7 @@ class DesaController extends Controller
         $desa = Desa::findOrFail($id);
 
         $desa->delete();
+        Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
         return redirect()->route('Master Admindesa.index')->with('success', 'User deleted successfully.');
     }
 }

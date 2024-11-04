@@ -161,8 +161,10 @@ class PemilikUmkmController extends Controller
         $userMa = auth()->user();
 
         if ($userMa->hasRole('Master Admin')) {
+            Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
             return redirect()->route('Master Adminkepemilikan-umkm.index')->with('success', 'User deleted successfully.');
         } else if ($userMa->hasRole('Admin')) {
+            Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
             return redirect()->route('Adminkepemilikan-umkm.index')->with('success', 'User deleted successfully.');
         }
     }

@@ -61,9 +61,11 @@
                                                 <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Role</label>
                                                 <select class="form-control" name="role">
                                                     @foreach($roles as $role)
-                                                        <option value="{{ $role->name }}" {{ $userRole == $role->name ? 'selected' : '' }}>
+                                                    @if($role->name != 'Master Admin')
+                                                        <option value="{{ $role->name }}">
                                                             {{ ucfirst($role->name) }}
                                                         </option>
+                                                    @endif
                                                     @endforeach
                                                 </select>
                                             </div>

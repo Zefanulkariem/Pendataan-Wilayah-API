@@ -85,6 +85,7 @@ class KecamatanController extends Controller
         $kecamatan = Kecamatan::findOrFail($id);
 
         $kecamatan->delete();
+        Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
         return redirect()->route('Master Adminkecamatan.index')->with('success', 'User deleted successfully.');
     }
 }

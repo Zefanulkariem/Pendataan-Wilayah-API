@@ -76,6 +76,14 @@
                                 <input type="file" name="image" class="form-control file-upload-info" placeholder="Upload Gambar">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Desa:</label>
+                            <select class="form-control" name="id_desa">
+                                @foreach($desa as $data)
+                                <option value="{{$data->id}}">{{$data->nama_desa}}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
                         <div class="form-group">
                             <a href="{{route('Master Adminspot.index')}}" class="btn btn-danger">
