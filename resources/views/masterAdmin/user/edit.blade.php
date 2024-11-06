@@ -62,7 +62,7 @@
                                                 <select class="form-control" name="role">
                                                     @foreach($roles as $role)
                                                     @if($role->name != 'Master Admin')
-                                                        <option value="{{ $role->name }}">
+                                                        <option value="{{ $role->name }}" >
                                                             {{ ucfirst($role->name) }}
                                                         </option>
                                                     @endif
@@ -79,6 +79,7 @@
                                                     <input type="radio" name="gender" value="wanita" required> Wanita
                                                     <input type="radio" name="gender" value="lainnya" required> Lainnya
                                                 </div>
+                                                <small class="form-text text-muted">Wajib di isi kembali.</small>
                                             </div>
                                         </div>
                                     </div>

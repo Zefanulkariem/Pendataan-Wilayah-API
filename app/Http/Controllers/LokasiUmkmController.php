@@ -7,6 +7,7 @@ use App\Models\Centre_Point;
 use App\Models\LokasiUmkm;
 use App\Models\Desa;
 use App\Models\User;
+use App\Models\JenisUmkm;
 use Illuminate\Support\Str;
 
 use Alert;
@@ -18,18 +19,16 @@ class LokasiUmkmController extends Controller
      */
     public function index()
     {
-        $desa = Desa::all();
-
         $lk = LokasiUmkm::whereHas('user.roles', function ($query) {
             $query->where('name', 'Umkm'); //ini namanya closure yah | kondisi
-        })->with('user')->get(); //kalo ini metode Eager Loading
+        })->with('user', 'desa.kecamatan', 'jenisUmkm')->get(); //kalo ini metode Eager Loading
     
         $userMa = auth()->user();
 
         if ($userMa->hasRole('Master Admin')) {
-            return view('masterAdmin.spot.index', compact('lk', 'desa'));
+            return view('masterAdmin.spot.index', compact('lk'));
         } else if ($userMa->hasRole('Admin')) {
-            return view('admin.spot.index', compact('lk', 'desa'));
+            return view('admin.spot.index', compact('lk'));
         }
     }
 
@@ -39,6 +38,7 @@ class LokasiUmkmController extends Controller
     public function create()
     {
         $desa = Desa::all();
+        $jk = JenisUmkm::all();
 
         $idUser = User::whereHas('roles', function ($query) {
             $query->where('name', 'Umkm');
@@ -48,9 +48,10 @@ class LokasiUmkmController extends Controller
         $userMa = auth()->user();
 
         if ($userMa->hasRole('Master Admin')) {
-            return view('masterAdmin.spot.create', compact('desa', 'centerPoint', 'idUser'));
+            // dd($jk);
+            return view('masterAdmin.spot.create', compact('desa', 'centerPoint', 'idUser', 'jk'));
         } else if ($userMa->hasRole('Admin')) {
-            return view('admin.spot.create', compact('desa', 'centerPoint', 'idUser'));
+            return view('admin.spot.create', compact('desa', 'centerPoint', 'idUser', 'jk'));
         }
     }
 
@@ -66,6 +67,7 @@ class LokasiUmkmController extends Controller
             'deskripsi' => 'required|string|min:10|max:1000',
             'image' => 'file|image|mimes:png,jpg,jpeg',
             'id_desa' => 'required|exists:desas,id',
+            'id_jenis_umkm' => 'required|exists:jenis_umkms,id',
         ]);
 
         $spot = new LokasiUmkm;
@@ -95,6 +97,7 @@ class LokasiUmkmController extends Controller
         $spot->slug = Str::slug($request->nama_umkm, '-');
         $spot->deskripsi = $request->deskripsi;
         $spot->koordinat = $request->koordinat;
+        $spot->id_jenis_umkm = $request->id_jenis_umkm;
         $spot->save();
 
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
@@ -120,6 +123,7 @@ class LokasiUmkmController extends Controller
      */
     public function edit($id)
     {
+        $jk = JenisUmkm::all();
         $desa = Desa::all();
 
         $idUser = User::whereHas('roles', function ($query) {
@@ -131,9 +135,9 @@ class LokasiUmkmController extends Controller
         $userMa = auth()->user();
 
         if ($userMa->hasRole('Master Admin')) {
-            return view('masterAdmin.spot.edit', compact('desa', 'lokasiUmkm', 'idUser'));
+            return view('masterAdmin.spot.edit', compact('desa', 'lokasiUmkm', 'idUser', 'jk'));
         } else if ($userMa->hasRole('Admin')) {
-            return view('admin.spot.edit', compact('desa', 'lokasiUmkm', 'idUser'));
+            return view('admin.spot.edit', compact('desa', 'lokasiUmkm', 'idUser', 'jk'));
         }
     }
 
@@ -149,6 +153,7 @@ class LokasiUmkmController extends Controller
             'deskripsi' => 'required|string|min:10|max:1000',
             'image' => 'file|image|mimes:png,jpg,jpeg',
             'id_desa' => 'required|exists:desas,id',
+            'id_jenis_umkm' => 'required|exists:jenis_umkms,id',
         ]);
 
         // $spot = new LokasiUmkm;
@@ -168,6 +173,8 @@ class LokasiUmkmController extends Controller
         $spot->deskripsi = $request->deskripsi;
         $spot->koordinat = $request->koordinat;
         $spot->id_desa = $request->id_desa;
+        $spot->id_jenis_umkm = $request->id_jenis_umkm;
+        
         $spot->save();
 
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);

@@ -11,6 +11,7 @@ class InvestorController extends Controller
      */
     public function index()
     {
+        
         return view('investor.index');
         
         return abort(403);
@@ -28,9 +29,24 @@ class InvestorController extends Controller
 
     public function maps()
     {
-        // dd(auth()->user()->getRoleNames());
-        $umkm = LokasiUmkm::all();
-        return view('investor.maps', compact('umkm')); 
+        
+        $lokasis = LokasiUmkm::with('desa', 'user')
+            ->get()
+            ->map(function ($lokasi) {
+                $koordinat = explode(',', $lokasi->koordinat); // Pisahkan latitude dan longitude
+                return [
+                    'lat' => $koordinat[0],
+                    'lon' => $koordinat[1],
+                    'kecamatan' => $lokasi->desa->nama_desa, // Ambil nama desa dari relasi
+                    'img' => $lokasi->image,
+                    'nama' => $lokasi->user->name, // Nama pemilik dari relasi user
+                    'kelamin' => $lokasi->user->gender, // Gender pemilik dari relasi user (jika ada)
+                    'namaUMKM' => $lokasi->nama_umkm,
+                    // 'jenisUMKM' => $lokasi->jenis_umkm, // Pastikan ada field atau ambil dari relasi jika ada
+                ];
+            });
+            // dd($lokasis);
+        return view('investor.maps', compact('lokasis')); 
 
         return abort(403);
     }

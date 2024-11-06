@@ -24,7 +24,7 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
                                         Umkm</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Koordinat</th>
+                                        Kategori Umkm</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Desa</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
@@ -62,7 +62,7 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $data->koordinat }}</h6>
+                                                    <h6 class="mb-0 text-sm">{{ $data->jenisUmkm->jenis_umkm ?? 'Tidak Tersedia'}}</h6>
                                                 </div>
                                             </div>
                                         </td>

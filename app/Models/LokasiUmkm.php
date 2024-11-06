@@ -11,7 +11,7 @@ class LokasiUmkm extends Model {
     protected $guarded = [];
     public $timestamp = true;
 
-    public $fillable = ['id_user', 'nama_umkm', 'slug', 'koordinat', 'deskripsi', 'image', 'id_desa'];
+    public $fillable = ['id_user', 'nama_umkm', 'slug', 'koordinat', 'deskripsi', 'image', 'id_desa', 'id_jenis_umkm'];
 
     public function user() {
         return $this->belongsTo(User::class, 'id_user');
@@ -20,5 +20,10 @@ class LokasiUmkm extends Model {
     public function desa()
     {
         return $this->belongsTo(Desa::class, 'id_desa');
+    }
+
+    public function jenisUmkm()
+    {
+        return $this->belongsTo(JenisUmkm::class, 'id_jenis_umkm');
     }
 }

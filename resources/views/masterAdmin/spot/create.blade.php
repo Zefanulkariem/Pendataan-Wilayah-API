@@ -84,6 +84,14 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Kategori:</label>
+                            <select class="form-control" name="id_jenis_umkm">
+                                @foreach($jk as $data)
+                                <option value="{{$data->id}}">{{$data->jenis_umkm}}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
                         <div class="form-group">
                             <a href="{{route('Master Adminspot.index')}}" class="btn btn-danger">

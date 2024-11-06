@@ -100,11 +100,12 @@
               </div>
             </div>
             <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
-                <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-ill.jpg');
-            background-size: cover;">
-                  <span class="mask bg-gradient-primary opacity-6"></span>
-                  <h4 class="mt-5 text-white font-weight-bolder position-relative">"Attention is the new currency"</h4>
-                  <p class="text-white position-relative">The more effortless the writing looks, the more effort the writer actually put into the process.</p>
+                <div class="position-relative h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden shadow"  style="height: 100vh; background-image: url('https://i.ibb.co.com/QpVCFBw/sabil.jpg'); background-size: cover; background-position: center;">
+                  <span class="mask bg-gradient-primary opacity-0"></span>
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Lambang_Kabupaten_Bandung%2C_Jawa_Barat%2C_Indonesia.svg" alt="" 
+            style="background-size: cover; background-position: center; height: 25vh">
+                  <h4 class="mt-5 text-white font-weight-bolder position-relative">Selamat datang di website</h4>
+                  <p class="text-white position-relative">Pendataan Wilayah Kabupaten Bandung</p>
                 </div>
               </div>
           </div>
