@@ -66,7 +66,7 @@ class UserAdminController extends Controller
         //     'success' => true,
         //     'message' => 'user berhasil dibuat',
         // ]);
-        return redirect()->route('Adminuser.index')->with('success', 'User updated successfully.');
+        return redirect()->route('Adminuser.index')->with('success', 'Data Berhasil di Tambah');
     }
 
     /**
@@ -113,12 +113,7 @@ class UserAdminController extends Controller
         $user->syncRoles($request->input('role'));
         $user->save();
 
-        return redirect()->route('Adminuser.index')->with('success', 'User updated successfully.');
-        // return response()->json([
-        //     'data' => $user,
-        //     'success' => true,
-        //     'message' => 'user berhasil di edit',
-        // ]);
+        return redirect()->route('Adminuser.index')->with('success', 'Data Berhasil di Edit');
     }
 
     /**
@@ -130,6 +125,6 @@ class UserAdminController extends Controller
 
         $user->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
-        return redirect()->route('Adminuser.index')->with('success', 'User deleted successfully.');
+        return redirect()->back()->with('success', 'Data Berhasil di Hapus');
     }
 }

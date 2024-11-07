@@ -144,7 +144,6 @@ class DesaSeeder extends Seeder
                 ['nama_desa' => 'Desa Dayeukolot', 'id_kecamatan' => 'Dayeuhkolot'],
                 ['nama_desa' => 'Desa Sukapura', 'id_kecamatan' => 'Dayeuhkolot'],
                 
-                
                 ['nama_desa' => 'Desa Cibeet', 'id_kecamatan' => 'Ibun'],
                 ['nama_desa' => 'Desa Dukuh', 'id_kecamatan' => 'Ibun'],
                 ['nama_desa' => 'Desa Ibun', 'id_kecamatan' => 'Ibun'],
@@ -158,11 +157,11 @@ class DesaSeeder extends Seeder
                 ['nama_desa' => 'Desa Tanggulun', 'id_kecamatan' => 'Ibun'],
                 
                 ['nama_desa' => 'Desa Cilampeni', 'id_kecamatan' => 'Katapang'],
-                ['nama_desa' => 'Desa Gandasari', 'id_kecamatan' => 'Ibun'],
-                ['nama_desa' => 'Desa Katapang', 'id_kecamatan' => 'Ibun'],
-                ['nama_desa' => 'Desa Pangauban', 'id_kecamatan' => 'Ibun'],
-                ['nama_desa' => 'Desa Sangkanhurip', 'id_kecamatan' => 'Ibun'],
-                ['nama_desa' => 'Desa Sukamukti', 'id_kecamatan' => 'Ibun'],
+                ['nama_desa' => 'Desa Gandasari', 'id_kecamatan' => 'Katapang'],
+                ['nama_desa' => 'Desa Katapang', 'id_kecamatan' => 'Katapang'],
+                ['nama_desa' => 'Desa Pangauban', 'id_kecamatan' => 'Katapang'],
+                ['nama_desa' => 'Desa Sangkanhurip', 'id_kecamatan' => 'Katapang'],
+                ['nama_desa' => 'Desa Sukamukti', 'id_kecamatan' => 'Katapang'],
                 
                 ['nama_desa' => 'Desa Cibereum', 'id_kecamatan' => 'Kertasari'],
                 ['nama_desa' => 'Desa Cihawuk', 'id_kecamatan' => 'Kertasari'],

@@ -58,6 +58,19 @@
                                                 </div>
                                             </div>
                                         </td>
+                                        {{-- logic --}}
+                                        <td class="d-flex justify-content-center">
+                                            <form id="delete-form-{{ $data->id }}" action="{{ route('Umkmoperasional.destroy', $data->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                {{-- <a href="{{route('Adminuser.edit', $data->id)}}" class="btn btn-warning">
+                                                <i class="ni ni-ruler-pencil"></i>
+                                                </a> --}}
+                                                <button type="button" onclick="confirmDelete({{ $data->id }})" class="btn btn-danger">
+                                                <i class="fa fa-ban"></i>
+                                                </button>                    
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -67,4 +80,32 @@
             </div>
         </div>
     </div>
+
+    
+    <!-- Script SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete(userId) {
+            Swal.fire({
+                title: 'Hapus Data Operasional ini!',
+                text: "Apakah kamu yakin ingin menghapusnya?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + userId).submit();
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire(
+                        'Dibatalkan',
+                        'Penghapusan user dibatalkan',
+                        'error'
+                    );
+                }
+            });
+        }
+    </script>
 @endsection

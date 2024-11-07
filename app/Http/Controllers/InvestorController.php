@@ -30,14 +30,14 @@ class InvestorController extends Controller
     public function maps()
     {
         
-        $lokasis = LokasiUmkm::with('desa', 'user')
+        $lokasis = LokasiUmkm::with('desa.kecamatan', 'user')
             ->get()
             ->map(function ($lokasi) {
                 $koordinat = explode(',', $lokasi->koordinat); // Pisahkan latitude dan longitude
                 return [
                     'lat' => $koordinat[0],
                     'lon' => $koordinat[1],
-                    'kecamatan' => $lokasi->desa->nama_desa, // Ambil nama desa dari relasi
+                    'kecamatan' => $lokasi->desa->kecamatan->nama_kecamatan ?? 'Tidak diketahui',
                     'img' => $lokasi->image,
                     'nama' => $lokasi->user->name, // Nama pemilik dari relasi user
                     'kelamin' => $lokasi->user->gender, // Gender pemilik dari relasi user (jika ada)

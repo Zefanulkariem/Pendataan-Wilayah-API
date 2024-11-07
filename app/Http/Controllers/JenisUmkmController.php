@@ -41,7 +41,7 @@ class JenisUmkmController extends Controller
 
         $jenis_umkm->save();
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
-        return redirect()->route('Master Adminjenis-umkm.index');
+        return redirect()->route('Master Adminjenis-umkm.index')->with('success', 'Data Berhasil di Tambah');
     }
 
     /**
@@ -76,7 +76,7 @@ class JenisUmkmController extends Controller
 
         $jenis_umkm->save();
         Alert::success('Success Title', "Data Berhasil Di Edit")->autoClose(1000);
-        return redirect()->route('Master Adminjenis-umkm.index');
+        return redirect()->route('Master Adminjenis-umkm.index')->with('success', 'Data Berhasil di Edit');
     }
 
     /**

@@ -12,25 +12,24 @@
                         <div class="d-flex justify-content-end px-4">
                             <a href="{{route('Umkmmarketing.create')}}" class="btn btn-primary">Tambahkan Data</a>
                         </div>
-                        <table class="table align-items-center mb-0">
+                        <table id="exampleTable" class="table align-items-center mb-0">
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Posisi Karyawan
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bulan & Tahun
                                     </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jumlah Karyawan
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Target Bulanan
                                     </th>
-                                    {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Role --}}
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Target Tahunan
                                     </th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Aksi</th>
-                                    <th class="text-secondary opacity-7"></th>
+                                        Hapus</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php $no = 1; @endphp
-                                {{-- @foreach ($op as $data) --}}
+                                @foreach ($market as $data)
                                     <tr>
                                         {{-- nomor urut --}}
                                         <td>
@@ -40,26 +39,48 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        {{-- daftar posisi kar --}}
+                                        {{-- bulan --}}
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    {{-- <h6 class="mb-0 text-sm">{{ $data->karyawan }}</h6> --}}
-                                                    {{-- <p class="text-xs text-secondary mb-0">{{ $data->jml_karyawan }}</p> --}}
+                                                    <h6 class="mb-0 text-sm">{{ $data->bulan }}</h6>
+                                                    <p class="text-xs text-secondary mb-0">Pada Tahun: {{ $data->tahun }}</p>
                                                 </div>
                                             </div>
                                         </td>
-                                        {{-- daftar jml kar --}}
+                                        {{-- target bulan --}}
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    {{-- <h6 class="mb-0 text-sm">{{ $data->jml_karyawan }}</h6> --}}
-                                                    {{-- <p class="text-xs text-secondary mb-0">{{ $data->jml_karyawan }}</p> --}}
+                                                    <h6 class="mb-0 text-sm">{{ $data->target_bulanan }}</h6>
+                                                    {{-- <p class="text-xs text-secondary mb-0">{{ $data->target_tahunan }}</p> --}}
                                                 </div>
                                             </div>
+                                        </td>
+                                        {{-- target tahun --}}
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $data->target_tahunan }}</h6>
+                                                    {{-- <p class="text-xs text-secondary mb-0">{{ $data->target_tahunan }}</p> --}}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        {{-- logic --}}
+                                        <td class="d-flex justify-content-center">
+                                            <form id="delete-form-{{ $data->id }}" action="{{ route('Umkmmarketing.destroy', $data->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                {{-- <a href="{{route('Adminuser.edit', $data->id)}}" class="btn btn-warning">
+                                                <i class="ni ni-ruler-pencil"></i>
+                                                </a> --}}
+                                                <button type="button" onclick="confirmDelete({{ $data->id }})" class="btn btn-danger">
+                                                <i class="fa fa-ban"></i>
+                                                </button>                    
+                                            </form>
                                         </td>
                                     </tr>
-                                {{-- @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -67,4 +88,41 @@
             </div>
         </div>
     </div>
+    
+    
+<!-- Script SweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmDelete(userId) {
+        Swal.fire({
+            title: 'Hapus Data Marketing ini!',
+            text: "Apakah kamu yakin ingin menghapusnya?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + userId).submit();
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Dibatalkan',
+                    'Penghapusan user dibatalkan',
+                    'error'
+                );
+            }
+        });
+    }
+</script>
+
+{{-- element datatable --}}
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+
+<script>
+    new DataTable('#exampleTable');
+</script>
 @endsection

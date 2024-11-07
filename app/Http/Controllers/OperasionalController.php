@@ -53,7 +53,7 @@ class OperasionalController extends Controller
 
         $operasional->save();
         Alert::success('Success Title', "Data Berhasil Di Tambahkan ")->autoClose(1000);
-        return redirect()->route('Umkmoperasional.index');
+        return redirect()->route('Umkmoperasional.index')->with('success', 'Data Berhasil di Tambah');
     }
 
     /**
@@ -85,6 +85,10 @@ class OperasionalController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $operasional = Operasional::findOrFail($id);
+
+        $operasional->delete();
+        Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
+        return redirect()->route('Umkmkeuangan.index')->with('success', 'Data Berhasil di Hapus');
     }
 }

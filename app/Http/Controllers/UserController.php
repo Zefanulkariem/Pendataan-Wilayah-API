@@ -69,7 +69,7 @@ class UserController extends Controller
         //     'message' => 'user berhasil dibuat',
         // ]);
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
-        return redirect()->route('Master Adminuser.index')->with('success', 'User updated successfully.');
+        return redirect()->route('Master Adminuser.index')->with('success', 'Data Berhasil Di Tambah');
     }
 
     /**
@@ -117,7 +117,7 @@ class UserController extends Controller
         $user->save();
 
         Alert::success('Success Title', "Data Berhasil Di Edit")->autoClose(1000);
-        return redirect()->route('Master Adminuser.index')->with('success', 'User updated successfully.');
+        return redirect()->route('Master Adminuser.index')->with('success', 'Data Berhasil Di Ubah');
         // return response()->json([
         //     'data' => $user,
         //     'success' => true,
@@ -134,6 +134,6 @@ class UserController extends Controller
 
         $user->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
-        return redirect()->route('Master Adminuser.index')->with('success', 'User deleted successfully.');
+        return redirect()->route('Master Adminuser.index')->with('success', 'Data Berhasil Di Hapus');
     }
 }

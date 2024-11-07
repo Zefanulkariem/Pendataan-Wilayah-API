@@ -46,7 +46,7 @@ class DesaController extends Controller
         
         $desa->save();
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
-        return redirect()->route('Master Admindesa.index');
+        return redirect()->route('Master Admindesa.index')->with('success', 'Data Berhasil di Tambah');
     }
     
     /**
@@ -83,7 +83,7 @@ class DesaController extends Controller
         
         $desa->save();
         Alert::success('Success Title', "Data Berhasil Di Edit")->autoClose(1000);
-        return redirect()->route('Master Admindesa.index');
+        return redirect()->route('Master Admindesa.index')->with('success', 'Data Berhasil di Edit');
     }
 
     /**
@@ -95,6 +95,6 @@ class DesaController extends Controller
 
         $desa->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
-        return redirect()->route('Master Admindesa.index')->with('success', 'User deleted successfully.');
+        return redirect()->route('Master Admindesa.index')->with('success', 'Data Berhasil di Hapus');
     }
 }

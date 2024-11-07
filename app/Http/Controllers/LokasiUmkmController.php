@@ -77,11 +77,17 @@ class LokasiUmkmController extends Controller
              * Upload file to public folder
              */
             
-            $uploadPath = storage_path('app/public/ImageSpots/');
+            $uploadPath = storage_path('public/ImageSpots/');
             $file = $request->file('image');
             $uploadFile = $file->hashName();
             $file->move('upload/spots/', $uploadFile);
             $spot->image = $uploadFile;
+
+              // Simpan ke storage di folder public/ImageSpots
+            // $file = $request->file('image');
+            // $uploadFile = $file->hashName();
+            // $file->storeAs('storage/ImageSpots', $uploadFile);
+            // $spot->image = $uploadFile;
 
             /**
              * Upload file image to storage
@@ -104,9 +110,9 @@ class LokasiUmkmController extends Controller
         $userMa = auth()->user();
 
         if ($userMa->hasRole('Master Admin')) {
-            return redirect()->route('Master Adminspot.index');
+            return redirect()->route('Master Adminspot.index')->with('success', 'Data Berhasil di Tambah');
         } else if ($userMa->hasRole('Admin')) {
-            return redirect()->route('Adminspot.index');
+            return redirect()->route('Adminspot.index')->with('success', 'Data Berhasil di Tambah');
         }
     }
 
@@ -130,7 +136,7 @@ class LokasiUmkmController extends Controller
             $query->where('name', 'Umkm');
         })->get();
 
-        // bukan cp karna data yang di save kamukan di lokasiumkm coy
+        
         $lokasiUmkm = LokasiUmkm::find($id);
         $userMa = auth()->user();
 
@@ -181,9 +187,9 @@ class LokasiUmkmController extends Controller
         $userMa = auth()->user();
 
         if ($userMa->hasRole('Master Admin')) {
-            return redirect()->route('Master Adminspot.index');
+            return redirect()->route('Master Adminspot.index')->with('success', 'Data Berhasil di Edit');
         } else if ($userMa->hasRole('Admin')) {
-            return redirect()->route('Adminspot.index');
+            return redirect()->route('Adminspot.index')->with('success', 'Data Berhasil di Edit');
         }
     }
 
@@ -200,10 +206,10 @@ class LokasiUmkmController extends Controller
 
         if ($userMa->hasRole('Master Admin')) {
             Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
-            return redirect()->route('Master Adminspot.index')->with('success', 'User deleted successfully.');
+            return redirect()->route('Master Adminspot.index')->with('success', 'Data Berhasil di Hapus');
         } else if ($userMa->hasRole('Admin')) {
             Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
-            return redirect()->route('Adminspot.index')->with('success', 'User deleted successfully.');
+            return redirect()->route('Adminspot.index')->with('success', 'Data Berhasil di hapus');
         }
     }
 }

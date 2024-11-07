@@ -46,7 +46,7 @@ class KeuanganController extends Controller
 
         $uang->save();
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
-        return redirect()->route('Umkmkeuangan.index');
+        return redirect()->route('Umkmkeuangan.index')->with('success', 'Data Berhasil di Tambah');
     }
 
     /**

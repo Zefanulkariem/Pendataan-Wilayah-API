@@ -13,7 +13,8 @@ class MarketingController extends Controller
      */
     public function index()
     {
-        return view('umkm.marketing.index');
+        $market = Marketing::latest()->get();
+        return view('umkm.marketing.index', compact('market'));
     }
 
     /**
@@ -46,7 +47,7 @@ class MarketingController extends Controller
         $market->save();
 
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
-        return redirect()->route('Umkmmarketing.index');
+        return redirect()->route('Umkmmarketing.index')->with('success', 'Data Berhasil di Tambah');
     }
 
     /**
@@ -78,6 +79,10 @@ class MarketingController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $market = Marketing::findOrFail($id);
+
+        $market->delete();
+        Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
+        return redirect()->route('Umkmmarketing.index')->with('success', 'Data Berhasil di Hapus');
     }
 }

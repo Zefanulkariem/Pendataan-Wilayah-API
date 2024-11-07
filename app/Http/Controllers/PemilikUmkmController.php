@@ -73,9 +73,9 @@ class PemilikUmkmController extends Controller
             $userMa = auth()->user();
 
             if ($userMa->hasRole('Master Admin')) {
-                return redirect()->route('Master Adminkepemilikan-umkm.index');
+                return redirect()->route('Master Adminkepemilikan-umkm.index')->with('success', 'Data Berhasil di Tambah');
             } else if ($userMa->hasRole('Admin')) {
-                return redirect()->route('Adminkepemilikan-umkm.index');
+                return redirect()->route('Adminkepemilikan-umkm.index')->with('success', 'Data Berhasil di Tambah');
             }
 
         } catch (\Illuminate\Validation\ValidationException $e) {
@@ -143,9 +143,9 @@ class PemilikUmkmController extends Controller
         $userMa = auth()->user();
 
         if ($userMa->hasRole('Master Admin')) {
-            return redirect()->route('Master Adminkepemilikan-umkm.index');
+            return redirect()->route('Master Adminkepemilikan-umkm.index')->with('success', 'Data Berhasil di Edit');
         } else if ($userMa->hasRole('Admin')) {
-            return redirect()->route('Adminkepemilikan-umkm.index');
+            return redirect()->route('Adminkepemilikan-umkm.index')->with('success', 'Data Berhasil di Edit');
         }
     }
     
@@ -157,15 +157,14 @@ class PemilikUmkmController extends Controller
         $pk = PelakuUmkm::findOrFail($id);
         
         $pk->delete();
-        Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
         $userMa = auth()->user();
 
         if ($userMa->hasRole('Master Admin')) {
             Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
-            return redirect()->route('Master Adminkepemilikan-umkm.index')->with('success', 'User deleted successfully.');
+            return redirect()->route('Master Adminkepemilikan-umkm.index')->with('success', 'Data Berhasil di Hapus');
         } else if ($userMa->hasRole('Admin')) {
             Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
-            return redirect()->route('Adminkepemilikan-umkm.index')->with('success', 'User deleted successfully.');
+            return redirect()->route('Adminkepemilikan-umkm.index')->with('success', 'Data Berhasil di Hapus');
         }
     }
 }

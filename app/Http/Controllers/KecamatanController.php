@@ -40,7 +40,7 @@ class KecamatanController extends Controller
 
         $kecamatan->save();
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
-        return redirect()->route('Master Adminkecamatan.index');
+        return redirect()->route('Master Adminkecamatan.index')->with('success', 'Data Berhasil di Tambah');
     }
 
     /**
@@ -74,7 +74,7 @@ class KecamatanController extends Controller
 
         $kecamatan->save();
         Alert::success('Success Title', "Data Berhasil Di Edit")->autoClose(1000);
-        return redirect()->route('Master Adminkecamatan.index');
+        return redirect()->route('Master Adminkecamatan.index')->with('success', 'Data Berhasil di Edit');
     }
 
     /**
@@ -86,6 +86,6 @@ class KecamatanController extends Controller
 
         $kecamatan->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
-        return redirect()->route('Master Adminkecamatan.index')->with('success', 'User deleted successfully.');
+        return redirect()->route('Master Adminkecamatan.index')->with('success', 'Data Berhasil di Hapus');
     }
 }
