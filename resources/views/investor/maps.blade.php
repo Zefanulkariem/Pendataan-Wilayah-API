@@ -31,7 +31,7 @@
             minZoom: 10
         });
 
-        const bounds = L.latLngBounds(L.latLng(-7.1, 107.4), L.latLng(-6.7, 107.9));
+        const bounds = L.latLngBounds();
         map.setMaxBounds(bounds);
         map.on('drag', function() {
             map.panInsideBounds(bounds, { animate: false });
@@ -77,7 +77,7 @@
 
         let markers = [];
 
-        function createMarker(lat, lon, color, title, img, nama, kelamin, namaUMKM) {
+        function createMarker(lat, lon, color, title, img, nama, kelamin, namaUMKM, jenisUMKM) {
             const marker = L.circleMarker([lat, lon], {
                 radius: 10,
                 fillColor: color,
@@ -90,14 +90,15 @@
             const popupContent = `
                 <div class="popup-content">
                     <h3>${title}</h3>
-                    <img src="${img}" alt="${title}" />
+                    <img src="${img}" alt="${nama}" />
                     <div class="info">
                         <div><strong>Nama:</strong> ${nama}</div>
                         <div><strong>Kelamin:</strong> ${kelamin}</div>
                         <div><strong>Nama UMKM:</strong> ${namaUMKM}</div>
+                        <div><strong>Kategori UMKM:</strong> ${jenisUMKM}</div>
                     </div>
                     <a href="https://www.google.com/maps?q=${lat},${lon}" target="_blank">Open in Google Maps</a><br/>
-                    <button onclick="alert('More Info about ${title}')">Selengkapnya</button>
+                    <button onclick="alert('More Info about ${title}')">Selengkapnya</button> 
                 </div>
             `;
 
@@ -112,7 +113,7 @@
             if (kecamatan) {
                 const marker = createMarker(
                     loc.lat, loc.lon, kecamatan.color, loc.kecamatan, 
-                    loc.img, loc.nama, loc.kelamin, loc.namaUMKM
+                    loc.img, loc.nama, loc.kelamin, loc.namaUMKM, loc.jenisUMKM
                 );
                 markers.push({ marker, kecamatan: loc.kecamatan });
             }
