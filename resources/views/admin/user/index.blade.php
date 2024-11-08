@@ -47,20 +47,20 @@
                       <td>
                         <p class="text-xs font-weight-bold mb-0">{{$data->getRoleNames()->first()}}</p>
                       </td>
-                      @if(!$data->hasRole('Master Admin') && !$data->hasRole('Admin'))
                       <td class="d-flex justify-content-center">
                         <form id="delete-form-{{ $data->id }}" action="{{ route('Adminuser.destroy', $data->id) }}" method="POST" style="display:inline;">
                           @csrf
                           @method('DELETE')
-                          {{-- <a href="{{route('Adminuser.edit', $data->id)}}" class="btn btn-warning">
-                            <i class="ni ni-ruler-pencil"></i>
-                          </a> --}}
-                          <button type="button" onclick="confirmDelete({{ $data->id }})" class="btn btn-danger">
-                            <i class="fa fa-ban"></i>
-                          </button>                    
+                          <a href="{{route('Adminuser.show', $data->id)}}" class="btn btn-success">
+                            <i class="fa fa-eye"></i>
+                          </a>
+                          @if(!$data->hasRole('Master Admin') && !$data->hasRole('Admin'))
+                            <button type="button" onclick="confirmDelete({{ $data->id }})" class="btn btn-danger">
+                              <i class="fa fa-ban"></i>
+                            </button>
+                          @endif
                         </form>
                       </td>
-                      @endif
                     </tr>
                     @endforeach
                 </tbody>

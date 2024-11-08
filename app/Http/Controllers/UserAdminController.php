@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
+use Alert;
+
 class UserAdminController extends Controller
 {
     /**
@@ -74,7 +76,10 @@ class UserAdminController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('admin.user.show', compact('user')); 
+
+        return abort(403);
     }
 
     /**

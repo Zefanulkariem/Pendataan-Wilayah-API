@@ -5,7 +5,7 @@
             <div class="card mb-4">
                 <div class="card-header pb-0">
                     {{-- ini namanya library carbon buat ngatur date --}}
-                    <h6>Tenaga Kerja Operasional ({{ \Carbon\Carbon::now()->locale('id')->translatedFormat('F Y') }})</h6>  
+                    <h6>Daftar Operasional ({{ \Carbon\Carbon::now()->locale('id')->translatedFormat('F Y') }})</h6>  
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
