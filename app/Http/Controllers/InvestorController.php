@@ -37,6 +37,7 @@ class InvestorController extends Controller
                 return [
                     'lat' => $koordinat[0],
                     'lon' => $koordinat[1],
+                    'desa' => $lokasi->desa->nama_desa ?? 'Tidak diketahui',
                     'kecamatan' => $lokasi->desa->kecamatan->nama_kecamatan ?? 'Tidak diketahui',
                     'img' => $lokasi->image ? asset('upload/spots/' . $lokasi->image) : 'default_image_url',
                     'nama' => $lokasi->user->name,
