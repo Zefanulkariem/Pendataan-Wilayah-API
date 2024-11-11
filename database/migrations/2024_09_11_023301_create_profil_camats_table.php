@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('profil_camats', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_camat');
-            $table->unsignedBigInteger('id_kecamatan');
-            $table->foreign('id_kecamatan')->references('id')->on('kecamatans')->onDelete('cascade');
-            $table->string('cover');
+            // $table->string('nama_camat');
+            // $table->unsignedBigInteger('id_kecamatan');
+            // $table->foreign('id_kecamatan')->references('id')->on('kecamatans')->onDelete('cascade');
+            // $table->string('cover');
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@
                   <tr>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Pemilik Umkm</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Desa</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Desa/Tinggal</th>
                     {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Desa</th> --}}
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                     <th class="text-secondary opacity-7"></th>
