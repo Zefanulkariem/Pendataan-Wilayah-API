@@ -9,139 +9,44 @@
     </div>
     <div class="card-body px-0 pt-0 pb-2">
         <div class="table-responsive p-0">
+            <div class="d-flex justify-content-start px-4">
+                @php
+                    $data = $legalUsaha->where('id_user', auth()->user()->id)->first();
+                @endphp
+
+                @if($data)
+                    <!-- Tombol untuk mengedit jika data sudah ada -->
+                    <a href="{{ route('UmkmlegalUsaha.edit', $data->id) }}" class="btn btn-primary">
+                        Edit Data <i class="fa fa-sharp fa-light fa-arrow-right"></i>
+                    </a>
+                @else
+                    <!-- Tombol untuk membuat data baru jika data belum ada -->
+                    <a href="{{ route('UmkmlegalUsaha.create') }}" class="btn btn-primary">
+                        <i class="fa fa-sharp fa-light fa-arrow-left"></i> Buat Data Baru
+                    </a>
+                @endif
+            </div>
         <table class="table align-items-center mb-0">
             <tbody>
-                <form action="{{route('UmkmlegalUsaha.store')}}" method="POST" enctype="multipart/form-data"> 
-                    @csrf
-                    <tr>
-                        {{-- daftar pengguna --}}
-                        <td>
-                            <div class="d-flex px-5 py-1">
-                                <div class="row w-100">
-                                    {{-- output --}}
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            @foreach ($legalUsaha as $data)
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Badan usaha:</label>
-                                            <input type="text" class="form-control mb-3" value="{{ $data->badan_usaha }}" aria-label="Masukkan karyawan" readonly>
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Badan usaha:</label>
-                                            <input type="text" class="form-control mb-3" value="{{ $data->NIB }}" aria-label="Masukkan karyawan" readonly>
-                                            @endforeach
-                                        </div>
+                <tr>
+                    <td>
+                        <div class="d-flex px-5 py-1">
+                            <div class="row w-100">
+                                {{-- output --}}
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        @foreach ($legalUsaha as $data)
+                                        <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Badan usaha:</label>
+                                        <input type="text" class="form-control mb-3" value="{{ $data->badan_usaha }}" disabled>
+                                        <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nomor Induk Berusaha (NIB):</label>
+                                        <input type="text" class="form-control mb-3" value="{{ $data->NIB }}" disabled>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
-                            <hr class="horizontal dark mt-0">
-                            <div class="d-flex px-5 py-1">
-                                <div class="row w-100">
-                                    {{-- badan usaha --}}
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan badan usaha:</label>
-                                            <select name="badan_usaha" id="badan_usaha" class="form-control">
-                                                <option value="PT (Perseroan Terbatas)" {{ old('badan_usaha') == 'PT (Perseroan Terbatas)' ? 'selected' : '' }}>PT (Perseroan Terbatas)</option>
-                                                <option value="CV (Persekutuan Komanditer)" {{ old('badan_usaha') == 'CV (Persekutuan Komanditer)' ? 'selected' : '' }}>CV (Persekutuan Komanditer)</option>
-                                            </select>
-                                            @error('badan_usaha')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    {{-- nib --}}
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Nomor Induk Berusaha (NIB):</label>
-                                            <input type="number" class="form-control @error('NIB') is-invalid @enderror" name="NIB" aria-label="Masukkan NIB" autofocus value="{{ old('NIB') }}" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
-                                            @error('NIB')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    {{-- akta pendirian --}}
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Dokumen Akta Pendirian:</label>
-                                            <div class="input-group col-xs-12 d-flex align-items-center">
-                                                <input type="file" name="akta_pendirian" class="form-control file-upload-info" placeholder="Upload Dokumen">
-                                            </div>
-                                            @error('akta_pendirian')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    {{-- skdp --}}
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Surat Keterangan Domisili Perusahaan (SKDP):</label>
-                                            <div class="input-group col-xs-12 d-flex align-items-center">
-                                                <input type="file" name="SKDP" class="form-control file-upload-info" placeholder="Upload Dokumen">
-                                            </div>
-                                            @error('SKDP')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    {{-- npwp --}}
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Dokumen Pajak (NPWP Usaha):</label>
-                                            <div class="input-group col-xs-12 d-flex align-items-center">
-                                                <input type="file" name="NPWP" class="form-control file-upload-info" placeholder="Upload Dokumen">
-                                            </div>
-                                            @error('NPWP')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    {{-- siup --}}
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Surat Izin Usaha Perdagangan (SIUP):</label>
-                                            <div class="input-group col-xs-12 d-flex align-items-center">
-                                                <input type="file" name="SIUP" class="form-control file-upload-info" placeholder="Upload Dokumen">
-                                            </div>
-                                            @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    {{-- tdp --}}
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Tanda Daftar Perusahaan (TDP):</label>
-                                            <div class="input-group col-xs-12 d-flex align-items-center">
-                                                <input type="file" name="TDP" class="form-control file-upload-info" placeholder="Upload Dokumen">
-                                            </div>
-                                            @error('TDP')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="px-4 py-1">
-                                {{-- <a href="{{route('Umkmhome')}}" class="btn btn-danger">
-                                    <i class="fa fa-sharp fa-light fa-arrow-left"></i>
-                                </a> --}}
-                                <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
-                        </td>
-                    </tr>
-                </form>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         </div>

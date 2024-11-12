@@ -89,6 +89,6 @@ class OperasionalController extends Controller
 
         $operasional->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
-        return redirect()->route('Umkmkeuangan.index')->with('success', 'Data Berhasil di Hapus');
+        return redirect()->route('Umkmoperasional.index')->with('success', 'Data Berhasil di Hapus');
     }
 }
