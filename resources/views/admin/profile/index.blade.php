@@ -6,7 +6,7 @@
       <div class="row gx-4">
         <div class="col-auto">
           <div class="avatar avatar-xl position-relative">
-            <img src="{{asset('admin/assets/img/user.png')}}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+            <img src="{{asset('admin/assets/img/user.png')}}" alt="profile_image" class="w-10 0 border-radius-lg shadow-sm">
           </div>
         </div>
         <div class="col-auto my-auto">

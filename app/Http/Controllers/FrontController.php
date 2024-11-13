@@ -28,10 +28,9 @@ class FrontController extends Controller
 
     public function legalUsaha()
     {
-        // dd(auth()->user()->getRoleNames());
-        return view('umkm.legalUsaha.index'); 
+        // return view('umkm.legalUsaha.index'); 
 
-        return abort(403);
+        // return abort(403);
     }
 
     /**

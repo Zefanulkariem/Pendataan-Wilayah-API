@@ -14,7 +14,7 @@ class LegalUsahaController extends Controller
     public function index()
     {
         $legalUsaha = KelengkapanLegalitasUsaha::where('id_user', auth()->user()->id)->get();
-
+        // dd($legalUsaha);
         return view('umkm.legalUsaha.index', compact('legalUsaha'));
     }
 

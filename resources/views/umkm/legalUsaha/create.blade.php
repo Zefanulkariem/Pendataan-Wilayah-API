@@ -13,9 +13,6 @@
             <tbody>
                 <form action="{{route('UmkmlegalUsaha.store')}}" method="POST" enctype="multipart/form-data"> 
                     @csrf
-                    <div class="d-flex justify-content-start px-4">
-                        <button type="submit" class="btn btn-primary">Tambahkan Data</button>
-                    </div>
                     <tr>
                         {{-- daftar pengguna --}}
                         <td>

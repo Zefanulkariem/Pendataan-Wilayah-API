@@ -47,7 +47,7 @@ class HomeController extends Controller
         $jmlUserInvestor = User::role('Investor')->count();
         $jmlUmkm = LokasiUmkm::count();
 
-        $jenisUmkm = JenisUmkm::withcount('lokasi_Umkm')->get();
+        $jenisUmkm = JenisUmkm::withcount('lokasi_Umkm')->inRandomOrder()->take(5)->get();
 
         // dd($jenisUmkm);
         return view('masterAdmin.index', compact('jmlUser', 'persen', 'jmlUserUmkm', 'jmlUserInvestor', 'jmlUmkm', 'jenisUmkm'));
