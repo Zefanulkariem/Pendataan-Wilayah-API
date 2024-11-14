@@ -18,6 +18,7 @@ use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\LegalUsahaController;
 use App\Http\Controllers\OperasionalController;
 use App\Http\Controllers\MarketingController;
+use App\Http\Controllers\MeetingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -72,4 +73,5 @@ Route::group(['prefix' => 'investor', 'middleware' => ['auth', 'can:view_investo
     Route::get('/', [InvestorController::class, 'index'])->name('home');
     Route::get('maps', [InvestorController::class, 'maps'])->name('maps'); 
     Route::get('/profile', [InvestorController::class, 'profile'])->name('profile.index');
+    Route::resource('/meeting', MeetingController::class);
 });

@@ -16,8 +16,8 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Posisi Karyawan
-                                    </th>
+                                    {{--<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Posisi Karyawan
+                                    </th> --}}
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jumlah Karyawan
                                     </th>
                                     {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Role --}}
@@ -37,15 +37,6 @@
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-secondary text-sm">{{ $no++ }}</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        {{-- daftar posisi kar --}}
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $data->karyawan }}</h6>
-                                                    {{-- <p class="text-xs text-secondary mb-0">{{ $data->jml_karyawan }}</p> --}}
                                                 </div>
                                             </div>
                                         </td>
