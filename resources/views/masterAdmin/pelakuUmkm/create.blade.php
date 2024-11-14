@@ -21,6 +21,7 @@
                                             <div class="form-group">
                                                 <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Nama Kepemilikan Umkm:</label>
                                                 <select class="form-control" name="id_user">
+                                                    <option value="pilih pemilik umkm">- Pilih pemilik umkm -</option>
                                                     @foreach($idUser as $data)
                                                     <option value="{{ $data->id }}">{{$data->name}}</option> 
                                                     @endforeach
@@ -45,10 +46,21 @@
                                             <div class="form-group">
                                                 <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Desa:</label>
                                                 <select class="form-control" name="id_desa">
+                                                    <option value="pilih pemilik umkm">- Pilih desa -</option>
                                                     @foreach($desa as $data)
                                                     <option value="{{$data->id}}">{{$data->nama_desa}}</option>
                                                     @endforeach
                                                 </select>
+                                            </div>
+                                        </div>
+                                        {{-- alamat --}}
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Alamat Tinggal:</label>
+                                            <textarea name="alamat" class="text-dark form-control summernote @error('alamat') is-invalid @enderror" rows="7"></textarea>
+                                            @error('alamat')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                             </div>
                                         </div>
                                     </div>
