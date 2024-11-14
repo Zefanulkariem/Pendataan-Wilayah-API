@@ -72,7 +72,7 @@
                                         {{-- gender --}}
                                         <div class="col-md-12">
                                             <div class="form-group mb-3">
-                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Jenis Kelamin:</label>
+                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Jenis Kelamin Owner:</label>
                                                 <div>
                                                     <input type="radio" name="gender" value="pria" required> Pria
                                                     <input type="radio" name="gender" value="wanita" required> Wanita

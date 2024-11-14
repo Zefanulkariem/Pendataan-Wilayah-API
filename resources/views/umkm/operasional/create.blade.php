@@ -22,7 +22,7 @@
                                     <h6>Karyawan</h6>
                                 </div>
                                 <!-- posisi karyawan -->
-                                    <div class="col-md-6">
+                                   {{--  <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Kategori Posisi:</label>
                                             <input type="text" name="karyawan" class="form-control @error('karyawan') is-invalid @enderror" placeholder="Masukkan kategori posisi" aria-label="Masukkan kategori posisi" autofocus >
@@ -32,7 +32,7 @@
                                             </span>
                                             @enderror
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     {{-- jumlah karyawan --}}
                                     <div class="col-md-6">
                                         <div class="form-group">

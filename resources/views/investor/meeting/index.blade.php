@@ -21,8 +21,6 @@
                                 <!-- <div class="card-header pb-0">
                                     <h6>meeting</h6>
                                 </div> -->
-                                <!-- posisi karyawan -->
-                                   
                                         <div class="form-group">
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama Umkm</label>
                                             <input type="text" id="pelakuumkm" class="form-control @error('pelakuumkm') is-invalid @enderror" name="pelakuumkm" placeholder="Masukkan UMKM yang anda pilih" aria-label="Masukkan UMKM yang anda pilih" autofocus>
@@ -45,6 +43,7 @@
                                             @enderror
                                         </div>
 
+                                        {{-- Tanggal dan Waktu Meeting --}}
                                         <div class="form-group">
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tanggal dan waktu meeting</label>
                                             <input type="datetime-local" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror" name="tanggal" placeholder="Masukkan lokasi meeting" aria-label="Masukkan lokasi meeting" autofocus>

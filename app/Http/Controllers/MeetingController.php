@@ -19,7 +19,7 @@ class MeetingController extends Controller
      */
     public function create()
     {
-        //
+        return view('investor.meeting.create');
     }
 
     /**
@@ -27,7 +27,7 @@ class MeetingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
