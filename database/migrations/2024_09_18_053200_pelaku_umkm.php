@@ -17,9 +17,8 @@ return new class extends Migration
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->string('kontak');
             $table->unsignedBigInteger('id_desa');
+            $table->text('alamat');
             $table->foreign('id_desa')->references('id')->on('desas')->onDelete('cascade');
-            $table->unsignedBigInteger('id_kelengkapan_legalitas_usaha')->nullable();
-            $table->foreign('id_kelengkapan_legalitas_usaha')->references('id')->on('kelengkapan_legalitas_usahas')->onDelete('cascade');
             $table->timestamps();
         });
     }   

@@ -46,7 +46,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'can:view_master
     Route::resource('centre-point', CentrePointController::class); //latihan
     Route::resource('kepemilikan-umkm', PemilikUmkmController::class); //menampilkan data profil pemilik
 });
-Route::get('/centre-point/data', [DataController::class,'centrepoint'])->name('centre-point.data');
+// Route::get('/centre-point/data', [DataController::class,'centrepoint'])->name('centre-point.data');
 
 // admin
 Route::group(['prefix' => 'dashboard-admin', 'middleware' => ['auth', 'can:view_admin'], 'as' => 'Admin'], function () {

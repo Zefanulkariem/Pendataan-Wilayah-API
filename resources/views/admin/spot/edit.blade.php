@@ -40,6 +40,7 @@
                             <div class="form-group">
                                 <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama Pemilik:</label>
                                 <select class="form-control" name="id_user">
+                                    <option value="pilih pemilik umkm">- Pilih pemilik umkm -</option>
                                     @foreach($idUser as $data)
                                         <option value="{{ $data->id }}" {{ $lokasiUmkm->id_user == $data->id ? 'selected' : '' }}>
                                             {{ $data->name }}
@@ -82,8 +83,16 @@
                             <small class="form-text text-muted">Kosongkan jika tidak ingin mengubah foto.</small>
                         </div>
                         <div class="form-group">
+                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">URL/Blog Perusahaan:</label>
+                            <input name="link" class="text-dark form-control summernote @error('link') is-invalid @enderror" rows="7"></input>
+                            @error('link')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Desa:</label>
                             <select class="form-control" name="id_desa">
+                                <option value="pilih pemilik umkm">- Pilih desa -</option>
                                 @foreach($desa as $data){{--untuk memfilter desa--}}
                                 <option value="{{ $data->id }}" {{ $lokasiUmkm->id_desa == $data->id ? 'selected' : '' }}>{{$data->nama_desa}}</option> {{--dropdown--}}
                                 @endforeach
@@ -92,6 +101,7 @@
                         <div class="form-group">
                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Kategori:</label>
                             <select class="form-control" name="id_jenis_umkm">
+                                <option value="pilih pemilik umkm">- Pilih kategori umkm -</option>
                                 @foreach($jk as $data)
                                 <option value="{{$data->id}}" {{ $lokasiUmkm->id_jenis_umkm == $data->id ? 'selected' : '' }}>{{$data->jenis_umkm}}</option>
                                 @endforeach

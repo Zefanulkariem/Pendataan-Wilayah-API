@@ -24,7 +24,7 @@
                                     </th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Aksi</th>
+                                        Hapus</th>
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
                             </thead>

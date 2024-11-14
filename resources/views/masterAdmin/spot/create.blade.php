@@ -39,6 +39,7 @@
                             <div class="form-group">
                                 <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama Pemilik:</label>
                                 <select class="form-control" name="id_user">
+                                    <option value="pilih pemilik umkm">- Pilih pemilik umkm -</option>
                                     @foreach($idUser as $data)
                                     <option value="{{ $data->id }}">{{$data->name}}</option> 
                                     @endforeach
@@ -77,8 +78,16 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">URL/Blog Perusahaan:</label>
+                            <input name="link" class="text-dark form-control summernote @error('link') is-invalid @enderror" rows="7"></input>
+                            @error('link')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Desa:</label>
                             <select class="form-control" name="id_desa">
+                                <option value="pilih pemilik umkm">- Pilih desa -</option>
                                 @foreach($desa as $data)
                                 <option value="{{$data->id}}">{{$data->nama_desa}}</option>
                                 @endforeach
@@ -87,6 +96,7 @@
                         <div class="form-group">
                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Kategori:</label>
                             <select class="form-control" name="id_jenis_umkm">
+                                <option value="pilih pemilik umkm">- Pilih kategori umkm -</option>
                                 @foreach($jk as $data)
                                 <option value="{{$data->id}}">{{$data->jenis_umkm}}</option>
                                 @endforeach

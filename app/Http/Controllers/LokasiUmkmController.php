@@ -66,6 +66,7 @@ class LokasiUmkmController extends Controller
             'koordinat' => 'required',
             'deskripsi' => 'required|string|min:10|max:1000',
             'image' => 'file|image|mimes:png,jpg,jpeg',
+            'link' => 'required|url',
             'id_desa' => 'required|exists:desas,id',
             'id_jenis_umkm' => 'required|exists:jenis_umkms,id',
         ]);
@@ -102,6 +103,7 @@ class LokasiUmkmController extends Controller
         $spot->nama_umkm = $request->nama_umkm;
         $spot->slug = Str::slug($request->nama_umkm, '-');
         $spot->deskripsi = $request->deskripsi;
+        $spot->link = $request->link;
         $spot->koordinat = $request->koordinat;
         $spot->id_jenis_umkm = $request->id_jenis_umkm;
         $spot->save();
@@ -158,6 +160,7 @@ class LokasiUmkmController extends Controller
             'koordinat' => 'required',
             'deskripsi' => 'required|string|min:10|max:1000',
             'image' => 'file|image|mimes:png,jpg,jpeg',
+            'link' => 'required|url',
             'id_desa' => 'required|exists:desas,id',
             'id_jenis_umkm' => 'required|exists:jenis_umkms,id',
         ]);
@@ -177,6 +180,7 @@ class LokasiUmkmController extends Controller
         $spot->nama_umkm = $request->nama_umkm;
         $spot->slug = Str::slug($request->nama_umkm, '-');
         $spot->deskripsi = $request->deskripsi;
+        $spot->link = $request->link;
         $spot->koordinat = $request->koordinat;
         $spot->id_desa = $request->id_desa;
         $spot->id_jenis_umkm = $request->id_jenis_umkm;
