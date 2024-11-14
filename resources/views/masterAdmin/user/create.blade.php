@@ -76,7 +76,6 @@
                                                 <div>
                                                     <input type="radio" name="gender" value="pria" required> Pria
                                                     <input type="radio" name="gender" value="wanita" required> Wanita
-                                                    <input type="radio" name="gender" value="lainnya" required> Lainnya
                                                 </div>
                                             </div>
                                         </div>

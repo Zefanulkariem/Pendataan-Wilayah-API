@@ -14,7 +14,7 @@ class LegalUsahaController extends Controller
     public function index()
     {
         $legalUsaha = KelengkapanLegalitasUsaha::where('id_user', auth()->user()->id)->get();
-
+        // dd($legalUsaha);
         return view('umkm.legalUsaha.index', compact('legalUsaha'));
     }
 
@@ -23,7 +23,7 @@ class LegalUsahaController extends Controller
      */
     public function create()
     {
-
+        return view('umkm.legalUsaha.create');
     }
 
     /**
@@ -31,9 +31,15 @@ class LegalUsahaController extends Controller
      */
     public function store(Request $request)
     {
+        $cekData = KelengkapanLegalitasUsaha::where('id_user', auth()->user()->id)->first();
+
+        if ($cekData) {
+            Alert::error('Error', 'Anda sudah memiliki data legalitas usaha. Tidak dapat menginput ulang.')->autoClose(3000);
+            return redirect()->back()->withInput();
+        }
+
         $validatedData = $request->validate([
-            // 'id_user' => 'required|exists:users,id',
-            'badan_usaha' => 'required|in:PT (Perseroan Terbatas),CV (Persekutuan Komanditer)',
+            'badan_usaha' => 'nullable|in:PT (Perseroan Terbatas),CV (Persekutuan Komanditer)',
             'akta_pendirian' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
             'NIB' => 'required|string:255',
             'SKDP' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
@@ -47,22 +53,19 @@ class LegalUsahaController extends Controller
         $legalUsaha->NIB = $request->NIB;
         $legalUsaha->id_user = auth()->user()->id;
 
-        $fields = ['akta_pendirian', 'SKDP', 'NPWP', 'SIUP', 'TDP']; // Daftar field yang akan diupload
-
+        $fields = ['akta_pendirian', 'SKDP', 'NPWP', 'SIUP', 'TDP'];
         foreach ($fields as $field) {
             if ($request->hasFile($field)) {
                 $file = $request->file($field);
                 $uploadFile = $file->hashName();
-
                 $file->storeAs('public/legalitas', $uploadFile);
-
                 $legalUsaha->$field = $uploadFile;
             }
         }
 
         $legalUsaha->save();
 
-        Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
+        Alert::success('Success', 'Data Berhasil Ditambah')->autoClose(1000);
         return redirect()->route('UmkmlegalUsaha.index');
     }
 
@@ -80,7 +83,9 @@ class LegalUsahaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $legalUsaha = KelengkapanLegalitasUsaha::find($id);
+        // dd($legalUsaha);
+        return view('umkm.legalUsaha.edit', compact('legalUsaha'));
     }
 
     /**
@@ -88,7 +93,42 @@ class LegalUsahaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // $cekData = KelengkapanLegalitasUsaha::where('id_user', auth()->user()->id)->first();
+
+        // if ($cekData) {
+        //     Alert::error('Error', 'Anda sudah memiliki data legalitas usaha. Tidak dapat menginput ulang.')->autoClose(3000);
+        //     return redirect()->back()->withInput();
+        // }
+
+        $validatedData = $request->validate([
+            'badan_usaha' => 'required|in:PT (Perseroan Terbatas),CV (Persekutuan Komanditer)',
+            'akta_pendirian' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+            'NIB' => 'required|string:255',
+            'SKDP' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+            'NPWP' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+            'SIUP' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+            'TDP' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+        ]);
+
+        $legalUsaha = KelengkapanLegalitasUsaha::findOrFail($id);
+        $legalUsaha->badan_usaha = $request->badan_usaha;
+        $legalUsaha->NIB = $request->NIB;
+        $legalUsaha->id_user = auth()->user()->id;
+
+        $fields = ['akta_pendirian', 'SKDP', 'NPWP', 'SIUP', 'TDP'];
+        foreach ($fields as $field) {
+            if ($request->hasFile($field)) {
+                $file = $request->file($field);
+                $uploadFile = $file->hashName();
+                $file->storeAs('public/legalitas', $uploadFile);
+                $legalUsaha->$field = $uploadFile;
+            }
+        }
+
+        $legalUsaha->save();
+
+        Alert::success('Success', 'Data Berhasil Ditambah')->autoClose(1000);
+        return redirect()->route('UmkmlegalUsaha.index');
     }
 
     /**

@@ -17,4 +17,9 @@ class JenisUmkm extends Model
         return $this->hasMany(JenisUmkm::class, 'id_jenis_umkm');
     }
 
+    public function lokasi_umkm()
+    {
+        return $this->hasMany(LokasiUmkm::class, 'id_jenis_umkm');
+    }
+
 }

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\JenisUmkm;
+use App\Models\LokasiUmkm;
+
+use Carbon\Carbon;
 // use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
@@ -25,13 +29,30 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // dd(auth()->user()->getRoleNames());
-        // if (auth()->user()->can('view_dashboard')) {
-            // }
-        return view('masterAdmin.index'); 
+        $jmlUser = User::count();
 
-        return abort(403);
+        $jmlUserBulanLalu = User::whereMonth('created_at', Carbon::now()->subMonth()->month)
+                        ->whereYear('created_at', Carbon::now()->subMonth()->year)
+                        ->count();
+
+        $persen = 0;
+
+        if ($jmlUserBulanLalu > $persen) {
+            $persen = (($jmlUser - $jmlUserBulanLalu) / $jmlUserBulanLalu) * 100;
+        } else {
+            $persen = 100;
+        }
+
+        $jmlUserUmkm = User::role('Umkm')->count();
+        $jmlUserInvestor = User::role('Investor')->count();
+        $jmlUmkm = LokasiUmkm::count();
+
+        $jenisUmkm = JenisUmkm::withcount('lokasi_Umkm')->inRandomOrder()->take(5)->get();
+
+        // dd($jenisUmkm);
+        return view('masterAdmin.index', compact('jmlUser', 'persen', 'jmlUserUmkm', 'jmlUserInvestor', 'jmlUmkm', 'jenisUmkm'));
     }
+
 
     public function user()
     {

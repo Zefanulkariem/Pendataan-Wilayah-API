@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('kecamatans', function (Blueprint $table) {
             $table->id();
             $table->string('nama_kecamatan')->unique();
-            $table->string('nama_camat')->nullable();
             $table->timestamps();
         });
     }

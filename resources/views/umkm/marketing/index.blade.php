@@ -9,8 +9,8 @@
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
-                        <div class="d-flex justify-content-end px-4">
-                            <a href="{{route('Umkmmarketing.create')}}" class="btn btn-primary">Tambahkan Data</a>
+                        <div class="d-flex justify-content-start px-4">
+                            <a href="{{route('Umkmmarketing.create')}}" class="btn btn-primary">Tambahkan Data <i class="fa fa-sharp fa-light fa-arrow-right"></i></a>
                         </div>
                         <table id="exampleTable" class="table align-items-center mb-0">
                             <thead>
@@ -118,11 +118,11 @@
 </script>
 
 {{-- element datatable --}}
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
 
 <script>
     new DataTable('#exampleTable');
-</script>
+</script> --}}
 @endsection
