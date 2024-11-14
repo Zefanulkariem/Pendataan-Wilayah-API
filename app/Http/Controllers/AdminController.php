@@ -24,7 +24,7 @@ class AdminController extends Controller
 
         return abort(403);
     }
-
+    
     public function profile()
     {
         // dd(auth()->user()->getRoleNames());

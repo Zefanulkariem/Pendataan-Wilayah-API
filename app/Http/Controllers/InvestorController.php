@@ -38,11 +38,11 @@ class InvestorController extends Controller
                     'lat' => $koordinat[0],
                     'lon' => $koordinat[1],
                     'kecamatan' => $lokasi->desa->kecamatan->nama_kecamatan ?? 'Tidak diketahui',
-                    'img' => $lokasi->image,
-                    'nama' => $lokasi->user->name, // Nama pemilik dari relasi user
-                    'kelamin' => $lokasi->user->gender, // Gender pemilik dari relasi user (jika ada)
+                    'img' => $lokasi->image ? asset('upload/spots/' . $lokasi->image) : 'default_image_url',
+                    'nama' => $lokasi->user->name,
+                    'kelamin' => $lokasi->user->gender,
                     'namaUMKM' => $lokasi->nama_umkm,
-                    // 'jenisUMKM' => $lokasi->jenis_umkm, // Pastikan ada field atau ambil dari relasi jika ada
+                    'jenisUMKM' => $lokasi->jenisUmkm->jenis_umkm,
                 ];
             });
             // dd($lokasis);

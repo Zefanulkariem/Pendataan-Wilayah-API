@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('tahun');
             $table->string('income');
             $table->string('outcome');
+            $table->decimal('profit_loss');
             $table->timestamps();
         });
     }
