@@ -5,7 +5,7 @@
 <div class="col-12">
     <div class="card mb-4">
     <div class="card-header pb-0">
-        <h6>Keuangan</h6>
+        <h6>Tambah Data Keuangan</h6>
     </div>
     <div class="card-body px-0 pt-0 pb-2">
         <div class="table-responsive p-0">
@@ -22,7 +22,6 @@
                                         <div class="form-group">
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Bulan:</label>
                                             <select name="bulan" class="form-control" required>
-                                                {{-- <option value="" disabled selected>Pilih Bulan</option> --}}
                                                 <option value="Januari">Januari</option>
                                                 <option value="Februari">Februari</option>
                                                 <option value="Maret">Maret</option>
@@ -58,11 +57,10 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    {{-- akta pendirian --}}
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Income:</label>
-                                            <input type="text" id="income" class="form-control @error('income') is-invalid @enderror" name="income" placeholder="Masukkan nominal income" aria-label="Masukkan income" autofocus>
+                                            <input type="text" id="income" class="form-control @error('income') is-invalid @enderror" name="income" placeholder="Masukkan nominal income, contoh: Rp 10.000" aria-label="Masukkan income" required>
                                             @error('income')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -70,11 +68,10 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    {{-- nib --}}
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Outcome:</label>
-                                            <input type="text" id="outcome" class="form-control @error('outcome') is-invalid @enderror" name="outcome" placeholder="Masukkan nominal outcome" aria-label="Masukkan outcome" autofocus>
+                                            <input type="text" id="outcome" class="form-control @error('outcome') is-invalid @enderror" name="outcome" placeholder="Masukkan nominal outcome, contoh: Rp 5.000" aria-label="Masukkan outcome" required>
                                             @error('outcome')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

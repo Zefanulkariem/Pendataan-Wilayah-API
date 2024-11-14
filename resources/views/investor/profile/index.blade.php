@@ -66,7 +66,7 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="example-text-input" class="form-control-label">Email address</label>
+                  <label for="example-text-input" class="form-control-label">Email Addres</label>
                   <input class="form-control" type="email" value="jesse@example.com">
                 </div>
               </div>

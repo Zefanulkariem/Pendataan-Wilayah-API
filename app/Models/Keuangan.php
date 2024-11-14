@@ -11,9 +11,11 @@ class Keuangan extends Model
 
     public $timestamps = true;
 
-    protected $fillable = ['id_umkm','bulan','tahun','income','outcome'];
+    protected $fillable = ['id_umkm','bulan','tahun','income','outcome','profit_loss'];
 
     public function user() {
         return $this->belongsTo(User::class);
     }
+
+
 }
