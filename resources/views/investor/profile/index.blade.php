@@ -47,54 +47,42 @@
   </div>
   <div class="container-fluid py-4">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-12">
         <div class="card">
-          <div class="card-header pb-0">
+          {{-- <div class="card-header pb-0">
             <div class="d-flex align-items-center">
               <p class="mb-0">Edit Profile</p>
-              <button class="btn btn-primary btn-sm ms-auto">Settings</button>
+              <button class="btn btn-primary btn-sm ms-auto">Pengaturan</button>
             </div>
-          </div>
+          </div> --}}
           <div class="card-body">
-            <p class="text-uppercase text-sm">User Information</p>
+            <p class="text-uppercase text-sm">Informasi Pengguna</p>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="example-text-input" class="form-control-label">Username</label>
-                  <input class="form-control" type="text" value="lucky.jesse">
+                  <label for="example-text-input" class="form-control-label">Nama Pengguna</label>
+                  <input class="form-control" type="text" value="{{Auth::user()->name}}" disabled>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="example-text-input" class="form-control-label">Email Addres</label>
-                  <input class="form-control" type="email" value="jesse@example.com">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="example-text-input" class="form-control-label">First name</label>
-                  <input class="form-control" type="text" value="Jesse">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="example-text-input" class="form-control-label">Last name</label>
-                  <input class="form-control" type="text" value="Lucky">
+                  <label for="example-text-input" class="form-control-label">Alamat Email</label>
+                  <input class="form-control" type="email" value="{{Auth::user()->email}}" disabled>
                 </div>
               </div>
             </div>
             <hr class="horizontal dark">
-            <p class="text-uppercase text-sm">Contact Information</p>
+            {{-- <p class="text-uppercase text-sm">Informasi Kontak</p>
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="example-text-input" class="form-control-label">Address</label>
+                  <label for="example-text-input" class="form-control-label">Alamat</label>
                   <input class="form-control" type="text" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label for="example-text-input" class="form-control-label">City</label>
+                  <label for="example-text-input" class="form-control-label">Kota</label>
                   <input class="form-control" type="text" value="New York">
                 </div>
               </div>
@@ -120,11 +108,11 @@
                   <input class="form-control" type="text" value="A beautiful Dashboard for Bootstrap 5. It is Free and Open Source.">
                 </div>
               </div>
-            </div>
+            </div> --}}
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      {{-- <div class="col-md-4">
         <div class="card card-profile">
           <img src="{{asset('admin/assets/img/bg-profile.jpg')}}" alt="Image placeholder" class="card-img-top">
           <div class="row justify-content-center">
@@ -179,7 +167,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
     </div>
     
   </div>

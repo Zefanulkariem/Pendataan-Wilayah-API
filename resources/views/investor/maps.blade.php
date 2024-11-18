@@ -77,7 +77,7 @@
 
         let markers = [];
 
-        function createMarker(lat, lon, color, title, desa, img, nama, kelamin, namaUMKM, jenisUMKM) {
+        function createMarker(lat, lon, color, title, desa, img, nama, kelamin, namaUMKM, link, jenisUMKM) {
             const marker = L.circleMarker([lat, lon], {
                 radius: 10,
                 fillColor: color,
@@ -90,7 +90,7 @@
             const popupContent = `
                 <div class="popup-content">
                     <h3>${title}</h3>
-                    <img src="${img}" alt="${nama}" />
+                    <img src="${img}" alt="${nama}"/>
                     <div class="info">
                         <div><strong>Nama:</strong> ${nama}</div>
                         <div><strong>Kelamin:</strong> ${kelamin}</div>
@@ -100,7 +100,7 @@
                         <div><strong>Kategori UMKM:</strong> ${jenisUMKM}</div>
                     </div>
                     <a href="https://www.google.com/maps?q=${lat},${lon}" target="_blank">Buka di Google Maps</a><br/>
-                    <button onclick="alert('Info lainnya tentang ${title}')">Selengkapnya</button> 
+                    <a href="${link}" target="_blank">Selengkapnya</a>
                 </div>
             `;
 
@@ -115,7 +115,7 @@
             if (kecamatan) {
                 const marker = createMarker(
                     loc.lat, loc.lon, kecamatan.color, loc.kecamatan, loc.desa,
-                    loc.img, loc.nama, loc.kelamin, loc.namaUMKM, loc.jenisUMKM
+                    loc.img, loc.nama, loc.kelamin, loc.namaUMKM, loc.link , loc.jenisUMKM
                 );
                 markers.push({ marker, kecamatan: loc.kecamatan });
             }

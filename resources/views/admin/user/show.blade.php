@@ -82,7 +82,7 @@
                                         </div>
                                         <div class="px-4 py-1">
                                             <a href="{{ route('Adminuser.index') }}" class="btn btn-danger">
-                                                <i class="fa fa-sharp fa-light fa-arrow-left"></i>
+                                                <i class="fa fa-sharp fa-light fa-arrow-left"></i> Kembali
                                             </a>
                                         </div>
                                     </tr>

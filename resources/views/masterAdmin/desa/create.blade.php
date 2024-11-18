@@ -44,8 +44,8 @@
                                     </div>
                                 </div>
                                 <div class="px-4 py-1">
-                                    <a href="{{route('Master Adminjenis-umkm.index')}}" class="btn btn-danger">
-                                        <i class="fa fa-sharp fa-light fa-arrow-left"></i>
+                                    <a href="{{route('Master Admindesa.index')}}" class="btn btn-danger">
+                                        <i class="fa fa-sharp fa-light fa-arrow-left"></i> kembali
                                     </a>
                                     <button type="submit" class="btn btn-success">Submit</button>
                                 </div>

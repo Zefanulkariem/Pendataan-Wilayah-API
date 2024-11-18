@@ -109,7 +109,7 @@
                         
                         <div class="form-group">
                             <a href="{{route('Master Adminspot.index')}}" class="btn btn-danger">
-                                <i class="fa fa-sharp fa-light fa-arrow-left"></i>
+                                <i class="fa fa-sharp fa-light fa-arrow-left"></i> Kembali
                             </a>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>

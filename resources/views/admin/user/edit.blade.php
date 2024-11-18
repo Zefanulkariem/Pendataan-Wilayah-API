@@ -73,7 +73,9 @@
                             </td>
                         </tr>
                         <div class="">
-                            <a href="{{route('Master Adminuser.index')}}" class="btn btn-danger">Back</a>
+                            <a href="{{route('Adminuser.index')}}" class="btn btn-danger">
+                                <i class="fa fa-sharp fa-light fa-arrow-left"></i> Kembali
+                            </a>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>

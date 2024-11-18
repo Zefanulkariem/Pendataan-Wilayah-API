@@ -103,7 +103,7 @@
                 <div class="position-relative h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden shadow"  style="height: 100vh; background-image: url('https://i.ibb.co.com/QpVCFBw/sabil.jpg'); background-size: cover; background-position: center;">
                   <span class="mask bg-gradient-primary opacity-0"></span>
                   <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Lambang_Kabupaten_Bandung%2C_Jawa_Barat%2C_Indonesia.svg" alt="" 
-            style="background-size: cover; background-position: center; height: 25vh">
+                      style="background-size: cover; background-position: center; height: 25vh">
                   <h4 class="mt-5 text-white font-weight-bolder position-relative">Selamat datang di website</h4>
                   <p class="text-white position-relative">Pendataan Wilayah Kabupaten Bandung</p>
                 </div>
