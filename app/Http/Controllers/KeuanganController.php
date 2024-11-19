@@ -36,21 +36,16 @@ class KeuanganController extends Controller
             'income' => 'required|string',
             'outcome' => 'required|string',
         ]);
-    
-        // Konversi income dan outcome dari string ke integer atau float setelah membersihkan format
-        $income = (int) str_replace(['Rp ', '.'], '', $request->input('income'));
-        $outcome = (int) str_replace(['Rp ', '.'], '', $request->input('outcome'));
-    
-        // Hitung profit/loss
-        $profitLoss = $income - $outcome;
+        
+        
     
         // Simpan data keuangan
         $uang = new Keuangan;
         $uang->bulan = $request->bulan;
         $uang->tahun = $request->tahun;
-        $uang->income = $income;
-        $uang->outcome = $outcome;
-        $uang->profit_loss = $profitLoss; // Pastikan field profit_loss ada di tabel
+        $uang->income = $request->income;
+        $uang->outcome = $request->outcome;
+        $uang->profit_loss = $request->income -= $request->outcome;
         $uang->id_umkm = auth()->id();
     
         $uang->save();

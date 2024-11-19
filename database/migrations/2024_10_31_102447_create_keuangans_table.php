@@ -17,9 +17,9 @@ return new class extends Migration
             $table->foreign('id_umkm')->references('id')->on('users')->onDelete('cascade');
             $table->string('bulan');
             $table->integer('tahun');
-            $table->string('income');
-            $table->string('outcome');
-            $table->decimal('profit_loss');
+            $table->integer('income');
+            $table->integer('outcome');
+            $table->integer('profit_loss');
             $table->timestamps();
         });
     }

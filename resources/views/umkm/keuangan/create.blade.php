@@ -60,7 +60,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Income:</label>
-                                            <input type="text" id="income" class="form-control @error('income') is-invalid @enderror" name="income" placeholder="Masukkan nominal income, contoh: Rp 10.000" aria-label="Masukkan income" required>
+                                            <input type="number" class="form-control @error('income') is-invalid @enderror" name="income" placeholder="Masukkan nominal income, contoh: Rp 10.000" aria-label="Masukkan income" required>
                                             @error('income')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -71,7 +71,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Outcome:</label>
-                                            <input type="text" id="outcome" class="form-control @error('outcome') is-invalid @enderror" name="outcome" placeholder="Masukkan nominal outcome, contoh: Rp 5.000" aria-label="Masukkan outcome" required>
+                                            <input type="number" class="form-control @error('outcome') is-invalid @enderror" name="outcome" placeholder="Masukkan nominal outcome, contoh: Rp 5.000" aria-label="Masukkan outcome" required>
                                             @error('outcome')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
