@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\JenisUmkm;
 use App\Models\LokasiUmkm;
+use Illuminate\Support\Facades\DB;
 
 use Carbon\Carbon;
 // use Illuminate\Support\Facades\Validator;
@@ -48,6 +49,15 @@ class HomeController extends Controller
         $jmlUmkm = LokasiUmkm::count();
 
         $jenisUmkm = JenisUmkm::withcount('lokasi_Umkm')->inRandomOrder()->take(5)->get();
+
+        // $pengguna = DB::table('users')
+        //     ->select(DB::raw('MONTHNAME(created_at) as month'), DB::raw('COUNT(*) as total'))
+        //     ->groupBy('month')
+        //     ->orderBy(DB::raw('MONTH(created_at)'))
+        //     ->get();
+
+        // $label = $pengguna->pluck('month');
+        // $data = $pengguna->pluck('total');
 
         // dd($jenisUmkm);
         return view('masterAdmin.index', compact('jmlUser', 'persen', 'jmlUserUmkm', 'jmlUserInvestor', 'jmlUmkm', 'jenisUmkm'));

@@ -6,13 +6,16 @@
     <title>UMKM Maps</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('maps/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{asset('maps/assets/css/maps.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 </head>
 <body>
     <div id="map"></div>
+    <a href="{{ route('Investorhome') }}" class="tombol-kembali text"><i class="fa fa-sharp fa-light fa-arrow-left"></i> Kembali</a>
     <div class="filter-container">
-        <center><label for="village-filter">Kecamatan:</label></center>
-        <select id="village-filter">
+        <center><label for="kecamatan-filter">Kecamatan:</label></center>
+        <select id="kecamatan-filter">
             <option value="all">Semua</option>
         </select>
     </div>
@@ -121,7 +124,7 @@
             }
         });
 
-        const kecamatanFilter = document.getElementById('village-filter');
+        const kecamatanFilter = document.getElementById('kecamatan-filter');
         kecamatans.forEach(kecamatan => {
             const option = document.createElement('option');
             option.value = kecamatan.name;
