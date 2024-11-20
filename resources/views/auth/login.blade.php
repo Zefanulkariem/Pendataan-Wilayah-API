@@ -46,7 +46,7 @@
               <div class="card card-plain">
                 <div class="card-header pb-0 text-start">
                     <h4 class="font-weight-bolder">Masuk</h4>
-                    <p class="mb-0"></p>
+                    <p class="mb-0">Silakan login untuk melanjutkan akses Anda.</p>
                 </div>
                 <div class="card-body">
                 <form method="POST" action="{{ route('login') }}">
@@ -57,7 +57,7 @@
 
                         @error('email')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ 'Email yang di masukkan salah' }}</strong>
+                                <strong>{{ 'Email atau Password yang di masukkan salah' }}</strong>
                             </span>
                         @enderror
                     </div>
@@ -104,8 +104,8 @@
                   <span class="mask bg-gradient-primary opacity-0"></span>
                   <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Lambang_Kabupaten_Bandung%2C_Jawa_Barat%2C_Indonesia.svg" alt="" 
                       style="background-size: cover; background-position: center; height: 25vh">
-                  <h4 class="mt-5 text-white font-weight-bolder position-relative">Selamat datang di website</h4>
-                  <p class="text-white position-relative">Pendataan Wilayah Kabupaten Bandung</p>
+                  <h4 class="mt-5 text-white font-weight-bolder position-relative"></h4>
+                  <p class="text-white position-relative">Akses fitur terbaik kami dengan login menggunakan email dan password yang telah Anda miliki. Kami di sini untuk mendukung Anda dan memberikan pengalaman terbaik.</p>
                 </div>
               </div>
           </div>
