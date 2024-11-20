@@ -78,8 +78,6 @@ class UserAdminController extends Controller
     {
         $user = User::findOrFail($id);
         return view('admin.user.show', compact('user')); 
-
-        return abort(403);
     }
 
     /**

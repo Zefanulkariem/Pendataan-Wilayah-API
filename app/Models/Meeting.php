@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Meeting extends Model
 {
-    protected $fillable = ['id_user', 'id_pelaku_umkm', 'lokasi', 'tanggal_meeting'];
+    protected $fillable = ['id_investor', 'id_umkm', 'judul', 'lokasi_meeting', 'tanggal'];
+
+    public function idInvestor()
+    {
+        return $this->belongsTo(User::class, 'id_investor');
+    }
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id_user');
-    }
-
-    public function pelakuumkm()
-    {
-        return $this->belongsTo(PelakuUmkm::class, 'id_pelaku_umkm');
+        return $this->belongsTo(User::class, 'id_umkm');
     }
 }

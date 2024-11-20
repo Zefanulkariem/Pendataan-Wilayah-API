@@ -5,7 +5,7 @@
       <div class="col-12">
         <div class="card mb-4">
           <div class="card-header pb-0">
-            <h6>Table Pengguna</h6>
+            <h6>Daftar Data Pengguna</h6>
           </div>
           <div class="card-body px-0 pt-0 pb-2">
             <div class="table-responsive p-0">
@@ -21,7 +21,7 @@
                                         {{-- nama --}}
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Username</label>
+                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Nama Pengguna:</label>
                                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" aria-label="Masukkan Nama" autofocus>
                                                 @error('name')
                                                 <span class="invalid-feedback" role="alert">
@@ -33,7 +33,7 @@
                                         {{-- email --}}
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Email</label>
+                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Alamat Email:</label>
                                                 <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" aria-label="Masukkan Email" autofocus>
                                                 @error('email')
                                                 <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
                                         {{-- password --}}
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Password</label>
+                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Kata Sandi:</label>
                                                 <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" aria-label="Password" autofocus>
                                                 @error('password')
                                                 <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                                         {{-- daftar role --}}
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Role</label>
+                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Peran:</label>
                                                 <select class="form-control" name="role">
                                                     @foreach($roles as $role)
                                                     @if($role->name != 'Master Admin' && $role->name != 'Admin')
@@ -85,7 +85,7 @@
                                     <a href="{{route('Adminuser.index')}}" class="btn btn-danger">
                                         <i class="fa fa-sharp fa-light fa-arrow-left"></i> Kembali
                                     </a>
-                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <button type="submit" class="btn btn-success">Simpan</button>
                                 </div>
                             </td>
                         </tr>

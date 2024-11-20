@@ -5,7 +5,7 @@
       <div class="col-12">
         <div class="card mb-4">
           <div class="card-header pb-0">
-            <h6>Table Pendataan Kepemilikan Umkm</h6>
+            <h6>Daftar Data Kepemilikan Umkm</h6>
           </div>
           <div class="card-body px-0 pt-0 pb-2">
             <div class="table-responsive p-0">
@@ -52,13 +52,23 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        {{-- alamat --}}
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Alamat Tinggal:</label>
+                                            <textarea name="alamat" class="text-dark form-control summernote @error('alamat') is-invalid @enderror" rows="7"></textarea>
+                                            @error('alamat')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="px-4 py-1">
                                     <a href="{{route('Adminkepemilikan-umkm.index')}}" class="btn btn-danger">
                                         <i class="fa fa-sharp fa-light fa-arrow-left"></i> Kembali
                                     </a>
-                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <button type="submit" class="btn btn-success">Simpan</button>
                                 </div>
                             </td>
                         </tr>

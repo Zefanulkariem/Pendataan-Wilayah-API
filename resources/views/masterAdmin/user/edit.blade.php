@@ -5,7 +5,7 @@
       <div class="col-12">
         <div class="card mb-4">
           <div class="card-header pb-0">
-            <h6>Table Pengguna</h6>
+            <h6>Daftar Data Pengguna</h6>
           </div>
           <div class="card-body px-0 pt-0 pb-2">
             <div class="table-responsive p-0">
@@ -22,7 +22,7 @@
                                         {{-- nama --}}
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Username</label>
+                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Nama Pengguna:</label>
                                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $user->name)}}">
                                                 @error('name')
                                                 <span class="invalid-feedback" role="alert">
@@ -34,7 +34,7 @@
                                         {{-- email --}}
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Email</label>
+                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Alamat Email:</label>
                                                 <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', $user->email)}}">
                                                 @error('email')
                                                 <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
                                         {{-- password --}}
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Password</label>
+                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Kata Sandi:</label>
                                                 <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="(Opsional)">
                                                 @error('password')
                                                 <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
                                         {{-- daftar role --}}
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Role</label>
+                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Peran:</label>
                                                 <select class="form-control" name="role">
                                                     @foreach($roles as $role)
                                                     @if($role->name != 'Master Admin')
@@ -75,11 +75,11 @@
                                             <div class="form-group mb-3">
                                                 <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Jenis Kelamin:</label>
                                                 <div>
-                                                    <input type="radio" name="gender" value="pria" required> Pria
-                                                    <input type="radio" name="gender" value="wanita" required> Wanita
-                                                    <input type="radio" name="gender" value="lainnya" required> Lainnya
+                                                    <input type="radio" name="gender" value="pria" 
+                                                        {{ old('gender', $user->gender) == 'pria' ? 'checked' : '' }} required> Pria
+                                                    <input type="radio" name="gender" value="wanita" 
+                                                        {{ old('gender', $user->gender) == 'wanita' ? 'checked' : '' }} required> Wanita
                                                 </div>
-                                                <small class="form-text text-muted">Wajib di isi kembali.</small>
                                             </div>
                                         </div>
                                     </div>
@@ -88,7 +88,7 @@
                                     <a href="{{route('Master Adminuser.index')}}" class="btn btn-danger">
                                         <i class="fa fa-sharp fa-light fa-arrow-left"></i> Kembali
                                     </a>
-                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <button type="submit" class="btn btn-success">Perbarui</button>
                                 </div>
                             </td>
                         </tr>
