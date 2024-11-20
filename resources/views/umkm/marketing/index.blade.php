@@ -10,7 +10,7 @@
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                         <div class="d-flex justify-content-start px-4">
-                            <a href="{{route('Umkmmarketing.create')}}" class="btn btn-primary">Tambahkan Data <i class="fa fa-sharp fa-light fa-arrow-right"></i></a>
+                            <a href="{{route('Umkmmarketing.create')}}" class="btn btn-primary">Tambah Daftar Marketing <i class="fa fa-sharp fa-light fa-arrow-right"></i></a>
                         </div>
                         <table id="exampleTable" class="table align-items-center mb-0">
                             <thead>
@@ -44,7 +44,7 @@
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">{{ $data->bulan }}</h6>
-                                                    <p class="text-xs text-secondary mb-0">Pada Tahun: {{ $data->tahun }}</p>
+                                                    <p class="text-xs text-secondary mb-0">Pada Tahun: <b>{{ $data->tahun }}</b></p>
                                                 </div>
                                             </div>
                                         </td>

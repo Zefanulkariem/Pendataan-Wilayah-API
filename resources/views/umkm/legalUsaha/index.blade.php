@@ -17,12 +17,12 @@
                 @if($data)
                     <!-- Tombol untuk mengedit jika data sudah ada -->
                     <a href="{{ route('UmkmlegalUsaha.edit', $data->id) }}" class="btn btn-primary">
-                        Edit Data <i class="fa fa-sharp fa-light fa-arrow-right"></i>
+                        Perbarui Legalitas Usaha <i class="fa fa-sharp fa-light fa-arrow-right"></i>
                     </a>
                 @else
                     <!-- Tombol untuk membuat data baru jika data belum ada -->
                     <a href="{{ route('UmkmlegalUsaha.create') }}" class="btn btn-primary">
-                        <i class="fa fa-sharp fa-light fa-arrow-left"></i> Buat Data Baru
+                        Tambahkan Legalitas Usaha <i class="fa fa-sharp fa-light fa-arrow-right"></i>
                     </a>
                 @endif
             </div>

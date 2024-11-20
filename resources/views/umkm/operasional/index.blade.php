@@ -10,7 +10,7 @@
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                         <div class="d-flex justify-content-start px-4">
-                            <a href="{{route('Umkmoperasional.create')}}" class="btn btn-primary">Tambahkan Data <i class="fa fa-sharp fa-light fa-arrow-right"></i></a>
+                            <a href="{{route('Umkmoperasional.create')}}" class="btn btn-primary">Tambah Daftar Operasional <i class="fa fa-sharp fa-light fa-arrow-right"></i></a>
                         </div>
                         <table class="table align-items-center mb-0">
                             <thead>
@@ -44,7 +44,7 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $data->jml_karyawan }}</h6>
+                                                    <h6 class="mb-0 text-sm">{{ $data->jml_karyawan }} Orang</h6>
                                                     {{-- <p class="text-xs text-secondary mb-0">{{ $data->jml_karyawan }}</p> --}}
                                                 </div>
                                             </div>

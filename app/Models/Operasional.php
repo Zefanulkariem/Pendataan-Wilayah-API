@@ -10,7 +10,7 @@ class Operasional extends Model
     use HasFactory;
     public $timestamps = true;
 
-    public $fillable = ['karyawan', 'jml_karyawan'];
+    public $fillable = ['jml_karyawan'];
 
     public function user() {
         return $this->belongsTo(User::class);

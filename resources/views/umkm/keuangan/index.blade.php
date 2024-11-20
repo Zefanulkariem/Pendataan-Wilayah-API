@@ -4,12 +4,12 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0">
-                    <h6>Daftar Keuangan ({{ \Carbon\Carbon::now()->locale('id')->translatedFormat('F Y') }})</h6>
+                    <h6>Daftar Data Keuangan ({{ \Carbon\Carbon::now()->locale('id')->translatedFormat('F Y') }})</h6>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                         <div class="d-flex justify-content-start px-4">
-                            <a href="{{route('Umkmkeuangan.create')}}" class="btn btn-primary">Tambahkan Data <i class="fa fa-sharp fa-light fa-arrow-right"></i></a>
+                            <a href="{{route('Umkmkeuangan.create')}}" class="btn btn-primary">Tambah Daftar Keuangan <i class="fa fa-sharp fa-light fa-arrow-right"></i></a>
 
                         </div>
                         <table class="table align-items-center mb-0">

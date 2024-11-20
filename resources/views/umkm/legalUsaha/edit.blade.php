@@ -122,7 +122,7 @@
                                 <a href="{{route('UmkmlegalUsaha.index')}}" class="btn btn-danger">
                                     <i class="fa fa-sharp fa-light fa-arrow-left"></i> Kembali
                                 </a>
-                                <button class="btn btn-success">Simpan</button>
+                                <button class="btn btn-success">Perbarui</button>
                             </div>
                         </td>
                     </tr>
