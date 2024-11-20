@@ -44,6 +44,7 @@ class InvestorController extends Controller
                     'kelamin' => $lokasi->user->gender,
                     'namaUMKM' => $lokasi->nama_umkm,
                     'jenisUMKM' => $lokasi->jenisUmkm->jenis_umkm,
+                    'link' => $lokasi->link,
                 ];
             });
             // dd($lokasis);

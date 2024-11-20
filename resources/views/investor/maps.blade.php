@@ -6,13 +6,17 @@
     <title>UMKM Maps</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('maps/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{asset('maps/assets/css/maps.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 </head>
 <body>
     <div id="map"></div>
+    <a href="{{ route('Investorhome') }}" class="tombol-kembali text"><i class="fa fa-sharp fa-light fa-arrow-left"></i> Kembali</a>
+    <a href="{{ route('Investormeeting.index') }}" class="tombol-meeting text">Jadwal Meeting <i class="fa fa-sharp fa-light fa-arrow-right"></i></a>
     <div class="filter-container">
-        <center><label for="village-filter">Kecamatan:</label></center>
-        <select id="village-filter">
+        <center><label for="kecamatan-filter">Kecamatan:</label></center>
+        <select id="kecamatan-filter">
             <option value="all">Semua</option>
         </select>
     </div>
@@ -77,7 +81,7 @@
 
         let markers = [];
 
-        function createMarker(lat, lon, color, title, desa, img, nama, kelamin, namaUMKM, jenisUMKM) {
+        function createMarker(lat, lon, color, title, desa, img, nama, kelamin, namaUMKM, link, jenisUMKM) {
             const marker = L.circleMarker([lat, lon], {
                 radius: 10,
                 fillColor: color,
@@ -90,7 +94,7 @@
             const popupContent = `
                 <div class="popup-content">
                     <h3>${title}</h3>
-                    <img src="${img}" alt="${nama}" />
+                    <img src="${img}" alt="${nama}"/>
                     <div class="info">
                         <div><strong>Nama:</strong> ${nama}</div>
                         <div><strong>Kelamin:</strong> ${kelamin}</div>
@@ -100,7 +104,7 @@
                         <div><strong>Kategori UMKM:</strong> ${jenisUMKM}</div>
                     </div>
                     <a href="https://www.google.com/maps?q=${lat},${lon}" target="_blank">Buka di Google Maps</a><br/>
-                    <button onclick="alert('Info lainnya tentang ${title}')">Selengkapnya</button> 
+                    <a href="${link}" target="_blank">Selengkapnya</a>
                 </div>
             `;
 
@@ -115,13 +119,13 @@
             if (kecamatan) {
                 const marker = createMarker(
                     loc.lat, loc.lon, kecamatan.color, loc.kecamatan, loc.desa,
-                    loc.img, loc.nama, loc.kelamin, loc.namaUMKM, loc.jenisUMKM
+                    loc.img, loc.nama, loc.kelamin, loc.namaUMKM, loc.link , loc.jenisUMKM
                 );
                 markers.push({ marker, kecamatan: loc.kecamatan });
             }
         });
 
-        const kecamatanFilter = document.getElementById('village-filter');
+        const kecamatanFilter = document.getElementById('kecamatan-filter');
         kecamatans.forEach(kecamatan => {
             const option = document.createElement('option');
             option.value = kecamatan.name;

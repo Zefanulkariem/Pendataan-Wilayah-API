@@ -18,10 +18,10 @@
         <div class="container">
             <div class="card">
                 <div class="card-header pb-0">
-                    <h6>Masukkan Lokasi Umkm</h6>
+                    <h6 class="mb-3">Masukkan Lokasi Umkm</h6>
                 </div>
-                <div class="card-body">
-                    <div id="map"></div>
+                <div class="card-body p-3">
+                    <div id="map" class="rounded" style="box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.15);"></div>
                 </div>
             </div>
         </div>
@@ -85,9 +85,9 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Desa:</label>
+                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Lokasi Umkm:</label>
                             <select class="form-control" name="id_desa">
-                                <option value="pilih pemilik umkm">- Pilih desa -</option>
+                                <option value="pilih pemilik umkm">- Pilih lokasi -</option>
                                 @foreach($desa as $data)
                                 <option value="{{$data->id}}">{{$data->nama_desa}}</option>
                                 @endforeach
@@ -105,7 +105,7 @@
 
                         <div class="form-group">
                             <a href="{{route('Master Adminspot.index')}}" class="btn btn-danger">
-                                <i class="fa fa-sharp fa-light fa-arrow-left"></i>
+                                <i class="fa fa-sharp fa-light fa-arrow-left"></i> Kembali
                             </a>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>

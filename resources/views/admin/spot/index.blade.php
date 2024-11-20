@@ -14,8 +14,7 @@
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                         <div class="d-flex justify-content-start px-4">
-                            <a href="{{ route('Adminspot.create') }}" class="btn btn-primary">Tambahkan
-                                Data</a>
+                            <a href="{{ route('Adminspot.create') }}" class="btn btn-primary">Tambah Lokasi Umkm <i class="fa fa-sharp fa-light fa-arrow-right"></i></a>
                         </div>
                         <table class="table align-items-center mb-0">
                             <thead>
@@ -26,7 +25,7 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Kategori Umkm</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Desa</th>
+                                        Lokasi Umkm</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Logo Perusahaan</th>
                                     <th
@@ -80,7 +79,7 @@
                                         <td style="text-align: center;">
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <img src="{{ asset('upload/spots/' . $data->image) }}" width="50"
+                                                    <img src="{{ asset('upload/spots/' . $data->image) }}" class="img-thumbnail" width="50"
                                                     style="border-radius: 50%">
                                                 </div>
                                             </div>

@@ -36,7 +36,7 @@ class UserAdminController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view('Admin.user.create', compact('roles'));
+        return view('admin.user.create', compact('roles'));
     }
 
     /**
@@ -78,8 +78,6 @@ class UserAdminController extends Controller
     {
         $user = User::findOrFail($id);
         return view('admin.user.show', compact('user')); 
-
-        return abort(403);
     }
 
     /**

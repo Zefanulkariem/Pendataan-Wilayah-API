@@ -5,7 +5,7 @@
       <div class="col-12">
         <div class="card mb-4">
           <div class="card-header pb-0">
-            <h6>Table Pengguna</h6>
+            <h6>Daftar Data Pengguna</h6>
           </div>
           <div class="card-body px-0 pt-0 pb-2">
             <div class="table-responsive p-0">
@@ -73,8 +73,10 @@
                             </td>
                         </tr>
                         <div class="">
-                            <a href="{{route('Master Adminuser.index')}}" class="btn btn-danger">Back</a>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <a href="{{route('Adminuser.index')}}" class="btn btn-danger">
+                                <i class="fa fa-sharp fa-light fa-arrow-left"></i> Kembali
+                            </a>
+                            <button type="submit" class="btn btn-primary">Perbarui</button>
                         </div>
                     </form>
                 </tbody>

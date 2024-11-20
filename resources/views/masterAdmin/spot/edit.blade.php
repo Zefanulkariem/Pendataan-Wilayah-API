@@ -18,10 +18,10 @@
         <div class="container">
             <div class="card">
                 <div class="card-header pb-0">
-                    <h6>Masukkan Lokasi Umkm</h6>
+                    <h6 class="mb-3">Masukkan Lokasi Umkm</h6>
                 </div>
-                <div class="card-body">
-                    <div id="map"></div>
+                <div class="card-body p-3">
+                    <div id="map" class="rounded" style="box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.15);"></div>
                 </div>
             </div>
         </div>
@@ -68,32 +68,34 @@
                         </div>
                         <div class="form-group">
                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Deskripsi Perusahaan:</label>
-                            <textarea name="deskripsi" class="text-dark form-control summernote @error('deskripsi') is-invalid @enderror" rows="7"></textarea>
+                            <textarea name="deskripsi" class="text-dark form-control summernote @error('deskripsi') is-invalid @enderror" rows="7">{{ old('deskripsi', $lokasiUmkm->deskripsi) }}</textarea>
                             @error('deskripsi')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                            <small class="form-text text-muted">Wajib di isi kembali.</small>
                         </div>
                         <div class="form-group">
                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Logo Perusahaan:</label>
-                            <div class="input-group col-xs-12 d-flex align-items-center">
-                                <input type="file" name="image" class="form-control file-upload-info" placeholder="Upload Gambar">
-                            </div>
+                            @if($lokasiUmkm->image)
+                                <div class="p-0">
+                                    <img src="{{ asset('upload/spots/' . $lokasiUmkm->image) }}" alt="Gambar Sebelumnya" class="img-thumbnail" style="max-width: 100px;">
+                                </div>
+                            @endif
+                            <input type="file" name="image" class="form-control file-upload-info" placeholder="Upload Gambar">
                             <small class="form-text text-muted">Kosongkan jika tidak ingin mengubah foto.</small>
                         </div>
                         <div class="form-group">
                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">URL/Blog Perusahaan:</label>
-                            <input name="link" class="text-dark form-control summernote @error('link') is-invalid @enderror" rows="7"></input>
+                            <input name="link" class="text-dark form-control summernote @error('link') is-invalid @enderror" rows="7" value="{{ old('link', $lokasiUmkm->link) }}">
                             @error('link')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Desa:</label>
+                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Lokasi Umkm:</label>
                             <select class="form-control" name="id_desa">
-                                <option value="pilih pemilik umkm">- Pilih desa -</option>
+                                <option value="pilih pemilik umkm">- Pilih lokasi -</option>
                                 @foreach($desa as $data){{--untuk memfilter desa--}}
-                                <option value="{{ $data->id }}" {{ $lokasiUmkm->id_desa == $data->id ? 'selected' : '' }}>{{$data->nama_desa}}</option> {{--dropdown--}}
+                                <option value="{{ $data->id }}" {{ $lokasiUmkm->id_desa == $data->id ? 'selected' : '' }}>{{$data->nama_desa}}</option> dropdown
                                 @endforeach
                             </select>
                         </div>
@@ -109,9 +111,9 @@
                         
                         <div class="form-group">
                             <a href="{{route('Master Adminspot.index')}}" class="btn btn-danger">
-                                <i class="fa fa-sharp fa-light fa-arrow-left"></i>
+                                <i class="fa fa-sharp fa-light fa-arrow-left"></i> Kembali
                             </a>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="submit" class="btn btn-primary">Perbarui</button>
                         </div>
                     </form>
                 </div>
