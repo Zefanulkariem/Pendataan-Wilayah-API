@@ -20,14 +20,6 @@
                     <span class="nav-link-text ms-1">Dasbor</span>
                 </a>
             </li>
-            {{-- <li class="nav-item">
-                <a class="nav-link " href="#">
-                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Tabel</span>
-                </a>
-            </li> --}}
             <li class="nav-item">
                 <a class="nav-link {{ Route::is('Investormaps') ? 'active' : '' }}" href="{{ route('Investormaps') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -57,8 +49,5 @@
                 </a>
             </li>
         </ul>
-    </div>
-    <div class="sidebar-footer mx-3 ">
-        <a href="#" target="_blank" class="btn btn-dark btn-sm w-100 mb-3">Documentation</a>
     </div>
 </aside>

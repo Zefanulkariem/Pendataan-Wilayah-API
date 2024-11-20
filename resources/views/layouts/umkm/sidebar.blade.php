@@ -75,7 +75,4 @@
             </li>
         </ul>
     </div>
-    <div class="sidebar-footer mx-3 ">
-        <a href="#" target="_blank" class="btn btn-dark btn-sm w-100 mb-3">Documentation</a>
-    </div>
 </aside>
