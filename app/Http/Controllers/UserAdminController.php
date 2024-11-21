@@ -50,6 +50,8 @@ class UserAdminController extends Controller
             'password' => 'required|min:8',
             'role' => 'required',
             'gender' => 'required|in:pria,wanita,lainnya',
+            'no_telp' => 'required|numeric|max_digits:12',
+            'alamat' => 'required|string|min:10',
         ]);
 
         $user = User::create([
@@ -57,6 +59,8 @@ class UserAdminController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'gender' => $request->gender,
+            'no_telp' => $request->no_telp,
+            'alamat' => $request->alamat,
         ]);
 
         $user->assignRole($request->role);
@@ -102,12 +106,16 @@ class UserAdminController extends Controller
             'password' => 'nullable|min:8',
             'role' => 'required',
             'gender' => 'required|in:pria,wanita,lainnya',
+            'no_telp' => 'required|numeric|max_digits:12',
+            'alamat' => 'required|string|min:10',
         ]);
 
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->gender = $request->gender;
+        $user->no_telp = $request->no_telp;
+        $user->alamat = $request->alamat;
 
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);

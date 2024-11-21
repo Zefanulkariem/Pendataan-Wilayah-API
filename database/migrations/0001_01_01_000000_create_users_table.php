@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('foto_profil')->nullable();
             $table->enum('gender', ['pria', 'wanita', 'lainnya'])->nullable();
+            $table->string('no_telp')->nullable();
+            $table->text('alamat')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

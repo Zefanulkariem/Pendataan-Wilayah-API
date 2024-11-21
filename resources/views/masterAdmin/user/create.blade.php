@@ -79,6 +79,29 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        {{-- no_telpon --}}
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Nomor Telpon:</label>
+                                                <input type="text" class="form-control @error('no_telp') is-invalid @enderror" name="no_telp" aria-label="Masukkan Nomor Telepon" autofocus
+                                                oninput="this.value = this.value.replace(/[^0-9]/g, '');" maxlength="12">
+                                                @error('no_telp')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        {{-- alamat --}}
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Alamat Tinggal:</label>
+                                                <textarea name="alamat" class="text-dark form-control summernote @error('alamat') is-invalid @enderror" rows="7"></textarea>
+                                                @error('alamat')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="px-4 py-1">

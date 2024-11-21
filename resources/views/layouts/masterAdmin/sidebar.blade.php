@@ -52,14 +52,14 @@
                 <span class="nav-link-text ms-1">Daftar Kategori Umkm</span>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link {{ Route::is('Master Adminkepemilikan-umkm.index') ? 'active' : '' }}" href="{{ route('Master Adminkepemilikan-umkm.index') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-single-02 text-warning text-sm opacity-10"></i>
                     </div>
                 <span class="nav-link-text ms-1">Daftar Kepemilikan Umkm</span>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a class="nav-link {{ Route::is('Master Adminspot.index') ? 'active' : '' }}" href="{{ route('Master Adminspot.index') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">

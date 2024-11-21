@@ -67,6 +67,20 @@
                                                             <input type="text" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ $user->gender ?? 'Tidak ingin memberitahu' }}" readonly>
                                                         </div>
                                                     </div>
+                                                    {{-- no_telp --}}
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nomor Telepon:</label>
+                                                            <input type="text" class="form-control @error('no_telp') is-invalid @enderror" name="no_telp" value="{{ $user->no_telp ?? 'Tidak ingin memberitahu' }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    {{-- alamat --}}
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Alamat:</label>
+                                                            <textarea readonly class="form-control @error('alamat') is-invalid @enderror" name="alamat" rows="7">{{ $user->alamat ?? 'Tidak ingin memberitahu' }}</textarea>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="px-4 py-1">
