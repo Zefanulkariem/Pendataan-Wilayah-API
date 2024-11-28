@@ -9,6 +9,7 @@ use App\Models\Desa;
 use App\Models\User;
 use App\Models\JenisUmkm;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 use Alert;
 
@@ -76,28 +77,12 @@ class LokasiUmkmController extends Controller
         $spot = new LokasiUmkm;
         if ($request->hasFile('image')) {
 
-            /**
-             * Upload file to public folder
-             */
-            
+            // upload gambar
             $uploadPath = storage_path('public/ImageSpots/');
             $file = $request->file('image');
             $uploadFile = $file->hashName();
             $file->move('upload/spots/', $uploadFile);
             $spot->image = $uploadFile;
-
-              // Simpan ke storage di folder public/ImageSpots
-            // $file = $request->file('image');
-            // $uploadFile = $file->hashName();
-            // $file->storeAs('storage/ImageSpots', $uploadFile);
-            // $spot->image = $uploadFile;
-
-            /**
-             * Upload file image to storage
-             */
-            // $file = $request->file('image');
-            // $file->storeAs('public/ImageSpots',$file->hashName());
-            // $spot->image = $file->hashName();
         }
 
         $spot->id_user = $request->id_user;
@@ -168,7 +153,6 @@ class LokasiUmkmController extends Controller
             'id_jenis_umkm' => 'required|exists:jenis_umkms,id',
         ]);
 
-        // $spot = new LokasiUmkm;
         $spot = LokasiUmkm::findOrFail($id);
 
         if ($request->hasFile('image')) {
@@ -206,6 +190,15 @@ class LokasiUmkmController extends Controller
     public function destroy($id)
     {
         $lk = LokasiUmkm::findOrFail($id);
+
+        // hapus gambar
+        $filePath = public_path('upload/spot/' . $lk->image);
+
+        // Cek gambar
+        if (File::exists($filePath)) {
+            File::delete($filePath);
+        }
+        // dd($filePath);
         
         $lk->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);

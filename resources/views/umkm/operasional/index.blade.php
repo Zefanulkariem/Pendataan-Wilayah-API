@@ -46,7 +46,7 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $data->jml_karyawan }} Orang</h6>
+                                                    <h6 class="mb-0 text-sm">{{ $data->jml_karyawan }} Karyawan</h6>
                                                     {{-- <p class="text-xs text-secondary mb-0">{{ $data->jml_karyawan }}</p> --}}
                                                 </div>
                                             </div>

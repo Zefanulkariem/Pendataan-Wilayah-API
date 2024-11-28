@@ -183,7 +183,7 @@
     <div class="container-fluid text-center bg-black text-light" id="selengkapnya"
         style="height: 70vh; background-image: url('https://i.ibb.co.com/2y6rtvB/Frame-5-1-waifu2x-art-noise3-scale.png'); background-size: cover; background-position: center;">
         <div class="row align-items-center h-100">
-            <div class="col text-start" style="max-width: 300px; margin: 0 auto;">
+            <div class="col text-start" style="max-width: 300px; margin: 0 auto; padding-top: 65px;">
                 <h3 style="color: #00aaff; font-weight: 400; font-size: 20px; margin-bottom: 10px;">0.1</h3>
                 <h4 style="font-weight: 500; margin-bottom: 20px;">Penggunaan</h4>
                 <p style="font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
@@ -235,39 +235,32 @@
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                             aria-label="Slide 3"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-                            aria-label="Slide 4"></button> <!-- Slide keempat -->
+                            aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                            aria-label="Slide 5"></button>
                     </div>
 
                     <!-- Isi Carousel -->
                     <div class="carousel-inner">
                         <!-- Slide 1 -->
                         <div class="carousel-item active">
-                            <img src="https://i.ibb.co.com/F0TgvmV/Frame-4-1-waifu2x-art-noise3-scale.png"
-                                class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <p style="font-size: 1rem; line-height: normal;">Penjelasan slide kesatu...</p>
-                            </div>
+                            <img src="{{asset('welcome/umkm1.png')}}" class="d-block w-100" alt="...">
                         </div>
                         <!-- Slide 2 -->
                         <div class="carousel-item">
-                            <img src="https://via.placeholder.com/600x400" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <p style="font-size: 1rem;">Penjelasan slide kedua...</p>
-                            </div>
+                            <img src="{{asset('welcome/umkm2.png')}}" class="d-block w-100" alt="...">
                         </div>
                         <!-- Slide 3 -->
                         <div class="carousel-item">
-                            <img src="https://via.placeholder.com/600x400" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <p style="font-size: 1rem;">Penjelasan slide ketiga...</p>
-                            </div>
+                            <img src="{{asset('welcome/umkm3.png')}}" class="d-block w-100" alt="...">
                         </div>
                         <!-- Slide 4 -->
                         <div class="carousel-item">
-                            <img src="https://via.placeholder.com/600x400" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <p style="font-size: 1rem;">Penjelasan slide keempat...</p>
-                            </div>
+                            <img src="{{asset('welcome/umkm4.png')}}" class="d-block w-100" alt="...">
+                        </div>
+                        <!-- Slide 5 -->
+                        <div class="carousel-item">
+                            <img src="{{asset('welcome/umkm5.png')}}" class="d-block w-100" alt="...">
                         </div>
                     </div>
 
@@ -342,24 +335,18 @@
                     <div class="carousel-inner">
                         <!-- Slide 1 -->
                         <div class="carousel-item active">
-                            <img src="https://via.placeholder.com/600x400" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <p style="font-size: 1rem; line-height: normal;">Penjelasan slide pertama...</p>
-                            </div>
+                            <img src="{{asset('welcome/slide1.jpeg')}}" class="d-block w-100" alt="...">
                         </div>
                         <!-- Slide 2 -->
                         <div class="carousel-item">
-                            <img src="https://via.placeholder.com/600x400" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
+                            <img src="{{asset('welcome/slide2.png')}}" class="d-block w-100" alt="...">
+                            {{-- <div class="carousel-caption d-none d-md-block">
                                 <p style="font-size: 1rem;">Penjelasan slide kedua...</p>
-                            </div>
+                            </div> --}}
                         </div>
                         <!-- Slide 3 -->
                         <div class="carousel-item">
-                            <img src="https://via.placeholder.com/600x400" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <p style="font-size: 1rem;">Penjelasan slide ketiga...</p>
-                            </div>
+                            <img src="{{asset('welcome/slide3.png')}}" class="d-block w-100" alt="...">
                         </div>
                         <!-- Slide 4 -->
                         <div class="carousel-item">
