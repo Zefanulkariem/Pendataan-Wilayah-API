@@ -19,8 +19,9 @@ class SpotController extends Controller
      */
     public function index()
     {
+        $title = 'Daftar Lokasi Umkm';
         $cp = Centre_Point::all();
-        return view('masterAdmin.spot.index', compact('cp'));
+        return view('masterAdmin.spot.index', compact('cp', 'title'));
     }
 
     /**
@@ -28,8 +29,9 @@ class SpotController extends Controller
      */
     public function create()
     {
+        $title = 'Tambahkan Lokasi Umkm';
         $centerPoint = Centre_Point::get()->first();
-        return view('backend.Spot.create', ['centerPoint' => $centerPoint]);
+        return view('backend.Spot.create', ['centerPoint' => $centerPoint], compact('title'));
     }
 
     /**
@@ -89,11 +91,12 @@ class SpotController extends Controller
      */
     public function edit(Spot $spot)
     {
+        $title = 'Perbarui Lokasi Umkm';
         $centerPoint = Centre_Point::get()->first();
         return view('backend.Spot.edit', [
             'centerPoint' => $centerPoint,
             'spot' => $spot
-        ]);
+        ], compact('title'));
     }
 
     /**

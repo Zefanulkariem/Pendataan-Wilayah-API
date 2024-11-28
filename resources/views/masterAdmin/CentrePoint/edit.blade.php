@@ -39,7 +39,8 @@
                                 <label for="">Koordinat</label>
                                 <input type="text" value="{{ $centrePoint->koordinat }}"
                                     class="form-control @error('koordinat') is-invalid
-                                @enderror" name="koordinat" id="koordinat">
+                                @enderror"
+                                    name="koordinat" id="koordinat">
                                 @error('koordinat')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

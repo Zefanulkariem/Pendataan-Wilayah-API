@@ -16,13 +16,14 @@ class UserAdminController extends Controller
      */
     public function index()
     {
+        $title = 'Manajemen Pengguna';
         $user = User::all();
         $userMa = auth()->user();
         
         // if ($userMa->hasRole('Master Admin')) {
         //     return view('masterAdmin.user.index', compact('user'));
         // } else if ($userMa->hasRole('Admin')) {
-            return view('admin.user.index', compact('user')); //
+            return view('admin.user.index', compact('user', 'title')); //
         // } else if ($userMa->hasRole('Umkm')) {
         //     return '/umkm';
         // } else if ($userMa->hasRole('Investor')) {
@@ -35,8 +36,9 @@ class UserAdminController extends Controller
      */
     public function create()
     {
+        $title = 'Tambahkan Pengguna';
         $roles = Role::all();
-        return view('admin.user.create', compact('roles'));
+        return view('admin.user.create', compact('roles', 'title'));
     }
 
     /**
@@ -80,8 +82,9 @@ class UserAdminController extends Controller
      */
     public function show($id)
     {
+        $title = 'Detail Pengguna';
         $user = User::findOrFail($id);
-        return view('admin.user.show', compact('user')); 
+        return view('admin.user.show', compact('user', 'title')); 
     }
 
     /**

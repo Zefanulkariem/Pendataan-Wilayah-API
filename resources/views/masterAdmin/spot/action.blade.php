@@ -1,5 +1,5 @@
-<a href="{{ route('spot.edit', $model) }}" class="btn btn-warning btn-sm">Edit</a>
-<button href="{{ route('spot.destroy', $model) }}" class="btn btn-danger btn-sm" id="delete">Delete</button>
+<a href="{{ route('spot.edit', $model) }}" class="btn btn-warning btn-sm">Perbarui</a>
+<button href="{{ route('spot.destroy', $model) }}" class="btn btn-danger btn-sm" id="delete">Hapus</button>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -20,7 +20,7 @@
 
                 document.getElementById('deleteForm').action = href
                 document.getElementById('deleteForm').submit()
-                
+
                 Swal.fire(
                     'Deleted!',
                     'Your file has been deleted.',

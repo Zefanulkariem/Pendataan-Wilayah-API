@@ -13,8 +13,9 @@ class OperasionalController extends Controller
      */
     public function index()
     {
+        $title = 'Operasional';
         $op = Operasional::where('id_umkm', auth()->id())->get();
-        return view('umkm.operasional.index', compact('op'));
+        return view('umkm.operasional.index', compact('op', 'title'));
     }
 
     /**
@@ -22,7 +23,8 @@ class OperasionalController extends Controller
      */
     public function create()
     {
-        return view('umkm.operasional.create');
+        $title = 'Tambahkan Operasional';
+        return view('umkm.operasional.create', compact('title'));
     }
 
     /**
@@ -30,17 +32,23 @@ class OperasionalController extends Controller
      */
     public function store(Request $request)
     {
+        $cek = Operasional::where('id_umkm', auth()->id())->exists();
+        
+        if($cek){
+            return redirect()->back()->with('error', 'Hanya diperbolehkan mengisi data satu kali, Harap hapus data sebelumnya jika ingin memperbarui data.');
+        }
+
         $validate = $request->validate([
-            'jml_karyawan' => 'required|integer',
+            'jml_karyawan' => 'required|numeric',
         ]);
 
         $operasional = new Operasional;
-        $operasional->jml_karyawan = $request->jml_karyawan;
         $operasional->id_umkm = auth()->id();
+        $operasional->jml_karyawan = $request->jml_karyawan;
 
         $operasional->save();
-        Alert::success('Success Title', "Data Berhasil Di Tambahkan ")->autoClose(1000);
-        return redirect()->route('Umkmoperasional.index')->with('success', 'Data Berhasil di Tambah');
+        Alert::success('Success Title', "Data Berhasil Di Tambahkan")->autoClose(1000);
+        return redirect()->route('Umkmoperasional.index')->with('success', 'Data Berhasil di Tambahkan');
     }
 
     /**

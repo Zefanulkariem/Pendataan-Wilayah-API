@@ -55,7 +55,7 @@
                                             administrator untuk mendapatkan bantuan lebih lanjut.</h6>
                                     </div>
                                     {{-- <div class="col-lg-3 text-right"> 
-                                        <a href="@if(auth()->user()->hasRole('Master Admin'))
+                                        <a href="@if (auth()->user()->hasRole('Master Admin'))
                                                     {{ route('MasterAdminhome') }}
                                                 @elseif(auth()->user()->hasRole('Admin'))
                                                     {{ route('Adminhome') }}

@@ -24,6 +24,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/about', function () {
+    return view('tentang');
+});
+
+Route::get('/tutorial', function () {
+    return view('tutorial');
+});
+
 Auth::routes(
     ['register' => false],
 );

@@ -87,7 +87,6 @@
                                                 <a href="{{route('Adminuser.index')}}" class="btn btn-danger">
                                                     <i class="fa fa-sharp fa-light fa-arrow-left"></i> Kembali
                                                 </a>
-                                                <button type="submit" class="btn btn-success">Submit</button>
                                             </div>
                                         </td>
                                     </tr>

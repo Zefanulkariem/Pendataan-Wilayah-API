@@ -13,9 +13,10 @@ class LegalUsahaController extends Controller
      */
     public function index()
     {
+        $title = 'Legalitas Usaha';
         $legalUsaha = KelengkapanLegalitasUsaha::where('id_user', auth()->user()->id)->get();
         // dd($legalUsaha);
-        return view('umkm.legalUsaha.index', compact('legalUsaha'));
+        return view('umkm.legalUsaha.index', compact('legalUsaha', 'title'));
     }
 
     /**
@@ -23,7 +24,8 @@ class LegalUsahaController extends Controller
      */
     public function create()
     {
-        return view('umkm.legalUsaha.create');
+        $title = 'Tambahkan Legalitas Usaha';
+        return view('umkm.legalUsaha.create', compact('title'));
     }
 
     /**
@@ -83,9 +85,10 @@ class LegalUsahaController extends Controller
      */
     public function edit(string $id)
     {
+        $title = 'Perbarui Legalitas Usaha';
         $legalUsaha = KelengkapanLegalitasUsaha::find($id);
         // dd($legalUsaha);
-        return view('umkm.legalUsaha.edit', compact('legalUsaha'));
+        return view('umkm.legalUsaha.edit', compact('legalUsaha', 'title'));
     }
 
     /**

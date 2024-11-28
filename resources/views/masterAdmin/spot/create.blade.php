@@ -4,6 +4,9 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
         integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
 
+    {{-- select2 --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
     <style>
         #map {
             height: 500px;
@@ -38,7 +41,7 @@
                         <div class="form-group">
                             <div class="form-group">
                                 <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama Pemilik:</label>
-                                <select class="form-control" name="id_user">
+                                <select class="js-example-basic-single form-control" name="id_user">
                                     <option value="pilih pemilik umkm">- Pilih pemilik umkm -</option>
                                     @foreach($idUser as $data)
                                     <option value="{{ $data->id }}">{{$data->name}}</option> 
@@ -86,7 +89,7 @@
                         </div>
                         <div class="form-group">
                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Lokasi Umkm:</label>
-                            <select class="form-control" name="id_desa">
+                            <select class="js-example-basic-single form-control" name="id_desa">
                                 <option value="pilih pemilik umkm">- Pilih lokasi -</option>
                                 @foreach($desa as $data)
                                 <option value="{{$data->id}}">{{$data->nama_desa}}</option>
@@ -95,7 +98,7 @@
                         </div>
                         <div class="form-group">
                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Kategori:</label>
-                            <select class="form-control" name="id_jenis_umkm">
+                            <select class="js-example-basic-single form-control" name="id_jenis_umkm">
                                 <option value="pilih pemilik umkm">- Pilih kategori umkm -</option>
                                 @foreach($jk as $data)
                                 <option value="{{$data->id}}">{{$data->jenis_umkm}}</option>
@@ -118,6 +121,16 @@
 @endsection
 
 @push('javascript')
+
+    {{-- select2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+    </script>
+
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <script>

@@ -53,50 +53,32 @@
                     @csrf
                     {{-- email --}}
                     <div class="mb-3">
+                        <label>Alamat Email:</label>
                         <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" placeholder="Masukkan Email" aria-label="Masukkan Email" required autocomplete="email" autofocus>
-
+                        
                         @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ 'Email atau Password yang di masukkan salah' }}</strong>
-                            </span>
+                        <span class="invalid-feedback" role="alert">
+                          <strong>{{ 'Email atau Kata Sandi yang di masukkan salah' }}</strong>
+                        </span>
                         @enderror
-                    </div>
-                    {{-- password --}}
-                    <div class="mb-3">
-                        <input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" placeholder="Masukkan Password" aria-label="Password" required autocomplete="current-password" autofocus>
+                      </div>
+                      {{-- password --}}
+                      <div class="mb-3">
+                        <label>Kata Sandi:</label>
+                        <input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" placeholder="Masukkan Kata Sandi" aria-label="Password" required autocomplete="current-password" autofocus>
 
                         @error('password')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ 'Password yang dimasukkan salah' }}</strong>
+                                <strong>{{ 'Kata Sandi yang dimasukkan salah' }}</strong>
                             </span>
                         @enderror
                     </div>
-                    {{-- remember me --}}
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                        <label class="form-check-label" for="remember">
-                            Ingatkan Aku
-                        </label>
-                    </div>
-                    {{-- submit --}}
                     <div class="text-center">
                       <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Masuk</button>
                     </div>
 
-                    {{-- @if (Route::has('password.request'))
-                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                            Lupa Password?
-                        </a>
-                    @endif --}}
                   </form>
                 </div>
-                {{-- <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                  <p class="mb-4 text-sm mx-auto">
-                    Belum Punya Akun?
-                    <a href="{{url('register')}}" class="text-primary text-gradient font-weight-bold">Register</a>
-                  </p>
-                </div> --}}
               </div>
             </div>
             <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">

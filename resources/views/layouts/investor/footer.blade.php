@@ -7,7 +7,8 @@
                         <script>
                             document.write(new Date().getFullYear())
                         </script>.
-                    <b>All rights reserved.</b></p>
+                        <b>All rights reserved.</b>
+                    </p>
                 </div>
             </div>
         </div>

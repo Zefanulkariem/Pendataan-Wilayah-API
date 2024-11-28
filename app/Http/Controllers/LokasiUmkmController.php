@@ -19,6 +19,7 @@ class LokasiUmkmController extends Controller
      */
     public function index()
     {
+        $title = 'Daftar Lokasi Umkm';
         $lk = LokasiUmkm::whereHas('user.roles', function ($query) {
             $query->where('name', 'Umkm'); //ini namanya closure yah | kondisi
         })->with('user', 'desa.kecamatan', 'jenisUmkm')->get(); //kalo ini metode Eager Loading
@@ -26,9 +27,9 @@ class LokasiUmkmController extends Controller
         $userMa = auth()->user();
 
         if ($userMa->hasRole('Master Admin')) {
-            return view('masterAdmin.spot.index', compact('lk'));
+            return view('masterAdmin.spot.index', compact('lk', 'title'));
         } else if ($userMa->hasRole('Admin')) {
-            return view('admin.spot.index', compact('lk'));
+            return view('admin.spot.index', compact('lk', 'title'));
         }
     }
 
@@ -37,6 +38,7 @@ class LokasiUmkmController extends Controller
      */
     public function create()
     {
+        $title = 'Tambahkan Lokasi Umkm';
         $desa = Desa::all();
         $jk = JenisUmkm::all();
 
@@ -49,9 +51,9 @@ class LokasiUmkmController extends Controller
 
         if ($userMa->hasRole('Master Admin')) {
             // dd($jk);
-            return view('masterAdmin.spot.create', compact('desa', 'centerPoint', 'idUser', 'jk'));
+            return view('masterAdmin.spot.create', compact('desa', 'centerPoint', 'idUser', 'jk', 'title'));
         } else if ($userMa->hasRole('Admin')) {
-            return view('admin.spot.create', compact('desa', 'centerPoint', 'idUser', 'jk'));
+            return view('admin.spot.create', compact('desa', 'centerPoint', 'idUser', 'jk', 'title'));
         }
     }
 
@@ -131,6 +133,7 @@ class LokasiUmkmController extends Controller
      */
     public function edit($id)
     {
+        $title = 'Perbarui Lokasi Umkm';
         $jk = JenisUmkm::all();
         $desa = Desa::all();
 
@@ -143,9 +146,9 @@ class LokasiUmkmController extends Controller
         $userMa = auth()->user();
 
         if ($userMa->hasRole('Master Admin')) {
-            return view('masterAdmin.spot.edit', compact('desa', 'lokasiUmkm', 'idUser', 'jk'));
+            return view('masterAdmin.spot.edit', compact('desa', 'lokasiUmkm', 'idUser', 'jk', 'title'));
         } else if ($userMa->hasRole('Admin')) {
-            return view('admin.spot.edit', compact('desa', 'lokasiUmkm', 'idUser', 'jk'));
+            return view('admin.spot.edit', compact('desa', 'lokasiUmkm', 'idUser', 'jk', 'title'));
         }
     }
 

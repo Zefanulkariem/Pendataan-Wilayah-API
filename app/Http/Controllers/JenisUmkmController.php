@@ -14,8 +14,9 @@ class JenisUmkmController extends Controller
      */
     public function index()
     {
+        $title = 'Daftar Kategori Umkm';
         $jenis_umkm = JenisUmkm::all();
-        return view('masterAdmin.jenisUmkm.index', compact('jenis_umkm'));
+        return view('masterAdmin.jenisUmkm.index', compact('jenis_umkm', 'title'));
     }
 
     /**
@@ -23,7 +24,8 @@ class JenisUmkmController extends Controller
      */
     public function create()
     {
-        return view('masterAdmin.jenisUmkm.create');
+        $title = 'Tambahkan Kategori Umkm';
+        return view('masterAdmin.jenisUmkm.create', compact('title'));
     }
 
     /**
@@ -57,8 +59,9 @@ class JenisUmkmController extends Controller
      */
     public function edit($id)
     {
+        $title = 'Perbarui Data Kategori Umkm';
         $jenis_umkm = JenisUmkm::findOrFail($id);
-        return view('masterAdmin.jenisUmkm.edit', compact('jenis_umkm'));
+        return view('masterAdmin.jenisUmkm.edit', compact('jenis_umkm', 'title'));
     }
 
     /**

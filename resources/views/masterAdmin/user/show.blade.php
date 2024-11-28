@@ -10,10 +10,8 @@
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0">
                             <tbody>
-                                <form action="{{ route('Master Adminuser.update', $user->id) }}" method="POST"
-                                    enctype="multipart/form-data">
+                                <form action="{{ route('Adminuser.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    @method('PUT')
                                     <tr>
                                         {{-- daftar pengguna --}}
                                         <td>
@@ -23,11 +21,12 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan
-                                                                Nama Pengguna:</label>
+                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama
+                                                                Pengguna</label>
                                                             <input type="text"
                                                                 class="form-control @error('name') is-invalid @enderror"
-                                                                name="name" value="{{ old('name', $user->name) }}">
+                                                                name="name" aria-label="Masukkan Nama"
+                                                                value="{{ $user->name }}" readonly>
                                                             @error('name')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -39,11 +38,12 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan
-                                                                Alamat Email:</label>
+                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Alamat
+                                                                Email</label>
                                                             <input type="email"
                                                                 class="form-control @error('email') is-invalid @enderror"
-                                                                name="email" value="{{ old('email', $user->email) }}">
+                                                                name="email" aria-label="Masukkan Email"
+                                                                value="{{ $user->email }}" readonly>
                                                             @error('email')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -55,11 +55,12 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan
-                                                                Kata Sandi:</label>
+                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Kata
+                                                                Sandi</label>
                                                             <input type="password"
                                                                 class="form-control @error('password') is-invalid @enderror"
-                                                                name="password" placeholder="(Opsional)">
+                                                                name="password" aria-label="Password" value="••••••••"
+                                                                readonly>
                                                             @error('password')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -71,64 +72,46 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih
-                                                                Peran:</label>
-                                                            <select class="form-control" name="role">
-                                                                @foreach ($roles as $role)
-                                                                    @if ($role->name != 'Master Admin')
-                                                                        <option value="{{ $role->name }}">
-                                                                            {{ ucfirst($role->name) }}
-                                                                        </option>
-                                                                    @endif
-                                                                @endforeach
-                                                            </select>
+                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Role</label>
+                                                            <input type="text"
+                                                                class="form-control @error('role') is-invalid @enderror"
+                                                                name="role" aria-label="Role"
+                                                                value="{{ $user->getRoleNames()->first() }}"
+                                                                readonly="readonly">
                                                         </div>
                                                     </div>
                                                     {{-- gender --}}
                                                     <div class="col-md-12">
-                                                        <div class="form-group mb-3">
+                                                        <div class="form-group">
                                                             <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih
-                                                                Jenis Kelamin:</label>
-                                                            <div>
-                                                                <input type="radio" name="gender" value="pria"
-                                                                    {{ old('gender', $user->gender) == 'pria' ? 'checked' : '' }}
-                                                                    required> Pria
-                                                                <input type="radio" name="gender" value="wanita"
-                                                                    {{ old('gender', $user->gender) == 'wanita' ? 'checked' : '' }}
-                                                                    required> Wanita
-                                                            </div>
+                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Jenis
+                                                                Kelamin:</label>
+                                                            <input type="text"
+                                                                class="form-control @error('gender') is-invalid @enderror"
+                                                                name="gender"
+                                                                value="{{ $user->gender ?? 'Tidak ingin memberitahu' }}"
+                                                                readonly>
                                                         </div>
                                                     </div>
-                                                    {{-- no_telpon --}}
+                                                    {{-- no_telp --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan
-                                                                Nomor Telpon:</label>
+                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nomor
+                                                                Telepon:</label>
                                                             <input type="text"
                                                                 class="form-control @error('no_telp') is-invalid @enderror"
-                                                                name="no_telp" aria-label="Masukkan Nomor Telepon"
-                                                                value="{{ old('no_telp', $user->no_telp) }}"
-                                                                oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-                                                                maxlength="12">
-                                                            @error('no_telp')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
+                                                                name="no_telp"
+                                                                value="{{ $user->no_telp ?? 'Tidak ingin memberitahu' }}"
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                     {{-- alamat --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Alamat
-                                                                Tinggal:</label>
-                                                            <textarea name="alamat" class="text-dark form-control summernote @error('alamat') is-invalid @enderror" rows="7">{{ old('alamat', $user->alamat) }}</textarea>
-                                                            @error('alamat')
-                                                                <div class="invalid-feedback">{{ $message }}</div>
-                                                            @enderror
+                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Alamat:</label>
+                                                            <textarea readonly class="form-control @error('alamat') is-invalid @enderror" name="alamat" rows="7">{{ $user->alamat ?? 'Tidak ingin memberitahu' }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -137,7 +120,6 @@
                                                 <a href="{{ route('Master Adminuser.index') }}" class="btn btn-danger">
                                                     <i class="fa fa-sharp fa-light fa-arrow-left"></i> Kembali
                                                 </a>
-                                                <button type="submit" class="btn btn-success">Perbarui</button>
                                             </div>
                                         </td>
                                     </tr>
