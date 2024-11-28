@@ -26,6 +26,7 @@
             top: 8%;
             left: 50%;
             transform: translate(-50%, -50%);
+            border: 1px solid #ddddddc1;
             border-radius: 15px;
             padding: 4px;
             background: rgba(202, 202, 202, 0.349);
@@ -327,8 +328,6 @@
                             aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouselContainer5" data-bs-slide-to="2"
                             aria-label="Slide 3"></button>
-                        <button type="button" data-bs-target="#carouselContainer5" data-bs-slide-to="3"
-                            aria-label="Slide 4"></button>
                     </div>
 
                     <!-- Isi Carousel -->
@@ -347,13 +346,6 @@
                         <!-- Slide 3 -->
                         <div class="carousel-item">
                             <img src="{{asset('welcome/slide3.png')}}" class="d-block w-100" alt="...">
-                        </div>
-                        <!-- Slide 4 -->
-                        <div class="carousel-item">
-                            <img src="https://via.placeholder.com/600x400" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <p style="font-size: 1rem;">Penjelasan slide keempat...</p>
-                            </div>
                         </div>
                     </div>
 
