@@ -119,7 +119,7 @@
             display: inline-block;
             width: 3px;
             height: 50px;
-            background-color: #00aaff;
+            background-color: #6fe056;
             transition: transform 0.3s ease-in-out;
         }
 
@@ -134,6 +134,26 @@
             font-size: 18px;
             line-height: 1.5;
             font-weight: 500;
+        }
+
+        a.btn {
+            outline: 2px solid #6fe056;
+            color: #6fe056;
+        }
+        
+        a.btn:hover {
+            color: #ffff;
+            outline: 2px solid #305e25;
+            background-color: #36692a;
+        }
+        
+        .text-start .btn:hover {
+            outline: 2px solid #305e25;
+            background-color: #36692a;
+        }
+
+        #tentang-kami {
+            background-color: #4b943b;
         }
     </style>
 </head>
@@ -163,7 +183,7 @@
                 <p data-aos="fade-right" data-aos-delay="630">Selamat datang di website</p>
                 <p data-aos="fade-right" data-aos-delay="700" class="P3">Pendataan Wilayah Kab. Bandung</p>
                 <p class="col-md-3 p2" style="line-height: 1.2;">Sistem pendataan dengan map interaktif Tekan untuk melihat selengkapnya</p>
-                <a href="#selengkapnya" type="button" class="btn btn-outline-info"
+                <a href="#selengkapnya" type="button" class="btn "
                     style="border-radius: 30px;">Selengkapnya</a>
             </div>
         </div>
@@ -184,29 +204,28 @@
     <div class="container-fluid text-center bg-black text-light" id="selengkapnya"
         style="height: 70vh; background-image: url('https://i.ibb.co.com/2y6rtvB/Frame-5-1-waifu2x-art-noise3-scale.png'); background-size: cover; background-position: center;">
         <div class="row align-items-center h-100">
-            <div class="col text-start" style="max-width: 300px; margin: 0 auto; padding-top: 65px;">
-                <h3 style="color: #00aaff; font-weight: 400; font-size: 20px; margin-bottom: 10px;">0.1</h3>
+            <div class="col text-start" style="max-width: 300px; margin: 0 auto; padding-top: 50px;">
+                <h3 style="color: #6fe056; font-weight: 400; font-size: 20px; margin-bottom: 10px;">0.1</h3>
                 <h4 style="font-weight: 500; margin-bottom: 20px;">Penggunaan</h4>
                 <p style="font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
                     Pengguna dapat melakukan pencarian dan informasi data UMKM dengan menggunakan maps interaktif,
-                    pengguna internal dapat memantau perkembangan usaha anda melalui dashboard mulai dari status
-                    legalitas hingga peluang pendanaan.
+                    pengguna internal dapat memantau perkembangan usaha anda melalui dashboard.
                 </p>
             </div>
             <div class="col text-start" style="max-width: 300px; margin: 0 auto;">
-                <h3 style="color: #00aaff; font-weight: 400; font-size: 20px; margin-bottom: 10px;">0.2</h3>
+                <h3 style="color: #6fe056; font-weight: 400; font-size: 20px; margin-bottom: 10px;">0.2</h3>
                 <h4 style="font-weight: 500; margin-bottom: 15px;">Pengelolaan</h4>
                 <p style="font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
-                    Pengelolaan data UMKM dilakukan dengan aman dan terstruktur, memastikan informasi legalitas dan
+                    Pengelolaan dilakukan dengan aman dan terstruktur, memastikan informasi legalitas dan
                     pendanaan selalu up-to-date.
                 </p>
             </div>
             <div class="col text-start" style="max-width: 300px; margin: 0 auto;">
-                <h3 style="color: #00aaff; font-weight: 400; font-size: 20px;margin-bottom: 10px;">0.3</h3>
+                <h3 style="color: #6fe056; font-weight: 400; font-size: 20px;margin-bottom: 10px;">0.3</h3>
                 <h4 style="font-weight: 500; margin-bottom: 15px;">Pengembangan</h4>
                 <p style="font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
                     Kami terus mengembangkan fitur-fitur baru untuk mendukung UMKM dalam berekspansi, termasuk ke pasar
-                    internasional.
+                    nasional.
                 </p>
             </div>
         </div>
@@ -215,19 +234,14 @@
     <div class="container-fluid text-center bg-black text-light"
         style="height: 70vh; background-image: url('https://i.ibb.co.com/qn1pCh6/Frame-6-waifu2x-art-noise3-scale.png'); background-size: cover; background-position: center;">
         <div class="row h-100 align-items-center">
-            <!-- Teks di sebelah kiri -->
             <div class="col-md-4 text-start ps-5">
                 <h5 style="font-size: 1.5rem; font-weight: 500;">Beberapa dokumentasi dari web ini</h5>
-                <!-- Ubah ukuran judul di sini -->
                 <p style="font-size: 0.9rem;">Gambar di tengah adalah dokumentasi web ini</p>
-                <!-- Ubah ukuran teks kecil di sini -->
             </div>
 
-            <!-- Carousel di tengah -->
             <div class="col-md-4">
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"
                     style="border-radius: 5px; overflow: hidden;">
-                    <!-- Indikator Carousel -->
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
                             class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -265,7 +279,7 @@
                         </div>
                     </div>
 
-                    <!-- Kontrol Carousel -->
+                    
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -279,15 +293,12 @@
                 </div>
             </div>
 
-            <!-- Teks di sebelah kanan -->
             <div class="col-md-4 text-end pe-5">
                 <h5 style="font-size: 1.5rem; font-weight: 500; text-align: left;">Penjelasan</h5>
-                <!-- Ubah ukuran judul di sini -->
                 <p style="font-size: 0.9rem; line-height: normal; text-align: left;">Aplikasi ini menginput pendataan
                     komoditi atau kekuatan UMKM di daerah kabupaten bandung. Maps interaktif sebagai alat utama untuk
-                    memudahkan pendataan UMKM. Melalui peta ini, pihak terkait dapat dengan mudah melihat distribusi
-                    UMKM dan dilengkapi dengan informasi detail mengenai status legalitas, jenis usaha, dan peluang
-                    pendanaan.</p> <!-- Ubah ukuran teks kecil di sini -->
+                    memudahkan pendataan UMKM. Melalui peta ini, pihak terkait juga dilengkapi dengan informasi detail
+                    mengenai jenis usaha, profil UMKM, dan lokasi UMKM</p>
             </div>
         </div>
     </div>
@@ -299,20 +310,18 @@
             <div class="col-md-6 text-start ps-5">
                 <!-- Teks pertama -->
                 <h5 style="font-size: 1.5rem; font-weight: 500;">
-                    <span style="color: #00aaff;">1.0</span> Fitur
+                    <span style="color: #6fe056;">1.0</span> Fitur
                 </h5>
                 <p style="font-size: 0.9rem;">Gambar di samping adalah beberapa fitur dari web ini</p>
                 <br>
                 <br>
                 <!-- Teks kedua -->
                 <h5 style="font-size: 1.5rem; font-weight: 500;">
-                    <span style="color: #00aaff;">2.0</span> Penjelasan mengenai fitur web ini
+                    <span style="color: #6fe056;">2.0</span> Penjelasan mengenai fitur web ini
                 </h5>
                 <p style="font-size: 0.9rem; line-height: normal;">
-                    Pengguna dapat melihat maps interaktif yang menampilkan lokasi Umkm di wilayah kabupaten bandung, di
-                    lengkapi dengan profil usaha, status legalitas, dan kebutuhan pendanaan. fitur selanjutnya terdapat
-                    indikator status legalitas yang memudahkan umKM memperbaharui dokumen usaha, dan menyediakan fitur
-                    analitik visual berupa statistik, dan performa UMKM
+                    Pengguna dapat melihat maps interaktif yang menampilkan lokasi UMKM di wilayah kabupaten bandung, di
+                    lengkapi dengan profil usaha, status legalitas, dan kebutuhan pendanaan.
                 </p>
             </div>
 
@@ -364,7 +373,7 @@
         </div>
     </div>
     <!-- Container6 -->
-    <div class="container-fluid bg-primary text-white" id="tentang-kami"
+    <div class="container-fluid text-white" id="tentang-kami"
         style="height: 50vh; display: flex; flex-direction: column; justify-content: center; padding-left: 15%; padding-right: 15%;">
         <h1 class="mb-3 text-start" style="font-size: 2rem;">Tentang kami</h1>
         <p class="mb-4 text-start" style="font-size: 1rem; line-height: 1.5;">
@@ -372,13 +381,13 @@
             dengan Investor atau pihak terkait melalui platform berbasis maps interaktif.
         </p>
         <div class="text-start">
-            <a href="{{ url('/about') }}" class="btn btn-outline-light btn-sm"
+            <a href="{{ url('/about') }}" class="btn btn-sm text-white"
                 style="border-radius: 30px;">Selengkapnya</a>
         </div>
     </div>
     <!-- Container7 (footer) -->
     <div class="container-fluid bg-white text-dark"
-        style="height: 60vh; display: flex; flex-direction: column; justify-content: center; position: relative; padding: 0; background-image: url('https://i.ibb.co.com/F8pkDqB/Frame-1-4-waifu2x-art-noise3-scale.png'); background-size: cover; background-position: center;">
+        style="height: 60vh; display: flex; flex-direction: column; justify-content: center; position: relative; padding: 0; background-image: url('https://i.ibb.co.com/zbbmbBR/7a25d82f54c0a6951ef42ce68e8ece63ddd117f6-s2-n3-y1.jpg'); background-size: cover; background-position: bottom;">
         <!-- Bagian Teks Kiri -->
         <div style="position: absolute; top: 50%; left: 10%; transform: translateY(-50%); text-align: left;">
             <p style="font-size: 1.8rem; line-height: normal; margin: 0; font-weight: 400;">
@@ -387,16 +396,6 @@
                 Kabupaten<br>
                 Bandung
             </p>
-        </div>
-
-        <!-- Bagian Dukungan -->
-        <div class="text-center" style="margin-bottom: 60px;">
-            <p style="font-size: 1.2rem; font-weight: 500; margin-bottom: 40px;">Di dukung oleh</p>
-            <div style="display: flex; justify-content: center; gap: 40px;">
-                <div style="width: 90px; height: 90px; background-color: #d3d3d3; border-radius: 50%;"></div>
-                <div style="width: 90px; height: 90px; background-color: #d3d3d3; border-radius: 50%;"></div>
-                <div style="width: 90px; height: 90px; background-color: #d3d3d3; border-radius: 50%;"></div>
-            </div>
         </div>
 
         <!-- Bagian Kontak Kami -->
