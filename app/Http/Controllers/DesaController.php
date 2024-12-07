@@ -15,9 +15,10 @@ class DesaController extends Controller
      */
     public function index()
     {
+        $title = 'Daftar Desa';
         $desa = Desa::all();
         $kecamatan = Kecamatan::all();
-        return view('masterAdmin.desa.index', compact('desa', 'kecamatan'));
+        return view('masterAdmin.desa.index', compact('desa', 'kecamatan', 'title'));
     }
 
     /**
@@ -25,8 +26,9 @@ class DesaController extends Controller
      */
     public function create()
     {
+        $title = 'Tambahkan Data Desa';
         $kecamatan = Kecamatan::all();
-        return view('masterAdmin.desa.create', compact('kecamatan'));
+        return view('masterAdmin.desa.create', compact('kecamatan', 'title'));
     }
 
     /**
@@ -62,9 +64,10 @@ class DesaController extends Controller
      */
     public function edit($id)
     {
+        $title = 'Perbarui Data Desa';
         $desa = Desa::findOrFail($id);
         $kecamatan = Kecamatan::all();
-        return view('masterAdmin.desa.edit', compact('desa', 'kecamatan'));
+        return view('masterAdmin.desa.edit', compact('desa', 'kecamatan', 'title'));
     }
     
     /**

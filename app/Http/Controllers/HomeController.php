@@ -9,7 +9,6 @@ use App\Models\LokasiUmkm;
 use Illuminate\Support\Facades\DB;
 
 use Carbon\Carbon;
-// use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -30,37 +29,43 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $title = 'Dasbor';
+
+        // panggil & hitung semua jumlah user
         $jmlUser = User::count();
 
-        $jmlUserBulanLalu = User::whereMonth('created_at', Carbon::now()->subMonth()->month)
-                        ->whereYear('created_at', Carbon::now()->subMonth()->year)
-                        ->count();
-
-        $persen = 0;
-
-        if ($jmlUserBulanLalu > $persen) {
-            $persen = (($jmlUser - $jmlUserBulanLalu) / $jmlUserBulanLalu) * 100;
-        } else {
-            $persen = 100;
-        }
-
+        // panggil & hitung jumlah pengguna umkm
         $jmlUserUmkm = User::role('Umkm')->count();
+
+        // panggil & hitung jumlah investor
         $jmlUserInvestor = User::role('Investor')->count();
+
+        //panggil & hitung jumlah umkm
         $jmlUmkm = LokasiUmkm::count();
 
+        //panggil data jenis umkm 5 buah
         $jenisUmkm = JenisUmkm::withcount('lokasi_Umkm')->inRandomOrder()->take(5)->get();
 
-        // $pengguna = DB::table('users')
-        //     ->select(DB::raw('MONTHNAME(created_at) as month'), DB::raw('COUNT(*) as total'))
-        //     ->groupBy('month')
-        //     ->orderBy(DB::raw('MONTH(created_at)'))
-        //     ->get();
-
-        // $label = $pengguna->pluck('month');
-        // $data = $pengguna->pluck('total');
-
-        // dd($jenisUmkm);
-        return view('masterAdmin.index', compact('jmlUser', 'persen', 'jmlUserUmkm', 'jmlUserInvestor', 'jmlUmkm', 'jenisUmkm'));
+        //panggil data lokasi umkm
+        $lokasis = LokasiUmkm::with('desa.kecamatan', 'user')
+            ->get()
+            ->map(function ($lokasi) {
+                $koordinat = explode(',', $lokasi->koordinat); // Pisahkan latitude dan longitude
+                return [
+                    'lat' => $koordinat[0],
+                    'lon' => $koordinat[1],
+                    'desa' => $lokasi->desa->nama_desa ?? 'Tidak diketahui',
+                    'kecamatan' => $lokasi->desa->kecamatan->nama_kecamatan ?? 'Tidak diketahui',
+                    'img' => $lokasi->image ? asset('upload/spots/' . $lokasi->image) : 'default_image_url',
+                    'nama' => $lokasi->user->name,
+                    'kelamin' => $lokasi->user->gender,
+                    'namaUMKM' => $lokasi->nama_umkm,
+                    'jenisUMKM' => $lokasi->jenisUmkm->jenis_umkm,
+                    'link' => $lokasi->link,
+                ];
+            });
+            // dd($lokasis);
+        return view('masterAdmin.index', compact('jmlUser', 'jmlUserUmkm', 'jmlUserInvestor', 'jmlUmkm', 'jenisUmkm', 'lokasis', 'title'));
     }
 
 
@@ -69,8 +74,9 @@ class HomeController extends Controller
         // dd(auth()->user()->getRoleNames());
         // if (auth()->user()->can('view_dashboard')) {
             // }
+        $title = 'Manajemen Pengguna';
         $user = User::all();
-        return view('masterAdmin.user.index', compact('user')); 
+        return view('masterAdmin.user.index', compact('user', 'title')); 
 
         return abort(403);
     }
@@ -80,7 +86,8 @@ class HomeController extends Controller
         // dd(auth()->user()->getRoleNames());
         // if (auth()->user()->can('view_dashboard')) {
             // }
-        return view('masterAdmin.profile.index'); 
+        $title = 'Profil';
+        return view('masterAdmin.profile.index', compact('title')); 
 
         return abort(403);
     }

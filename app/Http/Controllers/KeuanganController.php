@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Keuangan;
+
 use Illuminate\Http\Request;
+use App\Models\Keuangan;
 
 use Alert;
 
@@ -13,8 +14,10 @@ class KeuanganController extends Controller
      */
     public function index()
     {
+        $title = 'Daftar Keuangan';
         $uang = Keuangan::where('id_umkm', auth()->id())->get();
-        return view('umkm.keuangan.index', compact('uang'));
+
+        return view('umkm.keuangan.index', compact('uang', 'title'));
     }
 
     /**
@@ -22,7 +25,8 @@ class KeuanganController extends Controller
      */
     public function create()
     {
-        return view('umkm.keuangan.create');
+        $title = 'Tambahkan Keuangan';
+        return view('umkm.keuangan.create', compact('title'));
     }
 
     /**

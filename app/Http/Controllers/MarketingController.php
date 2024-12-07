@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Marketing;
+
 use Illuminate\Http\Request;
+use App\Models\Marketing;
 
 use Alert;
 
@@ -13,8 +14,9 @@ class MarketingController extends Controller
      */
     public function index()
     {
-        $market = Marketing::latest()->get();
-        return view('umkm.marketing.index', compact('market'));
+        $title = 'Daftar Marketing';
+        $market = Marketing::where('id_umkm', auth()->id())->get();
+        return view('umkm.marketing.index', compact('market', 'title'));
     }
 
     /**
@@ -22,7 +24,8 @@ class MarketingController extends Controller
      */
     public function create()
     {
-        return view('umkm.marketing.create');
+        $title = 'Tambahkan Daftar Marketing';
+        return view('umkm.marketing.create', compact('title'));
     }
 
     /**

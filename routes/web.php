@@ -13,7 +13,6 @@ use App\Http\Controllers\DesaController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\CentrePointController;
 use App\Http\Controllers\LokasiUmkmController;
-use App\Http\Controllers\PemilikUmkmController;
 use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\LegalUsahaController;
 use App\Http\Controllers\OperasionalController;
@@ -23,6 +22,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/about', function () {
+    return view('tentang');
+});
+
+Route::get('/tutorial', function () {
+    return view('tutorial');
 });
 
 Auth::routes(
@@ -45,7 +52,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'can:view_master
     Route::resource('desa', DesaController::class); //menampilkan data desa
     Route::resource('spot', LokasiUmkmController::class); //menampilkan data lokasi umkm
     Route::resource('centre-point', CentrePointController::class); //latihan
-    Route::resource('kepemilikan-umkm', PemilikUmkmController::class); //menampilkan data profil pemilik
 });
 Route::get('/centre-point/data', [DataController::class,'centrepoint'])->name('centre-point.data');
 
@@ -55,7 +61,6 @@ Route::group(['prefix' => 'dashboard-admin', 'middleware' => ['auth', 'can:view_
     Route::resource('user', UserAdminController::class);
     Route::get('/profile', [AdminController::class, 'profile'])->name('profile.index');
     Route::resource('spot', LokasiUmkmController::class);
-    Route::resource('kepemilikan-umkm', PemilikUmkmController::class);
 });
 
 // umkm

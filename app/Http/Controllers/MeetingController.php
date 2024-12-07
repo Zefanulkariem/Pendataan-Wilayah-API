@@ -15,10 +15,11 @@ class MeetingController extends Controller
      */
     public function index()
     {
+        $title = 'Daftar Meeting';
         $umkm = User::role('umkm')->get();
         $meeting = Meeting::where('id_investor', auth()->id())->get();
         // dd($umkm);
-        return view('investor.meeting.index', compact('umkm', 'meeting'));
+        return view('investor.meeting.index', compact('umkm', 'meeting', 'title'));
     }
 
     /**
@@ -26,8 +27,9 @@ class MeetingController extends Controller
      */
     public function create()
     {
+        $title = 'Tambahkan Jadwal Meeting';
         $umkm = User::role('umkm')->get();
-        return view('investor.meeting.create', compact('umkm'));
+        return view('investor.meeting.create', compact('umkm', 'title'));
     }
 
     /**

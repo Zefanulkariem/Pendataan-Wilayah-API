@@ -13,8 +13,9 @@ class KecamatanController extends Controller
      */
     public function index()
     {
+        $title = 'Daftar Kecamatan';
         $kecamatan = Kecamatan::all();
-        return view('masterAdmin.kecamatan.index', compact('kecamatan'));
+        return view('masterAdmin.kecamatan.index', compact('kecamatan', 'title'));
     }
     
     /**
@@ -22,7 +23,8 @@ class KecamatanController extends Controller
      */
     public function create()
     {
-        return view('masterAdmin.kecamatan.create');
+        $title = 'Tambahkan Data Kecamatan';
+        return view('masterAdmin.kecamatan.create', compact('title'));
     }
 
     /**
@@ -56,8 +58,9 @@ class KecamatanController extends Controller
      */
     public function edit($id)
     {
+        $title = 'Perbarui Data Kecamatan';
         $kecamatan = Kecamatan::findOrFail($id);
-        return view('masterAdmin.kecamatan.edit', compact('kecamatan'));
+        return view('masterAdmin.kecamatan.edit', compact('kecamatan', 'title'));
     }
 
     /**
