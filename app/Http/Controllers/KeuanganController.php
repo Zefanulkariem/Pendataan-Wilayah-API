@@ -37,7 +37,11 @@ class KeuanganController extends Controller
             'outcome' => 'required|string',
         ]);
         
-        
+    
+        $profit_loss = $request->income - $request->outcome;
+
+        // Tentukan status
+        $status = $profit_loss >= 0 ? 'Profit' : 'Loss';
     
         // Simpan data keuangan
         $uang = new Keuangan;
@@ -45,7 +49,8 @@ class KeuanganController extends Controller
         $uang->tahun = $request->tahun;
         $uang->income = $request->income;
         $uang->outcome = $request->outcome;
-        $uang->profit_loss = $request->income -= $request->outcome;
+        $uang->profit_loss = $profit_loss; // Gunakan hasil perhitungan
+        $uang->status = $status; // Simpan status
         $uang->id_umkm = auth()->id();
     
         $uang->save();

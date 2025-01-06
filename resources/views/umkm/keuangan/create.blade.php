@@ -79,6 +79,12 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Status (Akan Ditentukan Otomatis):</label>
+                                             <input type="text" class="form-control" value="Profit atau Loss" disabled>
+                                     </div>
+                                </div>
                                 </div>
                             </div>
                             <div class="px-4 py-1">

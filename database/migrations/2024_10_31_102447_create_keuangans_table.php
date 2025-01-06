@@ -20,7 +20,8 @@ return new class extends Migration
             $table->integer('income');
             $table->integer('outcome');
             $table->integer('profit_loss');
-            $table->timestamps();
+            $table->string('status');
+            $table->timestamps();   
         });
     }
 
