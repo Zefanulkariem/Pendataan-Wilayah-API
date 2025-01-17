@@ -25,8 +25,7 @@
                                 </h5>
                                 {{-- <p class="mb-0">
                     <span class="text-success text-sm font-weight-bolder">+{{ number_format($persen) }}%</span>
-                    sejak bulan lalu
-                  </p> --}}
+                    sejak bulan lalu </p> --}}
                             </div>
                         </div>
                         <div class="col-4 text-end">

@@ -23,7 +23,7 @@
   <title>
     Login - PWKB 
   </title>
-  <!--     Fonts and icons     -->
+  <!-- Fonts and icons -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <!-- Nucleo Icons -->
   <link href="{{asset('admin/assets/css/nucleo-icons.css')}}" rel="stylesheet" />
@@ -65,18 +65,30 @@
                       {{-- password --}}
                       <div class="mb-3">
                         <label>Kata Sandi:</label>
-                        <input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" placeholder="Masukkan Kata Sandi" aria-label="Password" required autocomplete="current-password" autofocus>
-
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ 'Kata Sandi yang dimasukkan salah' }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                        <div class="input-group" id="show_hide_password">
+                          <input 
+                            id="password" 
+                            type="password" 
+                            class="form-control form-control-lg @error('password') is-invalid @enderror" 
+                            name="password" 
+                            placeholder="Masukkan Kata Sandi" 
+                            aria-label="Password" 
+                            required 
+                            autocomplete="current-password" 
+                            autofocus>
+                          @error('password')
+                          <span class="invalid-feedback" role="alert">
+                            <strong>{{ 'Kata Sandi yang dimasukkan salah' }}</strong>
+                          </span>
+                          @enderror
+                          <button type="button" class="input-group-text bg-transparent toggle-password">
+                            <small><b>Tampilkan</b></small>
+                          </button>
+                        </div>
+                      </div>                      
                     <div class="text-center">
                       <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Masuk</button>
                     </div>
-
                   </form>
                 </div>
               </div>
@@ -100,6 +112,21 @@
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+    $(".toggle-password").on('click', function () {
+      const passwordField = $('#show_hide_password input');
+      const fieldType = passwordField.attr("type") === "password" ? "text" : "password";
+      passwordField.attr('type', fieldType);
+
+      const toggleText = fieldType === "password" ? "Tampilkan" : "Sembunyikan";
+      $(this).find("b").text(toggleText);
+    });
+  });
+  </script>
+
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {

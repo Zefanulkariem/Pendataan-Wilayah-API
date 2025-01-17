@@ -12,120 +12,118 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid py-4">
-        <div class="row">
-            <div class="col-xl-6 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Selamat Datang Kembali!</p>
-                                    <h5 class="font-weight-bolder">
-                                        {{ Auth::user()->name }}
-                                    </h5>
-                                    <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder"></span>
-                                        Saat ini Hari
-                                        <b>{{ \Carbon\Carbon::now()->locale('id')->translatedFormat('l, F Y') }}</b>
-                                    </p>
-                                    {{-- <p class="mb-0">
-                                        Semoga harimu menyenangkan 🌟
-                                    </p> --}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Jumlah Umkm Saat Ini</p>
-                                    <h5 class="font-weight-bolder">
-                                        {{ $jmlUmkm ?? 0 }} Umkm
-                                    </h5>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Jumlah Pemilik Umkm Saat ini</p>
-                                    <h5 class="font-weight-bolder">
-                                        {{ $jmlUserUmkm ?? 0 }} Pemilik
-                                    </h5>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                                    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
+    <div class="row pb-4">
+        <div class="col-xl-6 col-sm-6 mb-xl-0 mb-4">
+            <div class="card">
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="numbers">
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Selamat Datang Kembali!</p>
+                                <h5 class="font-weight-bolder">
+                                    {{ Auth::user()->name }}
+                                </h5>
+                                <p class="mb-0">
+                                    <span class="text-success text-sm font-weight-bolder"></span>
+                                    Saat ini Hari
+                                    <b>{{ \Carbon\Carbon::now()->locale('id')->translatedFormat('l, F Y') }}</b>
+                                </p>
+                                {{-- <p class="mb-0">
+                                    Semoga harimu menyenangkan 🌟
+                                </p> --}}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row mt-4">
-            <div class="col-lg-7 mb-lg-0 mb-4">
-                <div class="card">
-                    <div class="card-header pb-0 pt-3 bg-transparent">
-                        <h6 class="text-capitalize">Lokasi Umkm Kab. Bandung</h6>
-                    </div>
-                    <hr class="horizontal dark">
-                    <div class="card-body p-3 pt-0">
-                        <div class="filter-container">
-                            <label for="kecamatan-filter">Kecamatan:</label>
-                            <div class="col-4 pb-3">
-                                <select class="form-control" id="kecamatan-filter">
-                                    <option value="all">Semua</option>
-                                </select>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+            <div class="card">
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="numbers">
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Jumlah Umkm Saat Ini</p>
+                                <h5 class="font-weight-bolder">
+                                    {{ $jmlUmkm ?? 0 }} Umkm
+                                </h5>
                             </div>
-                            <div id="map" class="rounded" style="box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.15);">
+                        </div>
+                        <div class="col-4 text-end">
+                            <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                                <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5">
-                <div class="card">
-                    <div class="card-header pb-0 p-3">
-                        <h6 class="mb-0" style="float: left">Daftar Jadwal Meeting</h6>
-                        <a href="{{ route('Investormeeting.index') }}" style="float: right"
-                            class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
-                                class="ni ni-bold-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="col-xl-3 col-sm-6">
+            <div class="card">
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="numbers">
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Jumlah Pemilik Umkm Saat ini</p>
+                                <h5 class="font-weight-bolder">
+                                    {{ $jmlUserUmkm ?? 0 }} Pemilik
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="col-4 text-end">
+                            <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                                <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body p-3">
-                        <ul class="list-group">
-                            @foreach ($meeting as $data)
-                            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex flex-column">
-                                        <h6 class="mb-1 text-dark text-sm">{{$data->judul ?? 'tidak ada'}}</h6>
-                                        <span class="text-xs">{{ $data->tanggal ?? 'tidak ada'}}, <span class="font-weight-bold">{{ $data->lokasi_meeting ?? 'tidak ada' }}</span></span>
-                                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-lg-7 mb-lg-0 mb-4">
+            <div class="card">
+                <div class="card-header pb-0 pt-3 bg-transparent">
+                    <h6 class="text-capitalize">Lokasi Umkm Kab. Bandung</h6>
+                </div>
+                <hr class="horizontal dark">
+                <div class="card-body p-3 pt-0">
+                    <div class="filter-container">
+                        <label for="kecamatan-filter">Kecamatan:</label>
+                        <div class="col-4 pb-3">
+                            <select class="form-control" id="kecamatan-filter">
+                                <option value="all">Semua</option>
+                            </select>
+                        </div>
+                        <div id="map" class="rounded" style="box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.15);">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="card">
+                <div class="card-header pb-0 p-3">
+                    <h6 class="mb-0" style="float: left">Daftar Jadwal Meeting</h6>
+                    <a href="{{ route('Investormeeting.index') }}" style="float: right"
+                        class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                            class="ni ni-bold-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="card-body p-3">
+                    <ul class="list-group">
+                        @foreach ($meeting as $data)
+                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex flex-column">
+                                    <h6 class="mb-1 text-dark text-sm">{{$data->judul ?? 'tidak ada'}}</h6>
+                                    <span class="text-xs">{{ $data->tanggal ?? 'tidak ada'}}, <span class="font-weight-bold">{{ $data->lokasi_meeting ?? 'tidak ada' }}</span></span>
                                 </div>
-                                
-                            </li>
-                            @endforeach
+                            </div>
                             
-                        </ul>
-                    </div>
+                        </li>
+                        @endforeach
+                        
+                    </ul>
                 </div>
             </div>
         </div>

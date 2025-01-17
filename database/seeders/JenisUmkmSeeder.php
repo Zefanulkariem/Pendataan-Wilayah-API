@@ -14,23 +14,23 @@ class JenisUmkmSeeder extends Seeder
     public function run(): void
     {
         $jenis_umkms = [
-            ['jenis_umkm'=>'Kelautan dan perikanan'],
-            ['jenis_umkm'=>'Pertanian'],
-            ['jenis_umkm'=>'Lingkungan hidup dan kehutanan'],
-            ['jenis_umkm'=>'Energi dan sumber daya mineral'],
-            ['jenis_umkm'=>'Ketenaganukliran'],
-            ['jenis_umkm'=>'Perindustrian'],
-            ['jenis_umkm'=>'Perdagangan'],
-            ['jenis_umkm'=>'Pekerjaan umum dan perumahan rakyat'],
-            ['jenis_umkm'=>'Transportasi'],
-            ['jenis_umkm'=>'Kesehatan, obat dan makanan'],
-            ['jenis_umkm'=>'Pendidikan dan kebudayaan'],
-            ['jenis_umkm'=>'Pariwisata'],
-            ['jenis_umkm'=>'Keagamaan'],
-            ['jenis_umkm'=>'Pos, telekomunikasi, penyiaran, serta sistem dan transaksi elektronik'],
-            ['jenis_umkm'=>'Pertahanan dan keamanan'],
-            ['jenis_umkm'=>'Ketenagakerjaan'],
-            ['jenis_umkm'=>'Keuangan']
+            ['jenis_umkm'=>'Pengembangan Permainan'],
+            ['jenis_umkm'=>'Arsitektur'],
+            ['jenis_umkm'=>'Desain Interior'],
+            ['jenis_umkm'=>'Musik'],
+            ['jenis_umkm'=>'Seni Rupa'],
+            ['jenis_umkm'=>'Desain Produk'],
+            ['jenis_umkm'=>'Fesyen'],
+            ['jenis_umkm'=>'Kuliner'],
+            ['jenis_umkm'=>'Film, Animasi dan video'],
+            ['jenis_umkm'=>'Fotografi'],
+            ['jenis_umkm'=>'Desain Komunikasi Visual'],
+            ['jenis_umkm'=>'Televisi dan Radio'],
+            ['jenis_umkm'=>'Kriya'],
+            ['jenis_umkm'=>'Periklanan'],
+            ['jenis_umkm'=>'Seni Pertunjukan'],
+            ['jenis_umkm'=>'Penerbitan'],
+            ['jenis_umkm'=>'Aplikasi']
         ];
 
         DB::table('jenis_umkms')->insert($jenis_umkms);

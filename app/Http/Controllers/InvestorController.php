@@ -25,21 +25,23 @@ class InvestorController extends Controller
         $meeting = Meeting::where('id_investor', auth()->id())->get();
 
         // panggil data lokasi umkm
-        $lokasis = LokasiUmkm::with('desa.kecamatan', 'user')
+        $lokasis = LokasiUmkm::with(['desa.kecamatan', 'user', 'user.keuangan'])
             ->get()
             ->map(function ($lokasi) {
-                $koordinat = explode(',', $lokasi->koordinat); // Pisahkan latitude dan longitude
+                $koordinat = explode(',', $lokasi->koordinat); // Pisah latitude dan longitude
                 return [
                     'lat' => $koordinat[0],
                     'lon' => $koordinat[1],
                     'desa' => $lokasi->desa->nama_desa ?? 'Tidak diketahui',
                     'kecamatan' => $lokasi->desa->kecamatan->nama_kecamatan ?? 'Tidak diketahui',
+                    'deskripsi' =>$lokasi->deskripsi ?? 'Data Kosong',
                     'img' => $lokasi->image ? asset('upload/spots/' . $lokasi->image) : 'default_image_url',
                     'nama' => $lokasi->user->name,
                     'kelamin' => $lokasi->user->gender,
                     'namaUMKM' => $lokasi->nama_umkm,
                     'jenisUMKM' => $lokasi->jenisUmkm->jenis_umkm,
                     'link' => $lokasi->link,
+                    'income' => $lokasi->user->keuangan->income ?? 'Data tidak tersedia',
                 ];
             });
             // dd($lokasis);
@@ -62,15 +64,15 @@ class InvestorController extends Controller
     public function maps()
     {
         
-        $lokasis = LokasiUmkm::with('desa.kecamatan', 'user')
+        $lokasis = LokasiUmkm::with('desa.kecamatan', 'user.keuangan')
             ->get()
             ->map(function ($lokasi) {
-                $koordinat = explode(',', $lokasi->koordinat); // Pisahkan latitude dan longitude
+                $koordinat = explode(',', $lokasi->koordinat); // Pisah latitude dan longitude
                 return [
                     'lat' => $koordinat[0],
                     'lon' => $koordinat[1],
-                    'desa' => $lokasi->desa->nama_desa ?? 'Tidak diketahui',
-                    'kecamatan' => $lokasi->desa->kecamatan->nama_kecamatan ?? 'Tidak diketahui',
+                    'desa' => $lokasi->desa->nama_desa,
+                    'kecamatan' => $lokasi->desa->kecamatan->nama_kecamatan,
                     'deskripsi' =>$lokasi->deskripsi,
                     'img' => $lokasi->image ? asset('upload/spots/' . $lokasi->image) : 'default_image_url',
                     'nama' => $lokasi->user->name,
@@ -78,10 +80,14 @@ class InvestorController extends Controller
                     'namaUMKM' => $lokasi->nama_umkm,
                     'jenisUMKM' => $lokasi->jenisUmkm->jenis_umkm,
                     'link' => $lokasi->link,
+                    'bulan' => $lokasi->user->keuangan->bulan ?? 'Data tidak tersedia',
+                    'income' => $lokasi->user->keuangan->income ?? 'Data tidak tersedia',
+                    'outcome' => $lokasi->user->keuangan->outcome ?? 'Data tidak tersedia',
+                    'profit_loss' => $lokasi->user->keuangan->profit_loss ?? 'Data tidak tersedia',
                 ];
             });
             // dd($lokasis);
-        return view('investor.maps', compact('lokasis')); 
+        return view('investor.maps', compact('lokasis'));
 
         return abort(403);
     }

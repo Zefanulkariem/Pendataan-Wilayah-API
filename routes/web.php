@@ -28,6 +28,10 @@ Route::get('/about', function () {
     return view('tentang');
 });
 
+Route::get('/contactus', function () {
+    return view('contact');
+});
+
 Route::get('/tutorial', function () {
     return view('tutorial');
 });
@@ -45,13 +49,13 @@ Route::fallback(function () {
 // superadmin
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'can:view_masterAdmin'], 'as' => 'Master Admin'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::resource('user', UserController::class); //menampilkan data user
-    Route::get('profile', [HomeController::class, 'profile'])->name('profile.index'); //test
-    Route::resource('jenis-umkm', JenisUmkmController::class); //menampilkan data jenis umkm
-    Route::resource('kecamatan', KecamatanController::class); //menampilkan data kecamatan
-    Route::resource('desa', DesaController::class); //menampilkan data desa
-    Route::resource('spot', LokasiUmkmController::class); //menampilkan data lokasi umkm
-    Route::resource('centre-point', CentrePointController::class); //latihan
+    Route::resource('user', UserController::class);
+    Route::get('profile', [HomeController::class, 'profile'])->name('profile.index');
+    Route::resource('jenis-umkm', JenisUmkmController::class);
+    Route::resource('kecamatan', KecamatanController::class);
+    Route::resource('desa', DesaController::class);
+    Route::resource('spot', LokasiUmkmController::class);
+    Route::resource('centre-point', CentrePointController::class); 
 });
 Route::get('/centre-point/data', [DataController::class,'centrepoint'])->name('centre-point.data');
 
@@ -67,7 +71,7 @@ Route::group(['prefix' => 'dashboard-admin', 'middleware' => ['auth', 'can:view_
 Route::group(['prefix' => 'umkm', 'middleware' => ['auth', 'can:view_umkm'], 'as' => 'Umkm'], function () {
     Route::get('/', [FrontController::class, 'index'])->name('home'); //admin
     Route::get('/profile', [FrontController::class, 'profile'])->name('profile.index');
-    Route::resource('/legalUsaha', LegalUsahaController::class); //apa umkm bisa mendaftarkan dokumen umkm yang berkli kli/cabang?
+    Route::resource('/legalUsaha', LegalUsahaController::class); //apa umkm bisa mendaftarkan dokumen umkm yang berkli kli/cabang? = done
     Route::resource('/keuangan', KeuanganController::class);
     Route::resource('/operasional', OperasionalController::class);
     Route::resource('/marketing', MarketingController::class);
