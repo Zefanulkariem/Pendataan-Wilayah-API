@@ -11,9 +11,6 @@ use Alert;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $title = 'Manajemen Pengguna';
@@ -31,9 +28,6 @@ class UserController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $title = 'Tambahkan Pengguna';
@@ -41,9 +35,6 @@ class UserController extends Controller
         return view('masterAdmin.user.create', compact('roles', 'title'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -78,9 +69,6 @@ class UserController extends Controller
         return redirect()->route('Master Adminuser.index')->with('success', 'Data Berhasil Di Tambah');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show($id)
     {
         $title = 'Detail Pengguna';
@@ -88,9 +76,6 @@ class UserController extends Controller
         return view('masterAdmin.user.show', compact('user', 'title')); 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
         $title = 'Perbarui Data Pengguna';
@@ -100,9 +85,6 @@ class UserController extends Controller
         return view('masterAdmin.user.edit', compact('user', 'roles', 'userRole', 'title'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -138,9 +120,6 @@ class UserController extends Controller
         // ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
         $user = User::findOrFail($id);

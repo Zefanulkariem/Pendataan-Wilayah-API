@@ -102,13 +102,8 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan
-                                                                Nomor Telpon:</label>
-                                                            <input type="text"
-                                                                class="form-control @error('no_telp') is-invalid @enderror"
-                                                                name="no_telp" aria-label="Masukkan Nomor Telepon" autofocus
-                                                                oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-                                                                maxlength="12">
+                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Nomor Telpon:</label>
+                                                            <input type="text" class="form-control @error('no_telp') is-invalid @enderror" name="no_telp" aria-label="Masukkan Nomor Telepon" autofocus oninput="this.value = this.value.replace(/[^0-9]/g, '');" maxlength="12">
                                                             @error('no_telp')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>

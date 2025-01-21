@@ -71,9 +71,6 @@ class HomeController extends Controller
 
     public function user()
     {
-        // dd(auth()->user()->getRoleNames());
-        // if (auth()->user()->can('view_dashboard')) {
-            // }
         $title = 'Manajemen Pengguna';
         $user = User::all();
         return view('masterAdmin.user.index', compact('user', 'title')); 
@@ -83,23 +80,17 @@ class HomeController extends Controller
 
     public function profile()
     {
-        // dd(auth()->user()->getRoleNames());
-        // if (auth()->user()->can('view_dashboard')) {
-            // }
         $title = 'Profil';
         return view('masterAdmin.profile.index', compact('title')); 
 
         return abort(403);
     }
 
-    public function simple_map()
-    {
-        // dd(auth()->user()->getRoleNames());
-        // if (auth()->user()->can('view_dashboard')) {
-            // }
-        return view('masterAdmin.spot.index'); 
+    // public function simple_map()
+    // {
+    //     return view('masterAdmin.spot.index'); 
 
-        return abort(403);
-    }
+    //     return abort(403);
+    // }
 
 }

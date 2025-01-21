@@ -7,7 +7,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('admin/assets/img/apple-icon.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('admin/assets/img/favicon.png') }}">
     <title>
-        Master Admin Dashboard
+        Super Admin Dashboard
     </title>
 
     {{-- bootstrap --}}
@@ -30,8 +30,8 @@
     @yield('css')
 </head>
 
-<body class="g-sidenav-show   bg-gray-100">
-    <div class="min-height-300 bg-default position-absolute w-100"></div>
+<body class="g-sidenav-show bg-gray-100">
+    <div class="min-height-300 position-absolute w-100"></div>
     {{-- sidebar --}}
     @include('layouts.masterAdmin.sidebar')
     {{-- end sidebar --}}

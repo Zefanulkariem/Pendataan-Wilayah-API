@@ -1,0 +1,312 @@
+body {
+    background-color: white;
+    font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+    position: fixed;
+    z-index: 1030;
+    top: 8%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ddddddc1;
+    border-radius: 5px;
+    padding: 4px;
+    background: rgba(202, 202, 202, 0.349);
+    backdrop-filter: blur(10px);
+}
+
+.container-fluid {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.navbar-nav .nav-link {
+    margin: 0 18px;
+    color: black;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.navbar-nav .nav-link {
+    transition: color 0.3s ease;
+    color: black;
+}
+
+.navbar-nav .nav-link:hover {
+    color: black;
+}
+
+.navbar-nav:hover .nav-link {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.navbar-nav .nav-link:hover {
+    color: black;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse.collapse {
+        height: 0;
+        overflow: hidden;
+        transition: height 0.4s ease;
+    }
+
+    .navbar-collapse.collapsing {
+        height: 0;
+        overflow: hidden;
+    }
+
+    .navbar-collapse.show {
+        height: auto;
+    }
+}
+
+/* Kontainer 1*/
+p {
+    font-size: 30px;
+    line-height: 0.7;
+    font-weight: 500;
+}
+
+p span {
+    font-weight: 600;
+    /* text-decoration: underline; */
+    color: #36692a;
+}
+
+.p2 {
+    font-size: 15px;
+    line-height: 2;
+    font-weight: 500;
+}
+
+.p3 {
+    font-size: 30px;
+    line-height: 2;
+    font-weight: 500;
+}
+
+/* Kontainer 2*/
+.custom-text-container {
+    display: inline-flex;
+    /* align-items: center; */
+    gap: 10px;
+    justify-content: center;
+    /* border: 1px solid red; */
+    /* text-align: center; */
+    color: black;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.konten2 .col {
+    /* border: 1px solid red; */
+    /* margin: 0; */
+    margin: 15vh;
+    /* margin-top: 20vh;
+    margin-bottom: 20vh; */
+}
+
+.hover-line {
+    display: inline-block;
+    width: 3px;
+    height: 50px;
+    background-color: #6fe056;
+    transform: translateX(-10px);
+    /* transition: transform 0.3s ease-in-out; */
+}
+
+/* .hover-line {
+    display: inline-block;
+    height: 3px;
+    background-color: #6fe056;
+    transform: translateY(0px);
+    transition: transform 0.3s ease-in-out;
+} */
+
+.custom-text-container p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+a.btn {
+    color: #ffff;
+    background-color: #36692a;
+}
+
+a.btn:hover {
+    /* color: #36692a; */
+    color: #dcdcdc;
+    background-color: #23431b;
+    /* background-color: #36692a; */
+}
+
+.text-start .btn:hover {
+    outline: 2px solid #305e25;
+    background-color: #36692a;
+}
+
+#tentang-kami {
+    /* background-image: url('https://i.ibb.co.com/zbbmbBR/7a25d82f54c0a6951ef42ce68e8ece63ddd117f6-s2-n3-y1.jpg'); */
+    background-color: #ffff;
+    background-size: cover;
+    background-position: bottom;
+}
+
+.header-1 {
+    height: 100vh;
+    /* border: 1px solid red; */
+    background-image: url('https://i.ibb.co.com/F0TgvmV/Frame-4-1-waifu2x-art-noise3-scale.png');
+    background-size: cover;
+    background-position: center;
+    background-size: 120%;
+}
+
+.header-2 {
+    background-image: url('https://i.ibb.co.com/CVScp00/Frame-3-1-waifu2x-art-noise3-scale.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer {
+    background-color: #F0F0F0;
+    /* border: 1px solid red; */
+    margin-top: 8%;
+    padding: 2% 10%;
+}
+
+.footer-col h3 {
+    color: #000000;
+}
+
+.footer-col p {
+    color: gray;
+}
+
+.footer-col {
+    /* border: 1px solid red; */
+    width: 25%;
+}
+
+ul {
+    position: relative;
+    list-style: none;
+    left: -4%;
+    right: 0;
+}
+
+ul h4 span{
+    font-weight: 600;
+    color: #36692a;
+}
+
+.footer-col a {
+    line-height: 3;
+    font-size: 12px;
+    color: gray;
+    text-decoration: none;
+}
+
+.footer-col a:hover {
+    color: rgb(185, 185, 185);
+}
+
+.footer-nav {
+    max-width: 1170px;
+    color: var(--white);
+    font-size: 90%;
+    margin: auto;
+    /* border: 1px solid green; */
+}
+
+.sosmed a {
+    color: #ffff;
+    display: inline-block;
+    width: 30px;
+    background-color: #36692a;
+    margin: 0 1px 10px 0;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50px;
+}
+
+.sosmed a:hover {
+    background-color: #23431b;
+    color: gray;
+}
+
+.header {
+    padding: 4px 10px;
+    background-color: rgb(223, 223, 223);
+}
+
+.header i {
+    color: gray;
+    margin: 0;
+    margin-right: 5px;
+    margin-left: 3%;
+    /* border: 1px solid red; */
+}
+
+.header a {
+    color: gray;
+    text-decoration: none;
+    margin: 0;
+    /* border: 1px solid red; */
+}
+
+.text-image {
+    font-size: small;
+    font-weight: 100;
+    padding: 1.5%;
+    color: gray;
+}
+
+.container-about {
+    width: 60%;
+    line-height: 1.8;
+}
+.section {
+    text-align: left;  /* Mengatur teks agar dimulai dari kiri */
+    margin-bottom: 50px;
+}
+.section p:first-child {
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.section p {
+    margin: 0;
+    font-size: 16px;
+}
+.section:last-child {
+    margin-top: 80px;
+}
+
+/* Tombol Kembali */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none; /* Hilangkan garis bawah pada link */
+}
+
+/* Tombol Hover */
+.back-button:hover {
+    background-color: #000000;
+}

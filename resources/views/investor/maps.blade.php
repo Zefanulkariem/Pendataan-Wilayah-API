@@ -180,7 +180,7 @@
 
         let markers = [];
 
-        function createMarker(lat, lon, color, title, desa, img, nama, kelamin, namaUMKM, link, jenisUMKM, deskripsi) {
+        function createMarker(lat, lon, color, title, desa, img, nama, kelamin, namaUMKM, link, jenisUMKM, deskripsi, bulan, income, outcome, profit_loss) {
             const marker = L.circleMarker([lat, lon], {
                 radius: 10,
                 fillColor: color,
@@ -195,21 +195,24 @@
                     <h3>${title}</h3>
                     <img src="${img}" alt="${nama}"/>
                     <div class="info">
-                        <div><strong>Nama:</strong> ${nama}</div>
-                        <div><strong>Kelamin:</strong> ${kelamin}</div>
-                        <div><strong>Nama UMKM:</strong> ${namaUMKM}</div>
-                        <div><strong>Desa:</strong> ${desa}</div>
-                        <div><strong>Kecamatan:</strong> ${title}</div>
-                        <div><strong>Kategori UMKM:</strong> ${jenisUMKM}</div>
-                        <div><strong>Deskripsi:</strong> ${deskripsi}</div>
+                        <div><h2 style="text-align: center;">${nama ?? 'Data tidak tersedia'}</h2></div>
+                        <div><strong>Nama UMKM:</strong> ${namaUMKM ?? 'Data tidak tersedia'}</div>
+                        <div><strong>Desa:</strong> ${desa ?? 'Data tidak tersedia'}</div>
+                        <div><strong>Kecamatan:</strong> ${title ?? 'Data tidak tersedia'}</div>
+                        <div><strong>Kategori UMKM:</strong> ${jenisUMKM ?? 'Data tidak tersedia'}</div>
+                        <div><strong>Deskripsi:</strong> ${deskripsi ?? 'Data tidak tersedia'}</div>
+                        <div><strong>Bulan:</strong> ${bulan ?? 'Data tidak tersedia'}</div>
+                        <div><strong>Pemasukkan:</strong> Rp.${income?? 'Data tidak tersedia'}</div>
+                        <div><strong>Pengeluaran:</strong> Rp.${outcome?? 'Data tidak tersedia'}</div>
+                        <div><strong>Keuntungan/Rugi:</strong> Rp. ${profit_loss??'Data tidak tersedia'}</div>
                     </div>
-                    <a href="https://www.google.com/maps?q=${lat},${lon}" target="_blank">Buka di Google Maps</a><br/>
+                    <a href="https://www.google.com/maps?q=${lat},${lon}"s target="_blank">Buka di Google Maps</a><br/>
                     <a href="${link}" target="_blank">Selengkapnya</a>
                 </div>
             `;
 
             marker.bindPopup(popupContent, {
-                closeButton: false
+                closeButton: true
             });
 
             return marker;
@@ -221,7 +224,8 @@
             if (kecamatan) {
                 const marker = createMarker(
                     loc.lat, loc.lon, kecamatan.color, loc.kecamatan, loc.desa,
-                    loc.img, loc.nama, loc.kelamin, loc.namaUMKM, loc.link, loc.jenisUMKM, loc.deskripsi
+                    loc.img, loc.nama, loc.kelamin, loc.namaUMKM, loc.link, loc.jenisUMKM,
+                    loc.deskripsi, loc.bulan, loc.income, loc.outcome, loc.profit_loss,
                 );
                 markers.push({
                     marker,

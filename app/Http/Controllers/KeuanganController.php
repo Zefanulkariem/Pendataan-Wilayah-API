@@ -3,90 +3,92 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Keuangan;
+use App\Models\BuktiTransaksi;
 
 use Alert;
 
 class KeuanganController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $title = 'Daftar Keuangan';
         $uang = Keuangan::where('id_umkm', auth()->id())->get();
-
+        
         return view('umkm.keuangan.index', compact('uang', 'title'));
     }
+    
+    public function menu()
+    {
+        $title = 'Status Keuangan';
+        $uang = Keuangan::with('user')->latest()->get();
+        $uangNotification = Keuangan::where('status_verifikasi', 'Menunggu')->get();
 
-    /**
-     * Show the form for creating a new resource.
-     */
+        // dd($uang);
+        return view('masterAdmin.keuangan.menu', compact('uang', 'uangNotification', 'title'));
+    }
+
+    //untuk menghitung jumlah notif yang status menunggu
+    public function getNotifications()
+    {
+        $uangNotification = Keuangan::where('status_verifikasi', 'Menunggu')->count();
+
+        return response()->json([
+            'count' => $uangNotification,
+        ]);
+    }
+
     public function create()
     {
         $title = 'Tambahkan Keuangan';
         return view('umkm.keuangan.create', compact('title'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    public function show($id)
+    {
+        $title = 'Status Keuangan';
+        $uang = Keuangan::findOrFail($id);
+        $gambar = BuktiTransaksi::findOrFail($id);
+
+        return view('masterAdmin.keuangan.show', compact('uang', 'gambar', 'title'));
+    }
+
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'tahun' => 'required|integer',
-            'bulan' => 'required|string',
+            'tanggal' => 'required|date',
             'income' => 'required|string',
             'outcome' => 'required|string',
         ]);
-        
-        
     
         // Simpan data keuangan
         $uang = new Keuangan;
-        $uang->bulan = $request->bulan;
-        $uang->tahun = $request->tahun;
+        $uang->tanggal = $request->tanggal;
         $uang->income = $request->income;
         $uang->outcome = $request->outcome;
-        $uang->profit_loss = $request->income -= $request->outcome;
+        $uang->profit_loss = $request->income - $request->outcome;
         $uang->id_umkm = auth()->id();
     
         $uang->save();
+
+        if ($request->hasFile('bukti_transaksi')) {
+            foreach ($request->file('bukti_transaksi') as $file) {
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $file->storeAs('public/bukti_transaksi', $fileName);
     
-        // Tampilkan pesan keberhasilan
+                
+                BuktiTransaksi::create([
+                    'id_keuangan' => $uang->id,
+                    'gambar_bukti' => 'storage/bukti_transaksi/' . $fileName,
+                ]);
+            }
+        }
+    
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
-        return redirect()->route('Umkmkeuangan.index')->with('success', 'Data Berhasil di Tambah');
+        return redirect()->route('Umkmkeuangan.index')->with('success', 'Data Keuangan dan Bukti Transaksi berhasil di Tambah');
     
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
         $uang = Keuangan::findOrFail($id);
@@ -94,5 +96,23 @@ class KeuanganController extends Controller
         $uang->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
         return redirect()->route('Umkmkeuangan.index')->with('success', 'Data Berhasil di Hapus');
+    }
+    
+    public function approve($id)
+    {
+        $uang = Keuangan::findOrFail($id);
+        $uang->status_verifikasi = 'Disetujui';
+        $uang->save();
+
+        return redirect()->back()->with('success', 'Status Keuangan Berhasil Disetujui.');
+    }
+
+    public function reject($id)
+    {
+        $uang = Keuangan::findOrFail($id);
+        $uang->status_verifikasi = 'Ditolak';
+        $uang->save();
+
+        return redirect()->back()->with('success', 'Status Keuangan Berhasil Ditolak.');
     }
 }

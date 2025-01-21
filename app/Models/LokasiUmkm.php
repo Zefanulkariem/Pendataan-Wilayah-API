@@ -14,7 +14,7 @@ class LokasiUmkm extends Model {
     public $fillable = ['id_user', 'nama_umkm', 'slug', 'koordinat', 'deskripsi', 'image', 'id_desa', 'id_jenis_umkm'];
 
     public function user() {
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->belongsTo(User::class, 'id_user', 'id');
     }
 
     public function desa()
@@ -25,5 +25,10 @@ class LokasiUmkm extends Model {
     public function jenisUmkm()
     {
         return $this->belongsTo(JenisUmkm::class, 'id_jenis_umkm');
+    }
+
+    public function keuangan()
+    {
+        return $this->hasOne(Keuangan::class, 'id', 'id_umkm');
     }
 }
