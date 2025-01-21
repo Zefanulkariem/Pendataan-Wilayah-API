@@ -73,7 +73,7 @@
                                                             class="form-control @error('tanggal') is-invalid @enderror"
                                                             name="tanggal" placeholder="Masukkan lokasi meeting"
                                                             aria-label="Masukkan tanggal meeting" autofocus>
-                                                        @error('karyawan')
+                                                        @error('tanggal')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>

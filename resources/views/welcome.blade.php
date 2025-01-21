@@ -274,7 +274,7 @@
                     <ul>
                         <h4>TENTANG PWKB</h4>
                         <li><a href="{{url('/about')}}">Tentang Kami</a></li>
-                        <li><a href="">Kontak Kami</a></li>
+                        <li><a href="{{url('/contactus')}}">Kontak Kami</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">

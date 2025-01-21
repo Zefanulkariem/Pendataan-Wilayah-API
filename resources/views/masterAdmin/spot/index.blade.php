@@ -29,8 +29,8 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                         Logo Perusahaan</th>
                                     <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Aksi</th>
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"  style="text-align: right">
+                                    Aksi</th>
                                     {{-- <th class="text-secondary opacity-7"></th> --}}
                                 </tr>
                             </thead>
@@ -83,7 +83,7 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="d-flex justify-content-center">
+                                        <td style="text-align: right">
                                             <form id="delete-form-{{ $data->id }}"
                                                 action="{{ route('Master Adminspot.destroy', $data->id) }}" method="POST"
                                                 style="display:inline;">

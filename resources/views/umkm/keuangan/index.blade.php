@@ -20,17 +20,12 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bulan &
-                                        Tahun</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Pemasukkan</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Pengeluaran</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Keuntungan/Kerugian</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Hapus</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Input</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pemasukkan</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pengeluaran</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Keuntungan/Kerugian</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status Verifikasi</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hapus</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,9 +42,7 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $data->bulan }}</h6>
-                                                    <p class="text-xs text-secondary mb-0">Pada Tahun:
-                                                        <b>{{ $data->tahun }}</b></p>
+                                                    <h6 class="mb-0 text-sm">{{ $data->tanggal }}</h6>
                                                 </div>
                                             </div>
                                         </td>
@@ -78,6 +71,18 @@
                                                     </h6>
                                                 </div>
                                             </div>
+                                        </td>
+                                        <td style="color: black;">
+                                            @if ($data->status_verifikasi === 'Disetujui')
+                                                <span class="badge bg-info text-dark" style="font-weight: bold;">
+                                                    Diterima </span>
+                                            @elseif ($data->status_verifikasi === 'Ditolak')
+                                                <span class="badge bg-danger text-white" style="font-weight: bold;">
+                                                    Ditolak </span>
+                                            @else
+                                                <span class="badge bg-dark text-white" style="font-weight: 600;">
+                                                    Menunggu Konfirmasi </span>
+                                            @endif
                                         </td>
                                         <td class="d-flex justify-content-center">
                                             <form id="delete-form-{{ $data->id }}"

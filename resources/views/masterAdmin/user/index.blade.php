@@ -22,10 +22,10 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pengguna
                                     </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Role</th>
                                     <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="text-align: right">
                                         Aksi</th>
                                     {{-- <th class="text-secondary opacity-7"></th> --}}
                                 </tr>
@@ -57,7 +57,7 @@
                                             </p>
                                         </td>
                                         @if (!$data->hasRole('Master Admin'))
-                                            <td class="d-flex justify-content-center">
+                                            <td style="text-align: right">
                                                 <form id="delete-form-{{ $data->id }}"
                                                     action="{{ route('Master Adminuser.destroy', $data->id) }}"
                                                     method="POST" style="display:inline;">

@@ -53,16 +53,40 @@ class PermissionSeeder extends Seeder
             ['name' => 'view_investor'],
             ['name' => 'view_investor']
         );
-        //buat akun master admin---------------------------------------
-        $super_admin = User::firstOrCreate(
-            ['email' => 'masteradmin@gmail.com'],
-            [
-                'name' => 'Master Admin',
-                'email_verified_at' => now(),
-                'password' => Hash::make('rahasia123'),
-            ]
-        );
+
+        //buat akun super admin---------------------------------------
+        $super_admin = User::firstOrCreate([
+            'name' => 'Super Admin',
+            'email' => 'superadmin@gmail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('12345678'),
+            'foto_profil' => null,
+            'gender' => 'pria',
+            'no_telp' => '081234567890',
+            'alamat' => 'Jl. Asia Afrika'
+        ]);
+
+        $sample_umkm = User::firstOrCreate([
+            'name' => 'Sample UMKM',
+            'email' => 'umkm@gmail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('12345678'),
+            'foto_profil' => null,
+            'gender' => 'pria',
+            'no_telp' => '081234567890',
+            'alamat' => 'Jl. Asia Afrika'
+        ]);
         
+        $sample_inves = User::firstOrCreate([
+            'name' => 'Sample Investor',
+            'email' => 'investor@gmail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('12345678'),
+            'foto_profil' => null,
+            'gender' => 'pria',
+            'no_telp' => '081234567890',
+            'alamat' => 'Jl. Asia Afrika'
+        ]);
 
 
         //akses------------------------------------------------------------
@@ -73,8 +97,13 @@ class PermissionSeeder extends Seeder
 
         // user db---------------------------------------------------
         $user = User::find(1);
-
         $user->assignRole(['Master Admin']);
+
+        $user1 = User::find(2);
+        $user1->assignRole(['Umkm']);
+
+        $user2 = User::find(3);
+        $user2->assignRole(['Investor']);
 
     }
 }
