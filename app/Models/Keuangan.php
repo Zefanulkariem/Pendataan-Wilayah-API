@@ -18,7 +18,7 @@ class Keuangan extends Model
     }
 
     public function buktiTransaksi() {
-        return $this->hasMany(BuktiTransaksi::class);
+        return $this->hasMany(BuktiTransaksi::class, 'id_keuangan');
     }
 
 }

@@ -8,14 +8,10 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0">
-                    <h6>Daftar Data Kecamatan Kabupaten Bandung</h6>
+                    <h6>Daftar Data Kecamatan Keuangan UMKM</h6>
                 </div>
                 <div class="card-body px-0 pt-0 pb-0">
                     <div class="table-responsive p-5 pt-0">
-                        <div class="d-flex justify-content-start p-0">
-                            <a href="{{ route('Master Adminkecamatan.create') }}" class="btn btn-primary">Tambah Data
-                                kecamatan <i class="fa fa-sharp fa-light fa-arrow-right"></i></a>
-                        </div>
                         <table id="myTable" class="table align-items-center mb-0">
                             <thead>
                                 <tr>

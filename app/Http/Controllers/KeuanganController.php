@@ -48,10 +48,12 @@ class KeuanganController extends Controller
     public function show($id)
     {
         $title = 'Status Keuangan';
-        $uang = Keuangan::findOrFail($id);
-        $gambar = BuktiTransaksi::findOrFail($id);
+        $uang = Keuangan::with('buktiTransaksi')->findOrFail($id);
+        $buktiTransaksi = $uang->buktiTransaksi; //jangan lupa atur modelnya dgn id_keuangan
 
-        return view('masterAdmin.keuangan.show', compact('uang', 'gambar', 'title'));
+        // dd($buktiTransaksi->pluck('gambar_bukti'));
+
+        return view('masterAdmin.keuangan.show', compact('uang', 'buktiTransaksi', 'title'));
     }
 
     public function store(Request $request)
@@ -76,7 +78,6 @@ class KeuanganController extends Controller
             foreach ($request->file('bukti_transaksi') as $file) {
                 $fileName = time() . '_' . $file->getClientOriginalName();
                 $file->storeAs('public/bukti_transaksi', $fileName);
-    
                 
                 BuktiTransaksi::create([
                     'id_keuangan' => $uang->id,
