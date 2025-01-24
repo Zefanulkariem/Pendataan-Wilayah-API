@@ -75,7 +75,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('keuangan/menu*') ? 'active' : '' }}"
+                <a class="nav-link {{ request()->is('dashboard/keuangan/menu*') ? 'active' : '' }}"
                     href="{{ route('Master Adminkeuangan.menu') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
