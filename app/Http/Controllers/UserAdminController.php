@@ -16,13 +16,14 @@ class UserAdminController extends Controller
      */
     public function index()
     {
+        $title = 'Manajemen Pengguna';
         $user = User::all();
         $userMa = auth()->user();
         
         // if ($userMa->hasRole('Master Admin')) {
         //     return view('masterAdmin.user.index', compact('user'));
         // } else if ($userMa->hasRole('Admin')) {
-            return view('admin.user.index', compact('user')); //
+            return view('admin.user.index', compact('user', 'title')); //
         // } else if ($userMa->hasRole('Umkm')) {
         //     return '/umkm';
         // } else if ($userMa->hasRole('Investor')) {
@@ -35,8 +36,9 @@ class UserAdminController extends Controller
      */
     public function create()
     {
+        $title = 'Tambahkan Pengguna';
         $roles = Role::all();
-        return view('Admin.user.create', compact('roles'));
+        return view('admin.user.create', compact('roles', 'title'));
     }
 
     /**
@@ -50,6 +52,8 @@ class UserAdminController extends Controller
             'password' => 'required|min:8',
             'role' => 'required',
             'gender' => 'required|in:pria,wanita,lainnya',
+            'no_telp' => 'required|numeric|max_digits:12',
+            'alamat' => 'required|string|min:10',
         ]);
 
         $user = User::create([
@@ -57,6 +61,8 @@ class UserAdminController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'gender' => $request->gender,
+            'no_telp' => $request->no_telp,
+            'alamat' => $request->alamat,
         ]);
 
         $user->assignRole($request->role);
@@ -76,10 +82,9 @@ class UserAdminController extends Controller
      */
     public function show($id)
     {
+        $title = 'Detail Pengguna';
         $user = User::findOrFail($id);
-        return view('admin.user.show', compact('user')); 
-
-        return abort(403);
+        return view('admin.user.show', compact('user', 'title')); 
     }
 
     /**
@@ -104,12 +109,16 @@ class UserAdminController extends Controller
             'password' => 'nullable|min:8',
             'role' => 'required',
             'gender' => 'required|in:pria,wanita,lainnya',
+            'no_telp' => 'required|numeric|max_digits:12',
+            'alamat' => 'required|string|min:10',
         ]);
 
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->gender = $request->gender;
+        $user->no_telp = $request->no_telp;
+        $user->alamat = $request->alamat;
 
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);

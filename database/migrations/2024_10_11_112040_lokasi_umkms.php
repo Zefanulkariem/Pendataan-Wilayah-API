@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('koordinat');
             $table->longText('deskripsi');
             $table->string('image')->nullable();
+            $table->text('link')->nullable();
             $table->unsignedBigInteger('id_desa');
             $table->foreign('id_desa')->references('id')->on('desas')->onDelete('cascade');
             $table->unsignedBigInteger('id_jenis_umkm');

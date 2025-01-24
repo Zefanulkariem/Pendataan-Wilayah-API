@@ -60,12 +60,14 @@ class PemilikUmkmController extends Controller
             $validate = $request->validate([
                 'id_user' => 'required|exists:users,id|unique:pelaku_umkms,id_user',
                 'kontak' => 'required|numeric|unique:pelaku_umkms,kontak',
+                'alamat' => 'required|string|min:10',
                 'id_desa' => 'required|exists:desas,id',
             ]);
     
             $pk = new PelakuUmkm;
             $pk->id_user = $request->id_user;
             $pk->kontak = $request->kontak;
+            $pk->alamat = $request->alamat;
             $pk->id_desa = $request->id_desa;
     
             $pk->save();
@@ -129,6 +131,7 @@ class PemilikUmkmController extends Controller
         $validate = $request->validate([
             'id_user' => 'required',
             'kontak' => 'required|numeric',
+            'alamat' => 'required|string|min:10',
             'id_desa' => 'required',
 
         ]);
@@ -136,6 +139,7 @@ class PemilikUmkmController extends Controller
         $pk = PelakuUmkm::findOrFail($id);
         $pk->id_user = $request->id_user;
         $pk->kontak = $request->kontak;
+        $pk->alamat = $request->alamat;
         $pk->id_desa = $request->id_desa;
         $pk->save();
 

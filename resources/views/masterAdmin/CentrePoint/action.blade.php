@@ -20,7 +20,7 @@
 
                 document.getElementById('deleteForm').action = href
                 document.getElementById('deleteForm').submit()
-                
+
                 Swal.fire(
                     'Deleted!',
                     'Your file has been deleted.',

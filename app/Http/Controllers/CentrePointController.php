@@ -14,16 +14,18 @@ class CentrePointController extends Controller
      */
     public function index()
     {
+        $title = 'Penempatan Center Point Lokasi Umkm';
         $cp = Centre_Point::all();
-        return view('masterAdmin.CentrePoint.index', compact('cp'));
+        return view('masterAdmin.CentrePoint.index', compact('cp', 'title'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('masterAdmin.CentrePoint.create');
+        $title = 'Penempatan Center Point Lokasi Umkm';
+        return view('masterAdmin.CentrePoint.create', compact('title'));
     }
 
     /**

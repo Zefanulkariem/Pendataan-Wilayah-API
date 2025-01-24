@@ -13,16 +13,24 @@ use App\Http\Controllers\DesaController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\CentrePointController;
 use App\Http\Controllers\LokasiUmkmController;
-use App\Http\Controllers\PemilikUmkmController;
 use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\LegalUsahaController;
 use App\Http\Controllers\OperasionalController;
 use App\Http\Controllers\MarketingController;
 use App\Http\Controllers\MeetingController;
+use App\Http\Controllers\LogaktivitasController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/about', function () {
+    return view('tentang');
+});
+
+Route::get('/tutorial', function () {
+    return view('tutorial');
 });
 
 Auth::routes(
@@ -38,14 +46,16 @@ Route::fallback(function () {
 // superadmin
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'can:view_masterAdmin'], 'as' => 'Master Admin'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::resource('user', UserController::class); //menampilkan data user
+    Route::resource('user', UserController::class);
     Route::get('profile', [HomeController::class, 'profile'])->name('profile.index'); //test
+    Route::get('/profile/edit', [HomeController::class, 'editProfile'])->name('profile.edit');
+    Route::put('/profile/update/{id}', [HomeController::class, 'updateProfile'])->name('profile.update');
     Route::resource('jenis-umkm', JenisUmkmController::class); //menampilkan data jenis umkm
     Route::resource('kecamatan', KecamatanController::class); //menampilkan data kecamatan
     Route::resource('desa', DesaController::class); //menampilkan data desa
     Route::resource('spot', LokasiUmkmController::class); //menampilkan data lokasi umkm
+    Route::get('/logaktivitas', [LogaktivitasController::class, 'index'])->name('logaktivitas.index');
     Route::resource('centre-point', CentrePointController::class); //latihan
-    Route::resource('kepemilikan-umkm', PemilikUmkmController::class); //menampilkan data profil pemilik
 });
 Route::get('/centre-point/data', [DataController::class,'centrepoint'])->name('centre-point.data');
 
@@ -54,8 +64,9 @@ Route::group(['prefix' => 'dashboard-admin', 'middleware' => ['auth', 'can:view_
     Route::get('/', [AdminController::class, 'index'])->name('home'); //admin
     Route::resource('user', UserAdminController::class);
     Route::get('/profile', [AdminController::class, 'profile'])->name('profile.index');
+    Route::get('/profile/edit', [AdminController::class, 'editProfile'])->name('profile.edit');
+    Route::put('/profile/update/{id}', [AdminController::class, 'updateProfile'])->name('profile.update');
     Route::resource('spot', LokasiUmkmController::class);
-    Route::resource('kepemilikan-umkm', PemilikUmkmController::class);
 });
 
 // umkm
@@ -73,5 +84,7 @@ Route::group(['prefix' => 'investor', 'middleware' => ['auth', 'can:view_investo
     Route::get('/', [InvestorController::class, 'index'])->name('home');
     Route::get('maps', [InvestorController::class, 'maps'])->name('maps'); 
     Route::get('/profile', [InvestorController::class, 'profile'])->name('profile.index');
+    Route::get('/profile/edit', [InvestorController::class, 'editProfile'])->name('profile.edit');
+    Route::put('/profile/update/{id}', [InvestorController::class, 'updateProfile'])->name('profile.update');
     Route::resource('/meeting', MeetingController::class);
 });
