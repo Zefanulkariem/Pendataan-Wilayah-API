@@ -79,9 +79,9 @@
                     href="{{ route('Master Adminkeuangan.menu') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-check-bold text-danger text-sm opacity-10"></i>
+                        <i class="ni ni-pin-3 text-danger text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Approve Keuangan</span>
+                    <span class="nav-link-text ms-1">Aprove Keuangan</span>
                     <span id="notification-count-container">
                         <div data-i18n="Analytics" style="display: flex; gap: 59px">
                             <span id="notification-count-container">

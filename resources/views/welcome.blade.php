@@ -48,17 +48,14 @@
                     <a class="nav-link" aria-current="page" href="{{ url('/') }}">Beranda</a>
                     <a class="nav-link" href="{{ url('/about') }}">Tentang</a>
                     <a class="nav-link" href="{{ url('/contactus') }}">Kontak Kami</a>
+                    <a class="nav-link">|</a>
                     @if(Auth::user()->hasRole('Master Admin'))
-                        <a class="nav-link">|</a>
                         <a class="nav-link" href="{{ url('/dashboard') }}">{{ __('Dasbor') }}</a>
                     @elseif (Auth::user()->hasRole('Admin'))
-                        <a class="nav-link">|</a>
                         <a class="nav-link" href="{{ url('/dashboard-admin') }}">{{ __('Dasbor') }}</a>
                     @elseif (Auth::user()->hasRole('Umkm'))
-                        <a class="nav-link">|</a>
                         <a class="nav-link" href="{{ url('/umkm') }}">{{ __('Dasbor') }}</a>
                     @elseif (Auth::user()->hasRole('Investor'))
-                        <a class="nav-link">|</a>
                         <a class="nav-link" href="{{ url('/investor') }}">{{ __('Dasbor') }}</a>
                     @endif
                 </div>

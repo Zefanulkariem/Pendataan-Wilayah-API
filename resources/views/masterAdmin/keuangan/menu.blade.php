@@ -9,23 +9,9 @@
             <div class="card mb-4">
                 <div class="card-header pb-0">
                     <h6>Daftar Data Kecamatan Keuangan UMKM</h6>
-                </div>                
+                </div>
                 <div class="card-body px-0 pt-0 pb-0">
                     <div class="table-responsive p-5 pt-0">
-                        <div class="filter-container">
-                            <label for="kecamatan-filter">Filter:</label>
-                            <div class="col-3 pb-3">
-                                <form method="GET" action="{{ route('Master Adminkeuangan.menu') }}">
-                                    <select class="form-control" name="filter" onchange="this.form.submit()"> {{--panggil filter--}}
-                                        <option value="Semua" {{ $filter == 'Semua' ? 'selected' : '' }}>Semua</option>
-                                        <option value="Disetujui" {{ $filter == 'Disetujui' ? 'selected' : '' }}>Disetujui</option>
-                                        <option value="Ditolak" {{ $filter == 'Ditolak' ? 'selected' : '' }}>Ditolak</option>
-                                        <option value="Menunggu" {{ $filter == 'Menunggu' ? 'selected' : '' }}>Menunggu</option>
-                                    </select>
-                                </form>
-                            </div>
-                        </div>
-                        
                         <table id="myTable" class="table align-items-center mb-0">
                             <thead>
                                 <tr>

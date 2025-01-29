@@ -55,9 +55,8 @@
                                                     <div class="form-group">
                                                         <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Upload Bukti Transaksi:</label>
                                                         <div class="p-0">
-                                                            @foreach ($buktiTransaksi as $data)
-                                                                <img src="{{ asset('upload/bukti_transaksi/' . $data->gambar_bukti) }}" alt="Gambar Bukti" class="img-thumbnail" style="max-width: 100px;">
-                                                                {{-- <img src="{{ asset('upload/bukti_transaksi/' . $data->gambar_bukti) }}" alt="Bukti Transaksi" /> --}}
+                                                            @foreach($buktiTransaksi as $data)
+                                                                <img src="{{ asset($data->gambar_bukti) }}" width="100px">
                                                             @endforeach
                                                         </div>
                                                     </div>
