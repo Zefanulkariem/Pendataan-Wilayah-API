@@ -19,14 +19,23 @@ class KeuanganController extends Controller
         return view('umkm.keuangan.index', compact('uang', 'title'));
     }
     
-    public function menu()
+    public function menu(Request $request)
     {
         $title = 'Status Keuangan';
-        $uang = Keuangan::with('user')->latest()->get();
+        $filter = $request->input('filter', 'Semua');
+        
+        $query = Keuangan::with('user')->latest();
+
+        if ($filter != 'Semua') {
+            $query->where('status_verifikasi', $filter);
+        }
+
+        $uang = $query->get();
+
         $uangNotification = Keuangan::where('status_verifikasi', 'Menunggu')->get();
 
         // dd($uang);
-        return view('masterAdmin.keuangan.menu', compact('uang', 'uangNotification', 'title'));
+        return view('masterAdmin.keuangan.menu', compact('uang', 'uangNotification', 'title', 'filter'));
     }
 
     //untuk menghitung jumlah notif yang status menunggu
@@ -77,18 +86,17 @@ class KeuanganController extends Controller
         if ($request->hasFile('bukti_transaksi')) {
             foreach ($request->file('bukti_transaksi') as $file) {
                 $fileName = time() . '_' . $file->getClientOriginalName();
-                $file->storeAs('public/bukti_transaksi', $fileName);
+                $file->storeAs('upload/bukti_transaksi/', $fileName);
                 
                 BuktiTransaksi::create([
                     'id_keuangan' => $uang->id,
-                    'gambar_bukti' => 'storage/bukti_transaksi/' . $fileName,
+                    'gambar_bukti' => 'upload/bukti_transaksi/' . $fileName,
                 ]);
             }
         }
     
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
         return redirect()->route('Umkmkeuangan.index')->with('success', 'Data Keuangan dan Bukti Transaksi berhasil di Tambah');
-    
     }
     public function destroy($id)
     {

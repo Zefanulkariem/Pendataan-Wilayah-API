@@ -48,11 +48,13 @@ Route::fallback(function () {
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'can:view_masterAdmin'], 'as' => 'Master Admin'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/profile', [HomeController::class, 'profile'])->name('profile.index');
+
     Route::get('/keuangan/menu', [KeuanganController::class, 'menu'])->name('keuangan.menu');
     Route::get('/keuangan/notifications', [KeuanganController::class, 'getNotifications'])->name('uang.notification');
     Route::get('/keuangan/menu/show/{id}', [KeuanganController::class, 'show'])->name('keuangan.show');
     Route::put('/keuangan/approve/{id}', [KeuanganController::class, 'approve'])->name('keuangan.approve');
     Route::put('/keuangan/reject/{id}', [KeuanganController::class, 'reject'])->name('keuangan.reject');
+    
     Route::resource('/user', UserController::class);
     Route::resource('/jenis-umkm', JenisUmkmController::class);
     Route::resource('/kecamatan', KecamatanController::class);

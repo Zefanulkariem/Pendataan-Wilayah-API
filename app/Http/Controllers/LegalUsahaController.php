@@ -123,7 +123,7 @@ class LegalUsahaController extends Controller
             if ($request->hasFile($field)) {
                 $file = $request->file($field);
                 $uploadFile = $file->hashName();
-                $file->storeAs('public/legalitas', $uploadFile);
+                $file->storeAs('public/legalitas', $uploadFile); //
                 $legalUsaha->$field = $uploadFile;
             }
         }

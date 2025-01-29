@@ -13,6 +13,6 @@ class BuktiTransaksi extends Model
 
     public function keuangan()
     {
-        return $this->belongsTo(Keuangan::class, 'id_keuangan');
+        return $this->belongsTo(Keuangan::class, 'id');
     }
 }
