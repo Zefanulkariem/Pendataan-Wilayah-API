@@ -11,4 +11,9 @@ class KelengkapanLegalitasUsaha extends Model
     public $timestamp = true;
 
     public $fillable = ['badan_usaha', 'akta_pendirian', 'NIB', 'SKDP', 'NPWP', 'SIUP', 'TDP'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
 }

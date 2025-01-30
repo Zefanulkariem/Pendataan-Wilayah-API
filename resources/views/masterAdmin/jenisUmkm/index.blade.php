@@ -21,7 +21,7 @@
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kategori
-                                        Umkm</th>q
+                                        Umkm</th>
                                     <th
                                         class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"  style="text-align: right">
                                         Aksi</th>

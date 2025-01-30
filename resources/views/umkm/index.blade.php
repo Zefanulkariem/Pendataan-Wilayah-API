@@ -107,7 +107,7 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bulan&Tahun</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Input</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Pemasukkan</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -131,8 +131,8 @@
                                             <div class="px-0 py-2">
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">{{ $data->bulan }}</h6>
-                                                    <p class="text-xs text-secondary mb-0">Pada Tahun:
-                                                        <b>{{ $data->tahun }}</b></p>
+                                                    <p class="text-xs text-secondary mb-0">Di input pada:
+                                                        <b>{{ $data->tanggal }}</b></p>
                                                 </div>
                                             </div>
                                         </td>

@@ -22,7 +22,7 @@ class KeuanganController extends Controller
     public function menu()
     {
         $title = 'Status Keuangan';
-        $uang = Keuangan::with('user')->latest()->get();
+        $uang = Keuangan::with('user')->latest()->get(); //user umkm
         $uangNotification = Keuangan::where('status_verifikasi', 'Menunggu')->get();
 
         // dd($uang);
@@ -35,7 +35,7 @@ class KeuanganController extends Controller
         $uangNotification = Keuangan::where('status_verifikasi', 'Menunggu')->count();
 
         return response()->json([
-            'count' => $uangNotification,
+            'uangCount' => $uangNotification,
         ]);
     }
 
@@ -49,11 +49,12 @@ class KeuanganController extends Controller
     {
         $title = 'Status Keuangan';
         $uang = Keuangan::with('buktiTransaksi')->findOrFail($id);
-        $buktiTransaksi = $uang->buktiTransaksi; //jangan lupa atur modelnya dgn id_keuangan
+        // dd($uang->buktiTransaksi);
+        // $buktiTransaksi = $uang->buktiTransaksi; //jangan lupa atur modelnya dgn id_keuangan
 
         // dd($buktiTransaksi->pluck('gambar_bukti'));
 
-        return view('masterAdmin.keuangan.show', compact('uang', 'buktiTransaksi', 'title'));
+        return view('masterAdmin.keuangan.show', compact('uang', 'title'));
     }
 
     public function store(Request $request)
@@ -85,6 +86,7 @@ class KeuanganController extends Controller
                 ]);
             }
         }
+        
     
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
         return redirect()->route('Umkmkeuangan.index')->with('success', 'Data Keuangan dan Bukti Transaksi berhasil di Tambah');
