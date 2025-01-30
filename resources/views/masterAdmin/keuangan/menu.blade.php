@@ -8,7 +8,7 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0">
-                    <h6>Daftar Data Kecamatan Keuangan UMKM</h6>
+                    <h6>Data Upload Keuangan UMKM</h6>
                 </div>
                 <div class="card-body px-0 pt-0 pb-0">
                     <div class="table-responsive p-5 pt-0">
@@ -17,6 +17,7 @@
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama UMKM</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Input</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="text-align: right; padding-right: 11%;">Aksi</th>
                                     {{-- <th class="text-secondary opacity-7"></th> --}}
                                 </tr>
@@ -27,6 +28,7 @@
                                 <tr>
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $data->user->name }}</td>
+                                    <td>{{ $data->tanggal }}</td>
                                     <td style="text-align: right;">
                                         @if ($data->status_verifikasi == 'Disetujui')
                                             <button type="button" class="btn rounded-pill btn-success" disabled>

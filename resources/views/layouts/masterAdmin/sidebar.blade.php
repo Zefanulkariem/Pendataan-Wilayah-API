@@ -79,16 +79,37 @@
                     href="{{ route('Master Adminkeuangan.menu') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-pin-3 text-danger text-sm opacity-10"></i>
+                        <i class="ni ni-check-bold text-success text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Aprove Keuangan</span>
-                    <span id="notification-count-container">
+                    <span id="checkNotificationsWrapper">
                         <div data-i18n="Analytics" style="display: flex; gap: 59px">
-                            <span id="notification-count-container">
+                            <span id="checkNotifications">
                                 @if (isset($uangNotification) && $uangNotification->count() > 0)
-                                    <span id="notification-count" class="badge bg-danger" style="margin-left: 5px;">
-                                        {{ $uangNotification->count() }}
-                                    </span>
+                                <span id="keuangan-notification-count" class="badge bg-danger" style="margin-left: 5px;">
+                                    {{ $uangNotification->count() }}
+                                </span>
+                                @endif
+                            </span>
+                        </div>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is('dashboard/cek-legal/menu*') ? 'active' : '' }}"
+                    href="{{ route('Master AdminlegalUsaha.menu') }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-check-bold text-danger text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Cek Legalitas</span>
+                    <span id="checkNotificationsWrapper">
+                        <div data-i18n="Analytics" style="display: flex; gap: 59px">
+                            <span id="checkNotifications">
+                                @if (isset($legalNotification) && $legalNotification > 0)
+                                <span id="legalitas-notification-count" class="badge bg-danger" style="margin-left: 5px;">
+                                    {{ $legalNotification->count() }}
+                                </span>
                                 @endif
                             </span>
                         </div>
@@ -119,14 +140,29 @@
                 type: 'GET',
                 success: function(response) {
                     // Update jumlah notifikasi di menu
-                    if (response.count > 0) {
-                        $('#notification-count').text(response.count).show();
+                    if (response.uangCount > 0) {
+                        $('#keuangan-notification-count').text(response.uangCount).show();
                     } else {
-                        $('#notification-count').hide();
+                        $('#keuangan-notification-count').hide();
                     }
                 },
                 error: function() {
-                    console.log('Gagal memuat notifikasi');
+                    console.log('Gagal memuat notifikasi leuangan');
+                }
+            });
+
+            $.ajax({
+                url: '{{ route('Master Adminlegal.notification') }}', // Route legalitas
+                type: 'GET',
+                success: function(response) {
+                    if (response.legalCount > 0) {
+                        $('#legalitas-notification-count').text(response.legalCount).show();
+                    } else {
+                        $('#legalitas-notification-count').hide();
+                    }
+                },
+                error: function() {
+                    console.log('Gagal memuat notifikasi legalitas');
                 }
             });
         }

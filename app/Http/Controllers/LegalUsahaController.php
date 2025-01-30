@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\KelengkapanLegalitasUsaha;
+use App\Models\User;
 
 use Alert;
 
 class LegalUsahaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $title = 'Legalitas Usaha';
@@ -18,19 +16,32 @@ class LegalUsahaController extends Controller
         // dd($legalUsaha);
         return view('umkm.legalUsaha.index', compact('legalUsaha', 'title'));
     }
+    
+    public function menu()
+    {
+        $title = 'Cek Legalitas Umkm';
+        $legalUsaha = KelengkapanLegalitasUsaha::with('user')->latest()->get(); //user umkm
+        $legalNotification = KelengkapanLegalitasUsaha::get();
+        // dd($legalUsaha);
+        
+        return view('masterAdmin.legalitasUmkm.menu', compact('title', 'legalUsaha', 'legalNotification'));
+    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function getNotifications()
+    {
+        $legalNotification = KelengkapanLegalitasUsaha::count();
+        
+        return response()->json([
+            'legalCount' => $legalNotification,
+        ]);
+    }
+
     public function create()
     {
         $title = 'Tambahkan Legalitas Usaha';
         return view('umkm.legalUsaha.create', compact('title'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $cekData = KelengkapanLegalitasUsaha::where('id_user', auth()->user()->id)->first();
@@ -43,11 +54,11 @@ class LegalUsahaController extends Controller
         $validatedData = $request->validate([
             'badan_usaha' => 'nullable|in:PT (Perseroan Terbatas),CV (Persekutuan Komanditer)',
             'akta_pendirian' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
-            'NIB' => 'required|string:255',
+            'NIB'  => 'required|string:255',
             'SKDP' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
             'NPWP' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
             'SIUP' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
-            'TDP' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+            'TDP'  => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
         ]);
 
         $legalUsaha = new KelengkapanLegalitasUsaha;
@@ -59,7 +70,7 @@ class LegalUsahaController extends Controller
         foreach ($fields as $field) {
             if ($request->hasFile($field)) {
                 $file = $request->file($field);
-                $uploadFile = $file->hashName();
+                $uploadFile = $file->hashName(); //melindungi data gambar
                 $file->storeAs('public/legalitas', $uploadFile);
                 $legalUsaha->$field = $uploadFile;
             }
@@ -71,18 +82,15 @@ class LegalUsahaController extends Controller
         return redirect()->route('UmkmlegalUsaha.index');
     }
 
-
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        $title = 'Cek Legalitas UMKM';
+        $legalUsaha = KelengkapanLegalitasUsaha::findOrFail($id);
+        $fields = ['akta_pendirian', 'SKDP', 'NPWP', 'SIUP', 'TDP'];
+
+        return view('masterAdmin.legalitasUmkm.show', compact('title', 'legalUsaha', 'fields'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $title = 'Perbarui Legalitas Usaha';
@@ -91,9 +99,6 @@ class LegalUsahaController extends Controller
         return view('umkm.legalUsaha.edit', compact('legalUsaha', 'title'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         // $cekData = KelengkapanLegalitasUsaha::where('id_user', auth()->user()->id)->first();
@@ -134,9 +139,6 @@ class LegalUsahaController extends Controller
         return redirect()->route('UmkmlegalUsaha.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //
