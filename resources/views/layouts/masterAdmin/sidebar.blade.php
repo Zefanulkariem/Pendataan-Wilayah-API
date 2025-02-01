@@ -106,7 +106,7 @@
                     <span id="checkNotificationsWrapper">
                         <div data-i18n="Analytics" style="display: flex; gap: 59px">
                             <span id="checkNotifications">
-                                @if (isset($legalNotification) && $legalNotification > 0)
+                                @if (isset($legalNotification) && $legalNotification > 0) {{---mengecek apakah var ada?--}}
                                 <span id="legalitas-notification-count" class="badge bg-danger" style="margin-left: 5px;">
                                     {{ $legalNotification->count() }}
                                 </span>

@@ -21,16 +21,15 @@ class LegalUsahaController extends Controller
     {
         $title = 'Cek Legalitas Umkm';
         $legalUsaha = KelengkapanLegalitasUsaha::with('user')->latest()->get(); //user umkm
-        $legalNotification = KelengkapanLegalitasUsaha::get();
         // dd($legalUsaha);
         
-        return view('masterAdmin.legalitasUmkm.menu', compact('title', 'legalUsaha', 'legalNotification'));
+        return view('masterAdmin.legalitasUmkm.menu', compact('title', 'legalUsaha'));
     }
 
     public function getNotifications()
     {
-        $legalNotification = KelengkapanLegalitasUsaha::count();
-        
+        $legalNotification = KelengkapanLegalitasUsaha::all();
+        // dd($legalNotification);
         return response()->json([
             'legalCount' => $legalNotification,
         ]);
