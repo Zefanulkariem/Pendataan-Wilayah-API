@@ -14,7 +14,7 @@
                 <div class="card-body px-0 pt-0 pb-0">
                     <div class="table-responsive p-5 pt-0">
                         <div class="d-flex justify-content-start p-0">
-                            <a href="{{ route('Investormeeting.create') }}" class="btn btn-primary">Tambah Jadwal Meeting <i
+                            <a href="{{ route('Investoraju-meeting.create') }}" class="btn btn-primary">Tambah Jadwal Meeting <i
                                     class="fa fa-sharp fa-light fa-arrow-right"></i></a>
                         </div>
                         <table id="myTable" class="table align-items-center mb-0">
@@ -66,7 +66,7 @@
                                         {{-- logic --}}
                                         <td class="d-flex justify-content-center">
                                             <form id="delete-form-{{ $data->id }}"
-                                                action="{{ route('Investormeeting.destroy', $data->id) }}" method="POST"
+                                                action="{{ route('Investoraju-meeting.destroy', $data->id) }}" method="POST"
                                                 style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')

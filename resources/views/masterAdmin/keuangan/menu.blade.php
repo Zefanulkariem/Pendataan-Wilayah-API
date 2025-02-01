@@ -27,7 +27,14 @@
                                 @foreach ($uang as $data)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $data->user->name }}</td>
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">{{ $data->user->name }}</h6>
+                                                <p class="text-xs text-secondary mb-0">{{ $data->user->email }}</p>
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td>{{ $data->tanggal }}</td>
                                     <td style="text-align: right;">
                                         @if ($data->status_verifikasi == 'Disetujui')

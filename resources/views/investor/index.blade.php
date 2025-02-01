@@ -105,7 +105,7 @@
             <div class="card">
                 <div class="card-header pb-0 p-3">
                     <h6 class="mb-0" style="float: left">Daftar Jadwal Meeting</h6>
-                    <a href="{{ route('Investormeeting.index') }}" style="float: right"
+                    <a href="{{ route('Investoraju-meeting.index') }}" style="float: right"
                         class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
                             class="ni ni-bold-right" aria-hidden="true"></i></a>
                 </div>
