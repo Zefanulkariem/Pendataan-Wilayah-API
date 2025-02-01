@@ -16,7 +16,7 @@
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0">
                             <tbody>
-                                <form action="{{ route('Investormeeting.store') }}" method="POST"
+                                <form action="{{ route('Investoraju-meeting.store') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <tr>
@@ -83,7 +83,7 @@
                                                 </div>
                                             </div>
                                             <div class="px-4 py-1">
-                                                <a href="{{ route('Investormeeting.index') }}" class="btn btn-danger">
+                                                <a href="{{ route('Investoraju-meeting.index') }}" class="btn btn-danger">
                                                     <i class="fa fa-sharp fa-light fa-arrow-left"></i> Kembali
                                                 </a>
                                                 <button type="submit" class="btn btn-success">Simpan</button>

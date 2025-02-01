@@ -19,7 +19,7 @@
                     href="{{ route('Master Adminhome') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+                        <i style="font-size:20px;" class="material-icons text-primary">home</i>
                     </div>
                     <span class="nav-link-text ms-1">Dasbor</span>
                 </a>
@@ -29,27 +29,27 @@
                     href="{{ route('Master Adminuser.index') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-single-02 text-danger text-sm opacity-10"></i>
+                        <i style="font-size:20px;" class="material-icons text-primary">manage_accounts</i>
                     </div>
                     <span class="nav-link-text ms-1">Manajemen Pengguna</span>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link {{ request()->is('dashboard/kecamatan*') ? 'active' : '' }}"
                     href="{{ route('Master Adminkecamatan.index') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-square-pin text-success text-sm opacity-10"></i>
+                        <i class="ni ni-square-pin text-primary text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Daftar Kecamatan</span>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a class="nav-link {{ request()->is('dashboard/desa*') ? 'active' : '' }}"
                     href="{{ route('Master Admindesa.index') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-square-pin text-info text-sm opacity-10"></i>
+                        <i style="font-size:20px;" class="material-icons text-primary">map</i>
                     </div>
                     <span class="nav-link-text ms-1">Daftar Desa</span>
                 </a>
@@ -59,7 +59,7 @@
                     href="{{ route('Master Adminjenis-umkm.index') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-tag text-primary text-sm opacity-10"></i>
+                        <i style="font-size:20px;" class="material-icons text-primary">category</i>
                     </div>
                     <span class="nav-link-text ms-1">Daftar Kategori Umkm</span>
                 </a>
@@ -69,7 +69,7 @@
                     href="{{ route('Master Adminspot.index') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-pin-3 text-danger text-sm opacity-10"></i>
+                        <i style="font-size:20px;" class="material-icons text-primary">pin_drop</i>
                     </div>
                     <span class="nav-link-text ms-1">Daftar Lokasi Umkm</span>
                 </a>
@@ -79,7 +79,7 @@
                     href="{{ route('Master Adminkeuangan.menu') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-check-bold text-success text-sm opacity-10"></i>
+                        <i style="font-size:20px;" class="material-icons text-primary">verified</i>
                     </div>
                     <span class="nav-link-text ms-1">Aprove Keuangan</span>
                     <span id="checkNotificationsWrapper">
@@ -100,20 +100,19 @@
                     href="{{ route('Master AdminlegalUsaha.menu') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-check-bold text-danger text-sm opacity-10"></i>
+                        <i style="font-size:20px;" class="material-icons text-primary">fact_check</i>
                     </div>
                     <span class="nav-link-text ms-1">Cek Legalitas</span>
-                    <span id="checkNotificationsWrapper">
-                        <div data-i18n="Analytics" style="display: flex; gap: 59px">
-                            <span id="checkNotifications">
-                                @if (isset($legalNotification) && $legalNotification > 0) {{---mengecek apakah var ada?--}}
-                                <span id="legalitas-notification-count" class="badge bg-danger" style="margin-left: 5px;">
-                                    {{ $legalNotification->count() }}
-                                </span>
-                                @endif
-                            </span>
-                        </div>
-                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is('dashboard/meeting*') ? 'active' : '' }}"
+                    href="{{ route('Master Adminmeeting.menu') }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i style="font-size:20px;" class="material-icons text-primary">group</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Ajuan Meeting</span>
                 </a>
             </li>
 
@@ -125,7 +124,7 @@
                     href="{{ route('Master Adminprofile.index') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+                        <i style="font-size:20px;" class="material-icons text-primary">account_circle</i>
                     </div>
                     <span class="nav-link-text ms-1">Profil</span>
                 </a>
@@ -148,21 +147,6 @@
                 },
                 error: function() {
                     console.log('Gagal memuat notifikasi leuangan');
-                }
-            });
-
-            $.ajax({
-                url: '{{ route('Master Adminlegal.notification') }}', // Route legalitas
-                type: 'GET',
-                success: function(response) {
-                    if (response.legalCount > 0) {
-                        $('#legalitas-notification-count').text(response.legalCount).show();
-                    } else {
-                        $('#legalitas-notification-count').hide();
-                    }
-                },
-                error: function() {
-                    console.log('Gagal memuat notifikasi legalitas');
                 }
             });
         }

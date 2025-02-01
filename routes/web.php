@@ -57,8 +57,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'can:view_master
     
     Route::get('/cek-legal/menu', [LegalUsahaController::class, 'menu'])->name('legalUsaha.menu');
     Route::get('/cek-legal/menu/show/{id}', [LegalUsahaController::class, 'show'])->name('legalUsaha.show');
-    Route::get('/cek-legal/notifications', [LegalUsahaController::class, 'getNotifications'])->name('legal.notification');
+    // Route::get('/cek-legal/notifications', [LegalUsahaController::class, 'getNotifications'])->name('legal.notification');
 
+    Route::get('/meeting', [MeetingController::class, 'menu'])->name('meeting.menu');
+    Route::get('/meeting/show/{id}', [MeetingController::class, 'show'])->name('meeting.show');
+    
     Route::resource('/user', UserController::class);
     Route::resource('/jenis-umkm', JenisUmkmController::class);
     Route::resource('/kecamatan', KecamatanController::class);
@@ -91,5 +94,5 @@ Route::group(['prefix' => 'investor', 'middleware' => ['auth', 'can:view_investo
     Route::get('/', [InvestorController::class, 'index'])->name('home');
     Route::get('/maps', [InvestorController::class, 'maps'])->name('maps'); 
     Route::get('/profile', [InvestorController::class, 'profile'])->name('profile.index');
-    Route::resource('/meeting', MeetingController::class);
+    Route::resource('/aju-meeting', MeetingController::class);
 });

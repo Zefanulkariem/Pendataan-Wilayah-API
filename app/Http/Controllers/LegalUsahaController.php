@@ -26,14 +26,14 @@ class LegalUsahaController extends Controller
         return view('masterAdmin.legalitasUmkm.menu', compact('title', 'legalUsaha'));
     }
 
-    public function getNotifications()
-    {
-        $legalNotification = KelengkapanLegalitasUsaha::all();
-        // dd($legalNotification);
-        return response()->json([
-            'legalCount' => $legalNotification,
-        ]);
-    }
+    // public function getNotifications()
+    // {
+    //     $legalNotification = KelengkapanLegalitasUsaha::all();
+    //     // dd($legalNotification);
+    //     return response()->json([
+    //         'legalCount' => $legalNotification,
+    //     ]);
+    // }
 
     public function create()
     {
