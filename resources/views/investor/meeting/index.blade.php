@@ -21,11 +21,14 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama
                                         Pemilik Umkm
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                         Agenda
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Status Verifikasi
                                     </th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -62,6 +65,19 @@
                                                         <b>{{ $data->tanggal }}, {{ $data->lokasi_meeting }}</b></p>
                                                 </div>
                                             </div>
+                                        </td>
+                                        {{-- status verifikasi --}}
+                                        <td style="color: black;">
+                                            @if ($data->status_verifikasi === 'Disetujui')
+                                                <span class="badge bg-info text-dark" style="font-weight: bold;">
+                                                    Diterima </span>
+                                            @elseif ($data->status_verifikasi === 'Ditolak')
+                                                <span class="badge bg-danger text-white" style="font-weight: bold;">
+                                                    Ditolak </span>
+                                            @else
+                                                <span class="badge bg-dark text-white" style="font-weight: 600;">
+                                                    Menunggu Konfirmasi </span>
+                                            @endif
                                         </td>
                                         {{-- logic --}}
                                         <td class="d-flex justify-content-center">

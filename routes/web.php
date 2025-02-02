@@ -58,9 +58,12 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'can:view_master
     Route::get('/cek-legal/menu', [LegalUsahaController::class, 'menu'])->name('legalUsaha.menu');
     Route::get('/cek-legal/menu/show/{id}', [LegalUsahaController::class, 'show'])->name('legalUsaha.show');
     // Route::get('/cek-legal/notifications', [LegalUsahaController::class, 'getNotifications'])->name('legal.notification');
-
+    
     Route::get('/meeting', [MeetingController::class, 'menu'])->name('meeting.menu');
     Route::get('/meeting/show/{id}', [MeetingController::class, 'show'])->name('meeting.show');
+    Route::get('/meeting/notifications', [MeetingController::class, 'getNotifications'])->name('meeting.notification');
+    Route::put('/meeting/apporve/{id}', [MeetingController::class, 'approve'])->name('meeting.approve');
+    Route::put('/meeting/reject/{id}', [MeetingController::class, 'reject'])->name('meeting.reject');
     
     Route::resource('/user', UserController::class);
     Route::resource('/jenis-umkm', JenisUmkmController::class);

@@ -19,13 +19,36 @@ class MeetingController extends Controller
         return view('investor.meeting.index', compact('umkm', 'meeting', 'title'));
     }
     
-    public function menu()
+    public function menu(Request $request)
     {
         $title = 'Ajuan Meeting';
         // $umkm = User::role('Umkm')->get();
-        $meeting = Meeting::with('user')->latest()->get(); //user umkm
+
+        // Ambil filter dari request (jika ada), defaultnya adalah semua data
+        $filter = $request->input('filter', 'Semua');
+
+        $query = Meeting::with('user')->latest();
+
+        if ($filter != 'Semua') {
+            $query->where('status_verifikasi', $filter);
+        }
+    
+        $meeting = $query->get();
+
+        // $meeting = Meeting::with('user')->latest()->get(); //user umkm
+        $meetNotification = Meeting::where('status_verifikasi', 'Menunggu')->get();
+        // dd($meetNotification);
         
-        return view('masterAdmin.ajuanMeeting.menu', compact( 'meeting', 'title'));
+        return view('masterAdmin.ajuanMeeting.menu', compact( 'meeting', 'title', 'filter'));
+    }
+
+    public function getNotifications()
+    {
+        $meetNotification = Meeting::where('status_verifikasi', 'Menunggu')->count();
+
+        return response()->json([
+            'meetCount' => $meetNotification,
+        ]);
     }
 
     public function create()
@@ -81,5 +104,23 @@ class MeetingController extends Controller
         $meeting->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
         return redirect()->route('Investormeeting.index')->with('success', 'Data Berhasil di Hapus');
+    }
+
+    public function approve($id)
+    {
+        $meeting = Meeting::findOrFail($id);
+        $meeting->status_verifikasi = 'Disetujui';
+        $meeting->save();
+
+        return redirect()->back()->with('success', 'Status Meeting Berhasil Disetujui.');
+    }
+
+    public function reject($id)
+    {
+        $meeting = Meeting::findOrFail($id);
+        $meeting->status_verifikasi = 'Ditolak';
+        $meeting->save();
+
+        return redirect()->back()->with('success', 'Status Meeting Berhasil Ditolak.');
     }
 }

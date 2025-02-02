@@ -12,6 +12,15 @@
                 </div>
                 <div class="card-body px-0 pt-0 pb-0">
                     <div class="table-responsive p-5 pt-0">
+                        <form method="GET" action="{{ route('Master Adminkeuangan.menu') }}">
+                            <label for="filter">Filter Status:</label>
+                            <select name="filter" id="filter" onchange="this.form.submit()">
+                                <option value="Semua" {{ $filter == 'Semua' ? 'selected' : '' }}>Semua</option>
+                                <option value="Disetujui" {{ $filter == 'Disetujui' ? 'selected' : '' }}>Disetujui</option>
+                                <option value="Ditolak" {{ $filter == 'Ditolak' ? 'selected' : '' }}>Ditolak</option>
+                                <option value="Menunggu" {{ $filter == 'Menunggu' ? 'selected' : '' }}>Menunggu</option>
+                            </select>
+                        </form>
                         <table id="myTable" class="table align-items-center mb-0">
                             <thead>
                                 <tr>
@@ -19,7 +28,6 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama UMKM</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Input</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="text-align: right; padding-right: 11%;">Aksi</th>
-                                    {{-- <th class="text-secondary opacity-7"></th> --}}
                                 </tr>
                             </thead>
                             <tbody>
