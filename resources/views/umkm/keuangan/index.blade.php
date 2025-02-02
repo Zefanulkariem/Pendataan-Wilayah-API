@@ -8,7 +8,7 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0">
-                    <h6>Daftar Data Keuangan ({{ \Carbon\Carbon::now()->locale('id')->translatedFormat('F Y') }})</h6>
+                    <h6>Daftar Data Keuangan{{-- ({{ \Carbon\Carbon::now()->locale('id')->translatedFormat('F Y') }})--}}</h6>
                 </div>
                 <div class="card-body px-0 pt-0 pb-0">
                     <div class="table-responsive p-5 pt-0">

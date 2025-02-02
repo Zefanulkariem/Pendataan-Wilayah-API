@@ -19,14 +19,24 @@ class KeuanganController extends Controller
         return view('umkm.keuangan.index', compact('uang', 'title'));
     }
     
-    public function menu()
+    public function menu(Request $request)
     {
         $title = 'Status Keuangan';
-        $uang = Keuangan::with('user')->latest()->get(); //user umkm
+
+        $filter = $request->input('filter', 'Semua');
+
+        $query = Keuangan::with('user')->latest();
+
+        if ($filter != 'Semua') {
+            $query->where('status_verifikasi', $filter);
+        }
+    
+        $uang = $query->get();
+
         $uangNotification = Keuangan::where('status_verifikasi', 'Menunggu')->get();
 
         // dd($uang);
-        return view('masterAdmin.keuangan.menu', compact('uang', 'uangNotification', 'title'));
+        return view('masterAdmin.keuangan.menu', compact('uang', 'uangNotification', 'title', 'filter'));
     }
 
     //untuk menghitung jumlah notif yang status menunggu

@@ -79,7 +79,7 @@
                     href="{{ route('Master Adminkeuangan.menu') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i style="font-size:20px;" class="material-icons text-primary">verified</i>
+                        <i style="font-size:20px;" class="material-icons text-primary">receipt_long</i>
                     </div>
                     <span class="nav-link-text ms-1">Aprove Keuangan</span>
                     <span id="checkNotificationsWrapper">

@@ -9,16 +9,25 @@
             <div class="card mb-4">
                 <div class="card-header pb-0">
                     <h6>Daftar Ajuan Meeting</h6>
-                </div>
+                </div>               
                 <div class="card-body px-0 pt-0 pb-0">
                     <div class="table-responsive p-5 pt-0">
+                        <form method="GET" action="{{ route('Master Adminmeeting.menu') }}">
+                            <label for="filter">Filter Status:</label>
+                            <select name="filter" id="filter" onchange="this.form.submit()">
+                                <option value="Semua" {{ $filter == 'Semua' ? 'selected' : '' }}>Semua</option>
+                                <option value="Disetujui" {{ $filter == 'Disetujui' ? 'selected' : '' }}>Disetujui</option>
+                                <option value="Ditolak" {{ $filter == 'Ditolak' ? 'selected' : '' }}>Ditolak</option>
+                                <option value="Menunggu" {{ $filter == 'Menunggu' ? 'selected' : '' }}>Menunggu</option>
+                            </select>
+                        </form>
                         <table id="myTable" class="table align-items-center mb-0">
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pemilik UMKM</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pihak Yang Mengajukan / Investor</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="text-align: right">Aksi</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Pemilik UMKM</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Pihak Yang Mengajukan / Investor</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" style="text-align: right">Aksi</th>
                                     {{-- <th class="text-secondary opacity-7"></th> --}}
                                 </tr>
                             </thead>
@@ -43,11 +52,42 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td style="text-align: right">
-                                        <a href="{{ route('Master Adminmeeting.show', $data->id) }}"
-                                            class="btn btn-success">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
+                                    <td style="text-align: right;">
+                                        @if ($data->status_verifikasi == 'Disetujui')
+                                            <button type="button" class="btn rounded-pill btn-success" disabled>
+                                                <i class="bi bi-check-circle-fill" title="Setuju"></i> Disetujui
+                                            </button>
+                                            <a href="{{ route('Master Adminmeeting.show', $data->id) }}" class="btn rounded-pill btn-danger">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                        @elseif ($data->status_verifikasi == 'Ditolak')
+                                            <button type="button" class="btn rounded-pill btn-danger" style="padding: 0.6rem 1.6rem;" disabled>
+                                                <i class="bi bi-x-circle-fill" title="Tolak"></i> Ditolak
+                                            </button>
+                                            <a href="{{ route('Master Adminmeeting.show', $data->id) }}" class="btn rounded-pill btn-danger">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                        @else
+                                            <form action="{{ route('Master Adminmeeting.reject', $data->id) }}" method="POST"
+                                                style="display: inline;">
+                                                @csrf
+                                                @method('PUT')
+                                                <button class="btn rounded-pill btn-danger mx-1" type="submit">
+                                                    <i class="bi bi-x-circle-fill" title="Tolak"></i> Tolak
+                                                </button>
+                                            </form>
+                                            <form action="{{ route('Master Adminmeeting.approve', $data->id) }}" method="POST"
+                                                style="display: inline;">
+                                                @csrf
+                                                @method('PUT')
+                                                <button class="btn rounded-pill btn-success mx-1" type="submit">
+                                                    <i class="bi bi-check-circle-fill" title="Setuju"></i> Setuju
+                                                </button>
+                                                <a href="{{ route('Master Adminmeeting.show', $data->id) }}" class="btn rounded-pill btn-danger">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
