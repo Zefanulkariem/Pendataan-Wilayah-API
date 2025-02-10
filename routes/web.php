@@ -57,7 +57,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'can:view_master
     
     Route::get('/cek-legal/menu', [LegalUsahaController::class, 'menu'])->name('legalUsaha.menu');
     Route::get('/cek-legal/menu/show/{id}', [LegalUsahaController::class, 'show'])->name('legalUsaha.show');
-    // Route::get('/cek-legal/notifications', [LegalUsahaController::class, 'getNotifications'])->name('legal.notification');
+    Route::get('/cek-legal/notifications', [LegalUsahaController::class, 'getNotifications'])->name('legal.notification');
     
     Route::get('/meeting', [MeetingController::class, 'menu'])->name('meeting.menu');
     Route::get('/meeting/show/{id}', [MeetingController::class, 'show'])->name('meeting.show');

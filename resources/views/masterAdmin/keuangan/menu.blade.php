@@ -43,7 +43,15 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{{ $data->tanggal }}</td>
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">{{ $data->bulan }}</h6>
+                                                <p class="text-xs text-secondary mb-0">Di input pada:
+                                                    <b>{{ $data->tanggal }}</b></p>
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td style="text-align: right;">
                                         @if ($data->status_verifikasi == 'Disetujui')
                                             <button type="button" class="btn rounded-pill btn-success" disabled>
