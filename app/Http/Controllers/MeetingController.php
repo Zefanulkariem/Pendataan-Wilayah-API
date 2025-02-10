@@ -22,8 +22,6 @@ class MeetingController extends Controller
     public function menu(Request $request)
     {
         $title = 'Ajuan Meeting';
-        // $umkm = User::role('Umkm')->get();
-
         // Ambil filter dari request (jika ada), defaultnya adalah semua data
         $filter = $request->input('filter', 'Semua');
 
@@ -32,14 +30,13 @@ class MeetingController extends Controller
         if ($filter != 'Semua') {
             $query->where('status_verifikasi', $filter);
         }
-    
+
         $meeting = $query->get();
 
-        // $meeting = Meeting::with('user')->latest()->get(); //user umkm
-        $meetNotification = Meeting::where('status_verifikasi', 'Menunggu')->get();
-        // dd($meetNotification);
+        $meetNotification = Meeting::where('status_verifikasi', 'Menunggu')->get(); // ambil data yang menunggu
         
-        return view('masterAdmin.ajuanMeeting.menu', compact( 'meeting', 'title', 'filter'));
+        
+        return view('masterAdmin.ajuanMeeting.menu', compact('meeting', 'meetNotification', 'title', 'filter'));
     }
 
     public function getNotifications()

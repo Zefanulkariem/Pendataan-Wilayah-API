@@ -17,7 +17,7 @@
     <div id="map"></div>
     <a href="{{ route('Investorhome') }}" class="tombol-kembali text"><i class="fa fa-sharp fa-light fa-arrow-left"></i>
         Kembali</a>
-    <a href="{{ route('Investormeeting.index') }}" class="tombol-meeting text">Jadwal Meeting <i
+    <a href="{{ route('Investoraju-meeting.index') }}" class="tombol-meeting text">Jadwal Meeting <i
             class="fa fa-sharp fa-light fa-arrow-right"></i></a>
     <div class="filter-container">
         <center><label for="kecamatan-filter">Kecamatan:</label></center>

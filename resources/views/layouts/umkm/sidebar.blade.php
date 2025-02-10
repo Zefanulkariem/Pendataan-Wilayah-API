@@ -18,7 +18,7 @@
                 <a class="nav-link {{ request()->is('umkm') ? 'active' : '' }}" href="{{ route('Umkmhome') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+                        <i style="font-size:20px;" class="material-icons text-primary">home</i>
                     </div>
                     <span class="nav-link-text ms-1">Dasbor</span>
                 </a>
@@ -36,7 +36,7 @@
                     href="{{ route('UmkmlegalUsaha.index') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-archive-2 text-danger text-sm opacity-10"></i>
+                        <i style="font-size:20px;" class="material-icons text-primary">assignment</i>
                     </div>
                     <span class="nav-link-text ms-1">Legalitas Usaha</span>
                 </a>
@@ -46,7 +46,7 @@
                     href="{{ route('Umkmkeuangan.index') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa fa-credit-card text-info text-sm opacity-10"></i>
+                        <i style="font-size:20px;" class="material-icons text-primary">payment</i>
                     </div>
                     <span class="nav-link-text ms-1">Keuangan</span> {{-- income & outcome | perbulan --}}
                 </a>
@@ -56,7 +56,7 @@
                     href="{{ route('Umkmoperasional.index') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa fa-industry text-warning text-sm opacity-10"></i>
+                        <i style="font-size:20px;" class="material-icons text-primary">engineering</i>
                     </div>
                     <span class="nav-link-text ms-1">Operasional</span> {{-- ada berapa karyawannya --}}
                 </a>
@@ -66,7 +66,7 @@
                     href="{{ route('Umkmmarketing.index') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-shop text-success text-sm opacity-10"></i>
+                        <i style="font-size:20px;" class="material-icons text-primary">storefront</i>
                     </div>
                     <span class="nav-link-text ms-1">Marketing</span> {{-- target income perbulan/tahun/5 tahun --}}
                 </a>
@@ -81,7 +81,7 @@
                     href="{{ route('Umkmprofile.index') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+                        <i style="font-size:20px;" class="material-icons text-primary">account_circle</i>
                     </div>
                     <span class="nav-link-text ms-1">Profil</span>
                 </a>

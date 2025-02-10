@@ -20,20 +20,21 @@ class LegalUsahaController extends Controller
     public function menu()
     {
         $title = 'Cek Legalitas Umkm';
-        $legalUsaha = KelengkapanLegalitasUsaha::with('user')->latest()->get(); //user umkm
-        // dd($legalUsaha);
+        $legalUsaha = KelengkapanLegalitasUsaha::with('user')->latest()->get(); //ambil user dgn posisi paling baru
+
+        session(['legal_seen' => true]);
         
         return view('masterAdmin.legalitasUmkm.menu', compact('title', 'legalUsaha'));
     }
 
-    // public function getNotifications()
-    // {
-    //     $legalNotification = KelengkapanLegalitasUsaha::all();
-    //     // dd($legalNotification);
-    //     return response()->json([
-    //         'legalCount' => $legalNotification,
-    //     ]);
-    // }
+    public function getNotifications()
+    {
+        $legalNotification = session('legal_seen') ? 0 : KelengkapanLegalitasUsaha::count();
+        // dd($legalNotification);
+        return response()->json([
+            'legalCount' => $legalNotification,
+        ]);
+    }
 
     public function create()
     {

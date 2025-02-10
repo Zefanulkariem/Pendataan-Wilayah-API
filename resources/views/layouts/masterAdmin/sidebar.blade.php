@@ -82,16 +82,12 @@
                         <i style="font-size:20px;" class="material-icons text-primary">receipt_long</i>
                     </div>
                     <span class="nav-link-text ms-1">Aprove Keuangan</span>
-                    <span id="checkNotificationsWrapper">
-                        <div data-i18n="Analytics" style="display: flex; gap: 59px">
-                            <span id="checkNotifications">
-                                @if (isset($uangNotification) && $uangNotification->count() > 0)
-                                <span id="keuangan-notification-count" class="badge bg-danger" style="margin-left: 5px;">
-                                    {{ $uangNotification->count() }}
-                                </span>
-                                @endif
+                    <span id="checkNotifications">
+                        @if(isset($uangNotification) && $uangNotification->count() > 0)
+                            <span id="keuangan-notification-count" class="badge bg-danger" style="margin-left: 5px;">
+                                {{ $uangNotification->count() }}
                             </span>
-                        </div>
+                        @endif
                     </span>
                 </a>
             </li>
@@ -110,9 +106,17 @@
                     href="{{ route('Master Adminmeeting.menu') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i style="font-size:20px;" class="material-icons text-primary">group</i>
+                        <i style="font-size:20px;" class="material-icons text-primary">event_available</i>
                     </div>
                     <span class="nav-link-text ms-1">Ajuan Meeting</span>
+                    <span id="checkNotifications">
+                        {{-- {{ dd($meetNotification) }} --}}
+                        @if(isset($meetNotification) && $meetNotification->count() > 0)
+                            <span id="meeting-notification-count" class="badge bg-danger" style="margin-left: 5px;">
+                                {{ $meetNotification->count() }}
+                            </span>
+                        @endif
+                    </span>
                 </a>
             </li>
 
@@ -132,24 +136,37 @@
         </ul>
     </div>
     <script>
-        // Fungsi untuk memeriksa notifikasi baru setiap 5 detik
         function checkNotifications() {
-            $.ajax({
-                url: '{{ route('Master Adminuang.notification') }}', // Route untuk mengambil jumlah notifikasi
-                type: 'GET',
-                success: function(response) {
-                    // Update jumlah notifikasi di menu
-                    if (response.uangCount > 0) {
-                        $('#keuangan-notification-count').text(response.uangCount).show();
-                    } else {
-                        $('#keuangan-notification-count').hide();
-                    }
-                },
-                error: function() {
-                    console.log('Gagal memuat notifikasi leuangan');
-                }
+            let uangRequest = $.ajax({
+                url: '{{ route('Master Adminuang.notification') }}',
+                type: 'GET'
             });
-        }
+
+            let meetingRequest = $.ajax({
+                url: '{{ route('Master Adminmeeting.notification') }}',
+                type: 'GET'
+            });
+
+            Promise.all([uangRequest, meetingRequest])
+                .then(([uangResponse, meetResponse]) => {
+                    // 
+                    if (uangResponse.uangCount > 0) {
+                        badgeUang.text(uangResponse.uangCount).show();
+                    } else {
+                        badgeUang.hide();
+                    }
+
+                    // 
+                    if (meetResponse.meetCount > 0) {
+                        badgeMeet.text(meetResponse.meetCount).show();
+                    } else {
+                        badgeMeet.hide();
+                    }
+                })
+                .catch(() => {
+                    console.log('Gagal memuat notifikasi');
+                });
+            }
 
         // Memanggil fungsi setiap 5 detik
         setInterval(checkNotifications, 5000);

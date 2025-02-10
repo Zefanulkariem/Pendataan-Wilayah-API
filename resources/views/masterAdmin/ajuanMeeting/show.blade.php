@@ -47,6 +47,24 @@
                                                     <input type="text" class="form-control" value="{{ $meeting->idInvestor->email }}" readonly>
                                                 </div>
                                             </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Judul Acara:</label>
+                                                    <input type="text" class="form-control" value="{{ $meeting->judul }}" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tanggal Acara:</label>
+                                                    <input type="text" class="form-control" value="{{ $meeting->tanggal }}" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Lokasi Acara:</label>
+                                                    <input type="text" class="form-control" value="{{ $meeting->lokasi_meeting }}" readonly>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="px-4 py-1">

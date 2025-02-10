@@ -73,6 +73,7 @@ class KeuanganController extends Controller
             'tanggal' => 'required|date',
             'income' => 'required|string',
             'outcome' => 'required|string',
+            'bukti_transaksi' => 'required|max:2048'
         ]);
     
         // Simpan data keuangan

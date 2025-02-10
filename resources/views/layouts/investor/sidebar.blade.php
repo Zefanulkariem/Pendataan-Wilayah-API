@@ -18,7 +18,7 @@
                 <a class="nav-link {{ request()->is('investor') ? 'active' : '' }}" href="{{ route('Investorhome') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+                        <i style="font-size:20px;" class="material-icons text-primary">home</i>
                     </div>
                     <span class="nav-link-text ms-1">Dasbor</span>
                 </a>
@@ -28,7 +28,7 @@
                     href="{{ route('Investormaps') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa fa-map text-info text-sm opacity-10"></i>
+                        <i style="font-size:20px;" class="material-icons text-primary">map</i>
                     </div>
                     <span class="nav-link-text ms-1">Peta</span>
                 </a>
@@ -38,7 +38,7 @@
                     href="{{ route('Investoraju-meeting.index') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+                        <i style="font-size:20px;" class="material-icons text-primary">event_available</i>
                     </div>
                     <span class="nav-link-text ms-1">Ajukan Meeting</span>
                 </a>
@@ -52,7 +52,7 @@
                     href="{{ route('Investorprofile.index') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+                        <i style="font-size:20px;" class="material-icons text-primary">account_circle</i>
                     </div>
                     <span class="nav-link-text ms-1">Profil</span>
                 </a>
