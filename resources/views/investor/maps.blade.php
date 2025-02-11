@@ -180,7 +180,7 @@
 
         let markers = [];
 
-        function createMarker(lat, lon, color, title, desa, img, nama, kelamin, namaUMKM, link, jenisUMKM, deskripsi, bulan, income, outcome, profit_loss) {
+        function createMarker(lat, lon, color, title, desa, img, nama, kelamin, namaUMKM, link, jenisUMKM, deskripsi, keuangan) {
             const marker = L.circleMarker([lat, lon], {
                 radius: 10,
                 fillColor: color,
@@ -189,6 +189,16 @@
                 opacity: 1,
                 fillOpacity: 0.8
             }).addTo(map);
+
+            let keuanganText = keuangan.length > 0 ?
+            keuangan.map(k => `
+                <b>Tanggal:</b> ${k.tanggal} <br>
+                <b>Income:</b> ${k.income} <br>
+                <b>Outcome:</b> ${k.outcome} <br>
+                <b>Profit/Loss:</b> ${k.profit_loss} <br>
+                <hr>
+            `).join('')
+            : "Data keuangan tidak tersedia";
 
             const popupContent = `
                 <div class="popup-content">
@@ -201,10 +211,7 @@
                         <div><strong>Kecamatan:</strong> ${title ?? 'Data tidak tersedia'}</div>
                         <div><strong>Kategori UMKM:</strong> ${jenisUMKM ?? 'Data tidak tersedia'}</div>
                         <div><strong>Deskripsi:</strong> ${deskripsi ?? 'Data tidak tersedia'}</div>
-                        <div><strong>Bulan:</strong> ${bulan ?? 'Data tidak tersedia'}</div>
-                        <div><strong>Pemasukkan:</strong> Rp.${income?? 'Data tidak tersedia'}</div>
-                        <div><strong>Pengeluaran:</strong> Rp.${outcome?? 'Data tidak tersedia'}</div>
-                        <div><strong>Keuntungan/Rugi:</strong> Rp. ${profit_loss??'Data tidak tersedia'}</div>
+                        <div><strong>test:</strong> ${keuanganText}</div>
                     </div>
                     <a href="https://www.google.com/maps?q=${lat},${lon}"s target="_blank">Buka di Google Maps</a><br/>
                     <a href="${link}" target="_blank">Selengkapnya</a>
@@ -219,13 +226,12 @@
         }
 
         lokasis.forEach(loc => {
-            console.log(loc);
             const kecamatan = kecamatans.find(k => k.name === loc.kecamatan);
             if (kecamatan) {
                 const marker = createMarker(
                     loc.lat, loc.lon, kecamatan.color, loc.kecamatan, loc.desa,
                     loc.img, loc.nama, loc.kelamin, loc.namaUMKM, loc.link, loc.jenisUMKM,
-                    loc.deskripsi, loc.bulan, loc.income, loc.outcome, loc.profit_loss,
+                    loc.deskripsi, loc.keuangan,
                 );
                 markers.push({
                     marker,
