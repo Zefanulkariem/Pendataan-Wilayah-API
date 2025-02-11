@@ -65,6 +65,17 @@ class InvestorController extends Controller
             ->get()
             ->map(function ($lokasi) {
                 $koordinat = explode(',', $lokasi->koordinat); // Pisah latitude dan longitude
+                $dataKeuangan = $lokasi->user->keuangan->map(function ($keuangan) {
+                    return [
+                        'tanggal' => $keuangan->tanggal,
+                        'income' => $keuangan->income,
+                        'outcome' => $keuangan->outcome,
+                        'profit_loss' => $keuangan->profit_loss,
+                    ];
+                });
+
+                // dd($dataKeuangan);
+                
                 return [
                     'lat' => $koordinat[0],
                     'lon' => $koordinat[1],
@@ -77,10 +88,7 @@ class InvestorController extends Controller
                     'namaUMKM' => $lokasi->nama_umkm,
                     'jenisUMKM' => $lokasi->jenisUmkm->jenis_umkm,
                     'link' => $lokasi->link,
-                    'bulan' => $lokasi->user->keuangan->bulan ?? 'Data tidak tersedia',
-                    'income' => $lokasi->user->keuangan->income ?? 'Data tidak tersedia',
-                    'outcome' => $lokasi->user->keuangan->outcome ?? 'Data tidak tersedia',
-                    'profit_loss' => $lokasi->user->keuangan->profit_loss ?? 'Data tidak tersedia',
+                    'keuangan' => $dataKeuangan, //kembalikan array ke data semula
                 ];
             });
             // dd($lokasis);

@@ -52,7 +52,7 @@ class User extends Authenticatable
 
     public function keuangan()
     {
-        return $this->hasOne(Keuangan::class, 'id_umkm', 'id'); // id_umkm = foreign key | id = primary key dari tabel users
+        return $this->hasMany(Keuangan::class, 'id_umkm', 'id'); // id_umkm = foreign key | id = primary key dari tabel users
     }
 
 }
