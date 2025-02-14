@@ -104,21 +104,22 @@
     </div>
 @endsection
 @push('javascript')
-    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 
-    <script>
-        let table = new DataTable('#myTable');
-    </script>
+<script>
+    let table = new DataTable('#myTable');
+</script>
 
-    <!-- Script SweetAlert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        function confirmDelete(userId) {
-            Swal.fire({
-                title: 'Hapus Data Marketing ini!',
-                text: "Apakah kamu yakin ingin menghapusnya?",
-                icon: 'warning',
-                showCancelButton: true,
+<!-- Script SweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    var title = @json($title);
+    function confirmDelete(userId) {
+        Swal.fire({
+            title: 'Hapus Data Keuangan ini!',
+            text: "Apakah kamu yakin ingin menghapusnya?",
+            icon: 'warning',
+            showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Ya, hapus!',
@@ -129,11 +130,11 @@
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                     Swal.fire(
                         'Dibatalkan',
-                        'Penghapusan user dibatalkan',
+                        `Penghapusan ${title} dibatalkan`,
                         'error'
                     );
                 }
-            });
-        }
-    </script>
+        });
+    }
+</script>
 @endpush

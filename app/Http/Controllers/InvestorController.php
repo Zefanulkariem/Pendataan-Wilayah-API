@@ -29,21 +29,21 @@ class InvestorController extends Controller
             ->get()
             ->map(function ($lokasi) {
                 $koordinat = explode(',', $lokasi->koordinat); // Pisah latitude dan longitude
+                
                 return [
                     'lat' => $koordinat[0],
                     'lon' => $koordinat[1],
                     'desa' => $lokasi->desa->nama_desa ?? 'Tidak diketahui',
                     'kecamatan' => $lokasi->desa->kecamatan->nama_kecamatan ?? 'Tidak diketahui',
-                    'deskripsi' =>$lokasi->deskripsi ?? 'Data Kosong',
                     'img' => $lokasi->image ? asset('upload/spots/' . $lokasi->image) : 'default_image_url',
                     'nama' => $lokasi->user->name,
                     'kelamin' => $lokasi->user->gender,
                     'namaUMKM' => $lokasi->nama_umkm,
                     'jenisUMKM' => $lokasi->jenisUmkm->jenis_umkm,
                     'link' => $lokasi->link,
-                    'income' => $lokasi->user->keuangan->income ?? 'Data tidak tersedia',
                 ];
             });
+
             // dd($lokasis);
         return view('investor.index', compact('title', 'jmlUmkm', 'jmlUserUmkm', 'lokasis', 'meeting'));
         
@@ -65,15 +65,22 @@ class InvestorController extends Controller
             ->get()
             ->map(function ($lokasi) {
                 $koordinat = explode(',', $lokasi->koordinat); // Pisah latitude dan longitude
-                $dataKeuangan = $lokasi->user->keuangan->map(function ($keuangan) {
+                $dataKeuangan = $lokasi->user->keuangan
+                ->where('status_verifikasi', 'Disetujui')
+                ->values() 
+                // Ini memastikan hasilnya array, bukan Collection
+                // Ketika menggunakan where() di Collection, elemen yang tidak memenuhi kondisi akan dihapus tetapi indeksnya tetap tidak berurutan.
+                // Misalnya, setelah where(), indeksnya bisa tetap [0, 2, 5] bukannya [0, 1, 2].
+                // values() akan mereset indeksnya agar berurutan kembali.
+                ->map(function ($keuangan) {
                     return [
                         'tanggal' => $keuangan->tanggal,
                         'income' => $keuangan->income,
                         'outcome' => $keuangan->outcome,
                         'profit_loss' => $keuangan->profit_loss,
+                        'status_verifikasi' => $keuangan->status_verifkikasi,
                     ];
                 });
-
                 // dd($dataKeuangan);
                 
                 return [
@@ -88,43 +95,15 @@ class InvestorController extends Controller
                     'namaUMKM' => $lokasi->nama_umkm,
                     'jenisUMKM' => $lokasi->jenisUmkm->jenis_umkm,
                     'link' => $lokasi->link,
-                    'keuangan' => $dataKeuangan, //kembalikan array ke data semula
+                    'keuangan' => $dataKeuangan,
                 ];
-            });
+            })
+            ->toArray(); // Pastikan diubah ke array
             // dd($lokasis);
+
         return view('investor.maps', compact('lokasis'));
 
         return abort(403);
-    }
-
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(string $id)
-    {
-        //
-    }
-
-    public function edit(string $id)
-    {
-        //
-    }
-
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    public function destroy(string $id)
-    {
-        //
     }
     
 }

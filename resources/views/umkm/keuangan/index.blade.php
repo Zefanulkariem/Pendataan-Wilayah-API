@@ -75,13 +75,13 @@
                                         <td style="color: black;">
                                             @if ($data->status_verifikasi === 'Disetujui')
                                                 <span class="badge bg-info text-dark" style="font-weight: bold;">
-                                                    Diterima </span>
+                                                    — Diterima —</span>
                                             @elseif ($data->status_verifikasi === 'Ditolak')
                                                 <span class="badge bg-danger text-white" style="font-weight: bold;">
-                                                    Ditolak </span>
+                                                    — Ditolak —</span>
                                             @else
                                                 <span class="badge bg-dark text-white" style="font-weight: 600;">
-                                                    Menunggu Konfirmasi </span>
+                                                    — Menunggu Konfirmasi —</span>
                                             @endif
                                         </td>
                                         <td class="d-flex justify-content-center">
@@ -117,6 +117,7 @@
 <!-- Script SweetAlert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+    var title = @json($title);
     function confirmDelete(userId) {
         Swal.fire({
             title: 'Hapus Data Keuangan ini!',
@@ -133,11 +134,11 @@
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                     Swal.fire(
                         'Dibatalkan',
-                        'Penghapusan user dibatalkan',
+                        `Penghapusan ${title} dibatalkan`,
                         'error'
                     );
                 }
-            }); 
-        }
-    </script>
+        });
+    }
+</script>
 @endpush

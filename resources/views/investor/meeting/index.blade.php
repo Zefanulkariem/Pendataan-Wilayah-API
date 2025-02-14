@@ -14,14 +14,15 @@
                 <div class="card-body px-0 pt-0 pb-0">
                     <div class="table-responsive p-5 pt-0">
                         <div class="d-flex justify-content-start p-0">
-                            <a href="{{ route('Investoraju-meeting.create') }}" class="btn btn-primary">Tambah Jadwal Meeting <i
-                                    class="fa fa-sharp fa-light fa-arrow-right"></i></a>
+                            <a href="{{ route('Investoraju-meeting.create') }}" class="btn btn-primary">Tambah Jadwal Meeting
+                                <i class="fa fa-sharp fa-light fa-arrow-right"></i></a>
                         </div>
                         <table id="myTable" class="table align-items-center mb-0">
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Nama
                                         Pemilik Umkm
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
@@ -62,7 +63,8 @@
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">{{ $data->judul }}</h6>
                                                     <p class="text-xs text-secondary mb-0">Waktu & Lokasi:
-                                                        <b>{{ $data->tanggal }}, {{ $data->lokasi_meeting }}</b></p>
+                                                        <b>{{ $data->tanggal }}, {{ $data->lokasi_meeting }}</b>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </td>
@@ -70,20 +72,20 @@
                                         <td style="color: black;">
                                             @if ($data->status_verifikasi === 'Disetujui')
                                                 <span class="badge bg-info text-dark" style="font-weight: bold;">
-                                                    Diterima </span>
+                                                    — Diterima —</span>
                                             @elseif ($data->status_verifikasi === 'Ditolak')
                                                 <span class="badge bg-danger text-white" style="font-weight: bold;">
-                                                    Ditolak </span>
+                                                    — Ditolak —</span>
                                             @else
                                                 <span class="badge bg-dark text-white" style="font-weight: 600;">
-                                                    Menunggu Konfirmasi </span>
+                                                    — Menunggu Konfirmasi —</span>
                                             @endif
                                         </td>
                                         {{-- logic --}}
                                         <td class="d-flex justify-content-center">
                                             <form id="delete-form-{{ $data->id }}"
-                                                action="{{ route('Investoraju-meeting.destroy', $data->id) }}" method="POST"
-                                                style="display:inline;">
+                                                action="{{ route('Investoraju-meeting.destroy', $data->id) }}"
+                                                method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="button" onclick="confirmDelete({{ $data->id }})"
