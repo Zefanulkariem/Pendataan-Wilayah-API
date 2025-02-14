@@ -39,7 +39,7 @@ html, body {
     border-radius: 4px;
 }
 
-/* Styling for popups */
+/* pop up */
 .popup-content {
     text-align: center;
     font-family: 'Poppins', sans-serif;
@@ -58,7 +58,6 @@ html, body {
     margin: 10px 0;
 }
 
-/* Vertical alignment for information */
 .popup-content .info div {
     margin-bottom: 5px;
     font-size: 14px;

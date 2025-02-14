@@ -67,7 +67,7 @@
                                                         <div class="form-group">
                                                             <label
                                                                 class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan
-                                                                Targtet Bulanan:</label>
+                                                                Target Bulanan:</label>
                                                             <input type="number"
                                                                 class="form-control @error('target_tahunan') is-invalid @enderror"
                                                                 name="target_tahunan"
@@ -84,7 +84,7 @@
                                                         <div class="form-group">
                                                             <label
                                                                 class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan
-                                                                Targtet Bulanan:</label>
+                                                                Target Tahunan:</label>
                                                             <input type="number"
                                                                 class="form-control @error('target_bulanan') is-invalid @enderror"
                                                                 name="target_bulanan"

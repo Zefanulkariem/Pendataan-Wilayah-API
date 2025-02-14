@@ -87,12 +87,13 @@
 <!-- Script SweetAlert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-        function confirmDelete(userId) {
-            Swal.fire({
-                title: 'Hapus Data Operasional ini!',
-                text: "Apakah kamu yakin ingin menghapusnya?",
-                icon: 'warning',
-                showCancelButton: true,
+    var title = @json($title);
+    function confirmDelete(userId) {
+        Swal.fire({
+            title: 'Hapus Data Keuangan ini!',
+            text: "Apakah kamu yakin ingin menghapusnya?",
+            icon: 'warning',
+            showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Ya, hapus!',
@@ -103,11 +104,11 @@
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                     Swal.fire(
                         'Dibatalkan',
-                        'Penghapusan user dibatalkan',
+                        `Penghapusan ${title} dibatalkan`,
                         'error'
                     );
                 }
-            });
-        }
-    </script>
+        });
+    }
+</script>
 @endpush
