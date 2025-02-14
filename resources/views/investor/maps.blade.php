@@ -15,20 +15,19 @@
 
 <body>
     <div id="map"></div>
-    <a href="{{ route('Investorhome') }}" class="tombol-kembali text"><i class="fa fa-sharp fa-light fa-arrow-left"></i>
-        Kembali</a>
-    {{-- <a href="{{ route('Investoraju-meeting.index') }}" class="tombol-meeting text">Jadwal Meeting <i class="fa fa-sharp fa-light fa-arrow-right"></i></a> --}}
+    <a href="{{ route('Investorhome') }}" class="tombol-kembali text"><i class="fa fa-sharp fa-light fa-arrow-left"></i> Kembali</a>
     <div class="filter-container">
-        <center><label for="kecamatan-filter">Kecamatan:</label></center>
+        <label for="kecamatan-filter" style="align-items: center">Kecamatan:</label>
         <select id="kecamatan-filter">
             <option value="all">Semua</option>
         </select>
     </div>
-    {{-- <div id="sidebar-keuangan" class="hidden">
-        <button id="close-sidebar" onclick="closeSidebar()">✖</button>
+    <div id="sidebar-keuangan">
+        <button id="close-sidebar">✖</button>
         <h2>Keuangan UMKM</h2>
-        <div id="keuangan-detail"></div>
-    </div> --}}
+        <div id="keuangan-detail">Pilih UMKM untuk melihat detail keuangan...</div>
+    </div>
+    
     {{-- <pre>{{ print_r($lokasis->toArray(), true) }}</pre> --}}
     
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -91,7 +90,6 @@ const kecamatans = [
     { name: 'Soreang', color: 'darkgreen' }
 ];
 
-
 let markers = [];
 
     function createMarker(lat, lon, color, title, desa, img, nama, kelamin, namaUMKM, link, jenisUMKM, deskripsi, keuangan) {
@@ -122,10 +120,10 @@ let markers = [];
         //ubah data array ke item
         let keuanganText = (keuangan && keuangan.length > 0) ?
         keuangan.map(k => `
-        <b>Tanggal:</b> ${tanggal(k.tanggal)} <br>
-        <b>Income:</b> ${rupiah(k.income)} <br>
-        <b>Outcome:</b> ${rupiah(k.outcome)} <br>
-        <b>Profit/Loss:</b> ${rupiah(k.profit_loss)} <br>
+        <h3>${tanggal(k.tanggal)}</h3>
+        <b>Pemasukkan:</b> ${rupiah(k.income)} <br>
+        <b>Pengeluaran:</b> ${rupiah(k.outcome)} <br>
+        <b>Untung/Rugi:</b> ${rupiah(k.profit_loss)} <br>
         <hr>
         `).join('')
         : "Data keuangan tidak tersedia";
@@ -141,22 +139,36 @@ let markers = [];
                     <div><strong>Kecamatan:</strong> ${title ?? 'Data tidak tersedia'}</div>
                     <div><strong>Kategori UMKM:</strong> ${jenisUMKM ?? 'Data tidak tersedia'}</div>
                     <div><strong>Deskripsi:</strong> ${deskripsi ?? 'Data tidak tersedia'}</div>
-                    <hr>
-                    <div><strong>Keuangan:</strong> <br>${keuanganText}</div>
                 </div>
                 <a href="https://www.google.com/maps?q=${lat},${lon}" target="_blank">Buka di Google Maps</a><br/>
-                <a href="${link}" target="_blank">Selengkapnya</a>
-                <a href="#">Jadwal Meeting <i class="fa fa-sharp fa-light fa-arrow-right"></i></a>
+                <a href="${link}" target="_blank">Selengkapnya <i class="fa fa-sharp fa-light fa-arrow-right"></i></a>
             </div>
         `;
 
         marker.bindPopup(popupUmkm, {
-            closeButton: true
+            closeButton: false
+        });
+
+        // sidebar
+        let sidebar = document.getElementById('sidebar-keuangan');
+        let detail = document.getElementById('keuangan-detail');
+        let tutupSidebar = document.getElementById('close-sidebar');
+
+        marker.on("click", function () {
+            console.log("marker ke klik cuy");
+            sidebar.classList.add("show"); // classList itu kelola css
+            detail.innerHTML = `<h3>${nama}</h3><hr><p>${keuanganText}</p>`;
+        });
+
+        // hapus show css
+        tutupSidebar.addEventListener("click", function () {
+            sidebar.classList.remove("show"); 
         });
 
         return marker;
     }
 
+    // marker
     lokasis.forEach(loc => {
         const kecamatan = kecamatans.find(k => k.name === loc.kecamatan);
         if (kecamatan) {
