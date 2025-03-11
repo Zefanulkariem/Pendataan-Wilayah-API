@@ -53,6 +53,7 @@
                     </div>
                     <span class="nav-link-text ms-1">Aprove Keuangan</span>
                     <span id="checkNotifications">
+                        {{-- {{ dd($meetNotification) }} --}}
                         @if(isset($uangNotification) && $uangNotification->count() > 0)
                             <span id="keuangan-notification-count" class="badge bg-danger" style="margin-left: 5px;">
                                 {{ $uangNotification->count() }}
@@ -80,7 +81,6 @@
                     </div>
                     <span class="nav-link-text ms-1">Ajuan Meeting</span>
                     <span id="checkNotifications">
-                        {{-- {{ dd($meetNotification) }} --}}
                         @if(isset($meetNotification) && $meetNotification->count() > 0)
                             <span id="meeting-notification-count" class="badge bg-danger" style="margin-left: 5px;">
                                 {{ $meetNotification->count() }}
@@ -105,4 +105,45 @@
             </li>
         </ul>
     </div>
+    <script>
+        // Fungsi untuk memeriksa notifikasi baru setiap 5 detik
+        function checkNotifications() {
+            $.ajax({
+                url: '{{ route('Adminuang.notification') }}', // Route untuk mengambil jumlah notifikasi
+                type: 'GET',
+                success: function(response) {
+                    console.log("Response:", response);
+                    // Update jumlah notifikasi di menu
+                    if (response.uangCount > 0) {
+                        $('#keuangan-notification-count').text(response.uangCount).show();
+                    } else {
+                        $('#keuangan-notification-count').hide();
+                    }
+                },
+                error: function() {
+                    console.log('Gagal memuat notifikasi');
+                }
+            });
+
+            $.ajax({
+                url: '{{ route('Adminmeeting.notification') }}', // Route untuk mengambil jumlah notifikasi
+                type: 'GET',
+                success: function(response) {
+                    console.log("Response:", response);
+                    // Update jumlah notifikasi di menu
+                    if (response.meetCount > 0) {
+                        $('#meeting-notification-count').text(response.meetCount).show();
+                    } else {
+                        $('#meeting-notification-count').hide();
+                    }
+                },
+                error: function() {
+                    console.log('Gagal memuat notifikasi');
+                }
+            });
+        }
+
+        // Memanggil fungsi setiap 5 detik
+        setInterval(checkNotifications, 5000);
+    </script>
 </aside>

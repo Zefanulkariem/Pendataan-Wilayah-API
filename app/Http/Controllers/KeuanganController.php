@@ -63,10 +63,6 @@ class KeuanganController extends Controller
     {
         $title = 'Status Keuangan';
         $uang = Keuangan::with('buktiTransaksi')->findOrFail($id);
-        // dd($uang->buktiTransaksi);
-        // $buktiTransaksi = $uang->buktiTransaksi; //jangan lupa atur modelnya dgn id_keuangan
-
-        // dd($buktiTransaksi->pluck('gambar_bukti'));
 
         // output
         $user = auth()->user();

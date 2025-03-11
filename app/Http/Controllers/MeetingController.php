@@ -111,7 +111,7 @@ class MeetingController extends Controller
 
         $meeting->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
-        return redirect()->route('Investormeeting.index')->with('success', 'Data Berhasil di Hapus');
+        return redirect()->route('Investoraju-meeting.index')->with('success', 'Data Berhasil di Hapus');
     }
 
     public function approve($id)
