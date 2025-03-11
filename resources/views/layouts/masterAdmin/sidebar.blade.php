@@ -136,37 +136,75 @@
         </ul>
     </div>
     <script>
+        // function checkNotifications() {
+        //     let uangRequest = $.ajax({
+        //         url: '{{ route('Master Adminuang.notification') }}',
+        //         type: 'GET'
+        //     });
+
+        //     let meetingRequest = $.ajax({
+        //         url: '{{ route('Master Adminmeeting.notification') }}',
+        //         type: 'GET'
+        //     });
+
+        //     Promise.all([uangRequest, meetingRequest])
+        //         .then(([uangResponse, meetResponse]) => {
+        //             // 
+        //             if (uangResponse.uangCount > 0) {
+        //                 badgeUang.text(uangResponse.uangCount).show();
+        //             } else {
+        //                 badgeUang.hide();
+        //             }
+
+        //             // 
+        //             if (meetResponse.meetCount > 0) {
+        //                 badgeMeet.text(meetResponse.meetCount).show();
+        //             } else {
+        //                 badgeMeet.hide();
+        //             }
+        //         })
+        //         .catch(() => {
+        //             console.log('Gagal memuat notifikasi');
+        //         });
+        //     }
+
+        // // Memanggil fungsi setiap 5 detik
+        // setInterval(checkNotifications, 5000);
         function checkNotifications() {
-            let uangRequest = $.ajax({
-                url: '{{ route('Master Adminuang.notification') }}',
-                type: 'GET'
-            });
-
-            let meetingRequest = $.ajax({
-                url: '{{ route('Master Adminmeeting.notification') }}',
-                type: 'GET'
-            });
-
-            Promise.all([uangRequest, meetingRequest])
-                .then(([uangResponse, meetResponse]) => {
-                    // 
-                    if (uangResponse.uangCount > 0) {
-                        badgeUang.text(uangResponse.uangCount).show();
+            $.ajax({
+                url: '{{ route('Master Adminuang.notification') }}', // Route untuk mengambil jumlah notifikasi
+                type: 'GET',
+                success: function(response) {
+                    console.log("Response:", response);
+                    // Update jumlah notifikasi di menu
+                    if (response.uangCount > 0) {
+                        $('#keuangan-notification-count').text(response.uangCount).show();
                     } else {
-                        badgeUang.hide();
+                        $('#keuangan-notification-count').hide();
                     }
-
-                    // 
-                    if (meetResponse.meetCount > 0) {
-                        badgeMeet.text(meetResponse.meetCount).show();
-                    } else {
-                        badgeMeet.hide();
-                    }
-                })
-                .catch(() => {
+                },
+                error: function() {
                     console.log('Gagal memuat notifikasi');
-                });
-            }
+                }
+            });
+
+            $.ajax({
+                url: '{{ route('Master Adminmeeting.notification') }}', // Route untuk mengambil jumlah notifikasi
+                type: 'GET',
+                success: function(response) {
+                    console.log("Response:", response);
+                    // Update jumlah notifikasi di menu
+                    if (response.meetCount > 0) {
+                        $('#meeting-notification-count').text(response.meetCount).show();
+                    } else {
+                        $('#meeting-notification-count').hide();
+                    }
+                },
+                error: function() {
+                    console.log('Gagal memuat notifikasi');
+                }
+            });
+        }
 
         // Memanggil fungsi setiap 5 detik
         setInterval(checkNotifications, 5000);
