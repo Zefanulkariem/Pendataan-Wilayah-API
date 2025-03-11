@@ -2,67 +2,7 @@
 @section('css')
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        #map {
-            height: 500px;
-            width: auto;
-        }
-
-        .popup-content {
-            text-align: start;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .popup-content h3 {
-            font-size: 1px;
-            color: #ffffff;
-        }
-
-        .popup-content img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-
-        .popup-content .info div {
-            margin-bottom: 5px;
-            font-size: 14px;
-            text-align: left;
-            color: #555;
-        }
-
-        .popup-content a {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 8px 12px;
-            background-color: #7ea6f6;
-            color: white;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .popup-content a:hover {
-            background-color: #4e6fb1;
-        }
-
-        .popup-content button {
-            margin-top: 10px;
-            padding: 8px 12px;
-            background-color: #B5966A;
-            color: white;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .popup-content button:hover {
-            background-color: #4F554B;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('maps/assets/css/style.css')}}">
 @endsection
 
 @section('content')

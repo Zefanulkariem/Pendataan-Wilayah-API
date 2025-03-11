@@ -8,7 +8,7 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0">
-                    {{-- ini namanya library carbon buat ngatur date --}}
+                    {{-- library buat ngatur date --}}
                     <h6>Daftar Operasional ({{ \Carbon\Carbon::now()->locale('id')->translatedFormat('F Y') }})</h6>
                 </div>
                 <div class="card-body px-0 pt-0 pb-0">
@@ -21,13 +21,8 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jumlah
-                                        Karyawan
-                                    </th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Hapus</th>
-                                    {{-- <th class="text-secondary opacity-7"></th> --}}
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jumlah Karyawan</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hapus</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -90,7 +85,7 @@
     var title = @json($title);
     function confirmDelete(userId) {
         Swal.fire({
-            title: 'Hapus Data Keuangan ini!',
+            title: 'Hapus Data Operasional ini!',
             text: "Apakah kamu yakin ingin menghapusnya?",
             icon: 'warning',
             showCancelButton: true,
@@ -104,7 +99,8 @@
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                     Swal.fire(
                         'Dibatalkan',
-                        `Penghapusan ${title} dibatalkan`,
+                        // `Penghapusan ${title} dibatalkan`,
+                        `Penghapusan dibatalkan`,
                         'error'
                     );
                 }

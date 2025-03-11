@@ -13,7 +13,6 @@
                                 <form action="{{ route('Umkmkeuangan.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <tr>
-                                        {{-- daftar pengguna --}}
                                         <td>
                                             <div class="d-flex px-5 py-1">
                                                 <div class="row w-100">
@@ -42,7 +41,7 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tanggal Input Keuangan:</label>
-                                                            <input type="datetime-local" class="form-control @error('tanggal') is-invalid @enderror" name="tanggal" placeholder="Masukkan lokasi meeting" aria-label="Masukkan tanggal meeting" autofocus>
+                                                            <input type="date" class="form-control @error('tanggal') is-invalid @enderror" name="tanggal" placeholder="Masukkan lokasi meeting" aria-label="Masukkan tanggal meeting" autofocus>
                                                             @error('tanggal')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>

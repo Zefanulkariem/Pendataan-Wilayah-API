@@ -1,4 +1,4 @@
-@extends('layouts.masterAdmin')
+@extends('layouts.admin')
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
 @endsection
@@ -12,7 +12,8 @@
                 </div>
                 <div class="card-body px-0 pt-0 pb-0">
                     <div class="table-responsive p-5 pt-0">
-                        <form method="GET" action="{{ route('Master Adminkeuangan.menu') }}">
+                        {{-- filter --}}
+                        <form method="GET" action="{{ route('Adminkeuangan.menu') }}">
                             <label for="filter">Filter Status:</label>
                             <select name="filter" id="filter" onchange="this.form.submit()">
                                 <option value="Semua" {{ $filter == 'Semua' ? 'selected' : '' }}>Semua</option>
@@ -56,18 +57,18 @@
                                             <button type="button" class="btn rounded-pill btn-success" disabled>
                                                 <i class="bi bi-check-circle-fill" title="Setuju"></i> Disetujui
                                             </button>
-                                            <a href="{{ route('Master Adminkeuangan.show', $data->id) }}" class="btn rounded-pill btn-danger">
+                                            <a href="{{ route('Adminkeuangan.show', $data->id) }}" class="btn rounded-pill btn-danger">
                                                 <i class="fa fa-eye"></i>
                                             </a>
                                         @elseif ($data->status_verifikasi == 'Ditolak')
                                             <button type="button" class="btn rounded-pill btn-danger" style="padding: 0.6rem 1.6rem;" disabled>
                                                 <i class="bi bi-x-circle-fill" title="Tolak"></i> Ditolak
                                             </button>
-                                            <a href="{{ route('Master Adminkeuangan.show', $data->id) }}" class="btn rounded-pill btn-danger">
+                                            <a href="{{ route('Adminkeuangan.show', $data->id) }}" class="btn rounded-pill btn-danger">
                                                 <i class="fa fa-eye"></i>
                                             </a>
                                         @else
-                                            <form action="{{ route('Master Adminkeuangan.reject', $data->id) }}" method="POST"
+                                            <form action="{{ route('Adminkeuangan.reject', $data->id) }}" method="POST"
                                                 style="display: inline;">
                                                 @csrf
                                                 @method('PUT')
@@ -75,14 +76,14 @@
                                                     <i class="bi bi-x-circle-fill" title="Tolak"></i> Tolak
                                                 </button>
                                             </form>
-                                            <form action="{{ route('Master Adminkeuangan.approve', $data->id) }}" method="POST"
+                                            <form action="{{ route('Adminkeuangan.approve', $data->id) }}" method="POST"
                                                 style="display: inline;">
                                                 @csrf
                                                 @method('PUT')
                                                 <button class="btn rounded-pill btn-success mx-1" type="submit">
                                                     <i class="bi bi-check-circle-fill" title="Setuju"></i> Setuju
                                                 </button>
-                                                <a href="{{ route('Master Adminkeuangan.show', $data->id) }}" class="btn rounded-pill btn-danger">
+                                                <a href="{{ route('Adminkeuangan.show', $data->id) }}" class="btn rounded-pill btn-danger">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                             </form>

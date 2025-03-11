@@ -24,7 +24,6 @@ class MeetingController extends Controller
         $title = 'Ajuan Meeting';
         // Ambil filter dari request (jika ada), defaultnya adalah semua data
         $filter = $request->input('filter', 'Semua');
-
         $query = Meeting::with('user')->latest();
 
         if ($filter != 'Semua') {
@@ -32,11 +31,16 @@ class MeetingController extends Controller
         }
 
         $meeting = $query->get();
-
         $meetNotification = Meeting::where('status_verifikasi', 'Menunggu')->get(); // ambil data yang menunggu
         
-        
-        return view('masterAdmin.ajuanMeeting.menu', compact('meeting', 'meetNotification', 'title', 'filter'));
+        // output
+        $user = auth()->user();
+
+        if ($user->hasRole('Master Admin')) {
+            return view('masterAdmin.ajuanMeeting.menu', compact('meeting', 'meetNotification', 'title', 'filter'));
+        } else if ($user->hasRole('Admin')) {
+            return view('admin.ajuanMeeting.menu', compact('meeting', 'meetNotification', 'title', 'filter'));
+        }
     }
 
     public function getNotifications()
@@ -81,7 +85,14 @@ class MeetingController extends Controller
         $title = 'Ajuan Meeting';
         $meeting = Meeting::with('user')->findOrFail($id);
         
-        return view('masterAdmin.ajuanMeeting.show', compact('meeting', 'title'));
+        // output
+        $user = auth()->user();
+
+        if ($user->hasRole('Master Admin')) {
+            return view('masterAdmin.ajuanMeeting.show', compact('meeting', 'title'));
+        } else if ($user->hasRole('Admin')) {
+            return view('admin.ajuanMeeting.show', compact('meeting', 'title'));
+        }
     }
 
     public function edit(string $id)

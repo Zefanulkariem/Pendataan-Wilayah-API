@@ -14,24 +14,16 @@
                                     enctype="multipart/form-data">
                                     @csrf
                                     <tr>
-                                        {{-- daftar pengguna --}}
                                         <td>
                                             <div class="d-flex px-5 py-1">
                                                 <div class="row w-100">
                                                     {{-- badan usaha --}}
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan
-                                                                badan usaha:</label>
-                                                            <select name="badan_usaha" id="badan_usaha"
-                                                                class="form-control">
-                                                                <option value="PT (Perseroan Terbatas)"
-                                                                    {{ old('badan_usaha') == 'PT (Perseroan Terbatas)' ? 'selected' : '' }}>
-                                                                    PT (Perseroan Terbatas)</option>
-                                                                <option value="CV (Persekutuan Komanditer)"
-                                                                    {{ old('badan_usaha') == 'CV (Persekutuan Komanditer)' ? 'selected' : '' }}>
-                                                                    CV (Persekutuan Komanditer)</option>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan badan usaha:</label>
+                                                            <select name="badan_usaha" id="badan_usaha" class="form-control">
+                                                                <option value="PT (Perseroan Terbatas)" {{ old('badan_usaha') == 'PT (Perseroan Terbatas)' ? 'selected' : '' }}>PT (Perseroan Terbatas)</option>
+                                                                <option value="CV (Persekutuan Komanditer)" {{ old('badan_usaha') == 'CV (Persekutuan Komanditer)' ? 'selected' : '' }}>CV (Persekutuan Komanditer)</option>
                                                             </select>
                                                             @error('badan_usaha')
                                                                 <span class="invalid-feedback" role="alert">
@@ -43,9 +35,7 @@
                                                     {{-- nib --}}
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan
-                                                                Nomor Induk Berusaha (NIB):</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Nomor Induk Berusaha (NIB):</label>
                                                             <input type="number"
                                                                 class="form-control @error('NIB') is-invalid @enderror"
                                                                 name="NIB" aria-label="Masukkan NIB" autofocus
@@ -61,13 +51,9 @@
                                                     {{-- akta pendirian --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan
-                                                                Dokumen Akta Pendirian:</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Dokumen Akta Pendirian:</label>
                                                             <div class="input-group col-xs-12 d-flex align-items-center">
-                                                                <input type="file" name="akta_pendirian"
-                                                                    class="form-control file-upload-info"
-                                                                    placeholder="Upload Dokumen">
+                                                                <input type="file" name="akta_pendirian" class="form-control file-upload-info" placeholder="Upload Dokumen">
                                                             </div>
                                                             @error('akta_pendirian')
                                                                 <span class="invalid-feedback" role="alert">
@@ -79,73 +65,57 @@
                                                     {{-- skdp --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan
-                                                                Surat Keterangan Domisili Perusahaan (SKDP):</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Surat Keterangan Domisili Perusahaan (SKDP):</label>
                                                             <div class="input-group col-xs-12 d-flex align-items-center">
-                                                                <input type="file" name="SKDP"
-                                                                    class="form-control file-upload-info"
-                                                                    placeholder="Upload Dokumen">
+                                                                <input type="file" name="SKDP" class="form-control file-upload-info" placeholder="Upload Dokumen">
+                                                                @error('SKDP')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
                                                             </div>
-                                                            @error('SKDP')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
                                                         </div>
                                                     </div>
                                                     {{-- npwp --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan
-                                                                Dokumen Pajak (NPWP Usaha):</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Dokumen Pajak (NPWP Usaha):</label>
                                                             <div class="input-group col-xs-12 d-flex align-items-center">
-                                                                <input type="file" name="NPWP"
-                                                                    class="form-control file-upload-info"
-                                                                    placeholder="Upload Dokumen">
+                                                                <input type="file" name="NPWP" class="form-control file-upload-info" placeholder="Upload Dokumen">
+                                                                @error('NPWP')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
                                                             </div>
-                                                            @error('NPWP')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
                                                         </div>
                                                     </div>
                                                     {{-- siup --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan
-                                                                Surat Izin Usaha Perdagangan (SIUP):</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Surat Izin Usaha Perdagangan (SIUP):</label>
                                                             <div class="input-group col-xs-12 d-flex align-items-center">
-                                                                <input type="file" name="SIUP"
-                                                                    class="form-control file-upload-info"
-                                                                    placeholder="Upload Dokumen">
+                                                                <input type="file" name="SIUP" class="form-control file-upload-info" placeholder="Upload Dokumen">
+                                                                @error('SIUP')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
                                                             </div>
-                                                            @error('password')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
                                                         </div>
                                                     </div>
                                                     {{-- tdp --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan
-                                                                Tanda Daftar Perusahaan (TDP):</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Tanda Daftar Perusahaan (TDP):</label>
                                                             <div class="input-group col-xs-12 d-flex align-items-center">
-                                                                <input type="file" name="TDP"
-                                                                    class="form-control file-upload-info"
-                                                                    placeholder="Upload Dokumen">
+                                                                <input type="file" name="TDP"  class="form-control file-upload-info" placeholder="Upload Dokumen">
+                                                                @error('TDP')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
                                                             </div>
-                                                            @error('TDP')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
                                                         </div>
                                                     </div>
                                                 </div>

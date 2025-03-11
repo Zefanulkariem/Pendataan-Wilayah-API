@@ -118,7 +118,7 @@
     <script>
         function confirmDelete(userId) {
             Swal.fire({
-                title: 'Hapus Data Operasional ini!',
+                title: 'Hapus Data Meeting ini!',
                 text: "Apakah kamu yakin ingin menghapusnya?",
                 icon: 'warning',
                 showCancelButton: true,
@@ -132,7 +132,7 @@
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                     Swal.fire(
                         'Dibatalkan',
-                        'Penghapusan user dibatalkan',
+                        'Penghapusan dibatalkan',
                         'error'
                     );
                 }

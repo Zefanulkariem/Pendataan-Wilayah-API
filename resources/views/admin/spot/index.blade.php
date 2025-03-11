@@ -20,18 +20,11 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Nama Umkm</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Kategori Umkm</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Lokasi Umkm</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Logo Perusahaan</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Aksi</th>
-                                    {{-- <th class="text-secondary opacity-7"></th> --}}
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> Nama Umkm</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> Kategori Umkm</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> Lokasi Umkm</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> Logo Perusahaan</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,7 +44,6 @@
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">{{ $data->nama_umkm }}</h6>
-
                                                     <p class="text-xs text-secondary mb-0">Pemilik:
                                                         <b>{{ $data->user->name }}</b>
                                                     </p>

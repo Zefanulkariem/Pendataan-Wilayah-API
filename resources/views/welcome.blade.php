@@ -67,13 +67,13 @@
     <div class="header">
         <div class="container-fluid">
             <a href="tel:#"><i class="fa fa-phone"></i> (+62) 812-3456-7890</a>
-            <a href="mailto:#"><i class="fa fa-envelope"></i> info@pwkb-bandung.id</a>
+            <a href="mailto:#"><i class="fa fa-envelope"></i> info@pubk-bandung.id</a>
         </div>
     </div>
     <div class="container-fluid text-absolute bg-light text-dark header-1">
         <div class="row align-items-start">
             <div class="col" style="margin-top: 40vh; margin-left: 50px;">
-                <p style="margin-right: 1rem; line-height: 1.2;"><span>Selamat datang</span> di<br>Pendataan Wilayah Kab. Bandung</p>
+                <p style="margin-right: 1rem; line-height: 1.2;"><span>Selamat datang</span> di<br>Pusat Usaha Bersama dan Kemitraan</p>
                 <p class="col-md-3 p2" style="line-height: 1.2;">Sistem pendataan dengan map interaktif Tekan untuk melihat selengkapnya</p>
                 <a href="#selengkapnya" type="button" class="btn">Selengkapnya</a>
             </div>
@@ -254,7 +254,7 @@
         <div class="row align-items-start">
             <div class="col" style="margin-top: 20vh; margin-left: 50px;">
                 <h2 style="line-height: 1.2;">Tentang Kami</h2>
-                <p class="p2" style="line-height: 1.2;">Aplikasi PKWB adalah solusi digital yang dirancang untuk mempertemukan UMKM dengan Investor atau pihak terkait melalui platform berbasis maps interaktif.</p>
+                <p class="p2" style="line-height: 1.2;"><span>Aplikasi PUBK</span> adalah solusi digital yang dirancang untuk mempertemukan <span>UMKM</span> dengan <span>Investor</span> atau pihak terkait melalui platform berbasis <span>Maps Interaktif</span>.</p>
                 <a href="{{ url('/about') }}" type="button" class="btn">Selengkapnya</a>
             </div>
         </div>
@@ -264,17 +264,17 @@
     <footer class="footer">
         <div class="footer-nav" >
             <div class="row">
-                <div class="footer-col">
+                <div class="col-4">
                     <ul>
-                        <h4><span>Pendataan Wilayah</span>  Kabupaten Bandung</h4>
+                        <h4><span>Pusat Usaha Bersama</span> dan Kemitraan</h4>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
                     <ul>
-                        <h4>TENTANG PWKB</h4>
+                        <h4>TENTANG PUBK</h4>
                         <li><a href="{{url('/about')}}">Tentang Kami</a></li>
-                        <li><a href="{{url('/contactus')}}">Kontak Kami</a></li>
+                        <li><a href="">Kontak Kami</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">

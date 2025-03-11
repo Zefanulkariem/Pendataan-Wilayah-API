@@ -1,14 +1,8 @@
 @extends('layouts.admin')
 @section('css')
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
-
-    <style>
-        #map {
-            height: 500px;
-            width: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('maps/assets/css/style.css')}}">
 @endsection
 
 @section('content')
@@ -23,9 +17,6 @@
                                 <h5 class="font-weight-bolder">
                                     {{ $jmlUser }} Pengguna
                                 </h5>
-                                {{-- <p class="mb-0">
-                    <span class="text-success text-sm font-weight-bolder">+{{ number_format($persen) }}%</span>
-                    sejak bulan lalu </p> --}}
                             </div>
                         </div>
                         <div class="col-4 text-end">
@@ -85,13 +76,10 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Lokasi Umkm Terdaftar</p>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Umkm yang Terdaftar di peta</p>
                                 <h5 class="font-weight-bolder">
                                     {{ number_format($jmlUmkm) }} Terdaftar
                                 </h5>
-                                {{-- <p class="mb-0">
-                    <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
-                  </p> --}}
                             </div>
                         </div>
                         <div class="col-4 text-end">
@@ -138,8 +126,9 @@
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex flex-column">
                                         <h6 class="mb-1 text-dark text-sm">{{ $data->jenis_umkm }}</h6>
-                                        <span class="text-xs">{{ $data->lokasi__umkm_count ?? '0' }} <span
-                                                class="font-weight-bold">Umkm</span></span>
+                                        <span class="text-xs">{{ $data->lokasi__umkm_count ?? '0' }}
+                                            <span class="font-weight-bold">Umkm</span>
+                                        </span>
                                     </div>
                                 </div>
                             </li>

@@ -22,9 +22,9 @@ class UserController extends Controller
         } else if ($userMa->hasRole('Admin')) {
             return view('admin.user.index', compact('user', 'title')); //
         } else if ($userMa->hasRole('Umkm')) {
-            return '/umkm';
+            return 'errors.404';
         } else if ($userMa->hasRole('Investor')) {
-            return '/investor';
+            return 'errors.404';
         }
     }
 
@@ -58,13 +58,10 @@ class UserController extends Controller
 
         $user->assignRole($request->role);
 
-        $user->save();
+        // buat email verifikasi
+        $user->sendEmailVerificationNotification();
 
-        // return response()->json([
-        //     'data' => $user,
-        //     'success' => true,
-        //     'message' => 'user berhasil dibuat',
-        // ]);
+        $user->save();
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
         return redirect()->route('Master Adminuser.index')->with('success', 'Data Berhasil Di Tambah');
     }
@@ -113,11 +110,6 @@ class UserController extends Controller
 
         Alert::success('Success Title', "Data Berhasil Di Edit")->autoClose(1000);
         return redirect()->route('Master Adminuser.index')->with('success', 'Data Berhasil Di Ubah');
-        // return response()->json([
-        //     'data' => $user,
-        //     'success' => true,
-        //     'message' => 'user berhasil di edit',
-        // ]);
     }
 
     public function destroy($id)

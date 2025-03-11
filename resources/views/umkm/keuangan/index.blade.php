@@ -42,7 +42,8 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $data->tanggal }}</h6>
+                                                    <p class="text-xs text-secondary mb-0">Di input pada:</p>
+                                                    <h6 class="mb-0 text-sm"><b>{{ \Carbon\Carbon::parse($data->tanggal)->locale('id')->translatedFormat('d F Y') }}</b></h6>
                                                 </div>
                                             </div>
                                         </td>
@@ -117,7 +118,7 @@
 <!-- Script SweetAlert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    var title = @json($title);
+    // var title = @json($title);
     function confirmDelete(userId) {
         Swal.fire({
             title: 'Hapus Data Keuangan ini!',
@@ -134,7 +135,8 @@
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                     Swal.fire(
                         'Dibatalkan',
-                        `Penghapusan ${title} dibatalkan`,
+                        // `Penghapusan ${title} dibatalkan`,
+                        `Penghapusan dibatalkan`,
                         'error'
                     );
                 }

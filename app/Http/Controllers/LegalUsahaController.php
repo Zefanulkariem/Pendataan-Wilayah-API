@@ -24,7 +24,14 @@ class LegalUsahaController extends Controller
 
         session(['legal_seen' => true]);
         
-        return view('masterAdmin.legalitasUmkm.menu', compact('title', 'legalUsaha'));
+        // output
+        $userMa = auth()->user();
+
+        if ($userMa->hasRole('Master Admin')) {
+            return view('masterAdmin.legalitasUmkm.menu', compact('title', 'legalUsaha'));
+        } else if ($userMa->hasRole('Admin')) {
+            return view('admin.legalitasUmkm.menu', compact('title', 'legalUsaha'));
+        }
     }
 
     public function getNotifications()
@@ -44,12 +51,12 @@ class LegalUsahaController extends Controller
 
     public function store(Request $request)
     {
-        $cekData = KelengkapanLegalitasUsaha::where('id_user', auth()->user()->id)->first();
+        // $cekData = KelengkapanLegalitasUsaha::where('id_user', auth()->user()->id)->first();
 
-        if ($cekData) {
-            Alert::error('Error', 'Anda sudah memiliki data legalitas usaha. Tidak dapat menginput ulang.')->autoClose(3000);
-            return redirect()->back()->withInput();
-        }
+        // if ($cekData) {
+        //     Alert::error('Error', 'Anda sudah memiliki data legalitas usaha. Tidak dapat menginput ulang.')->autoClose(3000);
+        //     return redirect()->back()->withInput();
+        // }
 
         $validatedData = $request->validate([
             'badan_usaha' => 'nullable|in:PT (Perseroan Terbatas),CV (Persekutuan Komanditer)',
@@ -86,9 +93,16 @@ class LegalUsahaController extends Controller
     {
         $title = 'Cek Legalitas UMKM';
         $legalUsaha = KelengkapanLegalitasUsaha::findOrFail($id);
-        $fields = ['akta_pendirian', 'SKDP', 'NPWP', 'SIUP', 'TDP'];
+        $fields = ['akta_pendirian', 'SKDP', 'NPWP', 'SIUP', 'TDP'];//array fields biasa
 
-        return view('masterAdmin.legalitasUmkm.show', compact('title', 'legalUsaha', 'fields'));
+        // output
+        $userMa = auth()->user();
+
+        if ($userMa->hasRole('Master Admin')) {
+            return view('masterAdmin.legalitasUmkm.show', compact('title', 'legalUsaha', 'fields'));
+        } else if ($userMa->hasRole('Admin')) {
+            return view('admin.legalitasUmkm.show', compact('title', 'legalUsaha', 'fields'));
+        }
     }
 
     public function edit(string $id)
@@ -101,17 +115,11 @@ class LegalUsahaController extends Controller
 
     public function update(Request $request, string $id)
     {
-        // $cekData = KelengkapanLegalitasUsaha::where('id_user', auth()->user()->id)->first();
-
-        // if ($cekData) {
-        //     Alert::error('Error', 'Anda sudah memiliki data legalitas usaha. Tidak dapat menginput ulang.')->autoClose(3000);
-        //     return redirect()->back()->withInput();
-        // }
 
         $validatedData = $request->validate([
             'badan_usaha' => 'required|in:PT (Perseroan Terbatas),CV (Persekutuan Komanditer)',
             'akta_pendirian' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
-            'NIB' => 'required|string:255',
+            'NIB' => 'required|string|max:255',
             'SKDP' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
             'NPWP' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
             'SIUP' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',

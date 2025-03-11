@@ -56,54 +56,38 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama
-                                    Umkm:</label>
-                                <input type="text"
-                                    class="form-control @error('nama_umkm')
-                            is-invalid
-                            @enderror"
-                                    name="nama_umkm" id="nama_umkm" value="{{ old('nama_umkm', $lokasiUmkm->nama_umkm) }}">
+                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama :</label>
+                                <input type="text" class="form-control @error('nama_umkm') is-invalid @enderror" name="nama_umkm" id="nama_umkm" value="{{ old('nama_umkm', $lokasiUmkm->nama_umkm) }}">
                                 @error('nama_umkm')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Titik
-                                    Koordinat:</label>
-                                <input type="text"
-                                    class="form-control @error('koordinat')
-                            is-invalid
-                            @enderror"
-                                    name="koordinat" id="koordinat" value="{{ old('koordinat', $lokasiUmkm->koordinat) }}">
+                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Titik Koordinat:</label>
+                                <input type="text" class="form-control @error('koordinat') is-invalid @enderror" name="koordinat" id="koordinat" value="{{ old('koordinat', $lokasiUmkm->koordinat) }}">
                                 @error('koordinat')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Deskripsi
-                                    Perusahaan:</label>
-                                <textarea name="deskripsi" class="text-dark form-control summernote @error('deskripsi') is-invalid @enderror"
-                                    rows="7">{{ old('deskripsi', $lokasiUmkm->deskripsi) }}</textarea>
+                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Deskripsi Perusahaan:</label>
+                                <textarea name="deskripsi" class="text-dark form-control summernote @error('deskripsi') is-invalid @enderror" rows="7">{{ old('deskripsi', $lokasiUmkm->deskripsi) }}</textarea>
                                 @error('deskripsi')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Logo
-                                    Perusahaan:</label>
+                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Logo Perusahaan:</label>
                                 @if ($lokasiUmkm->image)
                                     <div class="p-0">
-                                        <img src="{{ asset('upload/spots/' . $lokasiUmkm->image) }}"
-                                            alt="Gambar Sebelumnya" class="img-thumbnail" style="max-width: 100px;">
+                                        <img src="{{ asset('upload/spots/' . $lokasiUmkm->image) }}" alt="Gambar Sebelumnya" class="img-thumbnail" style="max-width: 100px;">
                                     </div>
                                 @endif
-                                <input type="file" name="image" class="form-control file-upload-info"
-                                    placeholder="Upload Gambar">
+                                <input type="file" name="image" class="form-control file-upload-info" placeholder="Upload Gambar">
                                 <small class="form-text text-muted">Kosongkan jika tidak ingin mengubah foto.</small>
                             </div>
                             <div class="form-group">
-                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">URL/Blog
-                                    Perusahaan:</label>
+                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">URL/Blog Perusahaan:</label>
                                 <input name="link"
                                     class="text-dark form-control summernote @error('link') is-invalid @enderror"
                                     rows="7" value="{{ old('link', $lokasiUmkm->link) }}"></input>
@@ -112,8 +96,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih
-                                    Lokasi Umkm:</label>
+                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Lokasi Umkm:</label>
                                 <select class="js-example-basic-single form-control" name="id_desa">
                                     <option value="pilih pemilik umkm">- Pilih lokasi -</option>
                                     @foreach ($desa as $data)
@@ -125,8 +108,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih
-                                    Kategori:</label>
+                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Kategori:</label>
                                 <select class="js-example-basic-single form-control" name="id_jenis_umkm">
                                     <option value="pilih pemilik umkm">- Pilih kategori umkm -</option>
                                     @foreach ($jk as $data)

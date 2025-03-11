@@ -28,7 +28,6 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Pemilik UMKM</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Pihak Yang Mengajukan / Investor</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" style="text-align: right">Aksi</th>
-                                    {{-- <th class="text-secondary opacity-7"></th> --}}
                                 </tr>
                             </thead>
                             <tbody>

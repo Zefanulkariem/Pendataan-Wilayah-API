@@ -23250,7 +23250,8 @@ hr.horizontal.gray-light {
 }
 
 .sidenav {
-  z-index: 999;
+  /* z-index: 999; */
+  z-index: 1 !important;
 }
 
 .sidenav .navbar-brand,

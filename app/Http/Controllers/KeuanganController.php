@@ -22,9 +22,7 @@ class KeuanganController extends Controller
     public function menu(Request $request)
     {
         $title = 'Status Keuangan';
-
         $filter = $request->input('filter', 'Semua');
-
         $query = Keuangan::with('user')->latest();
 
         if ($filter != 'Semua') {
@@ -32,11 +30,17 @@ class KeuanganController extends Controller
         }
     
         $uang = $query->get();
-
         $uangNotification = Keuangan::where('status_verifikasi', 'Menunggu')->get();
-
         // dd($uang);
-        return view('masterAdmin.keuangan.menu', compact('uang', 'uangNotification', 'title', 'filter'));
+
+        // output
+        $user = auth()->user();
+
+        if ($user->hasRole('Master Admin')) {
+            return view('masterAdmin.keuangan.menu', compact('uang', 'uangNotification', 'title', 'filter'));
+        } else if ($user->hasRole('Admin')) {
+            return view('admin.keuangan.menu', compact('uang', 'uangNotification', 'title', 'filter'));
+        }
     }
 
     //untuk menghitung jumlah notif yang status menunggu
@@ -64,15 +68,22 @@ class KeuanganController extends Controller
 
         // dd($buktiTransaksi->pluck('gambar_bukti'));
 
-        return view('masterAdmin.keuangan.show', compact('uang', 'title'));
+        // output
+        $user = auth()->user();
+
+        if ($user->hasRole('Master Admin')) {
+            return view('masterAdmin.keuangan.show', compact('uang', 'title'));
+        } else if ($user->hasRole('Admin')) {
+            return view('admin.keuangan.show', compact('uang', 'title'));
+        }
     }
 
     public function store(Request $request)
     {
         $validate = $request->validate([
             'tanggal' => 'required|date',
-            'income' => 'required|string',
-            'outcome' => 'required|string',
+            'income' => 'required|numeric|min:0',
+            'outcome' => 'required|numeric|min:0',
             'bukti_transaksi' => 'required|max:2048'
         ]);
     

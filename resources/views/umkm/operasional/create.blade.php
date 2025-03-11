@@ -13,7 +13,6 @@
                                 <form action="{{ route('Umkmoperasional.store') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
-
                                     <tr>
                                         {{-- karyawan --}}
                                         <td>
@@ -24,9 +23,7 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Jumlah
-                                                                karyawan:</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Jumlah karyawan:</label>
                                                             <input type="text" name="jml_karyawan"
                                                                 class="form-control @error('jml_karyawan') is-invalid @enderror"
                                                                 placeholder="Masukkan jumlah karyawan"

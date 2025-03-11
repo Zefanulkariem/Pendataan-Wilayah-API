@@ -116,7 +116,11 @@
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 
     <script>
-        let table = new DataTable('#myTable');
+        let table = new DataTable('#myTable', {
+            language: {
+                url: "https://cdn.datatables.net/plug-ins/1.13.6/i18n/id.json",
+            }
+        });
     </script>
 
     <script>
@@ -148,7 +152,7 @@
     <script>
         function confirmDelete(userId) {
             Swal.fire({
-                title: 'Hapus Set Center Point ini!',
+                title: 'Hapus Lokasi ini!',
                 text: "Apakah kamu yakin ingin menghapusnya?",
                 icon: 'warning',
                 showCancelButton: true,
@@ -162,7 +166,7 @@
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                     Swal.fire(
                         'Dibatalkan',
-                        'Penghapusan user dibatalkan',
+                        'Penghapusan dibatalkan',
                         'error'
                     );
                 }

@@ -1,4 +1,4 @@
-@extends('layouts.masterAdmin')
+@extends('layouts.admin')
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
 @endsection
@@ -16,6 +16,7 @@
                     <table class="table align-items-center mb-0">
                         <tbody>
                             <tr>
+                                {{-- daftar pengguna --}}
                                 <td>
                                     <div class="d-flex px-5 py-1">
                                         <div class="row w-100">
@@ -67,7 +68,7 @@
                                         </div>
                                     </div>
                                     <div class="px-4 py-1">
-                                        <a href="{{ route('Master Adminmeeting.menu') }}" class="btn btn-danger">
+                                        <a href="{{ route('Adminmeeting.menu') }}" class="btn btn-danger">
                                             <i class="fa fa-sharp fa-light fa-arrow-left"></i> Kembali
                                         </a>
                                     </div>

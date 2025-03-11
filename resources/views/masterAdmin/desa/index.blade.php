@@ -78,35 +78,39 @@
 @endsection
 
 @push('javascript')
-    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 
-    <script>
-        let table = new DataTable('#myTable');
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        function confirmDelete(userId) {
-            Swal.fire({
-                title: 'Hapus Desa ini!',
-                text: "Apakah kamu yakin ingin menghapusnya?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, hapus!',
-                cancelButtonText: 'Batal'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('delete-form-' + userId).submit();
-                } else if (result.dismiss === Swal.DismissReason.cancel) {
-                    Swal.fire(
-                        'Dibatalkan',
-                        'Penghapusan user dibatalkan',
-                        'error'
-                    );
-                }
-            });
+<script>
+    let table = new DataTable('#myTable', {
+        language: {
+            url: "https://cdn.datatables.net/plug-ins/1.13.6/i18n/id.json",
         }
-    </script>
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmDelete(userId) {
+        Swal.fire({
+            title: 'Hapus Desa ini!',
+            text: "Apakah kamu yakin ingin menghapusnya?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + userId).submit();
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Dibatalkan',
+                    'Penghapusan dibatalkan',
+                    'error'
+                );
+            }
+        });
+    }
+</script>
 @endpush

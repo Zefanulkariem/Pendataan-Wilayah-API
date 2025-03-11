@@ -14,16 +14,15 @@
                                     enctype="multipart/form-data">
                                     @csrf
                                     <tr>
-                                        {{-- daftar pengguna --}}
                                         <td>
                                             <div class="d-flex px-5 py-1">
                                                 <div class="row w-100">
-                                                    {{-- nama --}}
+                                                    {{-- kategori --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label
                                                                 class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan
-                                                                Jenis Umkm:</label>
+                                                                Kategori Umkm:</label>
                                                             <input type="text"
                                                                 class="form-control @error('jenis_umkm') is-invalid @enderror"
                                                                 name="jenis_umkm" aria-label="Masukkan Jenis Umkm"
@@ -35,18 +34,6 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    {{-- keterangan --}}
-                                                    {{-- <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan Keterangan:</label>
-                                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" aria-label="Masukkan Keterangan" autofocus>
-                                                @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                            </div>
-                                        </div> --}}
                                                 </div>
                                             </div>
                                             <div class="px-4 py-1">

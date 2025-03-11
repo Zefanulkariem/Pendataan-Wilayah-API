@@ -48,7 +48,11 @@ class UserAdminController extends Controller
 
         $user->assignRole($request->role);
 
+        // buat email verifikasi
+        $user->sendEmailVerificationNotification();
+
         $user->save();
+        Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
         return redirect()->route('Adminuser.index')->with('success', 'Data Berhasil di Tambah');
     }
 
@@ -61,11 +65,13 @@ class UserAdminController extends Controller
 
     public function edit($id)
     {
+        $title = 'Perbarui Data Pengguna';
         $roles = Role::all();
         $user = User::findOrFail($id);
         $userRole = $user->getRoleNames()->first();
-        return view('admin.user.edit', compact('user', 'roles', 'userRole'));
+        return view('admin.user.edit', compact('user', 'roles', 'userRole', 'title'));
     }
+
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -91,7 +97,7 @@ class UserAdminController extends Controller
 
         $user->syncRoles($request->input('role'));
         $user->save();
-
+        Alert::success('Success Title', "Data Berhasil Di Edit")->autoClose(1000);
         return redirect()->route('Adminuser.index')->with('success', 'Data Berhasil di Edit');
     }
 

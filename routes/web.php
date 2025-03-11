@@ -78,6 +78,23 @@ Route::get('/centre-point/data', [DataController::class,'centrepoint'])->name('c
 Route::group(['prefix' => 'dashboard-admin', 'middleware' => ['auth', 'can:view_admin'], 'as' => 'Admin'], function () {
     Route::get('/', [AdminController::class, 'index'])->name('home'); //admin
     Route::get('/profile', [AdminController::class, 'profile'])->name('profile.index');
+
+    Route::get('/keuangan/menu', [KeuanganController::class, 'menu'])->name('keuangan.menu');
+    Route::get('/keuangan/menu/show/{id}', [KeuanganController::class, 'show'])->name('keuangan.show');
+    Route::get('/keuangan/notifications', [KeuanganController::class, 'getNotifications'])->name('uang.notification');
+    Route::put('/keuangan/approve/{id}', [KeuanganController::class, 'approve'])->name('keuangan.approve');
+    Route::put('/keuangan/reject/{id}', [KeuanganController::class, 'reject'])->name('keuangan.reject');
+    
+    Route::get('/cek-legal/menu', [LegalUsahaController::class, 'menu'])->name('legalUsaha.menu');
+    Route::get('/cek-legal/menu/show/{id}', [LegalUsahaController::class, 'show'])->name('legalUsaha.show');
+    Route::get('/cek-legal/notifications', [LegalUsahaController::class, 'getNotifications'])->name('legal.notification');
+    
+    Route::get('/meeting', [MeetingController::class, 'menu'])->name('meeting.menu');
+    Route::get('/meeting/show/{id}', [MeetingController::class, 'show'])->name('meeting.show');
+    Route::get('/meeting/notifications', [MeetingController::class, 'getNotifications'])->name('meeting.notification');
+    Route::put('/meeting/apporve/{id}', [MeetingController::class, 'approve'])->name('meeting.approve');
+    Route::put('/meeting/reject/{id}', [MeetingController::class, 'reject'])->name('meeting.reject');
+    
     Route::resource('/user', UserAdminController::class);
     Route::resource('/spot', LokasiUmkmController::class);
 });

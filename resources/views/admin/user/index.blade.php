@@ -13,8 +13,7 @@
                 <div class="card-body px-0 pt-0 pb-0">
                     <div class="table-responsive p-5 pt-0">
                         <div class="d-flex justify-content-start p-0">
-                            <a href="{{ route('Adminuser.create') }}" class="btn btn-primary">Tambah Data Pengguna <i
-                                    class="fa fa-sharp fa-light fa-arrow-right"></i></a>
+                            <a href="{{ route('Adminuser.create') }}" class="btn btn-primary">Tambah Data Pengguna <i class="fa fa-sharp fa-light fa-arrow-right"></i></a>
                         </div>
                         <table id="myTable" class="table align-items-center mb-0">
                             <thead>
@@ -56,32 +55,35 @@
                                             <p class="text-xs font-weight-bold mb-0">{{ $data->getRoleNames()->first() }}
                                             </p>
                                         </td>
-                                        @if (!$data->hasRole('Master Admin') && !$data->hasRole('Admin'))
-                                            <td class="d-flex justify-content-center">
-                                                <form id="delete-form-{{ $data->id }}"
-                                                    action="{{ route('Adminuser.destroy', $data->id) }}" method="POST"
-                                                    style="display:inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <a href="{{ route('Adminuser.show', $data->id) }}" class="btn btn-success">
-                                                        <i class="fa fa-eye"></i>
-                                                    </a>
-                                                        <button type="button" onclick="confirmDelete({{ $data->id }})"
-                                                            class="btn btn-danger">
-                                                            <i class="fa fa-ban"></i>
-                                                        </button>
-                                                </form>
+                                        @if ($data->hasRole('Admin'))
+                                        <td style="text-align: right">
+                                            <a href="{{ route('Adminuser.show', $data->id) }}"
+                                                class="btn btn-success">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                        </td>
+                                        @elseif ($data->hasRole('Master Admin'))
+                                            <td style="text-align: right">
                                             </td>
                                         @else
-                                            <td class="d-flex justify-content-center">
+                                            <td style="text-align: right">
                                                 <form id="delete-form-{{ $data->id }}"
-                                                    action="{{ route('Adminuser.destroy', $data->id) }}" method="POST"
-                                                    style="display:inline;">
+                                                    action="{{ route('Adminuser.destroy', $data->id) }}"
+                                                    method="POST" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a href="{{ route('Adminuser.show', $data->id) }}" class="btn btn-success">
+                                                    <a href="{{ route('Adminuser.show', $data->id) }}"
+                                                        class="btn btn-success">
                                                         <i class="fa fa-eye"></i>
                                                     </a>
+                                                    <a href="{{ route('Adminuser.edit', $data->id) }}"
+                                                        class="btn btn-warning">
+                                                        <i class="ni ni-ruler-pencil"></i>
+                                                    </a>
+                                                    <button type="button" onclick="confirmDelete({{ $data->id }})"
+                                                        class="btn btn-danger">
+                                                        <i class="fa fa-ban"></i>
+                                                    </button>
                                                 </form>
                                             </td>
                                         @endif

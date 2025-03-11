@@ -8,7 +8,7 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0">
-                    {{-- ini namanya library carbon buat ngatur date --}}
+                    {{-- carbon buat ngatur date --}}
                     <h6>Daftar Marketing ({{ \Carbon\Carbon::now()->locale('id')->translatedFormat('F Y') }})</h6>
                 </div>
                 <div class="card-body px-0 pt-0 pb-0">
@@ -116,7 +116,7 @@
     var title = @json($title);
     function confirmDelete(userId) {
         Swal.fire({
-            title: 'Hapus Data Keuangan ini!',
+            title: 'Hapus Data Marketing ini!',
             text: "Apakah kamu yakin ingin menghapusnya?",
             icon: 'warning',
             showCancelButton: true,
@@ -130,7 +130,8 @@
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                     Swal.fire(
                         'Dibatalkan',
-                        `Penghapusan ${title} dibatalkan`,
+                        // `Penghapusan ${title} dibatalkan`,
+                        `Penghapusan dibatalkan`,
                         'error'
                     );
                 }
