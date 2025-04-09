@@ -8,12 +8,12 @@ class Meeting extends Model
 {
     protected $fillable = ['id_investor', 'id_umkm', 'judul', 'lokasi_meeting', 'tanggal'];
 
-    public function idInvestor()
+    public function investor()
     {
         return $this->belongsTo(User::class, 'id_investor');
     }
 
-    public function user()
+    public function umkm()
     {
         return $this->belongsTo(User::class, 'id_umkm');
     }

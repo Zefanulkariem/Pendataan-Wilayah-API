@@ -13,10 +13,10 @@ class MeetingController extends Controller
     public function index()
     {
         $title = 'Daftar Meeting';
-        $umkm = User::role('umkm')->get();
-        $meeting = Meeting::where('id_investor', auth()->id())->get();
+        // $umkm = User::role('umkm')->get();
+        $meeting = Meeting::where('id_investor', auth()->id())->get(); //ngambil data meeting
         // dd($umkm);
-        return view('investor.meeting.index', compact('umkm', 'meeting', 'title'));
+        return view('investor.meeting.index', compact('meeting', 'title'));
     }
     
     public function menu(Request $request)
@@ -24,7 +24,7 @@ class MeetingController extends Controller
         $title = 'Ajuan Meeting';
         // Ambil filter dari request (jika ada), defaultnya adalah semua data
         $filter = $request->input('filter', 'Semua');
-        $query = Meeting::with('user')->latest();
+        $query = Meeting::with('umkm')->latest();
 
         if ($filter != 'Semua') {
             $query->where('status_verifikasi', $filter);
@@ -83,7 +83,7 @@ class MeetingController extends Controller
     public function show(string $id)
     {
         $title = 'Ajuan Meeting';
-        $meeting = Meeting::with('user')->findOrFail($id);
+        $meeting = Meeting::findOrFail($id);
         
         // output
         $user = auth()->user();

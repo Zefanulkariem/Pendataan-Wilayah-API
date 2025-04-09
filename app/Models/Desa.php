@@ -16,9 +16,4 @@ class Desa extends Model
     {
         return $this->belongsTo(Kecamatan::class, 'id_kecamatan');
     }
-
-    // public function profilLurah()
-    // {
-    //     return $this->hasOne(ProfilLurah::class, 'id_desa');
-    // }
 }

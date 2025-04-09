@@ -16,9 +16,4 @@ class Kecamatan extends Model
     {
         return $this->hasMany(Desa::class, 'id_kecamatan');
     }
-    
-    // public function profilCamat()
-    // {
-    //     return $this->hasOne(ProfilCamat::class, 'id_kecamatan');
-    // }
 }

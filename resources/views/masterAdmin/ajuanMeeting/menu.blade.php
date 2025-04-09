@@ -38,16 +38,16 @@
                                     <td>
                                         <div class="d-flex px-2 py-1">
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">{{ $data->user->name }}</h6>
-                                                <p class="text-xs text-secondary mb-0">{{ $data->user->email }}</p>
+                                                <h6 class="mb-0 text-sm">{{ $data->umkm->name }}</h6>
+                                                <p class="text-xs text-secondary mb-0">{{ $data->umkm->email }}</p>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="d-flex px-2 py-1">
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">{{ $data->idInvestor->name}}</h6>
-                                                <p class="text-xs text-secondary mb-0">{{ $data->idInvestor->email }}</p>
+                                                <h6 class="mb-0 text-sm">{{ $data->investor->name}}</h6>
+                                                <p class="text-xs text-secondary mb-0">{{ $data->investor->email }}</p>
                                             </div>
                                         </div>
                                     </td>
