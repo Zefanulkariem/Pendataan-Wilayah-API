@@ -7,6 +7,8 @@ use App\Models\Keuangan;
 use App\Models\Operasional;
 use App\Models\KelengkapanLegalitasUsaha;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class FrontController extends Controller
 {
@@ -65,6 +67,41 @@ class FrontController extends Controller
 
         return abort(403);
     }
+
+    public function editProfile()
+    {
+        $user = Auth::user(); // Mendapatkan data pengguna yang login
+        return view('umkm.profile.edit', compact('user')); // Mengarahkan ke view edit profile
+    }
+
+    // Menyimpan perubahan profil
+    public function updateProfile(Request $request, $id)
+    {   
+        $user = User::findOrFail($id); // Mencari pengguna berdasarkan ID
+    
+    // Validasi data yang di-submit
+        $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,' . $user->id,
+        'password' => 'nullable|min:8|confirmed', // Password opsional
+    ]);
+    
+    // Memperbarui data pengguna
+    $user->name = $request->name;
+    $user->email = $request->email;
+
+    // Jika password ada, perbarui password
+    if ($request->filled('password')) {
+        $user->password = Hash::make($request->password); // Meng-hash password
+    }
+
+    // Simpan perubahan
+    $user->save();
+    
+    // Redirect ke halaman edit profil dengan pesan sukses
+    return redirect()->route('Umkmprofile.index', ['id' => $user->id])->with('success', 'Profil berhasil diperbarui.');
+}
+
 
     public function legalUsaha()
     {

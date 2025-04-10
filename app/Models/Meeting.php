@@ -15,6 +15,6 @@ class Meeting extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id_umkm');
+    return $this->belongsTo(User::class, 'id_umkm');
     }
 }

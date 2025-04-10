@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('logaktivitas', function (Blueprint $table) {
+        Schema::create('bukti_transaksis', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-            $table->enum('role', ['admin', 'UMKM', 'investor']);
-            $table->string('aktivitas');
-            $table->string('deskripsi')->nullable();
+            $table->unsignedBigInteger('id_keuangan');
+            $table->foreign('id_keuangan')->references('id')->on('keuangans')->onDelete('cascade');
+            $table->string('gambar_bukti');
             $table->timestamps();
         });
-       
     }
 
     /**
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('logaktivitas');
+        Schema::dropIfExists('bukti_transaksis');
     }
 };

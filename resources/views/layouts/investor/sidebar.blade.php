@@ -41,6 +41,12 @@
                         <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Jadwal Meeting</span>
+                    @php
+                    $meeting_notif = session('notif_meeting'); // Ambil session notifikasi
+                     @endphp
+                        @if ($meeting_notif)
+                          <span class="badge bg-danger ms-2">1</span> {{-- Tampilkan jika ada notif --}}
+                    @endif
                 </a>
             </li>
 

@@ -18,8 +18,8 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Pengguna</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Role</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tanggal</th> 
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Aktivitas</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Aktivitas</th> 
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Deskripsi</th>
                                     {{-- <th class="text-secondary opacity-7"></th> --}}
                                 </tr>
                             </thead>
@@ -29,8 +29,8 @@
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $log->user->name ?? 'N/A' }}</td>
                     <td>{{ ucfirst($log->role) }}</td>
-                    <td>{{ $log->tanggal }}</td>
                     <td>{{ $log->aktivitas }}</td>
+                    <td>{{ $log->deskripsi}}</td>
                 </tr>
             @empty
                 <tr>

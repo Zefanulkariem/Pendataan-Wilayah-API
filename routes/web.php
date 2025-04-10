@@ -50,6 +50,19 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'can:view_master
     Route::get('profile', [HomeController::class, 'profile'])->name('profile.index'); //test
     Route::get('/profile/edit', [HomeController::class, 'editProfile'])->name('profile.edit');
     Route::put('/profile/update/{id}', [HomeController::class, 'updateProfile'])->name('profile.update');
+    
+    Route::get('/keuangan/menu', [KeuanganController::class, 'menu'])->name('keuangan.menu');
+    Route::get('/keuangan/menu/show/{id}', [KeuanganController::class, 'show'])->name('keuangan.show');
+    Route::get('/keuangan/notifications', [KeuanganController::class, 'getNotifications'])->name('uang.notification');
+    Route::put('/keuangan/approve/{id}', [KeuanganController::class, 'approve'])->name('keuangan.approve');
+    Route::put('/keuangan/reject/{id}', [KeuanganController::class, 'reject'])->name('keuangan.reject');
+    
+    Route::get('/meeting', [MeetingController::class, 'menu'])->name('meeting.menu');
+    Route::get('/meeting/show/{id}', [MeetingController::class, 'show'])->name('meeting.show');
+    Route::get('/meeting/notifications', [MeetingController::class, 'getNotifications'])->name('meeting.notification');
+    Route::put('/meeting/apporve/{id}', [MeetingController::class, 'approve'])->name('meeting.approve');
+    Route::put('/meeting/reject/{id}', [MeetingController::class, 'reject'])->name('meeting.reject');
+
     Route::resource('jenis-umkm', JenisUmkmController::class); //menampilkan data jenis umkm
     Route::resource('kecamatan', KecamatanController::class); //menampilkan data kecamatan
     Route::resource('desa', DesaController::class); //menampilkan data desa
@@ -73,8 +86,13 @@ Route::group(['prefix' => 'dashboard-admin', 'middleware' => ['auth', 'can:view_
 Route::group(['prefix' => 'umkm', 'middleware' => ['auth', 'can:view_umkm'], 'as' => 'Umkm'], function () {
     Route::get('/', [FrontController::class, 'index'])->name('home'); //admin
     Route::get('/profile', [FrontController::class, 'profile'])->name('profile.index');
+    Route::get('/profile/edit', [FrontController::class, 'editProfile'])->name('profile.edit');
+    Route::put('/profile/update/{id}', [FrontController::class, 'updateProfile'])->name('profile.update');
     Route::resource('/legalUsaha', LegalUsahaController::class); //apa umkm bisa mendaftarkan dokumen umkm yang berkli kli/cabang?
-    Route::resource('/keuangan', KeuanganController::class);
+    Route::get('/keuangan', [KeuanganController::class, 'index'])->name('keuangan.index'); // Menampilkan halaman keuangan + notifikasi
+    Route::get('/keuangan/create', [KeuanganController::class, 'create'])->name('keuangan.create'); // Form input keuangan
+    Route::post('/keuangan/store', [KeuanganController::class, 'store'])->name('keuangan.store'); // Simpan data keuangan
+    Route::delete('/keuangan/{id}', [KeuanganController::class, 'destroy'])->name('keuangan.destroy');
     Route::resource('/operasional', OperasionalController::class);
     Route::resource('/marketing', MarketingController::class);
 });
@@ -86,5 +104,10 @@ Route::group(['prefix' => 'investor', 'middleware' => ['auth', 'can:view_investo
     Route::get('/profile', [InvestorController::class, 'profile'])->name('profile.index');
     Route::get('/profile/edit', [InvestorController::class, 'editProfile'])->name('profile.edit');
     Route::put('/profile/update/{id}', [InvestorController::class, 'updateProfile'])->name('profile.update');
-    Route::resource('/meeting', MeetingController::class);
+    Route::get('/meeting/index', [MeetingController::class, 'index'])->name('meeting.index');
+    Route::delete('/meeting/{id}', [MeetingController::class, 'destroy'])->name('meeting.destroy');
+    Route::get('/meeting/create', [MeetingController::class, 'create'])->name('meeting.create');
+    Route::post('/meeting/store', [MeetingController::class, 'store'])->name('meeting.store');
+    
+
 });

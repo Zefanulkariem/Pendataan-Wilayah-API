@@ -29,6 +29,7 @@ class PemilikUmkmController extends Controller
             return view('admin.pelakuUmkm.index', compact('pk'));
         }
     }
+    
 
     /**
      * Show the form for creating a new resource.

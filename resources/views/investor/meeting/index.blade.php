@@ -21,12 +21,18 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
-                                        Pemilik Umkm
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama UMKM
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Agenda
+                                        Judul Meeting
                                     </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Tanggal Waktu
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Lokasi
+                                    </th>
+
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Hapus</th>
@@ -37,7 +43,6 @@
                                 @php $no = 1; @endphp
                                 @foreach ($meeting as $data)
                                     <tr>
-                                        {{-- nomor urut --}}
                                         <td>
                                             <div>
                                                 <div class="d-flex flex-column justify-content-center">
@@ -45,7 +50,7 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        {{-- daftar nama umkm --}}
+                                        
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
@@ -53,29 +58,47 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        {{-- daftar meeting --}}
+                                        
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">{{ $data->judul }}</h6>
-                                                    <p class="text-xs text-secondary mb-0">Waktu & Lokasi:
-                                                        <b>{{ $data->tanggal }}, {{ $data->lokasi_meeting }}</b></p>
                                                 </div>
                                             </div>
                                         </td>
-                                        {{-- logic --}}
-                                        <td class="d-flex justify-content-center">
-                                            <form id="delete-form-{{ $data->id }}"
-                                                action="{{ route('Investormeeting.destroy', $data->id) }}" method="POST"
-                                                style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="button" onclick="confirmDelete({{ $data->id }})"
-                                                    class="btn btn-danger">
-                                                    <i class="fa fa-ban"></i>
-                                                </button>
-                                            </form>
+
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $data->tanggal}}</h6>
+                                                </div>
+                                            </div>
                                         </td>
+                                        
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $data->lokasi_meeting}}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        
+                                    
+
+                                <td class="d-flex justify-content-center">
+
+                                    <form id="delete-form-{{ $data->id }}"
+                                        action="{{ route('Investormeeting.destroy', $data->id) }}" method="POST"
+                                        style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" onclick="confirmDelete({{ $data->id }})"
+                                            class="btn btn-danger">
+                                            <i class="fa fa-ban"></i>
+                                        </button>
+                                    </form>
+                                </td>
+
                                     </tr>
                                 @endforeach
                             </tbody>

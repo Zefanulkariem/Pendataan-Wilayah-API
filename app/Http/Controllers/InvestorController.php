@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\LokasiUmkm;
 use App\Models\User;
 use App\Models\Meeting;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class InvestorController extends Controller
@@ -27,10 +25,11 @@ class InvestorController extends Controller
         $meeting = Meeting::where('id_investor', auth()->id())->get();
 
         // panggil data lokasi umkm
-        $lokasis = LokasiUmkm::with('desa.kecamatan', 'user')
+        $lokasis = LokasiUmkm::with(['desa.kecamatan', 'user', 'user.keuangan'])
             ->get()
             ->map(function ($lokasi) {
-                $koordinat = explode(',', $lokasi->koordinat); // Pisahkan latitude dan longitude
+                $koordinat = explode(',', $lokasi->koordinat); // Pisah latitude dan longitude
+                
                 return [
                     'lat' => $koordinat[0],
                     'lon' => $koordinat[1],
@@ -44,6 +43,7 @@ class InvestorController extends Controller
                     'link' => $lokasi->link,
                 ];
             });
+
             // dd($lokasis);
         return view('investor.index', compact('title', 'jmlUmkm', 'jmlUserUmkm', 'lokasis', 'meeting'));
         
@@ -52,61 +52,42 @@ class InvestorController extends Controller
 
     public function profile()
     {
-        // dd(auth()->user()->getRoleNames());
-        // if (auth()->user()->can('view_dashboard')) {
-            // }
         $title = 'Profil';
         return view('investor.profile.index', compact('title')); 
 
         return abort(403);
     }
 
-    public function editProfile()
-    {
-        $user = Auth::user(); // Mendapatkan data pengguna yang login
-        return view('investor.profile.edit', compact('user')); // Mengarahkan ke view edit profile
-    }
-
-    // Menyimpan perubahan profil
-    public function updateProfile(Request $request, $id)
-    {   
-    $user = User::findOrFail($id); // Mencari pengguna berdasarkan ID
-    
-    // Validasi data yang di-submit
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:users,email,' . $user->id,
-        'password' => 'nullable|min:8|confirmed', // Password opsional
-    ]);
-    
-    // Memperbarui data pengguna
-    $user->name = $request->name;
-    $user->email = $request->email;
-
-    // Jika password ada, perbarui password
-    if ($request->filled('password')) {
-        $user->password = Hash::make($request->password); // Meng-hash password
-    }
-
-    // Simpan perubahan
-    $user->save();
-    
-    // Redirect ke halaman edit profil dengan pesan sukses
-    return redirect()->route('investorprofile.index', ['id' => $user->id])->with('success', 'Profil berhasil diperbarui.');
-}
-
     public function maps()
     {
         
-        $lokasis = LokasiUmkm::with('desa.kecamatan', 'user')
+        $lokasis = LokasiUmkm::with('desa.kecamatan', 'user.keuangan')
             ->get()
             ->map(function ($lokasi) {
-                $koordinat = explode(',', $lokasi->koordinat); // Pisahkan latitude dan longitude
+                $koordinat = explode(',', $lokasi->koordinat); // Pisah latitude dan longitude
+                $dataKeuangan = $lokasi->user->keuangan
+                ->where('status_verifikasi', 'Disetujui')
+                ->values() 
+                // Ini memastikan hasilnya array, bukan Collection
+                // Ketika menggunakan where() di Collection, elemen yang tidak memenuhi kondisi akan dihapus tetapi indeksnya tetap tidak berurutan.
+                // Misalnya, setelah where(), indeksnya bisa tetap [0, 2, 5] bukannya [0, 1, 2].
+                // values() akan mereset indeksnya agar berurutan kembali.
+                ->map(function ($keuangan) {
+                    return [
+                        'tanggal' => $keuangan->tanggal,
+                        'income' => $keuangan->income,
+                        'outcome' => $keuangan->outcome,
+                        'profit_loss' => $keuangan->profit_loss,
+                        'status_verifikasi' => $keuangan->status_verifkikasi,
+                    ];
+                });
+                // dd($dataKeuangan);
+                
                 return [
                     'lat' => $koordinat[0],
                     'lon' => $koordinat[1],
-                    'desa' => $lokasi->desa->nama_desa ?? 'Tidak diketahui',
-                    'kecamatan' => $lokasi->desa->kecamatan->nama_kecamatan ?? 'Tidak diketahui',
+                    'desa' => $lokasi->desa->nama_desa,
+                    'kecamatan' => $lokasi->desa->kecamatan->nama_kecamatan,
                     'deskripsi' =>$lokasi->deskripsi,
                     'img' => $lokasi->image ? asset('upload/spots/' . $lokasi->image) : 'default_image_url',
                     'nama' => $lokasi->user->name,
@@ -114,60 +95,15 @@ class InvestorController extends Controller
                     'namaUMKM' => $lokasi->nama_umkm,
                     'jenisUMKM' => $lokasi->jenisUmkm->jenis_umkm,
                     'link' => $lokasi->link,
+                    'keuangan' => $dataKeuangan,
                 ];
-            });
+            })
+            ->toArray(); // Pastikan diubah ke array
             // dd($lokasis);
-        return view('investor.maps', compact('lokasis')); 
+
+        return view('investor.maps', compact('lokasis'));
 
         return abort(403);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
     
 }

@@ -171,6 +171,7 @@
                     <a class="nav-link" aria-current="page" href="{{ url('/') }}">Beranda</a>
                     <a class="nav-link" href="{{ url('/about') }}">Tentang</a>
                     <a class="nav-link" href="{{ url('/tutorial') }}">Tutorial</a>
+                    <a class="nav-link" href="{{ url('/login') }}">Login</a>
                 </div>
             </div>
         </div>

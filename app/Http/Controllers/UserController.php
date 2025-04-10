@@ -66,8 +66,11 @@ class UserController extends Controller
         ]);
 
         $user->assignRole($request->role);
-
         $user->save();
+        
+        
+    
+        return redirect()->route('Master Adminuser.index')->with('success', 'Data Berhasil Ditambah');
 
         // return response()->json([
         //     'data' => $user,

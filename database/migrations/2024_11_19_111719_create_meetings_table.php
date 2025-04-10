@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('judul');
             $table->text('lokasi_meeting');
             $table->date('tanggal');
+            $table->enum('status_verifikasi', ['Menunggu', 'Disetujui', 'Ditolak'])->default('Menunggu');
             $table->timestamps();
         });
     }

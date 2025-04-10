@@ -1,6 +1,5 @@
 @extends('layouts.umkm')
 @section('content')
-
     <div class="row">
         <div class="col-12">
             <div class="card mb-4">
@@ -20,58 +19,8 @@
                                                 <div class="row w-100">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih
-                                                                Bulan:</label>
-                                                            <select name="bulan" class="form-control" required>
-                                                                <option value="Januari">Januari</option>
-                                                                <option value="Februari">Februari</option>
-                                                                <option value="Maret">Maret</option>
-                                                                <option value="April">April</option>
-                                                                <option value="Mei">Mei</option>
-                                                                <option value="Juni">Juni</option>
-                                                                <option value="Juli">Juli</option>
-                                                                <option value="Agustus">Agustus</option>
-                                                                <option value="September">September</option>
-                                                                <option value="Oktober">Oktober</option>
-                                                                <option value="November">November</option>
-                                                                <option value="Desember">Desember</option>
-                                                            </select>
-                                                            @error('bulan')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih
-                                                                Tahun:</label>
-                                                            <select name="tahun" class="form-control" required>
-                                                                @for ($tahun = date('Y'); $tahun <= date('Y') + 50; $tahun++)
-                                                                    <option value="{{ $tahun }}">{{ $tahun }}
-                                                                    </option>
-                                                                @endfor
-                                                            </select>
-                                                            @error('tahun')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan
-                                                                Pemasukkan:</label>
-                                                            <input type="number"
-                                                                class="form-control @error('income') is-invalid @enderror"
-                                                                name="income"
-                                                                placeholder="Masukkan nominal income, contoh: Rp 10.000"
-                                                                aria-label="Masukkan income" required>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Pemasukkan:</label>
+                                                            <input type="number" class="form-control @error('income') is-invalid @enderror" name="income" placeholder="Masukkan nominal pemasukkan, contoh: Rp 10.000" aria-label="Masukkan income" required>
                                                             @error('income')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -81,14 +30,8 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan
-                                                                Pengeluaran:</label>
-                                                            <input type="number"
-                                                                class="form-control @error('outcome') is-invalid @enderror"
-                                                                name="outcome"
-                                                                placeholder="Masukkan nominal outcome, contoh: Rp 5.000"
-                                                                aria-label="Masukkan outcome" required>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Pengeluaran:</label>
+                                                            <input type="number" class="form-control @error('outcome') is-invalid @enderror" name="outcome" placeholder="Masukkan nominal pengeluaran, contoh: Rp 5.000" aria-label="Masukkan outcome" required>
                                                             @error('outcome')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -96,6 +39,18 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tanggal Input Keuangan:</label>
+                                                            <input type="date" class="form-control @error('tanggal') is-invalid @enderror" name="tanggal" placeholder="Masukkan lokasi meeting" aria-label="Masukkan tanggal meeting" autofocus>
+                                                            @error('tanggal')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    
                                                 </div>
                                             </div>
                                             <div class="px-4 py-1">

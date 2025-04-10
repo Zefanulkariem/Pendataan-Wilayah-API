@@ -12,7 +12,7 @@ class LogaktivitasController extends Controller
      */
     public function index()
     {
-    $logs = Logaktivitas::with('user')->orderBy('tanggal', 'desc')->get();
+    $logs = Logaktivitas::with('user');
 
     return view('masterAdmin.logaktivitas.index', compact('logs'));
     }
@@ -30,7 +30,15 @@ class LogaktivitasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create([
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+    
+        ActivityLogger::log('Tambah User', "User {$user->name} ditambahkan oleh " . auth()->user()->name);
+    
+        return redirect()->route('Master Adminlogaktivitas.index')->with('success', 'User berhasil ditambahkan');
     }
 
     /**
@@ -52,16 +60,26 @@ class LogaktivitasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, logaktivitas $logaktivitas)
+    public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+
+    Logaktivitas::log('Edit User', "User {$user->name} diedit oleh " . auth()->user()->name);
+
+    return redirect()->route('Master Adminlogaktivitas.index')->with('success', 'User berhasil diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(logaktivitas $logaktivitas)
+    public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+    Logaktivitas::log('Hapus User', "User {$user->name} dihapus oleh " . auth()->user()->name);
+
+    return redirect()->route('Master Adminlogaktivitas.index')->with('success', 'User berhasil dihapus');
     }
 }

@@ -101,7 +101,7 @@ class HomeController extends Controller
 
     // Menyimpan perubahan profil
     public function updateProfile(Request $request, $id)
-{
+    {
     $user = User::findOrFail($id); // Mencari pengguna berdasarkan ID
     
     // Validasi data yang di-submit

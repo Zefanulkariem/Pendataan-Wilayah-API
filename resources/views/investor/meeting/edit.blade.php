@@ -16,7 +16,7 @@
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0">
                             <tbody>
-                                <form action="{{ route('Investormeeting.store') }}" method="POST"
+                                <form action="{{ route('Investormeeting.update') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <tr>
@@ -37,16 +37,9 @@
 
                                                     {{-- Nama Umkm --}}
                                                     <div class="form-group">
-                                                        <label
-                                                            class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama
-                                                            Umkm:</label><br>
-                                                        <select class="js-example-basic-single form-control" name="id_umkm">
-                                                            <option value="pilih umkm">- Pilih Umkm -</option>
-                                                            @foreach ($umkm as $data)
-                                                                <option value="{{ $data->id }}">{{ $data->name }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
+                                                        <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama UMKM:</label><br>
+                                                        <input type="text" class="form-control" value="{{ $meeting->user->name }}" disabled>
+                                                        <input type="hidden" name="id_umkm" value="{{ $meeting->id_umkm }}">
                                                     </div>
 
                                                     {{-- tempat meeting --}}
@@ -73,7 +66,7 @@
                                                             class="form-control @error('tanggal') is-invalid @enderror"
                                                             name="tanggal" placeholder="Masukkan lokasi meeting"
                                                             aria-label="Masukkan tanggal meeting" autofocus>
-                                                        @error('tanggal')
+                                                        @error('karyawan')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>

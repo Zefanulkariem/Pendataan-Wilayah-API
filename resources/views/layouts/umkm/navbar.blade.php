@@ -7,7 +7,7 @@
                 </li>
                 <li class="breadcrumb-item text-sm text-white active" aria-current="page">Dasbor Umkm</li>
             </ol>
-            <h6 class="font-weight-bolder text-white mb-0">{{ $title }}</h6>
+            {{--<h6 class="font-weight-bolder text-white mb-0">{{ $title }}</h6>--}}
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -22,7 +22,26 @@
                         data-bs-toggle="dropdown" aria-expanded="false">
                         {{ Auth::user()->name }} <i class="fa fa-user cursor-pointer"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end px-2 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link position-relative" href="#" id="notifDropdown" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-bell"></i> 
+                        @if(isset($notifications) && count($notifications) > 0)
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {{ count($notifications) }}
+                            </span>
+                        @endif
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notifDropdown">
+                        @if(isset($notifications) && count($notifications) > 0)
+                            @foreach($notifications as $notif)
+                                <li><a class="dropdown-item" href="{{ route('Umkmkeuangan.create') }}">{{ $notif }}</a></li>
+                            @endforeach
+                        @else
+                            <li><a class="dropdown-item text-muted" href="#">Tidak ada notifikasi</a></li>
+                        @endif
+                    </ul>
+                </li>
+                <ul class="dropdown-menu dropdown-menu-end px-2 me-sm-n4" aria-labelledby="dropdownMenuButton">
                         <li>
                             <a href="{{ route('logout') }}" class="dropdown-item border-radius-md"
                                 onclick="event.preventDefault();

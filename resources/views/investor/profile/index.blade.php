@@ -81,7 +81,7 @@
                                 <div class="form-group">
                                     <a class="form-control btn btn-primary btn-sm ms-auto p-2" href="{{ route('logout') }}"
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a>
-                                        <a class="form-control btn btn-primary btn-sm ms-auto p-2" href="{{ route('investorprofile.edit') }}">Edit</a>
+                                        <a class="form-control btn btn-primary btn-sm ms-auto p-2" href="{{ route('Investorprofile.edit') }}">Edit</a>
                                 </div>
                             </div>
                         </div>
