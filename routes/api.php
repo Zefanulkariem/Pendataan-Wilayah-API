@@ -36,6 +36,12 @@ Route::prefix('jenisumkm')->group(function () {
 //     Route::post('/operasional', [OperasionalController::class, 'store']);
 //     Route::delete('/operasional/{id}', [OperasionalController::class, 'destroy']);
 // });
+Route::middleware('auth:sanctum')->group(function () {
+    // Route::get('/dashboard', [FrontController::class, 'index']);
+    Route::get('/profile', [FrontController::class, 'profile']);
+    Route::put('/profile/{id}', [FrontController::class, 'updateProfile']);
+    // Route::get('/legalitas-usaha', [FrontController::class, 'legalUsaha']);
+});
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
