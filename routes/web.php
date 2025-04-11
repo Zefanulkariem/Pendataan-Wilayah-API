@@ -80,6 +80,12 @@ Route::group(['prefix' => 'dashboard-admin', 'middleware' => ['auth', 'can:view_
     Route::get('/profile/edit', [AdminController::class, 'editProfile'])->name('profile.edit');
     Route::put('/profile/update/{id}', [AdminController::class, 'updateProfile'])->name('profile.update');
     Route::resource('spot', LokasiUmkmController::class);
+
+    Route::get('/meeting', [MeetingController::class, 'menu'])->name('meeting.menu');
+    Route::get('/meeting/show/{id}', [MeetingController::class, 'show'])->name('meeting.show');
+    Route::get('/meeting/notifications', [MeetingController::class, 'getNotifications'])->name('meeting.notification');
+    Route::put('/meeting/apporve/{id}', [MeetingController::class, 'approve'])->name('meeting.approve');
+    Route::put('/meeting/reject/{id}', [MeetingController::class, 'reject'])->name('meeting.reject');
 });
 
 // umkm

@@ -35,6 +35,15 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link {{ request()->is('dashboard/meeting*') ? 'active' : '' }}"
+                    href="{{ route('Adminmeeting.menu') }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Pengajuan Meeting</span>
+                </a>
+            <li class="nav-item">
                 <a class="nav-link {{ request()->is('dashboard-admin/spot*') ? 'active' : '' }}"
                     href="{{ route('Adminspot.index') }}">
                     <div

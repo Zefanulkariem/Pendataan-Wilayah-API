@@ -101,6 +101,14 @@ class MeetingController extends Controller
         return view('masterAdmin.pengajuanMeeting.show', compact('meeting', 'title'));
     }
 
+    public function showadmin(string $id)
+    {
+        $title = 'Pengajuan Meeting';
+        $meeting = Meeting::with('user')->findOrFail($id);
+        
+        return view('admin.pengajuanmeeting.showadmin', compact('meeting', 'title'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\JenisUmkm;
 use App\Http\Controllers\Api\KecamatanController;
 use App\Http\Controllers\Api\DesaController;
+use App\Http\Controllers\Api\ProfileController;
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/users', [UserController::class, 'index']);
@@ -31,17 +32,14 @@ Route::prefix('jenisumkm')->group(function () {
     Route::put('/{id}', [JenisUmkm::class, 'update']);
     Route::delete('/{id}', [JenisUmkm::class, 'destroy']);
 });
-// Route::prefix('operasional')->group(function () {
-//     Route::get('/operasional', [OperasionalController::class, 'index']);
-//     Route::post('/operasional', [OperasionalController::class, 'store']);
-//     Route::delete('/operasional/{id}', [OperasionalController::class, 'destroy']);
-// });
 Route::middleware('auth:sanctum')->group(function () {
-    // Route::get('/dashboard', [FrontController::class, 'index']);
-    Route::get('/profile', [FrontController::class, 'profile']);
-    Route::put('/profile/{id}', [FrontController::class, 'updateProfile']);
-    // Route::get('/legalitas-usaha', [FrontController::class, 'legalUsaha']);
+    Route::get('/operasional', [OperasionalController::class, 'index']);
+    Route::post('/operasional', [OperasionalController::class, 'store']);
+    Route::delete('/operasional/{id}', [OperasionalController::class, 'destroy']);
 });
+
+
+Route::middleware('auth:sanctum')->get('/profile', [ProfileController::class, 'show']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
