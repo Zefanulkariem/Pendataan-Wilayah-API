@@ -11,7 +11,7 @@ class Keuangan extends Model
 
     public $timestamps = true;
 
-    protected $fillable = ['id_umkm','tanggal','income','outcome','profit_loss', 'status_verifikasi, id_keuangan'];
+    protected $fillable = ['id_umkm', 'tanggal', 'income', 'outcome', 'profit_loss', 'status', 'status_verifikasi'];
 
     public function user() {
         return $this->belongsTo(User::class, 'id_umkm'); //ngatur relasi user ke id_umkm

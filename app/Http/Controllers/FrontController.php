@@ -60,22 +60,13 @@ class FrontController extends Controller
         return abort(403);
     }
 
-    public function getProfile()
-{
-    $user = Auth::user(); // atau auth()->user();
+    public function profile()
+    {
+        $title = 'Profil';
+        return view('umkm.profile.index', compact('title')); 
 
-    if ($user) {
-        return response()->json([
-            'success' => true,
-            'data' => $user
-        ]);
-    } else {
-        return response()->json([
-            'success' => false,
-            'message' => 'User not found'
-        ], 404);
+        return abort(403);
     }
-}
     public function editProfile()
     {
         $user = Auth::user(); // Mendapatkan data pengguna yang login

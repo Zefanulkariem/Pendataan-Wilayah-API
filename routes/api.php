@@ -7,7 +7,9 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\JenisUmkm;
 use App\Http\Controllers\Api\KecamatanController;
 use App\Http\Controllers\Api\DesaController;
+use App\Http\Controllers\Api\OperasionalApiController;
 use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\KeuanganApiController;
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/users', [UserController::class, 'index']);
@@ -33,13 +35,15 @@ Route::prefix('jenisumkm')->group(function () {
     Route::delete('/{id}', [JenisUmkm::class, 'destroy']);
 });
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/operasional', [OperasionalController::class, 'index']);
-    Route::post('/operasional', [OperasionalController::class, 'store']);
-    Route::delete('/operasional/{id}', [OperasionalController::class, 'destroy']);
+    Route::get('/operasional', [OperasionalApiController::class, 'index']);
+    Route::post('/operasional', [OperasionalApiController::class, 'store']);
+    Route::delete('/operasional/{id}', [OperasionalApiController::class, 'destroy']);
 });
 
 
 Route::middleware('auth:sanctum')->get('/profile', [ProfileController::class, 'show']);
+
+Route::middleware('auth:sanctum')->get('/keuangan', [KeuanganApiController::class, 'index']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
