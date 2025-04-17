@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Meeting extends Model
 {
-    protected $fillable = ['id_investor', 'id_umkm', 'judul', 'lokasi_meeting', 'tanggal'];
+    protected $fillable = ['id_investor', 'id_umkm', 'judul', 'lokasi_meeting', 'tanggal', 'status_verifikasi'];
 
     public function investor()
     {

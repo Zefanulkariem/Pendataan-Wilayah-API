@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{asset('welcome/images/PUBK.png')}}">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     {{-- icon --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -14,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <title>Pendataan Web Kabupaten Bandung - PWKB</title>
     <link rel="stylesheet" href="{{asset('welcome/css/style.css')}}">
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
 </head>
 
 <body>
@@ -72,10 +74,20 @@
     </div>
     <div class="container-fluid text-absolute bg-light text-dark header-1">
         <div class="row align-items-start">
-            <div class="col" style="margin-top: 40vh; margin-left: 50px;">
-                <p style="margin-right: 1rem; line-height: 1.2;"><span>Selamat datang</span> di<br>Pusat Usaha Bersama dan Kemitraan</p>
-                <p class="col-md-3 p2" style="line-height: 1.2;">Sistem pendataan dengan map interaktif Tekan untuk melihat selengkapnya</p>
+            <div class="col" style="margin-top: 30vh; margin-left: 50px;">
+                <p style="margin-right: 1rem; line-height: 1.2; font-weight: bold; font-size: 50px;"><span>Selamat datang</span> di<br>Pusat Usaha<br>Bersama dan Kemitraan</p>
+                <p class="col p2" style="line-height: 1.2;">Sistem pendataan dengan map interaktif Tekan untuk melihat selengkapnya</p>
                 <a href="#selengkapnya" type="button" class="btn">Selengkapnya</a>
+            </div>
+            <div class="col" style="margin-top: 10vh; margin-left: 50px;">
+                <dotlottie-player
+                    src="https://lottie.host/47c81a1b-9475-4862-b57a-16805dd0990b/VLRqNdEZww.lottie"
+                    background="transparent"
+                    speed="1"
+                    style="width: 600px; height: 600px"
+                    loop
+                    autoplay>
+                </dotlottie-player>
             </div>
         </div>
     </div>

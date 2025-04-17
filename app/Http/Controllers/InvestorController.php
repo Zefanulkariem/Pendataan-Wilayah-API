@@ -78,7 +78,7 @@ class InvestorController extends Controller
                         'income' => $keuangan->income,
                         'outcome' => $keuangan->outcome,
                         'profit_loss' => $keuangan->profit_loss,
-                        'status_verifikasi' => $keuangan->status_verifkikasi,
+                        'status_verifikasi' => $keuangan->status_verifikasi,
                     ];
                 });
                 // dd($dataKeuangan);

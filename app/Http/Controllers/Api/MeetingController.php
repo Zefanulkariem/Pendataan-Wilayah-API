@@ -12,7 +12,9 @@ class MeetingController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        $meetings = Meeting::where('id_investor', $user->id)->get();
+        $meetings = Meeting::with(['investor', 'umkm'])
+                    ->where('id_investor', $user->id)
+                    ->get();
         $userName = $user->name;
 
         return response()->json([
