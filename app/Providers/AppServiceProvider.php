@@ -3,22 +3,24 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+use App\Models\Keuangan; 
+use App\Models\Meeting;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
+    public function register()
     {
         //
     }
 
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
+    public function boot()
     {
-        //
+        // Kirim data notifikasi meeting ke semua view
+        View::share('meetNotification', Meeting::where('status_verifikasi', 'Menunggu')->get());
+
+        // Notifikasi keuangan
+    View::share('keuanganNotification', Keuangan::where('status_verifikasi', 'Menunggu')->get());
     }
+    
 }

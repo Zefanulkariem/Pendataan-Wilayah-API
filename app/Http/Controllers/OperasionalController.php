@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Operasional;
 use Illuminate\Http\Request;
-
+use App\Events\AktivitasTerjadi;
 use Alert;
 
 class OperasionalController extends Controller
@@ -46,6 +46,8 @@ class OperasionalController extends Controller
         $operasional->id_umkm = auth()->id();
         $operasional->jml_karyawan = $request->jml_karyawan;
 
+        event(new AktivitasTerjadi(auth()->id(), 'umkm', 'Menambahkan data operasional'));
+
         $operasional->save();
         Alert::success('Success Title', "Data Berhasil Di Tambahkan")->autoClose(1000);
         return redirect()->route('Umkmoperasional.index')->with('success', 'Data Berhasil di Tambahkan');
@@ -81,6 +83,8 @@ class OperasionalController extends Controller
     public function destroy(string $id)
     {
         $operasional = Operasional::findOrFail($id);
+
+        event(new AktivitasTerjadi(auth()->id(), 'umkm', 'Menghapus data operasional'));
 
         $operasional->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);

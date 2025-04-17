@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Marketing;
-
+use App\Events\AktivitasTerjadi;
 use Alert;
 
 class MarketingController extends Controller
@@ -47,6 +47,8 @@ class MarketingController extends Controller
         $market->target_bulanan = $request->target_bulanan;
         $market->id_umkm = auth()->id();
 
+        event(new AktivitasTerjadi('Menambahkan data marketing'));
+
         $market->save();
 
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
@@ -84,6 +86,7 @@ class MarketingController extends Controller
     {
         $market = Marketing::findOrFail($id);
 
+        event(new AktivitasTerjadi('Menghapus data marketing'));
         $market->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
         return redirect()->route('Umkmmarketing.index')->with('success', 'Data Berhasil di Hapus');

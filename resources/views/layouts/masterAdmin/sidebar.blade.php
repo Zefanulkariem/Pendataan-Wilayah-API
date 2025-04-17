@@ -76,43 +76,40 @@
             </li>
             </li>
             <li class="nav-item">
+    <a class="nav-link {{ request()->is('dashboard/meeting*') ? 'active' : '' }}"
+        href="{{ route('Master Adminmeeting.menu') }}">
+        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+        </div>
+        <span class="nav-link-text ms-1">Pengajuan Meeting</span>
+        @if (isset($meetNotification) && $meetNotification->count() > 0)
+            <span class="badge bg-danger ms-2">{{ $meetNotification->count() }}</span>
+        @endif
+    </a>
+</li>
+            
+            <!-- Aprove Keuangan -->
+            <li class="nav-item">
                 <a class="nav-link {{ request()->is('dashboard/keuangan/menu*') ? 'active' : '' }}"
                     href="{{ route('Master Adminkeuangan.menu') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-coins text-success text-sm opacity-10"></i>
                     </div>
-                   <span class="nav-link-text ms-1">Aprove Keuangan</span>
-                    <span id="checkNotificationsWrapper">
-                        <div data-i18n="Analytics" style="display: flex; gap: 59px">
-                            <span id="checkNotifications">
-                                @if (isset($uangNotification) && $uangNotification->count() > 0)
-                                <span id="keuangan-notification-count" class="badge bg-danger" style="margin-left: 5px;">
-                                    {{ $uangNotification->count() }}
-                                </span>
-                                @endif
-                            </span>
-                        </div>
-                    </span>
+                    <span class="nav-link-text ms-1">Aprove Keuangan</span>
+                    @if (isset($uangNotification) && $uangNotification->count() > 0)
+                        <span class="badge bg-danger ms-2">{{ $uangNotification->count() }}</span>
+                    @endif
                 </a>
             </li>
+
+            <!-- Log Aktivitas -->
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('dashboard/meeting*') ? 'active' : '' }}"
-                    href="{{ route('Master Adminmeeting.menu') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+                <a href="{{ route('Master Adminlogaktivitas.index') }}" class="nav-link {{ request()->is('dashboard/logaktivitas*') ? 'active' : '' }}">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-history text-info text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Pengajuan Meeting</span>
+                    <span class="nav-link-text ms-1">Log Aktivitas</span>
                 </a>
-            </li>
-            <li class="nav-item">
-            <a href="{{ route('Master Adminlogaktivitas.index') }}" class="nav-link">
-                <i class="fas fa-clipboard-list"></i>
-                <span>Log Aktivitas</span>
-            </a>
-        </li>
-            <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Halaman Akun</h6>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ request()->is('dashboard/profile') ? 'active' : '' }}"

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\KelengkapanLegalitasUsaha;
+use App\Events\AktivitasTerjadi;
 
 use Alert;
 
@@ -64,6 +65,13 @@ class LegalUsahaController extends Controller
                 $legalUsaha->$field = $uploadFile;
             }
         }
+
+        event(new AktivitasTerjadi(
+            auth()->id(),
+            auth()->user()->getRoleNames()->first(),
+            'Menambahkan Legalitas Usaha',
+            'UMKM menambahkan data legalitas usaha'
+        ));
 
         $legalUsaha->save();
 
@@ -127,6 +135,13 @@ class LegalUsahaController extends Controller
                 $legalUsaha->$field = $uploadFile;
             }
         }
+
+        event(new AktivitasTerjadi(
+            auth()->id(),
+            auth()->user()->getRoleNames()->first(),
+            'Memperbarui Legalitas Usaha',
+            'UMKM memperbarui data legalitas usaha ID: ' . $id
+        ));
 
         $legalUsaha->save();
 

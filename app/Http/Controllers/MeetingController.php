@@ -45,7 +45,8 @@ class MeetingController extends Controller
         $meetNotification = Meeting::where('status_verifikasi', 'Menunggu')->get();
         // dd($meetNotification);
         
-        return view('masterAdmin.pengajuanMeeting.menu', compact( 'meeting', 'title', 'filter'));
+        return view('masterAdmin.pengajuanMeeting.menu', compact('meeting', 'title', 'filter', 'meetNotification'));
+
     }
 
     public function menuadmin(Request $request)
@@ -165,9 +166,17 @@ class MeetingController extends Controller
     {
         $meeting = Meeting::findOrFail($id);
 
+        event(new AktivitasTerjadi(
+            auth()->id(),
+            auth()->user()->getRoleNames()->first(),
+            'Menghapus Meeting',
+            'Menghapus meeting dengan judul ' . $meeting->judul
+        ));
+
         $meeting->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
         return redirect()->route('Investormeeting.index')->with('success', 'Data Berhasil di Hapus');
+        
     }
 
     public function approve($id)

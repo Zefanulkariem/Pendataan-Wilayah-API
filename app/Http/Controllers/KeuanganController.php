@@ -7,6 +7,7 @@ use App\Models\Keuangan;
 use App\Models\BuktiTransaksi;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Events\AktivitasTerjadi;
 use Illuminate\Support\Facades\Storage;
 
 use Alert;
@@ -124,6 +125,13 @@ class KeuanganController extends Controller
         $uang->profit_loss = $profit_loss; // Gunakan hasil perhitungan
         $uang->status = $status; // Simpan status
         $uang->id_umkm = auth()->id();
+
+        event(new AktivitasTerjadi(
+            auth()->id(),
+            auth()->user()->getRoleNames()->first(),
+            'Menambah Data Keuangan',
+            'Menambahkan laporan keuangan pada tanggal: ' . $request->tanggal
+        ));
     
         $uang->save();
 
@@ -201,6 +209,13 @@ class KeuanganController extends Controller
         $uang = Keuangan::findOrFail($id);
         $uang->status_verifikasi = 'Ditolak';
         $uang->save();
+
+        event(new AktivitasTerjadi(
+            auth()->id(),
+            auth()->user()->getRoleNames()->first(),
+            'Menghapus Data Keuangan',
+            'Menghapus laporan keuangan dengan ID: ' . $id
+        ));
 
         return redirect()->back()->with('success', 'Status Keuangan Berhasil Ditolak.');
     }

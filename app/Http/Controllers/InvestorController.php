@@ -5,13 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\LokasiUmkm;
 use App\Models\User;
 use App\Models\Meeting;
-use App\Events\AktivitasTercatat;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Events\AktivitasTerjadi;
 use Illuminate\Http\Request;
 
 class InvestorController extends Controller
 {
     public function index()
     {
+        event(new AktivitasTerjadi(
+            auth()->id(),
+            auth()->user()->getRoleNames()->first(),
+            'Melihat Peta',
+            'Investor melihat peta lokasi UMKM'
+        ));
+
         $title = 'Dasbor';
         $jmlUserUmkm = User::role('Umkm')->count();
         $jmlUmkm = LokasiUmkm::count();
@@ -40,9 +49,58 @@ class InvestorController extends Controller
 
     public function profile()
     {
+        // dd(auth()->user()->getRoleNames());
+        // if (auth()->user()->can('view_dashboard')) {
+            // }
         $title = 'Profil';
-        return view('investor.profile.index', compact('title')); 
+        $user = auth()->user();
+        return view('investor.profile.index', compact('user', 'title')); 
+
+        return abort(403);
+
     }
+    public function editProfile()
+    {
+        $user = Auth::user(); // Mendapatkan data pengguna yang login
+        return view('investor.profile.edit', compact('user')); // Mengarahkan ke view edit profile
+    }
+
+    // Menyimpan perubahan profil
+    public function updateProfile(Request $request, $id)
+    {   
+    $user = User::findOrFail($id); // Mencari pengguna berdasarkan ID
+    
+    // Validasi data yang di-submit
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,' . $user->id,
+        'password' => 'nullable|min:8|confirmed', // Password opsional
+    ]);
+    
+    // Memperbarui data pengguna
+    $user->name = $request->name;
+    $user->email = $request->email;
+
+    // Jika password ada, perbarui password
+    if ($request->filled('password')) {
+        $user->password = Hash::make($request->password); // Meng-hash password
+    }
+
+    event(new AktivitasTercatat(
+        auth()->id(),
+        auth()->user()->getRoleNames()->first(),
+        'Mengedit Profil',
+        'Investor mengedit informasi profil'
+    ));
+
+    // Simpan perubahan
+    $user->save();
+    
+    // Redirect ke halaman edit profil dengan pesan sukses
+    return redirect()->route('Investorprofile.index', ['id' => $user->id])->with('success', 'Profil berhasil diperbarui.');
+}
+
+
 
     public function maps()
     {
@@ -100,7 +158,7 @@ class InvestorController extends Controller
         ]);
 
         // 🔥 Catat aktivitas menggunakan event
-        event(new AktivitasTercatat(
+        event(new AktivitasTerjadi(
             auth()->id(),
             auth()->user()->getRoleNames()->first(),
             'Mengajukan Meeting',

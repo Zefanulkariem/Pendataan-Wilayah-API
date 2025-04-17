@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.investor')
 
 @section('content')
     <div class="container mt-4">
