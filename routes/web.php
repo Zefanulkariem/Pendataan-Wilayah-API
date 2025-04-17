@@ -81,11 +81,17 @@ Route::group(['prefix' => 'dashboard-admin', 'middleware' => ['auth', 'can:view_
     Route::put('/profile/update/{id}', [AdminController::class, 'updateProfile'])->name('profile.update');
     Route::resource('spot', LokasiUmkmController::class);
 
-    Route::get('/meeting', [MeetingController::class, 'menu'])->name('meeting.menu');
-    Route::get('/meeting/show/{id}', [MeetingController::class, 'show'])->name('meeting.show');
+    Route::get('/meeting', [MeetingController::class, 'menuadmin'])->name('meeting.menuadmin');
+    Route::get('/meeting/show/{id}', [MeetingController::class, 'showadmin'])->name('meeting.showadmin');
     Route::get('/meeting/notifications', [MeetingController::class, 'getNotifications'])->name('meeting.notification');
     Route::put('/meeting/apporve/{id}', [MeetingController::class, 'approve'])->name('meeting.approve');
     Route::put('/meeting/reject/{id}', [MeetingController::class, 'reject'])->name('meeting.reject');
+
+    Route::get('/keuangan/menu', [KeuanganController::class, 'menuadmin'])->name('keuangan.menuadmin');
+    Route::get('/keuangan/menu/show/{id}', [KeuanganController::class, 'showadmin'])->name('keuangan.showadmin');
+    Route::get('/keuangan/notifications', [KeuanganController::class, 'getNotifications'])->name('uang.notification');
+    Route::put('/keuangan/approve/{id}', [KeuanganController::class, 'approve'])->name('keuangan.approve');
+    Route::put('/keuangan/reject/{id}', [KeuanganController::class, 'reject'])->name('keuangan.reject');
 });
 
 // umkm

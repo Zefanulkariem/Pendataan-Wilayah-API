@@ -105,6 +105,12 @@
                     <span class="nav-link-text ms-1">Pengajuan Meeting</span>
                 </a>
             </li>
+            <li class="nav-item">
+            <a href="{{ route('Master Adminlogaktivitas.index') }}" class="nav-link">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Log Aktivitas</span>
+            </a>
+        </li>
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Halaman Akun</h6>
             </li>

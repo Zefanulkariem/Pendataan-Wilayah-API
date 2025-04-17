@@ -62,7 +62,7 @@
                                         </div>
                                     </div>
                                     <div class="px-4 py-1">
-                                        <a href="{{ route('Adminkeuangan.menu') }}" class="btn btn-danger">
+                                        <a href="{{ route('Adminkeuangan.menuadmin') }}" class="btn btn-danger">
                                             <i class="fa fa-sharp fa-light fa-arrow-left"></i> Kembali
                                         </a>
                                     </div>

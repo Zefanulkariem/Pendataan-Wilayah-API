@@ -13,7 +13,7 @@
                 </div>               
                 <div class="card-body px-0 pt-0 pb-0">
                     <div class="table-responsive p-5 pt-0">
-                        <form method="GET" action="{{ route('Adminmeeting.menu') }}">
+                        <form method="GET" action="{{ route('Adminmeeting.menuadmin') }}">
                             <label for="filter">Filter Status:</label>
                             <select name="filter" id="filter" onchange="this.form.submit()">
                                 <option value="Semua" {{ $filter == 'Semua' ? 'selected' : '' }}>Semua</option>

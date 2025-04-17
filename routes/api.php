@@ -45,6 +45,14 @@ Route::middleware('auth:sanctum')->get('/profile', [ProfileController::class, 's
 
 Route::middleware('auth:sanctum')->get('/keuangan', [KeuanganApiController::class, 'index']);
 
+use App\Http\Controllers\Api\MarketingApiController;
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/marketing', [MarketingApiController::class, 'index']);
+    Route::post('/marketing', [MarketingApiController::class, 'store']);
+    Route::delete('/marketing/{id}', [MarketingApiController::class, 'destroy']);
+});
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
 

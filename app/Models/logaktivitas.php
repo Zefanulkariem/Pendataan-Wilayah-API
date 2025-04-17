@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Logaktivitas extends Model
 {
-
     protected $fillable = [
-        'user_id',
+        'id_user',
         'role',
         'aktivitas',
         'deskripsi',
-        'ip_address',
     ];
 
+    public $timestamps = true;
+
     public function user() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

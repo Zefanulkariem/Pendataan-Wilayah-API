@@ -58,7 +58,27 @@ class KeuanganController extends Controller
         return view('masterAdmin.keuangan.menu', compact('uang', 'uangNotification', 'title', 'filter'));
     }
 
-    //untuk menghitung jumlah notif yang status menunggu
+    public function menuadmin(Request $request)
+    {
+        $title = 'Status Keuangan';
+
+        $filter = $request->input('filter', 'Semua');
+
+        $query = Keuangan::with('user')->latest();
+
+        if ($filter != 'Semua') {
+            $query->where('status_verifikasi', $filter);
+        }
+    
+        $uang = $query->get();
+
+        $uangNotification = Keuangan::where('status_verifikasi', 'Menunggu')->get();
+
+        // dd($uang);
+        return view('admin.keuangan.menu', compact('uang', 'uangNotification', 'title', 'filter'));
+    }
+
+    //untuk menghitung jumlah notif yang statusses menunggu
     public function getNotifications()
     {
         $uangNotification = Keuangan::where('status_verifikasi', 'Menunggu')->count();
@@ -118,6 +138,17 @@ class KeuanganController extends Controller
      * Display the specified resource.
      */
     public function show($id)
+    {
+        $title = 'Status Keuangan';
+        $uang = Keuangan::with('buktiTransaksi')->findOrFail($id);
+        // dd($uang->buktiTransaksi);
+        // $buktiTransaksi = $uang->buktiTransaksi; //jangan lupa atur modelnya dgn id_keuangan
+
+        // dd($buktiTransaksi->pluck('gambar_bukti'));
+
+        return view('masterAdmin.keuangan.show', compact('uang', 'title'));
+    }
+    public function showadmin($id)
     {
         $title = 'Status Keuangan';
         $uang = Keuangan::with('buktiTransaksi')->findOrFail($id);

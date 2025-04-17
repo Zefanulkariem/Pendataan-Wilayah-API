@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
 @endsection
@@ -12,7 +13,7 @@
                 </div>
                 <div class="card-body px-0 pt-0 pb-0">
                     <div class="table-responsive p-5 pt-0">
-                        <form method="GET" action="{{ route('Adminkeuangan.menu') }}">
+                        <form method="GET" action="{{ route('Adminkeuangan.menuadmin') }}">
                             <label for="filter">Filter Status:</label>
                             <select name="filter" id="filter" onchange="this.form.submit()">
                                 <option value="Semua" {{ $filter == 'Semua' ? 'selected' : '' }}>Semua</option>
@@ -49,14 +50,14 @@
                                             <button type="button" class="btn rounded-pill btn-success" disabled>
                                                 <i class="bi bi-check-circle-fill" title="Setuju"></i> Disetujui
                                             </button>
-                                            <a href="{{ route('Adminkeuangan.show', $data->id) }}" class="btn rounded-pill btn-danger">
+                                            <a href="{{ route('Adminkeuangan.showadmin', $data->id) }}" class="btn rounded-pill btn-danger">
                                                 <i class="fa fa-eye"></i>
                                             </a>
                                         @elseif ($data->status_verifikasi == 'Ditolak')
                                             <button type="button" class="btn rounded-pill btn-danger" style="padding: 0.6rem 1.6rem;" disabled>
                                                 <i class="bi bi-x-circle-fill" title="Tolak"></i> Ditolak
                                             </button>
-                                            <a href="{{ route('Adminkeuangan.show', $data->id) }}" class="btn rounded-pill btn-danger">
+                                            <a href="{{ route('Adminkeuangan.showadmin', $data->id) }}" class="btn rounded-pill btn-danger">
                                                 <i class="fa fa-eye"></i>
                                             </a>
                                         @else

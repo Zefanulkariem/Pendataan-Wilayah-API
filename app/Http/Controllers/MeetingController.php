@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Meeting;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use App\Events\AktivitasTerjadi;
 use Alert;
 
 class MeetingController extends Controller
@@ -47,6 +48,29 @@ class MeetingController extends Controller
         return view('masterAdmin.pengajuanMeeting.menu', compact( 'meeting', 'title', 'filter'));
     }
 
+    public function menuadmin(Request $request)
+    {
+        $title = 'Ajuan Meeting';
+        // $umkm = User::role('Umkm')->get();
+
+        // Ambil filter dari request (jika ada), defaultnya adalah semua data
+        $filter = $request->input('filter', 'Semua');
+
+        $query = Meeting::with('user')->latest();
+
+        if ($filter != 'Semua') {
+            $query->where('status_verifikasi', $filter);
+        }
+    
+        $meeting = $query->get();
+
+        // $meeting = Meeting::with('user')->latest()->get(); //user umkm
+        $meetNotification = Meeting::where('status_verifikasi', 'Menunggu')->get();
+        // dd($meetNotification);
+        
+        return view('admin.pengajuanmeeting.menu', compact( 'meeting', 'title', 'filter'));
+    }
+
     public function getNotifications()
     {
         $meetNotification = Meeting::where('status_verifikasi', 'Menunggu')->count();
@@ -69,26 +93,34 @@ class MeetingController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, $id)
-    {
-        $request->validate([
-            'id_umkm' => 'required|exists:users,id',
-            'judul' => 'required|string|max:255',
-            'lokasi_meeting' => 'required|string|max:255',
-            'tanggal' => 'required|date',
-        ]);
+    public function store(Request $request)
+{
+    $request->validate([
+        'id_umkm' => 'required|exists:users,id',
+        'judul' => 'required|string|max:255',
+        'lokasi_meeting' => 'required|string|max:255',
+        'tanggal' => 'required|date',
+    ]);
 
-        $meeting = new Meeting;
-        $meeting->id_umkm = $request->id_umkm;
-        $meeting->judul = $request->judul;
-        $meeting->lokasi_meeting = $request->lokasi_meeting;
-        $meeting->tanggal = $request->tanggal;
-        $meeting->id_investor = auth()->id();
-        $meeting->save();
+    $meeting = new Meeting;
+    $meeting->id_umkm = $request->id_umkm;
+    $meeting->judul = $request->judul;
+    $meeting->lokasi_meeting = $request->lokasi_meeting;
+    $meeting->tanggal = $request->tanggal;
+    $meeting->id_investor = auth()->id();
+    $meeting->save();
 
-        Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
-        return redirect()->route('Investormeeting.index')->with('success', 'Data Berhasil di Tambah');
-    }
+    // ✅ Catat log aktivitas di sini
+    event(new AktivitasTerjadi(
+        auth()->id(),
+        auth()->user()->getRoleNames()->first(),
+        'Mengajukan Meeting',
+        'Mengajukan meeting dengan UMKM ID ' . $request->id_umkm
+    ));
+
+    Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
+    return redirect()->route('Investormeeting.index')->with('success', 'Data Berhasil di Tambah');
+}
 
     /**
      * Display the specified resource.
@@ -103,7 +135,7 @@ class MeetingController extends Controller
 
     public function showadmin(string $id)
     {
-        $title = 'Pengajuan Meeting';
+        $title = 'Pengajuan Meeting';   
         $meeting = Meeting::with('user')->findOrFail($id);
         
         return view('admin.pengajuanmeeting.showadmin', compact('meeting', 'title'));
@@ -166,4 +198,5 @@ class MeetingController extends Controller
 
         return redirect()->back()->with('success', ' Meeting  Berhasil Ditolak.');
     } 
+    
 }
