@@ -76,7 +76,7 @@
                                                 <button class="btn rounded-pill btn-success mx-1" type="submit">
                                                     <i class="bi bi-check-circle-fill" title="Setuju"></i> Setuju
                                                 </button>
-                                                <a href="{{ route('Adminkeuangan.show', $data->id) }}" class="btn rounded-pill btn-danger">
+                                                <a href="{{ route('Adminkeuangan.showadmin', $data->id) }}" class="btn rounded-pill btn-danger">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                             </form>

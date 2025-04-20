@@ -47,7 +47,7 @@ class MarketingController extends Controller
         $market->target_bulanan = $request->target_bulanan;
         $market->id_umkm = auth()->id();
 
-        event(new AktivitasTerjadi('Menambahkan data marketing'));
+        event(new AktivitasTerjadi(auth()->id(), 'umkm', 'Menambahkan data Marketing'));
 
         $market->save();
 
@@ -86,7 +86,7 @@ class MarketingController extends Controller
     {
         $market = Marketing::findOrFail($id);
 
-        event(new AktivitasTerjadi('Menghapus data marketing'));
+        event(new AktivitasTerjadi(auth()->id(), 'umkm', 'Menambahkan data Marketing'));
         $market->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
         return redirect()->route('Umkmmarketing.index')->with('success', 'Data Berhasil di Hapus');

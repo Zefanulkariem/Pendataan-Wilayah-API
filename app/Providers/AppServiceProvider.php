@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('meetNotification', Meeting::where('status_verifikasi', 'Menunggu')->get());
 
         // Notifikasi keuangan
-    View::share('keuanganNotification', Keuangan::where('status_verifikasi', 'Menunggu')->get());
+         View::share('uangNotification', Keuangan::where('status_verifikasi', 'Menunggu')->get());
     }
     
 }

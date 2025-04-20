@@ -8,6 +8,7 @@ use App\Models\LokasiUmkm;
 use App\Models\Desa;
 use App\Models\User;
 use App\Models\JenisUmkm;
+use App\Events\AktivitasTerjadi;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 
@@ -93,6 +94,12 @@ class LokasiUmkmController extends Controller
         $spot->link = $request->link;
         $spot->koordinat = $request->koordinat;
         $spot->id_jenis_umkm = $request->id_jenis_umkm;
+        event(new AktivitasTerjadi(
+            auth()->user()->id,
+            auth()->user()->getRoleNames()->first(),
+            'admin menambahkan lokasi UMKM: ' . $spot->nama_umkm,
+            'Lokasi baru ditambahkan ke sistem'
+        ));
         $spot->save();
 
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
@@ -171,7 +178,11 @@ class LokasiUmkmController extends Controller
         $spot->koordinat = $request->koordinat;
         $spot->id_desa = $request->id_desa;
         $spot->id_jenis_umkm = $request->id_jenis_umkm;
-        
+        event(new AktivitasTerjadi(
+            auth()->user()->name . ' mengedit lokasi UMKM: ' . $spot->nama_umkm,
+            now(),
+            auth()->user()->id
+        ));
         $spot->save();
 
         Alert::success('Success Title', "Data Berhasil Di Tambah")->autoClose(1000);
@@ -199,7 +210,11 @@ class LokasiUmkmController extends Controller
             File::delete($filePath);
         }
         // dd($filePath);
-        
+        event(new AktivitasTerjadi(
+            auth()->user()->name . ' menghapus lokasi UMKM: ' . $spot->nama_umkm,
+            now(),
+            auth()->user()->id
+        ));
         $lk->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
         $userMa = auth()->user();

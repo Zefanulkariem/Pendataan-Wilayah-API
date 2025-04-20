@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\DesaController;
 use App\Http\Controllers\Api\OperasionalApiController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\KeuanganApiController;
+use App\Http\Controllers\Api\LegalUsahaApiController;
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/users', [UserController::class, 'index']);
@@ -51,6 +52,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/marketing', [MarketingApiController::class, 'index']);
     Route::post('/marketing', [MarketingApiController::class, 'store']);
     Route::delete('/marketing/{id}', [MarketingApiController::class, 'destroy']);
+});
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/legalitasusaha', [LegalUsahaApiController::class, 'index']);
+    Route::post('/legalitasusaha', [LegalUsahaApiController::class, 'store']);
+    Route::get('/legalitasusaha/{id}', [LegalUsahaApiController::class, 'show']);
+    Route::put('/legalitasusaha/{id}', [LegalUsahaApiController::class, 'update']);
+    Route::delete('/legalitasusaha/{id}', [LegalUsahaApiController::class, 'destroy']);
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {

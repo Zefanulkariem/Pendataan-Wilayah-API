@@ -199,6 +199,12 @@ class KeuanganController extends Controller
     {
         $uang = Keuangan::findOrFail($id);
         $uang->status_verifikasi = 'Disetujui';
+        event(new AktivitasTerjadi(
+            auth()->id(),
+            auth()->user()->getRoleNames()->first(),
+            'Menyetujui Data Keuangan',
+            'Menyetujui laporan keuangan dengan ID: ' . $id
+        ));
         $uang->save();
 
         return redirect()->back()->with('success', 'Status Keuangan Berhasil Disetujui.');

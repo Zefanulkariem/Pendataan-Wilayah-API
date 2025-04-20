@@ -139,7 +139,7 @@ class MeetingController extends Controller
         $title = 'Pengajuan Meeting';   
         $meeting = Meeting::with('user')->findOrFail($id);
         
-        return view('admin.pengajuanmeeting.showadmin', compact('meeting', 'title'));
+        return view('admin.pengajuanmeeting.show', compact('meeting', 'title'));
     }
 
     /**
@@ -183,6 +183,14 @@ class MeetingController extends Controller
     {
         $meeting = Meeting::findOrFail($id);
         $meeting->status_verifikasi = 'Disetujui';
+
+        event(new AktivitasTerjadi(
+            auth()->id(),
+            auth()->user()->getRoleNames()->first(),
+            'Menyetujui Meeting',
+            'Menyetujui meeting dengan judul: ' . $meeting->judul
+        ));
+
         $meeting->save();
 
         Session::flash('notif_meeting', [
@@ -197,6 +205,13 @@ class MeetingController extends Controller
     {
         $meeting = Meeting::findOrFail($id);
         $meeting->status_verifikasi = 'Ditolak';
+
+        event(new AktivitasTerjadi(
+            auth()->id(),
+            auth()->user()->getRoleNames()->first(),
+            'Menolak Meeting',
+            'Menolak meeting dengan judul: ' . $meeting->judul
+        ));
         $meeting->save();
 
     // Notifikasi untuk investor

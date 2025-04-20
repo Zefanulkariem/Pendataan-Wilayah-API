@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Events\AktivitasTerjadi;
 use Spatie\Permission\Models\Role;
 
 use Alert;
@@ -64,6 +65,8 @@ class UserAdminController extends Controller
             'no_telp' => $request->no_telp,
             'alamat' => $request->alamat,
         ]);
+
+        event(new AktivitasTerjadi(auth()->id(), 'admin', 'Menambahkan data Daftar Pengguna'));
 
         $user->assignRole($request->role);
 
@@ -125,6 +128,7 @@ class UserAdminController extends Controller
         }
 
         $user->syncRoles($request->input('role'));
+        event(new AktivitasTerjadi(auth()->id(), 'admin', 'Mengubah data daftar pengguna'));
         $user->save();
 
         return redirect()->route('Adminuser.index')->with('success', 'Data Berhasil di Edit');
@@ -136,7 +140,7 @@ class UserAdminController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-
+        event(new AktivitasTerjadi(auth()->id(), 'admin', 'Menhapus data daftar penggunna'));
         $user->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
         return redirect()->back()->with('success', 'Data Berhasil di Hapus');
