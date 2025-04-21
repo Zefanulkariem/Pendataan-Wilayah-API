@@ -9,9 +9,7 @@ use Alert;
 
 class JenisUmkmController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $title = 'Daftar Kategori Umkm';
@@ -19,18 +17,12 @@ class JenisUmkmController extends Controller
         return view('masterAdmin.jenisUmkm.index', compact('jenis_umkm', 'title'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $title = 'Tambahkan Kategori Umkm';
         return view('masterAdmin.jenisUmkm.create', compact('title'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $validate = $request->validate([
@@ -46,17 +38,11 @@ class JenisUmkmController extends Controller
         return redirect()->route('Master Adminjenis-umkm.index')->with('success', 'Data Berhasil di Tambah');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
         $title = 'Perbarui Data Kategori Umkm';
@@ -64,9 +50,6 @@ class JenisUmkmController extends Controller
         return view('masterAdmin.jenisUmkm.edit', compact('jenis_umkm', 'title'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
     {
         $validate = $request->validate([
@@ -82,12 +65,14 @@ class JenisUmkmController extends Controller
         return redirect()->route('Master Adminjenis-umkm.index')->with('success', 'Data Berhasil di Edit');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
         $jenis_umkm = JenisUmkm::findOrFail($id);
+
+        if ($jenis_umkm->lokasi_umkm()->count() > 0) {
+            Alert::error('Error Title', "Kategori tidak bisa dihapus karena masih ada lokasi umkm yang terkait");
+            return redirect()->route('Master Adminjenis-umkm.index')->with('error', 'Kategori tidak bisa dihapus karena masih ada lokasi umkm yang terkait.');
+        }
 
         $jenis_umkm->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);

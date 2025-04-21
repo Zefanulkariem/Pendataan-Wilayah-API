@@ -96,6 +96,11 @@ class DesaController extends Controller
     {
         $desa = Desa::findOrFail($id);
 
+        if ($desa->lokasi_umkm()->count() > 0) {
+            Alert::error('Error Title', "Desa tidak bisa dihapus karena masih ada lokasi umkm yang terkait");
+            return redirect()->route('Master Admindesa.index')->with('error', 'Desa tidak bisa dihapus karena masih ada lokasi umkm yang terkait.');
+        }
+
         $desa->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
         return redirect()->route('Master Admindesa.index')->with('success', 'Data Berhasil di Hapus');
