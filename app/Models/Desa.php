@@ -11,7 +11,7 @@ class Desa extends Model
     public $timestamp = true;
 
     public $fillable = ['nama_desa', 'kode_wilayah', 'id_kecamatan'];
- 
+
     public function kecamatan()
     {
         return $this->belongsTo(Kecamatan::class, 'id_kecamatan');
