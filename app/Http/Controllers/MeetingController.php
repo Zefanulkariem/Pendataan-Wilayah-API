@@ -14,7 +14,7 @@ class MeetingController extends Controller
     {
         $title = 'Daftar Meeting';
         // $umkm = User::role('umkm')->get();
-        $meeting = Meeting::where('id_investor', auth()->id())->get(); //ngambil data meeting
+        $meeting = Meeting::where('id_investor', auth()->id())->latest()->get(); //ngambil data meeting
         // dd($umkm);
         return view('investor.meeting.index', compact('meeting', 'title'));
     }

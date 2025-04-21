@@ -14,7 +14,7 @@ class KeuanganController extends Controller
     public function index()
     {
         $title = 'Daftar Keuangan';
-        $uang = Keuangan::where('id_umkm', auth()->id())->get();
+        $uang = Keuangan::where('id_umkm', auth()->id())->latest()->get();
         
         return view('umkm.keuangan.index', compact('uang', 'title'));
     }

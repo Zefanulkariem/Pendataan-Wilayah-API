@@ -144,14 +144,19 @@
 @push('javascript')
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script>
-    // Data lokasi dari controller diubah ke JSON
     const lokasis = @json($lokasis);
+    
+    const batasPeta = L.latLngBounds(
+        L.latLng(-6.796101, 107.257445),
+        L.latLng(-7.402902, 107.833103)
+    );
 
-    // Konfigurasi peta menggunakan Leaflet
     const map = L.map('map', {
         center: [-6.9810689, 107.5666283],
         zoom: 11,
-        minZoom: 10
+        minZoom: 10,
+        maxBounds: batasPeta,
+        maxBoundsViscosity: 1.0 
     });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

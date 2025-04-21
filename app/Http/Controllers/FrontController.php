@@ -16,10 +16,10 @@ class FrontController extends Controller
     public function index()
     {
         $title = 'Dasbor';
-        $uang = Keuangan::where('id_umkm', auth()->id())->get();
+        $uang = Keuangan::where('id_umkm', auth()->id())->take(10)->latest()->get();
 
         $uang = $uang->map(function ($data) {
-            // menghitung keuntungan
+            // hitung untunga
             $profit = $data->income - $data->outcome;
 
             // kalau keuntungan lebih dari 0, hitung persen keuntungannya/rugi
@@ -51,7 +51,7 @@ class FrontController extends Controller
         $op = Operasional::where('id_umkm', auth()->id())->first();
 
         // panggil data keuangan
-        $uang = Keuangan::where('id_umkm', auth()->id())->get();
+        // $uang = Keuangan::where('id_umkm', auth()->id())->get();
 
         return view('umkm.index', compact('uang', 'rataRataPersen', 'op', 'title', 'jmlField', 'uang'));
         

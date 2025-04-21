@@ -70,6 +70,7 @@
 
     
     <div class="container-fluid">
+        <img src="{{asset('welcome/images/PUBK.png')}}" alt="pubk" style="width: 150px; margin-top: -25px; margin-left: -8px;">
         <div class="section">
             <p>Kami menyediakan layanan yang mempermudah beberapa proses seperti :</p>
             <p>Mempermudah proses pendataan UMKM, pengajuan pendanaan, dan pembaruan status legalitas secara efisien dan terstruktur</p>

@@ -22,7 +22,7 @@ class InvestorController extends Controller
         $jmlUmkm = LokasiUmkm::count();
 
         // panggil data meeting
-        $meeting = Meeting::where('id_investor', auth()->id())->get();
+        $meeting = Meeting::where('id_investor', auth()->id())->inRandomOrder()->take(10)->get();
 
         // panggil data lokasi umkm
         $lokasis = LokasiUmkm::with(['desa.kecamatan', 'user', 'user.keuangan'])

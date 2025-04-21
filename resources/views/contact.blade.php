@@ -66,7 +66,7 @@
         <div class="row align-items-start">
             <div class="col" style="margin-top: 20vh; margin-left: 50px">
                 <p style="margin-right: 1rem; line-height: 1.2;"><span>Hubungi Kami</span></p>
-                <p class="col-md-6 p2" style="line-height: 1.2;">Kami siap membantu Anda mendapatkan informasi lebih lanjut mengenai layanan kami. Jangan ragu untuk menghubungi kami melalui kontak di bawah ini:</p>
+                <p class="col-md-6 p2" style="font-size: 18px;line-height: 1.2;">Kami siap membantu Anda mendapatkan informasi lebih lanjut mengenai layanan kami. Jangan ragu untuk menghubungi kami melalui kontak di bawah ini:</p>
             </div>
             <div class="col-md-10" style="margin-top: 1%; margin-left: 50px; color: gray;">
                 <p class="p2"><i class="fa-solid fa-location-dot" style="margin-right: 1%"></i>Alamat Kantor :</p>
@@ -88,12 +88,13 @@
     </div>
 
     {{-- footer --}}
-    <footer class="footer">
-        <div class="footer-nav" >
+    <footer class="footer" style="margin-top: 0;">
+        <div class="footer-nav">
             <div class="row">
                 <div class="col-4">
                     <ul>
-                        <h4><span>Pusat Usaha Bersama</span> dan Kemitraan</h4>
+                        {{-- <h4><span>Pusat Usaha Bersama</span> dan Kemitraan</h4> --}}
+                        <img src="{{asset('welcome/images/PUBK.png')}}" alt="pubk" style="width: 150px; margin-top: -25px">
                     </ul>
                 </div>
                 
