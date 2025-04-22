@@ -74,9 +74,8 @@
                         @enderror
                     </div>
                     <div class="text-center">
-                      <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Masuk</button>
-                    </div>
-
+                    <button type="submit" class="btn btn-lg btn-success w-100 mt-4 mb-0">Masuk</button>
+                  </div>
                   </form>
                 </div>
               </div>

@@ -29,8 +29,8 @@ Route::get('/about', function () {
     return view('tentang');
 });
 
-Route::get('/tutorial', function () {
-    return view('tutorial');
+Route::get('/contact', function () {
+    return view('contact');
 });
 
 Auth::routes(

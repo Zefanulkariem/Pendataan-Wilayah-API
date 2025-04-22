@@ -1,0 +1,218 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f6faf7;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    background-color: rgba(37, 85, 53, 0.95); /* hijau gelap transparan */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .nav-link {
+    color: #fff !important;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    color: #a8e4b0 !important; /* hijau muda */
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #a8e4b0 !important;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 90vh;
+    background: url('https://i.ibb.co.com/QpVCFBw/sabil.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+
+.hero h1 {
+    font-size: 3rem;
+}
+
+/* Section General */
+.section {
+    padding: 80px 0;
+    background: #e6f6ec;
+}
+
+.section h2 {
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #255535;
+}
+
+/* UMKM Section */
+.umkm-section {
+    padding: 60px 20px;
+    background: #255535 url('https://i.ibb.co/qn1pCh6/Frame-6-waifu2x-art-noise3-scale.png') no-repeat center/cover;
+}
+
+.title h1 {
+    text-align: center;
+    color: #a8e4b0;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+
+.umkm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.umkm-card {
+    background: rgba(0,0,0,0.75);
+    border: 1px solid #2e7031;
+    padding: 30px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.umkm-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+}
+
+.umkm-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #a8e4b0;
+}
+
+.umkm-card h2 span {
+    color: #6fe056;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.umkm-card p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #ddd;
+}
+
+/* Footer */
+.footer {
+    background: #ffffff;  /* Putih bersih */
+    padding: 100px 20px 60px;
+    color: #333;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.footer-nav .row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-col {
+    flex: 1 1 300px;
+    margin: 30px 20px;
+}
+
+.footer-col h4 {
+    font-size: 22px;
+    color: #111;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.footer-col h4 span {
+    color: #218c74;  /* Tetap hijau biar serasi sama tema atasnya */
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+    color: #555;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #218c74;
+}
+
+.footer-col .sosmed a {
+    display: inline-block;
+    margin-right: 18px;
+    font-size: 28px;
+    color: #333;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-col .sosmed a:hover {
+    color: #218c74;
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    border-top: 1px solid #ddd;
+    margin-top: 60px;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: #777;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .umkm-card p {
+        font-size: 15px;
+    }
+    .title h1 {
+        font-size: 2rem;
+    }
+}
+
+
+.contact-info {
+    background-color: #f8f9fa; /* Soft light grey */
+}
+
+.contact-info h2 {
+    color: #218c74; /* Hijau elegan */
+    font-weight: 600;
+}
+
+.contact-list li {
+    font-size: 16px;
+    color: #333;
+}
+
+.contact-list i {
+    color: #218c74;
+}
