@@ -13,10 +13,10 @@ class MeetingController extends Controller
     public function index()
     {
         $title = 'Daftar Meeting';
-        $umkm = User::role('umkm')->get();
-        $meeting = Meeting::where('id_investor', auth()->id())->get();
+        // $umkm = User::role('umkm')->get();
+        $meeting = Meeting::where('id_investor', auth()->id())->latest()->get(); //ngambil data meeting
         // dd($umkm);
-        return view('investor.meeting.index', compact('umkm', 'meeting', 'title'));
+        return view('investor.meeting.index', compact('meeting', 'title'));
     }
     
     public function menu(Request $request)
@@ -24,19 +24,23 @@ class MeetingController extends Controller
         $title = 'Ajuan Meeting';
         // Ambil filter dari request (jika ada), defaultnya adalah semua data
         $filter = $request->input('filter', 'Semua');
-
-        $query = Meeting::with('user')->latest();
+        $query = Meeting::with('umkm')->latest();
 
         if ($filter != 'Semua') {
             $query->where('status_verifikasi', $filter);
         }
 
         $meeting = $query->get();
-
         $meetNotification = Meeting::where('status_verifikasi', 'Menunggu')->get(); // ambil data yang menunggu
         
-        
-        return view('masterAdmin.ajuanMeeting.menu', compact('meeting', 'meetNotification', 'title', 'filter'));
+        // output
+        $user = auth()->user();
+
+        if ($user->hasRole('Master Admin')) {
+            return view('masterAdmin.ajuanMeeting.menu', compact('meeting', 'meetNotification', 'title', 'filter'));
+        } else if ($user->hasRole('Admin')) {
+            return view('admin.ajuanMeeting.menu', compact('meeting', 'meetNotification', 'title', 'filter'));
+        }
     }
 
     public function getNotifications()
@@ -79,9 +83,16 @@ class MeetingController extends Controller
     public function show(string $id)
     {
         $title = 'Ajuan Meeting';
-        $meeting = Meeting::with('user')->findOrFail($id);
+        $meeting = Meeting::findOrFail($id);
         
-        return view('masterAdmin.ajuanMeeting.show', compact('meeting', 'title'));
+        // output
+        $user = auth()->user();
+
+        if ($user->hasRole('Master Admin')) {
+            return view('masterAdmin.ajuanMeeting.show', compact('meeting', 'title'));
+        } else if ($user->hasRole('Admin')) {
+            return view('admin.ajuanMeeting.show', compact('meeting', 'title'));
+        }
     }
 
     public function edit(string $id)
@@ -100,7 +111,7 @@ class MeetingController extends Controller
 
         $meeting->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
-        return redirect()->route('Investormeeting.index')->with('success', 'Data Berhasil di Hapus');
+        return redirect()->route('Investoraju-meeting.index')->with('success', 'Data Berhasil di Hapus');
     }
 
     public function approve($id)

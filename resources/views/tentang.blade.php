@@ -70,6 +70,7 @@
 
     
     <div class="container-fluid">
+        <img src="{{asset('welcome/images/PUBK.png')}}" alt="pubk" style="width: 150px; margin-top: -25px; margin-left: -8px;">
         <div class="section">
             <p>Kami menyediakan layanan yang mempermudah beberapa proses seperti :</p>
             <p>Mempermudah proses pendataan UMKM, pengajuan pendanaan, dan pembaruan status legalitas secara efisien dan terstruktur</p>
@@ -83,7 +84,7 @@
                 <div class="row align-items-center justify-content-lg-between">
                     <div class="col-lg-12 mb-lg-0 mb-4">
                         <div class="copyright text-center text-sm text-muted text-lg-start">
-                            <p>© Pendataan Web Kab. Bandung
+                            <p>© Pusat Usaha Bersama dan Kemitraan
                                 <script>
                                     document.write(new Date().getFullYear());
                                 </script>.

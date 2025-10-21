@@ -13,17 +13,14 @@
                                 <form action="{{ route('Umkmmarketing.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <tr>
-                                        {{-- bulan --}}
                                         <td>
                                             <div class="d-flex px-5 py-1">
                                                 <div class="row w-100">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih
-                                                                Bulan:</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Bulan:</label>
                                                             <select name="bulan" class="form-control" required>
-                                                                {{-- <option value="" disabled selected>Pilih Bulan</option> --}}
+                                                                <option value="" disabled selected>Pilih Bulan</option>
                                                                 <option value="Januari">Januari</option>
                                                                 <option value="Februari">Februari</option>
                                                                 <option value="Maret">Maret</option>
@@ -46,9 +43,7 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih
-                                                                Tahun:</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pilih Tahun:</label>
                                                             <select name="tahun" class="form-control" required>
                                                                 @for ($tahun = date('Y'); $tahun <= date('Y') + 50; $tahun++)
                                                                     <option value="{{ $tahun }}">{{ $tahun }}
@@ -62,18 +57,15 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    {{-- akta pendirian --}}
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan
-                                                                Target Bulanan:</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Target Bulanan:</label>
                                                             <input type="number"
-                                                                class="form-control @error('target_tahunan') is-invalid @enderror"
-                                                                name="target_tahunan"
-                                                                placeholder="Masukkan nominal target tahunan, contoh: Rp 10.000"
-                                                                aria-label="Masukkan target tahunan" required>
-                                                            @error('target_tahunan')
+                                                                class="form-control @error('target_bulanan') is-invalid @enderror"
+                                                                name="target_bulanan"
+                                                                placeholder="Masukkan nominal target bulanan, contoh: Rp 10.000"
+                                                                aria-label="Masukkan target bulanan" required>
+                                                            @error('target_bulanan')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>
@@ -82,15 +74,13 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan
-                                                                Target Tahunan:</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan Target Tahunan:</label>
                                                             <input type="number"
-                                                                class="form-control @error('target_bulanan') is-invalid @enderror"
-                                                                name="target_bulanan"
-                                                                placeholder="Masukkan nominal target bulanan, contoh: Rp 10.000"
-                                                                aria-label="Masukkan target bulanan" required>
-                                                            @error('target_bulanan')
+                                                                class="form-control @error('target_tahunan') is-invalid @enderror"
+                                                                name="target_tahunan"
+                                                                placeholder="Masukkan nominal target tahunan, contoh: Rp 10.000"
+                                                                aria-label="Masukkan target tahunan" required>
+                                                            @error('target_tahunan')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>

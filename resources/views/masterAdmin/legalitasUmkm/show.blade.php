@@ -16,7 +16,6 @@
                     <table class="table align-items-center mb-0">
                         <tbody>
                             <tr>
-                                {{-- daftar pengguna --}}
                                 <td>
                                     <div class="d-flex px-5 py-1">
                                         <div class="row w-100">
@@ -35,10 +34,10 @@
                                             <div class="form-group">
                                                 <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Upload Legalitas UMKM:</label>
                                                 <div class="p-0">
-                                                    @foreach ($fields as $field)
-                                                        @if (!empty($legalUsaha->$field))
-                                                        <p>{{ ucfirst(str_replace('_', ' ', $field)) }}</p> 
-                                                        <img src="{{ asset('storage/legalitas/' . $legalUsaha->$field) }}" alt="{{ $field }}" width="200" class="img-thumbnail">
+                                                    @foreach ($fields as $data)
+                                                        @if (!empty($legalUsaha->$data))
+                                                        <p>{{ ucfirst(str_replace('_', ' ', $data)) }}</p> {{--rubah format biar enak dibaca--}}
+                                                        <img src="{{ asset('storage/legalitas/' . $legalUsaha->$data) }}" alt="{{ $data }}" width="200" class="img-thumbnail">
                                                         @endif
                                                     @endforeach
                                                 </div>

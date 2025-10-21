@@ -20,7 +20,7 @@
                                                     {{-- nama --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama Pengguna</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama Pengguna:</label>
                                                             <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" aria-label="Masukkan Nama" value="{{ $user->name }}" readonly>
                                                             @error('name')
                                                             <span class="invalid-feedback" role="alert">
@@ -32,7 +32,7 @@
                                                     {{-- email --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Alamat Email</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Alamat Email:</label>
                                                             <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" aria-label="Masukkan Email" value="{{ $user->email }}" readonly>
                                                             @error('email')
                                                             <span class="invalid-feedback" role="alert">
@@ -44,7 +44,7 @@
                                                     {{-- password --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Kata Sandi</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Kata Sandi:</label>
                                                             <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" aria-label="Password" value="••••••••" readonly>
                                                             @error('password')
                                                             <span class="invalid-feedback" role="alert">
@@ -56,7 +56,7 @@
                                                     {{-- daftar role --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Role</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Sebagai:</label>
                                                             <input type="text" class="form-control @error('role') is-invalid @enderror" name="role" aria-label="Role" value="{{ $user->getRoleNames()->first() }}" readonly="readonly">
                                                         </div>
                                                     </div>

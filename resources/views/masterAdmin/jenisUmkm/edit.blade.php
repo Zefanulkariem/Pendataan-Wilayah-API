@@ -22,7 +22,7 @@
                                                         <div class="form-group">
                                                             <label
                                                                 class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan
-                                                                Jenis Umkm</label>
+                                                                Kategori Umkm</label>
                                                             <input type="text"
                                                                 class="form-control @error('jenis_umkm') is-invalid @enderror"
                                                                 name="jenis_umkm"

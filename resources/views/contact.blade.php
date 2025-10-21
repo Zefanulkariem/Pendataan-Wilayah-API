@@ -59,14 +59,14 @@
     <div class="header">
         <div class="container-fluid">
             <a href="tel:#"><i class="fa fa-phone"></i> (+62) 812-3456-7890</a>
-            <a href="mailto:#"><i class="fa fa-envelope"></i> info@pwkb-bandung.id</a>
+            <a href="mailto:#"><i class="fa fa-envelope"></i> info@pubk-bandung.id</a>
         </div>
     </div>
     <div class="container-fluid text-absolute bg-light text-dark header-1">
         <div class="row align-items-start">
             <div class="col" style="margin-top: 20vh; margin-left: 50px">
                 <p style="margin-right: 1rem; line-height: 1.2;"><span>Hubungi Kami</span></p>
-                <p class="col-md-6 p2" style="line-height: 1.2;">Kami siap membantu Anda mendapatkan informasi lebih lanjut mengenai layanan kami. Jangan ragu untuk menghubungi kami melalui kontak di bawah ini:</p>
+                <p class="col-md-6 p2" style="font-size: 18px;line-height: 1.2;">Kami siap membantu Anda mendapatkan informasi lebih lanjut mengenai layanan kami. Jangan ragu untuk menghubungi kami melalui kontak di bawah ini:</p>
             </div>
             <div class="col-md-10" style="margin-top: 1%; margin-left: 50px; color: gray;">
                 <p class="p2"><i class="fa-solid fa-location-dot" style="margin-right: 1%"></i>Alamat Kantor :</p>
@@ -78,7 +78,7 @@
             </div>
             <div class="col-md-10" style="margin-top: 1%; margin-left: 50px; color: gray;">
                 <p class="p2"><i class="fa fa-envelope" style="margin-right: 1%"></i>Alamat Email :</p>
-                <p class="p2" style="line-height: 0; color: #000;">info@pwkb-bandung.id</p>
+                <p class="p2" style="line-height: 0; color: #000;">info@pubk-bandung.id</p>
             </div>
             <div class="col-md-10" style="margin-top: 1%; margin-left: 50px; color: gray;">
                 <p class="p2"><i class="fa-regular fa-clock" style="margin-right: 1%"></i>Jam Operasional :</p>
@@ -88,18 +88,19 @@
     </div>
 
     {{-- footer --}}
-    <footer class="footer">
-        <div class="footer-nav" >
+    <footer class="footer" style="margin-top: 0;">
+        <div class="footer-nav">
             <div class="row">
-                <div class="footer-col">
+                <div class="col-4">
                     <ul>
-                        <h4><span>Pendataan Wilayah</span>  Kabupaten Bandung</h4>
+                        {{-- <h4><span>Pusat Usaha Bersama</span> dan Kemitraan</h4> --}}
+                        <img src="{{asset('welcome/images/PUBK.png')}}" alt="pubk" style="width: 150px; margin-top: -25px">
                     </ul>
                 </div>
                 
                 <div class="footer-col">
                     <ul>
-                        <h4>TENTANG PWKB</h4>
+                        <h4>TENTANG PUBK</h4>
                         <li><a href="{{url('/about')}}">Tentang Kami</a></li>
                         <li><a href="">Kontak Kami</a></li>
                     </ul>

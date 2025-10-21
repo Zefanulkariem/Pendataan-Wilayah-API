@@ -84,7 +84,7 @@
                                 </div>
                             @endif
                             <input type="file" name="image" class="form-control file-upload-info" placeholder="Upload Gambar">
-                            <small class="form-text text-muted">Kosongkan jika tidak ingin mengubah foto.</small>
+                            <small class="form-text text-muted">Lewati jika tidak ingin mengubah foto.</small>
                         </div>
                         <div class="form-group">
                             <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">URL/Blog Perusahaan:</label>

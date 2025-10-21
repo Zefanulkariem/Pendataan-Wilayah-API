@@ -20,14 +20,9 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pengguna
-                                    </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Role</th>
-                                    <th
-                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="text-align: right">
-                                        Aksi</th>
-                                    {{-- <th class="text-secondary opacity-7"></th> --}}
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pengguna</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Role</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="text-align: right">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,12 +46,13 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        {{-- daftar role --}}
+                                        {{-- role --}}
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">{{ $data->getRoleNames()->first() }}
-                                            </p>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $data->getRoleNames()->first() }}</p>
                                         </td>
-                                        @if (!$data->hasRole('Master Admin'))
+                                        @if ($data->hasRole('Master Admin'))
+                                            <td></td>
+                                        @else
                                             <td style="text-align: right">
                                                 <form id="delete-form-{{ $data->id }}"
                                                     action="{{ route('Master Adminuser.destroy', $data->id) }}"
@@ -77,8 +73,6 @@
                                                     </button>
                                                 </form>
                                             </td>
-                                        @else
-                                            <td></td>
                                         @endif
                                     </tr>
                                 @endforeach
@@ -94,7 +88,11 @@
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 
 <script>
-    let table = new DataTable('#myTable');
+    let table = new DataTable('#myTable', {
+        language: {
+            url: "https://cdn.datatables.net/plug-ins/1.13.6/i18n/id.json",
+        }
+    });
 </script>
 
 <!-- Script SweetAlert -->
@@ -117,11 +115,11 @@
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                     Swal.fire(
                         'Dibatalkan',
-                        'Penghapusan user dibatalkan',
+                        'Penghapusan dibatalkan',
                         'error'
                     );
                 }
             });
         }
-        </script>
+</script>
 @endpush

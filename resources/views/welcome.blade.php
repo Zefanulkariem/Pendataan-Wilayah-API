@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{asset('welcome/images/PUBK.png')}}">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     {{-- icon --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -12,8 +13,9 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Add Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-    <title>Pendataan Web Kabupaten Bandung - PWKB</title>
+    <title>Pusat Usaha Bersama dan Kemitraan - PUBK</title>
     <link rel="stylesheet" href="{{asset('welcome/css/style.css')}}">
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
 </head>
 
 <body>
@@ -21,8 +23,7 @@
     @guest
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -67,15 +68,26 @@
     <div class="header">
         <div class="container-fluid">
             <a href="tel:#"><i class="fa fa-phone"></i> (+62) 812-3456-7890</a>
-            <a href="mailto:#"><i class="fa fa-envelope"></i> info@pwkb-bandung.id</a>
+            <a href="mailto:#"><i class="fa fa-envelope"></i> info@pubk-bandung.id</a>
         </div>
     </div>
+    
     <div class="container-fluid text-absolute bg-light text-dark header-1">
         <div class="row align-items-start">
-            <div class="col" style="margin-top: 40vh; margin-left: 50px;">
-                <p style="margin-right: 1rem; line-height: 1.2;"><span>Selamat datang</span> di<br>Pendataan Wilayah Kab. Bandung</p>
-                <p class="col-md-3 p2" style="line-height: 1.2;">Sistem pendataan dengan map interaktif Tekan untuk melihat selengkapnya</p>
-                <a href="#selengkapnya" type="button" class="btn">Selengkapnya</a>
+            <div class="col" style="margin-top: 30vh; margin-left: 50px;">
+                <p style="margin-right: 1rem; line-height: 1.2; font-weight: bold; font-size: 50px;"><span>Selamat datang</span> di<br>Pusat Usaha<br>Bersama dan Kemitraan</p>
+                <p class="col" style="font-size: 18px; line-height: 1.2;">Sistem pendataan dengan map interaktif Tekan untuk melihat selengkapnya</p>
+                <a href="#selengkapnya" type="button" class="btn" style="font-weight: 500;">Selengkapnya <i class="fa fa-sharp fa-light fa-arrow-right"></i></a>
+            </div>
+            <div class="col">
+                <dotlottie-player
+                    src="https://lottie.host/47c81a1b-9475-4862-b57a-16805dd0990b/VLRqNdEZww.lottie"
+                    background="transparent"
+                    speed="1"
+                    style="width: 600px; height: 600px"
+                    loop
+                    autoplay>
+                </dotlottie-player>
             </div>
         </div>
     </div>
@@ -92,31 +104,27 @@
         </div>
     </div>
     <!-- Container3 -->
-    <div class="container-fluid text-center bg-black text-light" id="selengkapnya"
-        style="height: 70vh; background-image: url('https://i.ibb.co.com/2y6rtvB/Frame-5-1-waifu2x-art-noise3-scale.png'); background-size: cover; background-position: center;">
-        <div class="row align-items-center h-100">
-            <div class="col text-start" style="max-width: 300px; margin: 0 auto; padding-top: 50px;">
+    <div class="container-fluid text-center bg-black text-light" id="selengkapnya" style="height: 70vh; background-image: url('https://i.ibb.co.com/2y6rtvB/Frame-5-1-waifu2x-art-noise3-scale.png'); background-size: cover; background-position: center;">
+        <div class="row align-items-start h-100" style="padding-top: 10rem;">
+            <div class="col text-start" style="max-width: 300px; margin: 0 auto;">
                 <h3 style="color: #6fe056; font-weight: 400; font-size: 20px; margin-bottom: 10px;">0.1</h3>
                 <h4 style="font-weight: 500; margin-bottom: 20px;">Penggunaan</h4>
-                <p style="font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
-                    Pengguna dapat melakukan pencarian dan informasi data UMKM dengan menggunakan maps interaktif,
-                    pengguna internal dapat memantau perkembangan usaha anda melalui dashboard.
+                <p style="font-size: 18px; line-height: 1.6; margin-bottom: 20px;">
+                    Investor, UMKM, dan pengguna umum dapat melakukan pencarian informasi data UMKM melalui maps interaktif. Investor dapat menggunakan data ini untuk riset dan potensi investasi, sementara UMKM bisa memantau perkembangan usahanya melalui dashboard khusus, termasuk melihat laporan keuangan dan laporan perkembangan usaha mereka. {{--marketing dll--}}
                 </p>
             </div>
             <div class="col text-start" style="max-width: 300px; margin: 0 auto;">
                 <h3 style="color: #6fe056; font-weight: 400; font-size: 20px; margin-bottom: 10px;">0.2</h3>
                 <h4 style="font-weight: 500; margin-bottom: 15px;">Pengelolaan</h4>
-                <p style="font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
-                    Pengelolaan dilakukan dengan aman dan terstruktur, memastikan informasi legalitas dan
-                    pendanaan selalu data asli.
+                <p style="font-size: 18px; line-height: 1.6; margin-bottom: 20px;">
+                    Pengelolaan data dilakukan secara aman dan terstruktur oleh tim admin. Admin bertugas memastikan bahwa data yang ditampilkan seperti legalitas usaha, status pendanaan, dan informasi profil UMKM selalu akurat, terpercaya.
                 </p>
             </div>
             <div class="col text-start" style="max-width: 300px; margin: 0 auto;">
                 <h3 style="color: #6fe056; font-weight: 400; font-size: 20px;margin-bottom: 10px;">0.3</h3>
                 <h4 style="font-weight: 500; margin-bottom: 15px;">Pengembangan</h4>
-                <p style="font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
-                    Kami terus mengembangkan fitur-fitur baru untuk mendukung UMKM dalam berekspansi, termasuk ke pasar
-                    nasional.
+                <p style="font-size: 18px; line-height: 1.6; margin-bottom: 20px;">
+                    PUBK terus mengembangkan berbagai fitur baru untuk mendukung UMKM dalam memperluas bisnisnya ke pasar lokal dan nasional, serta memudahkan investor dalam menemukan peluang usaha potensial. Selain itu, platform ini juga menyediakan fasilitas bagi UMKM untuk mendaftarkan usaha, memperbarui data, dan memantau perkembangan usahanya secara mandiri.
                 </p>
             </div>
         </div>
@@ -124,22 +132,21 @@
     <!-- Container4 -->
     <div class="container-fluid text-center bg-black text-light"
         style="height: 70vh; background-image: url('https://i.ibb.co.com/qn1pCh6/Frame-6-waifu2x-art-noise3-scale.png'); background-size: cover; background-position: center;">
-        <div class="row h-100 align-items-center">
+        <div class="row h-100 align-items-center" style="padding-top: 15rem;">
 
             {{-- carousel --}}
             <div class="col-md-6 pe-5">
-                <div id="carouselContainer5" class="carousel slide" data-bs-ride="carousel"
-                    style="border-radius: 5px; overflow: hidden; max-width: 90%; margin: auto;">
+                <div id="carouselUmkm" class="carousel slide" data-bs-ride="carousel"style="border-radius: 5px; overflow: hidden; max-width: 90%; margin: auto;">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        <button type="button" data-bs-target="#carouselUmkm" data-bs-slide-to="0"
                             class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        <button type="button" data-bs-target="#carouselUmkm" data-bs-slide-to="1"
                             aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        <button type="button" data-bs-target="#carouselUmkm" data-bs-slide-to="2"
                             aria-label="Slide 3"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                        <button type="button" data-bs-target="#carouselUmkm" data-bs-slide-to="3"
                             aria-label="Slide 4"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                        <button type="button" data-bs-target="#carouselUmkm" data-bs-slide-to="4"
                             aria-label="Slide 5"></button>
                     </div>
 
@@ -162,30 +169,28 @@
                         </div>
                     </div>
 
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselUmkm"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselUmkm"
                         data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
-                <p class="text-image">Gambar 1.0 Dasbor UMKM</p>
+                <p class="text-image">Gambar 1.0 Fitur UMKM</p>
             </div>
 
-            <div class="col-md-6 text-start pe-5">
-                <h5 style="font-size: 1.5rem; font-weight: 500;">
-                    <span style="color: #6fe056;">1.0</span> Fitur Dasbor UMKM</h5>
-                <p style="font-size: 0.9rem;">Ini adalah beberapa fitur dari web ini</p>
+            <div class="col-md-6 text-start">
+                <h5 style="font-size: 1.5rem; font-weight: 500;">Fitur Dasbor UMKM</h5>
                 <br>
                 <h5 style="font-size: 1.5rem; font-weight: 500;">
-                    <span style="color: #6fe056;">2.0</span> Penjelasan Fitur Web</h5>
-                <p style="font-size: 0.9rem; line-height: normal; text-align: left;">Pengguna dapat menginput pendataan
+                    <span style="color: #6fe056;">1.0</span> Penjelasan Fitur UMKM</h5>
+                    <p style="font-size: 18px; line-height: 1.6; text-align: left;">Pengguna dapat menginput pendataan
                     komoditi UMKM di daerah Kabupaten Bandung. Maps interaktif sebagai alat utama untuk menyajikan informasi pendataan UMKM. Melalui peta ini, pihak terkait juga dilengkapi dengan informasi detail
-                    mengenai jenis usaha, profil UMKM, dan lokasi UMKM</p>
+                    mengenai jenis usaha, profil UMKM, dan lokasi UMKM.</p>
             </div>
         </div>
     </div>
@@ -195,29 +200,26 @@
         <div class="row h-100 align-items-center">
             <!-- Bagian teks di kiri -->
             <div class="col-md-6 text-start ps-5">
-                <h5 style="font-size: 1.5rem; font-weight: 500;">
-                    <span style="color: #6fe056;">1.0</span> Fitur Dasbor Investor
-                </h5>
-                <p style="font-size: 0.9rem;">Berikut adalah beberapa fitur dari web ini</p>
+                <h5 style="font-size: 1.5rem; font-weight: 500;">Fitur Dasbor Investor</h5>
                 <br>
                 <h5 style="font-size: 1.5rem; font-weight: 500;">
-                    <span style="color: #6fe056;">2.0</span> Penjelasan mengenai Fitur Web ini
+                    <span style="color: #6fe056;">2.0</span> Penjelasan mengenai Fitur Investor
                 </h5>
-                <p style="font-size: 0.9rem; line-height: normal;">
+                <p style="font-size: 18px; line-height: 1.6;">
                     Pengguna dapat mencari informasi lokasi UMKM di wilayah Kabupaten Bandung dengan menggunakan maps interaktif yang menyajikan informasi seperti profil usaha, profil UMKM, dan jenis usaha.
                 </p>
             </div>
 
             <!-- Carousel di kanan -->
             <div class="col-md-6 pe-5">
-                <div id="carouselContainer5" class="carousel slide" data-bs-ride="carousel"
+                <div id="carouselInvestor" class="carousel slide" data-bs-ride="carousel"
                     style="border-radius: 5px; overflow: hidden; max-width: 90%; margin: auto;">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselContainer5" data-bs-slide-to="0"
+                        <button type="button" data-bs-target="#carouselInvestor" data-bs-slide-to="0"
                             class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselContainer5" data-bs-slide-to="1"
+                        <button type="button" data-bs-target="#carouselInvestor" data-bs-slide-to="1"
                             aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselContainer5" data-bs-slide-to="2"
+                        <button type="button" data-bs-target="#carouselInvestor" data-bs-slide-to="2"
                             aria-label="Slide 3"></button>
                     </div>
 
@@ -235,17 +237,17 @@
                     </div>
 
                     <!-- Kontrol Carousel -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselContainer5"
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselInvestor"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselContainer5"
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselInvestor"
                             data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
                 </div>
-                <p class="text-image">Gambar 2.0 Dasbor Investor</p>
+                <p class="text-image">Gambar 2.0 Fitur Investor</p>
             </div>
         </div>
     </div>
@@ -254,25 +256,26 @@
         <div class="row align-items-start">
             <div class="col" style="margin-top: 20vh; margin-left: 50px;">
                 <h2 style="line-height: 1.2;">Tentang Kami</h2>
-                <p class="p2" style="line-height: 1.2;">Aplikasi PKWB adalah solusi digital yang dirancang untuk mempertemukan UMKM dengan Investor atau pihak terkait melalui platform berbasis maps interaktif.</p>
-                <a href="{{ url('/about') }}" type="button" class="btn">Selengkapnya</a>
+                <p class="p2" style="line-height: 1.2;"><span>Aplikasi PUBK</span> adalah solusi digital yang dirancang untuk mempertemukan <span>UMKM</span> dengan <span>Investor</span> atau pihak terkait melalui platform berbasis <span>Maps Interaktif</span>.</p>
+                <a href="{{ url('/about') }}" type="button" class="btn">Selengkapnya <i class="fa fa-sharp fa-light fa-arrow-right"></i></a>
             </div>
         </div>
     </div>
 
     {{-- footer --}}
     <footer class="footer">
-        <div class="footer-nav" >
+        <div class="footer-nav">
             <div class="row">
-                <div class="footer-col">
+                <div class="col-4">
                     <ul>
-                        <h4><span>Pendataan Wilayah</span>  Kabupaten Bandung</h4>
+                        {{-- <h4><span>Pusat Usaha Bersama</span> dan Kemitraan</h4> --}}
+                        <img src="{{asset('welcome/images/PUBK.png')}}" alt="pubk" style="width: 150px; margin-top: -25px">
                     </ul>
                 </div>
                 
                 <div class="footer-col">
                     <ul>
-                        <h4>TENTANG PWKB</h4>
+                        <h4>TENTANG PUBK</h4>
                         <li><a href="{{url('/about')}}">Tentang Kami</a></li>
                         <li><a href="{{url('/contactus')}}">Kontak Kami</a></li>
                     </ul>
@@ -289,9 +292,6 @@
             </div>
         </div>
     </footer>
-
-
-
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>

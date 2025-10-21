@@ -53,7 +53,7 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $data->user->name }}</h6>
+                                                    <h6 class="mb-0 text-sm">{{ $data->umkm->name }}</h6>
                                                 </div>
                                             </div>
                                         </td>
@@ -118,7 +118,7 @@
     <script>
         function confirmDelete(userId) {
             Swal.fire({
-                title: 'Hapus Data Operasional ini!',
+                title: 'Hapus Data Meeting ini!',
                 text: "Apakah kamu yakin ingin menghapusnya?",
                 icon: 'warning',
                 showCancelButton: true,
@@ -132,7 +132,7 @@
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                     Swal.fire(
                         'Dibatalkan',
-                        'Penghapusan user dibatalkan',
+                        'Penghapusan dibatalkan',
                         'error'
                     );
                 }

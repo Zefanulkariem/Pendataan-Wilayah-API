@@ -32,65 +32,61 @@
     
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-<!-- Mengirimkan data lokasi di contoller ke Js-->
 <script>
+    const lokasis = @json($lokasis);
 
-// data lokasi di controller diubah ke JSON
-const lokasis = @json($lokasis);
+    const batasPeta = L.latLngBounds(
+        L.latLng(-6.796101, 107.257445),
+        L.latLng(-7.402902, 107.833103)
+    );
 
-const batasPeta = L.latLngBounds(
-    L.latLng(-6.796101, 107.257445),
-    L.latLng(-7.402902, 107.833103)
-);
+    const map = L.map('map', {
+        center: [-6.9175, 107.6191],
+        zoom: 13,
+        minZoom: 10,
+        maxBounds: batasPeta,
+        maxBoundsViscosity: 1.0 
+    });
 
-const map = L.map('map', {
-    center: [-6.9175, 107.6191],
-    zoom: 13,
-    minZoom: 10,
-    maxBounds: batasPeta,
-    maxBoundsViscosity: 1.0 // biar lebih sulit keluar dari batas
-});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
 
-// Konfigurasi peta menggunakan Leaflet
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map);
+    const kecamatans = [
+        { name: 'Arjasari', color: 'red' },
+        { name: 'Baleendah', color: 'blue' },
+        { name: 'Banjaran', color: 'green' },
+        { name: 'Bojongsoang', color: 'yellow' },
+        { name: 'Cangkuang', color: 'orange' },
+        { name: 'Cicalengka', color: 'purple' },
+        { name: 'Cikancung', color: 'pink' },
+        { name: 'Cilengkrang', color: 'brown' },
+        { name: 'Cileunyi', color: 'black' },
+        { name: 'Cimaung', color: 'white' },
+        { name: 'Cimenyan', color: 'cyan' },
+        { name: 'Ciparay', color: 'lime' },
+        { name: 'Ciwidey', color: 'teal' },
+        { name: 'Dayeuhkolot', color: 'violet' },
+        { name: 'Ibun', color: 'indigo' },
+        { name: 'Katapang', color: 'maroon' },
+        { name: 'Kertasari', color: 'navy' },
+        { name: 'Kutawaringin', color: 'grey' },
+        { name: 'Majalaya', color: 'lightgreen' },
+        { name: 'Margaasih', color: 'lightblue' },
+        { name: 'Margahayu', color: 'salmon' },
+        { name: 'Nagreg', color: 'gold' },
+        { name: 'Pacet', color: 'coral' },
+        { name: 'Pameungpeuk', color: 'beige' },
+        { name: 'Pangalengan', color: 'khaki' },
+        { name: 'Paseh', color: 'magenta' },
+        { name: 'Pasirjambu', color: 'crimson' },
+        { name: 'Rancabali', color: 'chartreuse' },
+        { name: 'Rancaekek', color: 'olive' },
+        { name: 'Solokanjeruk', color: 'tan' },
+        { name: 'Soreang', color: 'darkgreen' }
+    ];
 
-const kecamatans = [
-    { name: 'Arjasari', color: 'red' },
-    { name: 'Baleendah', color: 'blue' },
-    { name: 'Banjaran', color: 'green' },
-    { name: 'Bojongsoang', color: 'yellow' },
-    { name: 'Cangkuang', color: 'orange' },
-    { name: 'Cicalengka', color: 'purple' },
-    { name: 'Cikancung', color: 'pink' },
-    { name: 'Cilengkrang', color: 'brown' },
-    { name: 'Cileunyi', color: 'black' },
-    { name: 'Cimaung', color: 'white' },
-    { name: 'Cimenyan', color: 'cyan' },
-    { name: 'Ciparay', color: 'lime' },
-    { name: 'Ciwidey', color: 'teal' },
-    { name: 'Dayeuhkolot', color: 'violet' },
-    { name: 'Ibun', color: 'indigo' },
-    { name: 'Katapang', color: 'maroon' },
-    { name: 'Kertasari', color: 'navy' },
-    { name: 'Kutawaringin', color: 'grey' },
-    { name: 'Majalaya', color: 'lightgreen' },
-    { name: 'Margaasih', color: 'lightblue' },
-    { name: 'Margahayu', color: 'salmon' },
-    { name: 'Nagreg', color: 'gold' },
-    { name: 'Pacet', color: 'coral' },
-    { name: 'Pameungpeuk', color: 'beige' },
-    { name: 'Pangalengan', color: 'khaki' },
-    { name: 'Paseh', color: 'magenta' },
-    { name: 'Pasirjambu', color: 'crimson' },
-    { name: 'Rancabali', color: 'chartreuse' },
-    { name: 'Rancaekek', color: 'olive' },
-    { name: 'Solokanjeruk', color: 'tan' },
-    { name: 'Soreang', color: 'darkgreen' }
-];
-
-let markers = [];
+    let markers = [];
 
     function createMarker(lat, lon, color, title, desa, img, nama, kelamin, namaUMKM, link, jenisUMKM, deskripsi, keuangan) {
         const marker = L.circleMarker([lat, lon], {

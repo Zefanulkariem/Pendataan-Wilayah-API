@@ -4,8 +4,9 @@
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href="{{ url('/') }}">
-            <img src="{{ asset('admin/assets/img/logo-ct-dark.png') }}" class="navbar-brand-img h-100" alt="main_logo">
-            <span class="ms-1 font-weight-bold">PWKB</span>
+            <img src="{{ asset('welcome/images/PUBK_logo.png') }}" class="navbar-brand-img" alt="main_logo"
+                style="width: 80px;">
+            {{-- <span class="ms-1 font-weight-bold">PUBK</span> --}}
         </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -34,7 +35,83 @@
                     <span class="nav-link-text ms-1">Manajemen Pengguna</span>
                 </a>
             </li>
-            {{-- <li class="nav-item">
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#dashboardMenu">
+                    <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">Halaman Umkm</h6>
+                </a>
+                <div class="collapse" id="dashboardMenu">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('dashboard/spot*') ? 'active' : '' }}"
+                                href="{{ route('Master Adminspot.index') }}">
+                                <div
+                                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                    <i style="font-size:20px;" class="material-icons text-primary">pin_drop</i>
+                                </div>
+                                <span class="nav-link-text ms-1">Daftar Lokasi Umkm</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('dashboard/jenis-umkm*') ? 'active' : '' }}"
+                                href="{{ route('Master Adminjenis-umkm.index') }}">
+                                <div
+                                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                    <i style="font-size:20px;" class="material-icons text-primary">category</i>
+                                </div>
+                                <span class="nav-link-text ms-1">Daftar Kategori Umkm</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('dashboard/keuangan/menu*') ? 'active' : '' }}"
+                                href="{{ route('Master Adminkeuangan.menu') }}">
+                                <div
+                                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                    <i style="font-size:20px;" class="material-icons text-primary">receipt_long</i>
+                                </div>
+                                <span class="nav-link-text ms-1">Aprove Keuangan</span>
+                                <span id="checkNotifications">
+                                    @if (isset($uangNotification) && $uangNotification->count() > 0)
+                                        <span id="keuangan-notification-count" class="badge bg-danger"
+                                            style="margin-left: 5px;">
+                                            {{ $uangNotification->count() }}
+                                        </span>
+                                    @endif
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('dashboard/cek-legal/menu*') ? 'active' : '' }}"
+                                href="{{ route('Master AdminlegalUsaha.menu') }}">
+                                <div
+                                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                    <i style="font-size:20px;" class="material-icons text-primary">fact_check</i>
+                                </div>
+                                <span class="nav-link-text ms-1">Cek Legalitas</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('dashboard/meeting*') ? 'active' : '' }}"
+                                href="{{ route('Master Adminmeeting.menu') }}">
+                                <div
+                                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                    <i style="font-size:20px;" class="material-icons text-primary">event_available</i>
+                                </div>
+                                <span class="nav-link-text ms-1">Ajuan Meeting</span>
+                                <span id="checkNotifications">
+                                    {{-- {{ dd($meetNotification) }} --}}
+                                    @if (isset($meetNotification) && $meetNotification->count() > 0)
+                                        <span id="meeting-notification-count" class="badge bg-danger"
+                                            style="margin-left: 5px;">
+                                            {{ $meetNotification->count() }}
+                                        </span>
+                                    @endif
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {{ request()->is('dashboard/kecamatan*') ? 'active' : '' }}"
                     href="{{ route('Master Adminkecamatan.index') }}">
                     <div
@@ -43,7 +120,7 @@
                     </div>
                     <span class="nav-link-text ms-1">Daftar Kecamatan</span>
                 </a>
-            </li> --}}
+            </li>
             <li class="nav-item">
                 <a class="nav-link {{ request()->is('dashboard/desa*') ? 'active' : '' }}"
                     href="{{ route('Master Admindesa.index') }}">
@@ -52,71 +129,6 @@
                         <i style="font-size:20px;" class="material-icons text-primary">map</i>
                     </div>
                     <span class="nav-link-text ms-1">Daftar Desa</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('dashboard/jenis-umkm*') ? 'active' : '' }}"
-                    href="{{ route('Master Adminjenis-umkm.index') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i style="font-size:20px;" class="material-icons text-primary">category</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Daftar Kategori Umkm</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('dashboard/spot*') ? 'active' : '' }}"
-                    href="{{ route('Master Adminspot.index') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i style="font-size:20px;" class="material-icons text-primary">pin_drop</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Daftar Lokasi Umkm</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('dashboard/keuangan/menu*') ? 'active' : '' }}"
-                    href="{{ route('Master Adminkeuangan.menu') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i style="font-size:20px;" class="material-icons text-primary">receipt_long</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Aprove Keuangan</span>
-                    <span id="checkNotifications">
-                        @if(isset($uangNotification) && $uangNotification->count() > 0)
-                            <span id="keuangan-notification-count" class="badge bg-danger" style="margin-left: 5px;">
-                                {{ $uangNotification->count() }}
-                            </span>
-                        @endif
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('dashboard/cek-legal/menu*') ? 'active' : '' }}"
-                    href="{{ route('Master AdminlegalUsaha.menu') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i style="font-size:20px;" class="material-icons text-primary">fact_check</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Cek Legalitas</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('dashboard/meeting*') ? 'active' : '' }}"
-                    href="{{ route('Master Adminmeeting.menu') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i style="font-size:20px;" class="material-icons text-primary">event_available</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Ajuan Meeting</span>
-                    <span id="checkNotifications">
-                        {{-- {{ dd($meetNotification) }} --}}
-                        @if(isset($meetNotification) && $meetNotification->count() > 0)
-                            <span id="meeting-notification-count" class="badge bg-danger" style="margin-left: 5px;">
-                                {{ $meetNotification->count() }}
-                            </span>
-                        @endif
-                    </span>
                 </a>
             </li>
 
@@ -136,37 +148,75 @@
         </ul>
     </div>
     <script>
+        // function checkNotifications() {
+        //     let uangRequest = $.ajax({
+        //         url: '{{ route('Master Adminuang.notification') }}',
+        //         type: 'GET'
+        //     });
+
+        //     let meetingRequest = $.ajax({
+        //         url: '{{ route('Master Adminmeeting.notification') }}',
+        //         type: 'GET'
+        //     });
+
+        //     Promise.all([uangRequest, meetingRequest])
+        //         .then(([uangResponse, meetResponse]) => {
+        //             // 
+        //             if (uangResponse.uangCount > 0) {
+        //                 badgeUang.text(uangResponse.uangCount).show();
+        //             } else {
+        //                 badgeUang.hide();
+        //             }
+
+        //             // 
+        //             if (meetResponse.meetCount > 0) {
+        //                 badgeMeet.text(meetResponse.meetCount).show();
+        //             } else {
+        //                 badgeMeet.hide();
+        //             }
+        //         })
+        //         .catch(() => {
+        //             console.log('Gagal memuat notifikasi');
+        //         });
+        //     }
+
+        // // Memanggil fungsi setiap 5 detik
+        // setInterval(checkNotifications, 5000);
         function checkNotifications() {
-            let uangRequest = $.ajax({
-                url: '{{ route('Master Adminuang.notification') }}',
-                type: 'GET'
-            });
-
-            let meetingRequest = $.ajax({
-                url: '{{ route('Master Adminmeeting.notification') }}',
-                type: 'GET'
-            });
-
-            Promise.all([uangRequest, meetingRequest])
-                .then(([uangResponse, meetResponse]) => {
-                    // 
-                    if (uangResponse.uangCount > 0) {
-                        badgeUang.text(uangResponse.uangCount).show();
+            $.ajax({
+                url: '{{ route('Master Adminuang.notification') }}', // Route untuk mengambil jumlah notifikasi
+                type: 'GET',
+                success: function(response) {
+                    console.log("Response:", response);
+                    // Update jumlah notifikasi di menu
+                    if (response.uangCount > 0) {
+                        $('#keuangan-notification-count').text(response.uangCount).show();
                     } else {
-                        badgeUang.hide();
+                        $('#keuangan-notification-count').hide();
                     }
-
-                    // 
-                    if (meetResponse.meetCount > 0) {
-                        badgeMeet.text(meetResponse.meetCount).show();
-                    } else {
-                        badgeMeet.hide();
-                    }
-                })
-                .catch(() => {
+                },
+                error: function() {
                     console.log('Gagal memuat notifikasi');
-                });
-            }
+                }
+            });
+
+            $.ajax({
+                url: '{{ route('Master Adminmeeting.notification') }}', // Route untuk mengambil jumlah notifikasi
+                type: 'GET',
+                success: function(response) {
+                    console.log("Response:", response);
+                    // Update jumlah notifikasi di menu
+                    if (response.meetCount > 0) {
+                        $('#meeting-notification-count').text(response.meetCount).show();
+                    } else {
+                        $('#meeting-notification-count').hide();
+                    }
+                },
+                error: function() {
+                    console.log('Gagal memuat notifikasi');
+                }
+            });
+        }
 
         // Memanggil fungsi setiap 5 detik
         setInterval(checkNotifications, 5000);

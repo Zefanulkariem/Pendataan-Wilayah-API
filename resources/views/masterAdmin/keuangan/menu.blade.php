@@ -46,9 +46,8 @@
                                     <td>
                                         <div class="d-flex px-2 py-1">
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">{{ $data->bulan }}</h6>
-                                                <p class="text-xs text-secondary mb-0">Di input pada:
-                                                    <b>{{ $data->tanggal }}</b></p>
+                                                <p class="text-xs text-secondary mb-0">Di input pada:</p>
+                                                <h6 class="mb-0 text-sm"><b>{{ \Carbon\Carbon::parse($data->tanggal)->locale('id')->translatedFormat('d F Y') }}</b></h6>
                                             </div>
                                         </div>
                                     </td>
@@ -101,10 +100,22 @@
 @endsection
 
 @push('javascript')
-    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 
-    <script>
-        let table = new DataTable('#myTable');
-    </script>
+<script>
+    let table = new DataTable('#myTable', {
+        language: {
+            url: "https://cdn.datatables.net/plug-ins/1.13.6/i18n/id.json",
+        }
+    });
 
+    // tolong rubah ke format kalimat
+    const tanggal = (tanggal)=>{
+        return new Intl.DateTimeFormat('id-ID', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
+        }).format(new Date(tanggal)); //convert string jadi objek
+    };
+</script>
 @endpush

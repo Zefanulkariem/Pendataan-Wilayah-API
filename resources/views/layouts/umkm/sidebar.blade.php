@@ -4,8 +4,8 @@
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href="{{ url('/') }}">
-            <img src="{{ asset('admin/assets/img/logo-ct-dark.png') }}" class="navbar-brand-img h-100" alt="main_logo">
-            <span class="ms-1 font-weight-bold">PWKB</span>
+            <img src="{{ asset('welcome/images/PUBK_logo.png') }}" class="navbar-brand-img" alt="main_logo" style="width: 80px;">
+            {{-- <span class="ms-1 font-weight-bold">PUBK</span> --}}
         </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -48,7 +48,7 @@
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size:20px;" class="material-icons text-primary">payment</i>
                     </div>
-                    <span class="nav-link-text ms-1">Keuangan</span> {{-- income & outcome | perbulan --}}
+                    <span class="nav-link-text ms-1">Daftar Keuangan</span> {{-- income & outcome | perbulan --}}
                 </a>
             </li>
             <li class="nav-item">
@@ -68,7 +68,7 @@
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size:20px;" class="material-icons text-primary">storefront</i>
                     </div>
-                    <span class="nav-link-text ms-1">Marketing</span> {{-- target income perbulan/tahun/5 tahun --}}
+                    <span class="nav-link-text ms-1">Daftar Marketing</span> {{-- target income perbulan/tahun/5 tahun --}}
                 </a>
             </li>
 

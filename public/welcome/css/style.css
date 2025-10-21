@@ -5,7 +5,7 @@ body {
 
 .navbar {
     position: fixed;
-    z-index: 1030;
+    z-index: 1000;
     top: 8%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -16,13 +16,18 @@ body {
     backdrop-filter: blur(10px);
 }
 
+.navbar-nav {
+        flex-direction: row;
+        display: flex;
+    }
+
 .container-fluid {
     padding-left: 40px;
     padding-right: 40px;
 }
 
 .navbar-nav .nav-link {
-    margin: 0 18px;
+    margin: 0 12px;
     color: black;
     font-weight: 400;
     font-size: 14px;
@@ -59,6 +64,44 @@ body {
 
     .navbar-collapse.show {
         height: auto;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1366px) {
+    html {
+        font-size: 80%;
+    }
+    .navbar .container-fluid .navbar-collapse.collapse {
+        display: flex !important;
+        flex-basis: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .navbar-toggler {
+        display: none !important;
+    }
+
+    .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .header-1 .row {
+        position: relative;
+        overflow: visible;
+    }
+
+    .header-1 .row .col:first-child {
+        position: relative;
+        z-index: 10;
+    }
+
+    .header-1 .row .col:last-child {
+        position: absolute;
+        z-index: 1;
+        left: 400px;
+        /* border: 1px solid red; */
     }
 }
 
@@ -157,9 +200,11 @@ a.btn:hover {
 }
 
 .header-1 {
+    position: relative;
     height: 100vh;
+    overflow: hidden;
     /* border: 1px solid red; */
-    background-image: url('https://i.ibb.co.com/F0TgvmV/Frame-4-1-waifu2x-art-noise3-scale.png');
+    background-image: url('../images/dasbor.png');
     background-size: cover;
     background-position: center;
     background-size: 120%;
@@ -169,6 +214,10 @@ a.btn:hover {
     background-image: url('https://i.ibb.co.com/CVScp00/Frame-3-1-waifu2x-art-noise3-scale.png');
     background-size: cover;
     background-position: center;
+}
+
+.header-1 .row .col:last-child {
+    margin-top: 10vh;
 }
 
 .row {

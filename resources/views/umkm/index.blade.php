@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Keuntungan/ Kerugian</p>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Keuntungan/Kerugian pada Data Keuangan</p>
                                 <h5 class="font-weight-bolder">
                                     {{ number_format($rataRataPersen, 2) }}%
                                 </h5>
@@ -49,7 +49,7 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Jumlah Karyawan Aktif</p>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Jumlah Karyawan yang Aktif</p>
                                 
                                 <h5 class="font-weight-bolder">
                                     {{ $op->jml_karyawan ?? 'Belum mengisi' }} Karyawan

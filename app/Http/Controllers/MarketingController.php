@@ -15,7 +15,7 @@ class MarketingController extends Controller
     public function index()
     {
         $title = 'Daftar Marketing';
-        $market = Marketing::where('id_umkm', auth()->id())->get();
+        $market = Marketing::where('id_umkm', auth()->id())->latest()->get();
         return view('umkm.marketing.index', compact('market', 'title'));
     }
 

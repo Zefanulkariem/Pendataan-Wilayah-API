@@ -16,20 +16,19 @@
                     <table class="table align-items-center mb-0">
                         <tbody>
                             <tr>
-                                {{-- daftar pengguna --}}
                                 <td>
                                     <div class="d-flex px-5 py-1">
                                         <div class="row w-100">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama UMKM:</label>
-                                                    <input type="text" class="form-control" value="{{ $meeting->user->name }}" readonly>
+                                                    <input type="text" class="form-control" value="{{ $meeting->umkm->name }}" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Email Investor:</label>
-                                                    <input type="text" class="form-control" value="{{ $meeting->user->email }}" readonly>
+                                                    <input type="text" class="form-control" value="{{ $meeting->umkm->email }}" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
@@ -38,13 +37,13 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama Investor:</label>
-                                                    <input type="text" class="form-control" value="{{ $meeting->idInvestor->name }}" readonly>
+                                                    <input type="text" class="form-control" value="{{ $meeting->investor->name }}" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Email Investor:</label>
-                                                    <input type="text" class="form-control" value="{{ $meeting->idInvestor->email }}" readonly>
+                                                    <input type="text" class="form-control" value="{{ $meeting->investor->email }}" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">

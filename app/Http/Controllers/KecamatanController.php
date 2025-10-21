@@ -87,6 +87,11 @@ class KecamatanController extends Controller
     {
         $kecamatan = Kecamatan::findOrFail($id);
 
+        if ($kecamatan->desa()->count() > 0) {
+            Alert::error('Error Title', "Kecamatan tidak bisa dihapus karena masih ada data Desa yang terkait");
+            return redirect()->route('Master Adminkecamatan.index')->with('error', 'Kecamatan tidak bisa dihapus karena masih ada data Desa yang terkait.');
+        }
+
         $kecamatan->delete();
         Alert::success('Success Title', "Data Berhasil Di Hapus")->autoClose(1000);
         return redirect()->route('Master Adminkecamatan.index')->with('success', 'Data Berhasil di Hapus');

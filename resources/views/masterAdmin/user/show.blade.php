@@ -20,9 +20,7 @@
                                                     {{-- nama --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama
-                                                                Pengguna</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama Pengguna</label>
                                                             <input type="text"
                                                                 class="form-control @error('name') is-invalid @enderror"
                                                                 name="name" aria-label="Masukkan Nama"
@@ -37,9 +35,7 @@
                                                     {{-- email --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Alamat
-                                                                Email</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Alamat Email</label>
                                                             <input type="email"
                                                                 class="form-control @error('email') is-invalid @enderror"
                                                                 name="email" aria-label="Masukkan Email"
@@ -54,9 +50,7 @@
                                                     {{-- password --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Kata
-                                                                Sandi</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Kata Sandi</label>
                                                             <input type="password"
                                                                 class="form-control @error('password') is-invalid @enderror"
                                                                 name="password" aria-label="Password" value="••••••••"
@@ -71,8 +65,7 @@
                                                     {{-- daftar role --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Role</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Role</label>
                                                             <input type="text"
                                                                 class="form-control @error('role') is-invalid @enderror"
                                                                 name="role" aria-label="Role"
@@ -83,9 +76,7 @@
                                                     {{-- gender --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Jenis
-                                                                Kelamin:</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Jenis Kelamin:</label>
                                                             <input type="text"
                                                                 class="form-control @error('gender') is-invalid @enderror"
                                                                 name="gender"
@@ -96,9 +87,7 @@
                                                     {{-- no_telp --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nomor
-                                                                Telepon:</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nomor Telepon:</label>
                                                             <input type="text"
                                                                 class="form-control @error('no_telp') is-invalid @enderror"
                                                                 name="no_telp"
@@ -109,8 +98,7 @@
                                                     {{-- alamat --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Alamat:</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Alamat:</label>
                                                             <textarea readonly class="form-control @error('alamat') is-invalid @enderror" name="alamat" rows="7">{{ $user->alamat ?? 'Tidak ingin memberitahu' }}</textarea>
                                                         </div>
                                                     </div>

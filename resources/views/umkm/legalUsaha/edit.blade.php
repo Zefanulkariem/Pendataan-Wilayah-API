@@ -21,20 +21,12 @@
                                                     {{-- badan usaha --}}
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan
-                                                                badan usaha:</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Ubah badan usaha:</label>
                                                             <select name="badan_usaha" id="badan_usaha"
                                                                 class="form-control">
-                                                                <option value="PT (Perseroan Terbatas)"
-                                                                    {{ old('badan_usaha') == 'PT (Perseroan Terbatas)' ? 'selected' : '' }}>
-                                                                    PT (Perseroan Terbatas)</option>
-                                                                <option value="CV (Persekutuan Komanditer)"
-                                                                    {{ old('badan_usaha') == 'CV (Persekutuan Komanditer)' ? 'selected' : '' }}>
-                                                                    CV (Persekutuan Komanditer)</option>
+                                                                <option value="PT (Perseroan Terbatas)" {{ (old('badan_usaha', $legalUsaha->badan_usaha)) == 'PT (Perseroan Terbatas)' ? 'selected' : '' }}>PT (Perseroan Terbatas)</option>
+                                                                <option value="CV (Persekutuan Komanditer)" {{ (old('badan_usaha', $legalUsaha->badan_usaha)) == 'CV (Persekutuan Komanditer)' ? 'selected' : '' }}>CV (Persekutuan Komanditer)</option>
                                                             </select>
-                                                            <small>Harap isi kembali badan usaha dengan menyesuaikan
-                                                                usaha.</small>
                                                             @error('badan_usaha')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -45,12 +37,10 @@
                                                     {{-- nib --}}
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan
-                                                                Nomor Induk Berusaha (NIB):</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Ubah Nomor Induk Berusaha (NIB):</label>
                                                             <input type="number"
                                                                 class="form-control @error('NIB') is-invalid @enderror"
-                                                                name="NIB" aria-label="Masukkan NIB" autofocus
+                                                                name="NIB" aria-label="Ubah/Tambahkan NIB"
                                                                 value="{{ old('NIB', $legalUsaha->NIB) }}"
                                                                 oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                                                             @error('NIB')
@@ -63,91 +53,96 @@
                                                     {{-- akta pendirian --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan
-                                                                Dokumen Akta Pendirian:</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Ubah/Tambahkan Dokumen Akta Pendirian:</label>
+                                                            @if($legalUsaha->akta_pendirian)
+                                                                <div class="p-0">
+                                                                    <img src="{{ asset('storage/legalitas/' . $legalUsaha->akta_pendirian) }}" alt="Gambar Sebelumnya" class="img-thumbnail" style="max-width: 100px;">
+                                                                </div>
+                                                            @endif
                                                             <div class="input-group col-xs-12 d-flex align-items-center">
-                                                                <input type="file" name="akta_pendirian"
-                                                                    class="form-control file-upload-info"
-                                                                    placeholder="Upload Dokumen">
+                                                                <input type="file" name="akta_pendirian" class="form-control file-upload-info  @error('akta_pendirian') is-invalid @enderror" placeholder="Upload Dokumen">
+                                                                @error('akta_pendirian')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
                                                             </div>
-                                                            @error('akta_pendirian')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
                                                         </div>
                                                     </div>
                                                     {{-- skdp --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tambahkan
-                                                                Surat Keterangan Domisili Perusahaan (SKDP):</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Ubah/Tambahkan Surat Keterangan Domisili Perusahaan (SKDP):</label>
+                                                            @if($legalUsaha->SKDP)
+                                                                <div class="p-0">
+                                                                    <img src="{{ asset('storage/legalitas/' . $legalUsaha->SKDP) }}" alt="Gambar Sebelumnya" class="img-thumbnail" style="max-width: 100px;">
+                                                                </div>
+                                                            @endif
                                                             <div class="input-group col-xs-12 d-flex align-items-center">
-                                                                <input type="file" name="SKDP"
-                                                                    class="form-control file-upload-info"
-                                                                    placeholder="Upload Dokumen">
+                                                                <input type="file" name="SKDP" class="form-control file-upload-info  @error('SKDP') is-invalid @enderror" placeholder="Upload Dokumen">
+                                                                @error('SKDP')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
                                                             </div>
-                                                            @error('SKDP')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
                                                         </div>
                                                     </div>
                                                     {{-- npwp --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan
-                                                                Dokumen Pajak (NPWP Usaha):</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Ubah/Tambahkan Dokumen Pajak (NPWP Usaha):</label>
+                                                            @if($legalUsaha->NPWP)
+                                                                <div class="p-0">
+                                                                    <img src="{{ asset('storage/legalitas/' . $legalUsaha->NPWP) }}" alt="Gambar Sebelumnya" class="img-thumbnail" style="max-width: 100px;">
+                                                                </div>
+                                                            @endif
                                                             <div class="input-group col-xs-12 d-flex align-items-center">
-                                                                <input type="file" name="NPWP"
-                                                                    class="form-control file-upload-info"
-                                                                    placeholder="Upload Dokumen">
+                                                                <input type="file" name="NPWP" class="form-control file-upload-info  @error('NPWP') is-invalid @enderror" placeholder="Upload Dokumen">
+                                                                @error('NPWP')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
                                                             </div>
-                                                            @error('NPWP')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
                                                         </div>
                                                     </div>
                                                     {{-- siup --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan
-                                                                Surat Izin Usaha Perdagangan (SIUP):</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Ubah/Tambahkan Surat Izin Usaha Perdagangan (SIUP):</label>
+                                                            @if($legalUsaha->SIUP)
+                                                                <div class="p-0">
+                                                                    <img src="{{ asset('storage/legalitas/' . $legalUsaha->SIUP) }}" alt="Gambar Sebelumnya" class="img-thumbnail" style="max-width: 100px;">
+                                                                </div>
+                                                            @endif
                                                             <div class="input-group col-xs-12 d-flex align-items-center">
-                                                                <input type="file" name="SIUP"
-                                                                    class="form-control file-upload-info"
-                                                                    placeholder="Upload Dokumen">
+                                                                <input type="file" name="SIUP" class="form-control file-upload-info  @error('SIUP') is-invalid @enderror" placeholder="Upload Dokumen">
+                                                                @error('SIUP')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
                                                             </div>
-                                                            @error('password')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
                                                         </div>
                                                     </div>
                                                     {{-- tdp --}}
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masukkan
-                                                                Tanda Daftar Perusahaan (TDP):</label>
+                                                            <label class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Ubah/Tambahkan Tanda Daftar Perusahaan (TDP):</label>
+                                                            @if($legalUsaha->TDP)
+                                                                <div class="p-0">
+                                                                    <img src="{{ asset('storage/legalitas/' . $legalUsaha->TDP) }}" alt="Gambar Sebelumnya" class="img-thumbnail" style="max-width: 100px;">
+                                                                </div>
+                                                            @endif
                                                             <div class="input-group col-xs-12 d-flex align-items-center">
-                                                                <input type="file" name="TDP"
-                                                                    class="form-control file-upload-info"
-                                                                    placeholder="Upload Dokumen">
+                                                                <input type="file" name="TDP" class="form-control file-upload-info  @error('TDP') is-invalid @enderror" placeholder="Upload Dokumen">
+                                                                @error('TDP')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
                                                             </div>
-                                                            @error('TDP')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
                                                         </div>
                                                     </div>
                                                 </div>
