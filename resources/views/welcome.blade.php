@@ -23,8 +23,7 @@
     @guest
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -72,6 +71,7 @@
             <a href="mailto:#"><i class="fa fa-envelope"></i> info@pubk-bandung.id</a>
         </div>
     </div>
+    
     <div class="container-fluid text-absolute bg-light text-dark header-1">
         <div class="row align-items-start">
             <div class="col" style="margin-top: 30vh; margin-left: 50px;">
@@ -79,7 +79,7 @@
                 <p class="col" style="font-size: 18px; line-height: 1.2;">Sistem pendataan dengan map interaktif Tekan untuk melihat selengkapnya</p>
                 <a href="#selengkapnya" type="button" class="btn" style="font-weight: 500;">Selengkapnya <i class="fa fa-sharp fa-light fa-arrow-right"></i></a>
             </div>
-            <div class="col" style="margin-top: 10vh; margin-left: 50px;">
+            <div class="col">
                 <dotlottie-player
                     src="https://lottie.host/47c81a1b-9475-4862-b57a-16805dd0990b/VLRqNdEZww.lottie"
                     background="transparent"

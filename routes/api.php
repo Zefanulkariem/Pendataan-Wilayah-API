@@ -18,8 +18,7 @@ use App\Http\Controllers\Api\MeetingController;
 
     
 // Auth route
-Route::post('register', [AuthController::class, 'register']);
-Route::post('login', [AuthController::class, 'login']);
+// Route::post('register', [AuthController::class, 'register']);
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
 });
@@ -31,6 +30,7 @@ Route::group(['prefix' => 'maps'], function () {
     Route::get('/{id}', [MapsController::class, 'show']);
 });
 
+Route::post('login', [AuthController::class, 'login']);
 Route::middleware(['auth:sanctum', 'can:view_investor'])->prefix('meeting')->group(function () {
     Route::get('/', [MeetingController::class, 'index']);
     Route::post('/', [MeetingController::class, 'store']);
